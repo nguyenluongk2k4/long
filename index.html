@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JobGos - Prototype</title>
+  <link rel="stylesheet" href="css/index_2.css" />
+  <style>
+    /* Header State Styles */
+    .logged-in-only { display: none !important; }
+    .guest-only { display: flex !important; }
+
+    .is-logged-in .logged-in-only { display: flex !important; }
+    .is-logged-in .guest-only { display: none !important; }
+
+    .nav-caret {
+        width: 8px;
+        height: 8px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: translateY(-2px) rotate(45deg);
+        display: inline-block;
+        margin-left: 4px;
+        transition: transform 0.2s;
+    }
+
+    .employer-cta {
+        display: flex;
+        flex-direction: column;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #434655;
+        margin-left: 12px;
+    }
+
+    .employer-cta .highlight {
+        color: #111827;
+        font-weight: 600;
+    }
+
+    .header-icon-btn {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+    }
+
+    .header-icon-btn:hover {
+        opacity: 0.8;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('isLoggedIn') === 'true') {
+        document.body.classList.add('is-logged-in');
+      }
+    });
+
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      window.location.reload();
+    }
+  </script>
+</head>
+<body class="index2-body">
+  <div class="index2-canvas">
+<div class="jobgos-root" style="width: 100%; height: 100%; background: var(--NEUTRAL1, #F3F4F5); flex-direction: column; justify-content: flex-start; align-items: center; display: flex">
+    <div style="width: 100%; height: 64px; background: white; display: flex; justify-content: center; border-bottom: 1px solid #E2E8F0; box-sizing: border-box;">
+        <div style="width: 100% !important; max-width: 1200px; height: 64px; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+            <a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;">
+                <div style="color: var(--PRIMARY1, #2563EB); font-size: 28px; font-family: Inter; font-weight: 700; line-height: 1; letter-spacing: -0.3px;">JobGos</div>
+            </a>
+            <nav style="display: flex; align-items: center; gap: 28px; flex: 1; justify-content: center; min-width: 0;">
+                <a href="index.html" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Việc làm</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Công ty</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Blog</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Liên hệ</span>
+                    <span class="nav-caret"></span>
+                </a>
+            </nav>
+
+            <!-- Guest Header State -->
+            <div class="guest-only" style="display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                <a href="register.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box; background: white;">Đăng ký</a>
+                <a href="login.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); background: var(--PRIMARY1, #2563EB); color: white; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box;">Đăng nhập</a>
+            </div>
+
+            <!-- Logged-in Header State -->
+            <div class="logged-in-only" style="display: none; align-items: center; gap: 16px; flex-shrink: 0;">
+                <img src="assets/icons/ic_notifications.svg" alt="Thông báo" class="header-icon-btn">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="assets/icons/ic_user_after_login.svg" alt="User" class="header-icon-btn" onclick="logout()" title="Click to Logout (Prototype)">
+                    <div class="employer-cta" style="border-left: 1px solid #E2E8F0; padding-left: 12px;">
+                        <span style="font-size: 12px; color: #64748B;">Bạn là nhà tuyển dụng?</span>
+                        <a href="#" style="font-size: 13px; color: #111827; font-weight: 700; text-decoration: none;">Đăng tuyển ngay >></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+        <div class="index2-container-1440 index2-hero-wrapper">
+            <div class="index2-container-1200" style="height: auto; min-height: 555px;">
+                <div class="index2-search-bar" data-property-1="Default">
+                    <div class="index2-search-input-group">
+                        <div style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div style="color: black; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Từ khóa:</div>
+                            <div style="color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Việc, công ty,...</div>
+                        </div>
+                    </div>
+                    <div class="index2-search-input-group">
+                        <div style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div style="color: black; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Địa điểm:</div>
+                            <div style="color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Tỉnh/thành, quận...</div>
+                        </div>
+                    </div>
+                    <div class="index2-search-button" data-property-1="Default">
+                        <div>Tìm kiếm</div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start; width: 100%; margin-top: 50px; position: relative;">
+                    <div style="width: 276px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                    <div style="align-self: stretch; height: 363px; background: var(--NEUTRAL0, white); border-radius: 15px"></div>
+                    <div style="width: 236px; height: 348px; left: 22px; top: 63px; position: absolute">
+                        <div style="width: 236px; left: 0px; top: 0px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 30px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 30px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 60px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 90px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 120px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 150px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 180px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 210px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 234px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 264px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 294px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                        <div style="width: 236px; left: 0px; top: 324px; position: absolute; border-bottom: 1px var(--Black, black) solid; justify-content: center; align-items: center; gap: 50px; display: inline-flex">
+                            <div style="justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 400; line-height: 19.20px; word-wrap: break-word">Kinh doanh/Bán hàng</div>
+                            <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                                <div style="width: 7.67px; height: 13.31px; left: 12px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-property-1="Default" style="width: 18px; height: 298px; left: 258px; top: 51px; position: absolute">
+                        <div style="width: 18px; height: 298px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL3, rgba(67, 70, 85, 0.20)); border-radius: 24px"></div>
+                        <div style="width: 14px; height: 14px; left: 2px; top: 3px; position: absolute; background: var(--Black, black); border-radius: 18px"></div>
+                    </div>
+                    <div style="width: 134px; height: 29px; left: 71px; top: 14px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">DANH MỤC</div>
+                </div>
+                <div data-property-1="Default" style="width: 880px; height: 363px; position: relative; border-radius: 24px; background-image: url(assets/images/featured-banner.png)">
+                    <div style="width: 880px; height: 363px; left: 0px; top: 0px; position: absolute; border-radius: 28px"></div>
+                    <div style="left: 351px; top: 339px; position: absolute; justify-content: flex-start; align-items: center; gap: 7px; display: inline-flex">
+                        <div data-property-1="Rectangle 6" style="width: 30px; height: 10px; position: relative">
+                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB); border-radius: 12px"></div>
+                        </div>
+                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
+                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
+                        </div>
+                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
+                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
+                        </div>
+                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
+                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
+                        </div>
+                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
+                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
+                        </div>
+                    </div>
+                    <div style="width: 27.12px; height: 47.09px; left: 830px; top: 157px; position: absolute; background: var(--PRIMARY1, #2563EB); mask: url(assets/icons/ic_next_cong_ty_tieu_bieu.svg) no-repeat center; -webkit-mask: url(assets/icons/ic_next_cong_ty_tieu_bieu.svg) no-repeat center; cursor: pointer;"></div>
+                    <div style="width: 27.12px; height: 47.09px; left: 15px; top: 157px; position: absolute; background: var(--NEUTRAL3, rgba(67, 70, 85, 0.4)); mask: url(assets/icons/ic_prev_cong_ty_tieu_bieu.svg) no-repeat center; -webkit-mask: url(assets/icons/ic_prev_cong_ty_tieu_bieu.svg) no-repeat center; cursor: pointer;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="index2-container-1440" style="padding-top: 35px; padding-bottom: 24px; background: white; justify-content: center;">
+            <div class="index2-container-1200" style="display: flex; flex-direction: column; gap: 24px; align-items: center;">
+                <!-- Row 1: Heading and See All link -->
+                <div style="width: 100%; max-width: 1199px; display: flex; justify-content: space-between; align-items: flex-end;">
+                    <div style="color: var(--PRIMARY1, #2563EB); font-size: 48px; font-family: Inter; font-weight: 700; line-height: 57.60px;">Việc làm tốt nhất</div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <a href="index.html" style="color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; text-decoration: underline;">Xem tất cả</a>
+                        <div style="display: flex; gap: 8px;">
+                            <div class="index2-header-nav-btn prev" role="button" aria-label="Trước"></div>
+                            <div class="index2-header-nav-btn next" role="button" aria-label="Sau"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 2: Filter select and Chips scroller -->
+                <div style="width: 100%; max-width: 1199px; display: flex; align-items: center; gap: 40px;">
+                    <div class="index2-filter-select" role="button" aria-label="Lọc theo kinh nghiệm" tabindex="0" style="flex-shrink: 0;">
+                        <div class="index2-filter-select-head">
+                            <div class="index2-filter-select-icon" aria-hidden="true"></div>
+                            <div class="index2-filter-select-label">Lọc theo:</div>
+                        </div>
+                        <div class="index2-filter-select-value-wrap">
+                            <div class="index2-filter-select-value">Kinh nghiệm</div>
+                            <div class="index2-filter-select-caret" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Chips Scroller -->
+                    <div class="index2-exp-scroll-shell" style="flex-grow: 1;">
+                        <div class="index2-exp-nav-btn index2-exp-prev" role="button" aria-label="Cuộn về trước" tabindex="0"></div>
+                        <div class="index2-exp-scroll-viewport">
+                            <div class="index2-exp-scroll-track" data-property-1="Kinh nghiệm">
+                                <div data-property-1="Default" class="index2-btn-filter primary">
+                                    <div>Tất cả</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">Chưa có kinh nghiệm</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">1 năm trở xuống</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">1 năm</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">2 năm</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">3 năm</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">Từ 4-5 năm</div>
+                                </div>
+                                <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                    <div class="typo-20-500 c-neutral5">Trên 5 năm</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index2-exp-nav-btn index2-exp-next" role="button" aria-label="Cuộn tiếp" tabindex="0"></div>
+                    </div>
+                </div>
+
+                <!-- Row 3: Hint Bar -->
+                <div style="width: 100%; max-width: 1199px; height: 33px; background: #E9F6ED; border-radius: 4px; border: 1px #8ED2A1 solid; display: flex; align-items: center; padding: 0 16px; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400;">Gợi ý: Di chuột để xem thông tin chi tiết</div>
+                    </div>
+                    <div style="color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 600; cursor: pointer;">✕</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="index2-best-jobs-section index2-container-1440" style="padding-top: 34px; justify-content: center;">
+            <div class="index2-container-1200">
+                <div class="index2-best-jobs-list">
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant2" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-2.png" />
+                        </div>
+                        <div data-property-1="Variant9" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Thiết kế Nội thất
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Homaroom Furniture
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant2" style="position: relative">
+                                <div>10 – 18 triệu </div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                <div>Hà Nội</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default" style="width: 379px; height: 176px; padding: 10px; background: white; border-radius: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 18px; display: inline-flex">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Default" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-3.png" />
+                        </div>
+                        <div data-property-1="Variant11" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân viên Chuỗi cung ứng nông sản
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Agribi
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant4" style="position: relative">
+                                <div>12 – 20 triệu </div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                <div>Hà Nội</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant4" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-4.png" />
+                        </div>
+                        <div data-property-1="Variant11" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân viên Chuỗi cung ứng nông sản
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Agribi
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant5" style="position: relative">
+                                <div>9 – 14 triệu</div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Variant7" style="position: relative">
+                                <div>8 – 12 triệu </div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Default" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-5.png" />
+                        </div>
+                        <div data-property-1="Variant16" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Backend Developer (Java/Python)
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">VNG Solutions
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant4" style="position: relative">
+                                <div>12 – 20 triệu </div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Variant2" style="position: relative">
+                                <div>TP. Hồ Chí Minh</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant12" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-6.png" />
+                        </div>
+                        <div data-property-1="Variant6" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Kỹ sư Năng lượng tái tạo
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Green Energy
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant4" style="position: relative">
+                                <div>12 – 20 triệu </div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Variant6" style="position: relative">
+                                <div>Bình Dương</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant11" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-1.png" />
+                        </div>
+                        <div data-property-1="Variant9" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Thiết kế Nội thất
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Homaroom Furniture
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant5" style="position: relative">
+                                <div>9 – 14 triệu</div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Variant6" style="position: relative">
+                                <div>Bình Dương</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant4" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-2.png" />
+                        </div>
+                        <div data-property-1="Variant14" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Kỹ sư AI / Robotics
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">AR Robo
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant4" style="position: relative">
+                                <div>12 – 20 triệu </div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Variant6" style="position: relative">
+                                <div>Bình Dương</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant4" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-3.png" />
+                        </div>
+                        <div data-property-1="Variant4" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân viên Kinh doanh thiết bị mạng
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">VietNet
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant12" style="position: relative">
+                                <div>12 – 22 triệu</div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                <div>Hà Nội</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-best-jobs-card" data-property-1="Default">
+                    <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                        <div data-property-1="Variant11" style="width: 75px; height: 75px; position: relative">
+                            <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-4.png" />
+                        </div>
+                        <div data-property-1="Variant16" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Backend Developer (Java/Python)
+              </div>
+                            <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">VNG Solutions
+              </div>
+                        </div>
+                    </div>
+                    <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                        <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                            <div class="index2-job-card-chip" data-property-1="Variant6" style="position: relative">
+                                <div>8 – 15 triệu + thưởng </div>
+                            </div>
+                            <div class="index2-job-card-chip" data-property-1="Variant2" style="position: relative">
+                                <div>TP. Hồ Chí Minh</div>
+                            </div>
+                        </div>
+                        <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                            <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="justify-content: center; align-items: center; gap: 5px; display: inline-flex; padding-top: 10px;">
+                <div data-property-1="Default" style="width: 20px; height: 20px; position: relative">
+                    <div style="width: 20px; height: 20px; left: 0px; top: 0px; position: absolute; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -0.50px"></div>
+                    <div style="width: 4.50px; height: 9px; left: 7px; top: 5.50px; position: absolute; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -0.50px"></div>
+                </div>
+                <div style="justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 20px; font-family: Inter; font-weight: 500; line-height: 24px; word-wrap: break-word">01</div>
+                <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 20px; font-family: Inter; font-weight: 500; line-height: 24px; word-wrap: break-word">/</div>
+                <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 20px; font-family: Inter; font-weight: 500; line-height: 24px; word-wrap: break-word">20</div>
+                <div data-property-1="Default" style="width: 20px; height: 20px; position: relative; transform: rotate(180deg); transform-origin: top left">
+                    <div style="width: 20px; height: 20px; left: 0px; top: 0px; position: absolute; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -0.50px"></div>
+                    <div style="width: 4.50px; height: 9px; left: 8.50px; top: 5.50px; position: absolute; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -0.50px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="index2-container-1440 bg-grey" style="padding-top: 50px; padding-bottom: 50px; justify-content: center;">
+            <div class="index2-container-1200" style="background: white; border-radius: 12px; overflow: hidden; height: auto;">
+                <div class="index2-container-1200">
+                    <div style="align-self: stretch; height: 100px; padding-left: 37px; padding-right: 37px; background: linear-gradient(270deg, var(--PRIMARY1-HOVER-2, #DBEAFE) 10%, var(--PRIMARY1, #2563EB) 83%); border-top-left-radius: 12px; border-top-right-radius: 12px; flex-direction: column; justify-content: center; align-items: flex-start; display: flex">
+                        <div style="align-self: stretch; height: 47px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 32px; font-family: Inter; font-weight: 700; line-height: 38.40px; word-wrap: break-word">CÔNG TY LỚN TIÊU BIỂU</div>
+                        <div style="align-self: stretch; height: 21px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hàng trăm công ty lớn tiêu biểu đang tuyển dụng trên web</div>
+                    </div>
+                    <div style="width: 100%; padding: 20px 0; display: flex; justify-content: flex-start;">
+                        <div class="index2-exp-scroll-shell index2-company-chips-scroller" style="width: 1199px;">
+                            <div class="index2-exp-nav-btn index2-exp-prev" role="button" aria-label="Cuộn về trước" tabindex="0"></div>
+                            <div class="index2-exp-scroll-viewport" style="left: 64px; right: 64px;">
+                                <div class="index2-exp-scroll-track" data-property-1="Ngành nghề">
+                                    <div data-property-1="Default" class="index2-btn-filter primary">
+                                        <div>Tất cả</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">Kinh doanh / bán hàng</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">Biên / Phiên dịch</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">IT</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">Báo chí / truyền hình</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">Bảo hiểm</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">Bất động sản</div>
+                                    </div>
+                                    <div data-property-1="Variant2" class="index2-btn-filter secondary">
+                                        <div class="typo-20-500 c-neutral5">Bưu chính viễn thông</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="index2-exp-nav-btn index2-exp-next" role="button" aria-label="Cuộn tiếp" tabindex="0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="index2-companies-grid-container" data-property-1="Default" style="min-height: 600px; position: relative; justify-content: flex-start; align-items: flex-start; gap: 10px; align-content: flex-start;">
+                    <div class="index2-companies-featured-card" style="background-image: url(assets/images/cong_ty_tieu_bieu.jpg);">
+                        <!-- Semi-circle nav (Left) -->
+                        <div class="index2-companies-nav-semi prev">
+                            <img src="assets/icons/ic_prev_cong_ty_tieu_bieu.svg" alt="Prev">
+                        </div>
+                        
+                        <!-- Logo with white background box as per mockup -->
+                        <div style="width: 140px; height: 140px; background: white; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid; display: flex; justify-content: center; align-items: center; overflow: hidden">
+                            <img style="width: 110px; height: auto;" src="assets/images/logo-5.png" alt="Cyber Eye Logo" />
+                        </div>
+                        
+                        <div style="width: 301px; text-align: center; color: white; font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px;">CYBER EYE</div>
+                        
+                        <div class="index2-companies-job-badge">
+                            <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" style="filter: brightness(0) invert(1);" alt="Job Icon">
+                            <div style="text-align: center;">21 việc làm</div>
+                        </div>
+                        
+                        <div class="index2-companies-follow-btn">
+                            <img src="assets/icons/bt_follow.svg" style="width: 136px; height: 44px;" alt="Theo dõi">
+                        </div>
+                    </div>
+
+                    <div style="width: 390px; padding-top: 8px; padding-bottom: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                        <!-- Card 1 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-6.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="align-self: stretch; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">VietNet</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Công nghệ – Thiết bị mạng</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>3 việc làm</div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-1.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="align-self: stretch; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">Agribi</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Logistics – Nông nghiệp</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>12 việc làm</div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-2.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="align-self: stretch; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">Công ty Trường An</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Kinh doanh – Thương mại</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>6 việc làm</div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-3.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="align-self: stretch; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">AR Robo</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">AI – Robotics</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>2 việc làm</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 390px; padding-top: 8px; padding-bottom: 8px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                        <!-- Card 5 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-4.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="width: 252px; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">Vũ Lâm Green Agriculture</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Nông nghiệp – Công nghệ xanh</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>9 việc làm</div>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-5.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="align-self: stretch; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">Green Energy</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Năng lượng – Môi trường</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>7 việc làm</div>
+                            </div>
+                        </div>
+                        <!-- Card 7 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-6.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="width: 252px; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">Vũ Lâm Green Agriculture</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Nông nghiệp – Công nghệ xanh</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>9 việc làm</div>
+                            </div>
+                        </div>
+                        <!-- Card 8 -->
+                        <div class="index2-companies-grid-card">
+                            <div style="justify-content: flex-start; align-items: center; gap: 22px; display: inline-flex">
+                                <div style="width: 85px; height: 85px; position: relative">
+                                    <img style="width: 85px; height: 85px; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-1.png" />
+                                </div>
+                                <div style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 6px; display: inline-flex">
+                                    <div style="align-self: stretch; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px;">CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</div>
+                                    <div style="align-self: stretch; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px;">Tài chính – Kế toán</div>
+                                </div>
+                            </div>
+                            <div class="index2-companies-job-badge mini">
+                                <img src="assets/icons/ic_job.svg" class="index2-companies-job-icon" alt="Job Icon">
+                                <div>2 việc làm</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Semi-circle nav (Right) -->
+                    <div class="index2-companies-nav-semi next">
+                        <img src="assets/icons/ic_next_cong_ty_tieu_bieu.svg" alt="Next">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index2-container-1440 bg-grey" style="padding-top: 50px; padding-bottom: 50px; justify-content: center;">
+            <div class="index2-container-1200" style="background: linear-gradient(287deg, var(--PRIMARY1-HOVER-2, #DBEAFE) -8%, var(--PRIMARY1, #2563EB) 94%); border-radius: 12px; height: 600px; position: relative; overflow: hidden; outline: 1px white solid; outline-offset: -1px">
+                <div style="width: 379px; height: 479px; left: 43px; top: 98px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Việc làm mới nhất</div>
+                    <div style="align-self: stretch; height: 445px; overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex">
+                        <div class="index2-best-jobs-card" data-property-1="Default" style="width: 379px; height: 176px; padding: 10px; background: white; border-radius: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 18px; display: flex">
+                            <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                                <div data-property-1="Default" style="width: 75px; height: 75px; position: relative">
+                                    <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-2.png" />
+                                </div>
+                                <div data-property-1="Default" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân Viên Kế Toán Tổng Hợp - LÀM NỘI BỘ /Từ 3 năm kinh nghiệm</div>
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</div>
+                                </div>
+                            </div>
+                            <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                                <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                    <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                        <div>Thỏa thuận</div>
+                                    </div>
+                                    <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                        <div>Hà Nội</div>
+                                    </div>
+                                </div>
+                                <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                                    <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index2-best-jobs-card" data-property-1="Default" style="width: 379px; height: 176px; padding: 10px; background: white; border-radius: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 18px; display: flex">
+                            <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                                <div data-property-1="Variant6" style="width: 75px; height: 75px; position: relative">
+                                    <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-3.png" />
+                                </div>
+                                <div data-property-1="Variant2" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân viên Kinh doanh / Sales
+                  </div>
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Công ty Trường An
+                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                                <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                    <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                        <div>Thỏa thuận</div>
+                                    </div>
+                                    <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                        <div>Hà Nội</div>
+                                    </div>
+                                </div>
+                                <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                                    <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index2-best-jobs-card" data-property-1="Default" style="width: 379px; height: 176px; padding: 10px; background: white; border-radius: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 18px; display: flex">
+                            <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                                <div data-property-1="Variant11" style="width: 75px; height: 75px; position: relative">
+                                    <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-4.png" />
+                                </div>
+                                <div data-property-1="Variant11" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân viên Chuỗi cung ứng nông sản
+                  </div>
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Agribi
+                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                                <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                    <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                        <div>Thỏa thuận</div>
+                                    </div>
+                                    <div class="index2-job-card-chip" data-property-1="Default" style="position: relative">
+                                        <div>Hà Nội</div>
+                                    </div>
+                                </div>
+                                <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                                    <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index2-best-jobs-card" data-property-1="Default" style="width: 379px; height: 176px; padding: 10px; background: white; border-radius: 12px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 18px; display: flex">
+                            <div style="justify-content: flex-start; align-items: center; gap: 24px; display: inline-flex">
+                                <div data-property-1="Variant4" style="width: 75px; height: 75px; position: relative">
+                                    <img style="width: 75px; height: 75px; left: 0px; top: 0px; position: absolute; border-radius: 8px; border: 0.50px var(--PRIMARY1, #2563EB) solid" src="assets/images/logo-5.png" />
+                                </div>
+                                <div data-property-1="Variant11" style="width: 252px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 7px; display: inline-flex">
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 20px; font-family: Inter; font-weight: 700; line-height: 24px; word-wrap: break-word">Nhân viên Chuỗi cung ứng nông sản
+                  </div>
+                                    <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Agribi
+                  </div>
+                                </div>
+                            </div>
+                            <div style="width: 353px; padding-left: 4px; padding-right: 4px; padding-top: 6px; padding-bottom: 6px; position: relative; border-top: 1px var(--NEUTRAL2, #E7E8E9) solid; justify-content: flex-start; align-items: center; gap: 158px; display: inline-flex">
+                                <div style="width: 162px; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                    <div data-property-1="Default" style="padding-left: 12px; padding-right: 12px; padding-top: 5px; padding-bottom: 5px; background: var(--NEUTRAL3, rgba(67, 70, 85, 0.20)); border-radius: 19px; justify-content: center; align-items: center; gap: 10px; display: flex">
+                                        <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Thỏa thuận</div>
+                                    </div>
+                                    <div data-property-1="Default" style="padding-left: 12px; padding-right: 12px; padding-top: 5px; padding-bottom: 5px; background: var(--NEUTRAL3, rgba(67, 70, 85, 0.20)); border-radius: 19px; justify-content: center; align-items: center; gap: 10px; display: flex">
+                                        <div style="text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">Hà Nội</div>
+                                    </div>
+                                </div>
+                                <div data-property-1="Default" style="width: 30px; height: 30px; padding-top: 7px; padding-bottom: 6px; padding-left: 8px; padding-right: 8px; left: 323px; top: 3px; position: absolute; border-radius: 4px; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -1px; justify-content: flex-end; align-items: center; gap: 10px; display: flex">
+                                    <div style="width: 14px; height: 16.98px; background: var(--PRIMARY1, #2563EB)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="left: 453px; top: 77px; position: absolute; justify-content: flex-start; align-items: center; gap: 17px; display: inline-flex">
+                    <div style="width: 235px; height: 99px; padding-top: 19px; padding-bottom: 22px; padding-left: 18px; padding-right: 41px; position: relative; background: var(--PRIMARY1-HOVER-1, #3B82F6); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                        <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">5.636</div>
+                        <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm mới 24h gần nhất</div>
+                        <div style="width: 112px; height: 112px; left: 161px; top: -47px; position: absolute; opacity: 0.40; background: var(--NEUTRAL0, white); box-shadow: 50px 50px 50px; border-radius: 9999px; filter: blur(25px)"></div>
+                    </div>
+                    <div style="width: 235px; height: 99px; padding-top: 19px; padding-bottom: 22px; padding-left: 18px; padding-right: 41px; position: relative; background: var(--PRIMARY1-HOVER-1, #3B82F6); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                        <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">69.674</div>
+                        <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm đang tuyển</div>
+                        <div style="width: 112px; height: 112px; left: 161px; top: -47px; position: absolute; opacity: 0.40; background: var(--NEUTRAL0, white); box-shadow: 50px 50px 50px; border-radius: 9999px; filter: blur(25px)"></div>
+                    </div>
+                    <div style="width: 235px; height: 99px; padding-top: 19px; padding-bottom: 22px; padding-left: 18px; padding-right: 41px; position: relative; background: var(--PRIMARY1-HOVER-1, #3B82F6); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); overflow: hidden; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 12px; display: inline-flex">
+                        <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">5.636</div>
+                        <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Công ty đang tuyển</div>
+                        <div style="width: 112px; height: 112px; left: 161px; top: -47px; position: absolute; opacity: 0.40; background: var(--NEUTRAL0, white); box-shadow: 50px 50px 50px; border-radius: 9999px; filter: blur(25px)"></div>
+                    </div>
+                </div>
+                <div style="left: 43px; top: 16px; position: absolute; justify-content: flex-start; align-items: center; gap: 17px; display: inline-flex">
+                    <div style="justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL0, white); font-size: 40px; font-family: Inter; font-weight: 700; line-height: 48px; word-wrap: break-word">Thị trường việc làm hôm nay</div>
+                    <div style="justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 40px; font-family: Inter; font-weight: 700; line-height: 48px; word-wrap: break-word">01/04/2026</div>
+                </div>
+                <div style="width: 360px; height: 360px; padding-top: 32px; padding-bottom: 16px; padding-left: 16px; padding-right: 16px; left: 832px; top: 206px; position: absolute; background: var(--NEUTRAL0, white); box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                    <div style="align-self: stretch; flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                        <div style="align-self: stretch; flex: 1 1 0; justify-content: flex-start; align-items: center; display: inline-flex">
+                            <div style="align-self: stretch; padding-left: 4px; padding-right: 4px; flex-direction: column; justify-content: space-between; align-items: flex-end; display: inline-flex">
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">9000</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">7500</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">6000</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">4500</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">3000</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">1500</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">0</div>
+                            </div>
+                            <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                <div style="width: 289px; height: 226px; padding-left: 1px; padding-right: 1px; padding-top: 6px; padding-bottom: 6px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: space-between; align-items: flex-start; display: inline-flex">
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.30) solid; outline-offset: -0.50px"></div>
+                                </div>
+                                <div style="width: 289px; height: 226px; padding-left: 1px; padding-right: 1px; padding-top: 6px; padding-bottom: 6px; left: 0px; top: 0px; position: absolute; justify-content: space-between; align-items: flex-start; display: inline-flex">
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 214px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                </div>
+                                <div style="width: 289px; height: 212.72px; left: 0px; top: 6px; position: absolute; border-bottom: 1px rgba(0, 0, 25.50, 0.30) solid; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 37.15px; left: 0px; top: 175.58px; position: absolute">
+                                                <div style="width: 14px; height: 37.15px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 101.86px; left: 0px; top: 110.86px; position: absolute">
+                                                <div style="width: 14px; height: 101.86px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 53.25px; left: 0px; top: 159.48px; position: absolute">
+                                                <div style="width: 14px; height: 53.25px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 21.74px; left: 0px; top: 190.99px; position: absolute">
+                                                <div style="width: 14px; height: 21.74px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 212.22px; left: 0px; top: 0.50px; position: absolute">
+                                                <div style="width: 14px; height: 212.22px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 143.51px; left: 0px; top: 69.21px; position: absolute">
+                                                <div style="width: 14px; height: 143.51px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 8.51px; left: 0px; top: 204.22px; position: absolute">
+                                                <div style="width: 14px; height: 8.51px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 147.56px; left: 0px; top: 65.17px; position: absolute">
+                                                <div style="width: 14px; height: 147.56px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 46.08px; left: 0px; top: 166.65px; position: absolute">
+                                                <div style="width: 14px; height: 46.08px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 86.36px; left: 0px; top: 126.37px; position: absolute">
+                                                <div style="width: 14px; height: 86.36px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 22.90px; left: 0px; top: 189.83px; position: absolute">
+                                                <div style="width: 14px; height: 22.90px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 0; align-self: stretch; padding-left: 5px; padding-right: 5px; justify-content: flex-start; align-items: flex-start; gap: 2px; display: flex">
+                                        <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                            <div style="width: 14px; height: 212.72px; left: 0px; top: 0px; position: absolute; opacity: 0.80; background: rgba(214.20, 219.30, 237.15, 0.40)"></div>
+                                            <div style="width: 14px; height: 56.82px; left: 0px; top: 155.90px; position: absolute">
+                                                <div style="width: 14px; height: 56.82px; left: 0px; top: 0px; position: absolute; opacity: 0.60; background: var(--PRIMARY1, #2563EB)"></div>
+                                                <div style="width: 14px; height: 3px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="align-self: stretch; padding-bottom: 8px; padding-left: 39px; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                            <div style="flex: 1 1 0; height: 35.36px; position: relative">
+                                <div style="left: -17.31px; top: 12.73px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Figma</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 38.18px; position: relative">
+                                <div style="left: -20.14px; top: 26.87px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Sketch</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 22.63px; position: relative">
+                                <div style="left: -4.59px; top: 11.31px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">XD</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 21.92px; position: relative">
+                                <div style="left: -3.88px; top: 16.26px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">PS</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 19.09px; position: relative">
+                                <div style="left: -1.05px; top: 13.44px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">AI</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 57.28px; position: relative">
+                                <div style="left: -39.23px; top: 34.65px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">CorelDRAW</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 45.96px; position: relative">
+                                <div style="left: -27.92px; top: 23.33px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">InDesign</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 36.06px; position: relative">
+                                <div style="left: -18.02px; top: 24.75px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Canva</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 45.96px; position: relative">
+                                <div style="left: -27.92px; top: 23.33px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Webflow</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 39.60px; position: relative">
+                                <div style="left: -21.56px; top: 28.28px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Affinity</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 38.89px; position: relative">
+                                <div style="left: -20.85px; top: 27.58px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Marker</div>
+                            </div>
+                            <div style="flex: 1 1 0; height: 35.36px; position: relative">
+                                <div style="left: -17.31px; top: 12.73px; position: absolute; transform: rotate(-45deg); transform-origin: top left; text-align: right; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Figma</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="align-self: stretch; overflow: hidden; justify-content: center; align-items: flex-start; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+                        <div style="padding-left: 8px; padding-right: 8px; overflow: hidden; justify-content: center; align-items: center; gap: 8px; display: flex; flex-wrap: wrap; align-content: center">
+                            <div style="padding: 4px; overflow: hidden; justify-content: flex-start; align-items: center; gap: 4px; display: flex">
+                                <div style="width: 12px; height: 12px; position: relative">
+                                    <div style="width: 1px; height: 1px; left: 6px; top: 6px; position: absolute">
+                                        <div style="width: 12px; height: 12px; left: -6px; top: -6px; position: absolute; background: var(--PRIMARY1, #2563EB); border: 1px white solid"></div>
+                                    </div>
+                                </div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 360px; height: 360px; padding-top: 32px; padding-bottom: 16px; padding-left: 16px; padding-right: 16px; left: 453px; top: 206px; position: absolute; background: white; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                    <div style="align-self: stretch; flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                        <div style="align-self: stretch; flex: 1 1 0; justify-content: flex-start; align-items: center; display: inline-flex">
+                            <div style="align-self: stretch; padding-left: 4px; padding-right: 4px; flex-direction: column; justify-content: space-between; align-items: flex-end; display: inline-flex">
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">100</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">80</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">60</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">40</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">20</div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">0</div>
+                            </div>
+                            <div style="flex: 1 1 0; align-self: stretch; position: relative">
+                                <div style="width: 299px; height: 222px; padding-left: 1px; padding-right: 1px; padding-top: 6px; padding-bottom: 6px; left: 0px; top: 0px; position: absolute; flex-direction: column; justify-content: space-between; align-items: flex-start; display: inline-flex">
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="align-self: stretch; height: 0px; outline: 1px rgba(0, 0, 25.50, 0.30) solid; outline-offset: -0.50px"></div>
+                                </div>
+                                <div style="width: 299px; height: 222px; padding-left: 1px; padding-right: 1px; padding-top: 6px; padding-bottom: 6px; left: 0px; top: 0px; position: absolute; justify-content: space-between; align-items: flex-start; display: inline-flex">
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 210px; align-self: stretch; transform: rotate(-90deg); transform-origin: top left; outline: 1px rgba(0, 0, 25.50, 0.15) solid; outline-offset: -0.50px"></div>
+                                </div>
+                                <div style="width: 299px; height: 208px; left: 0px; top: 7px; position: absolute">
+                                    <div style="width: 274.08px; height: 179.55px; left: 12.46px; top: 7.32px; position: absolute; outline: 1px var(--PRIMARY1, #2563EB) solid; outline-offset: -0.50px"></div>
+                                    <div style="width: 1px; height: 1px; left: 12.46px; top: 54.21px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 37.38px; top: 76.71px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 62.29px; top: 180.38px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 87.21px; top: 91.48px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 112.13px; top: 7.32px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 137.04px; top: 176.49px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 161.96px; top: 75.98px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 186.88px; top: 87.76px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 211.79px; top: 104.50px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 236.71px; top: 186.87px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 261.63px; top: 37.54px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                    <div style="width: 1px; height: 1px; left: 286.54px; top: 54.81px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="align-self: stretch; padding-bottom: 8px; padding-left: 29px; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Figma</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Sketch</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">XD</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">PS</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">AI</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">CorelDRAW</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">InDesign</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Canva</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Webflow</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Affinity</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Marker</div>
+                            </div>
+                            <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-end; display: inline-flex">
+                                <div style="align-self: stretch; text-align: center; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">Figma</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="align-self: stretch; overflow: hidden; justify-content: center; align-items: flex-start; display: inline-flex; flex-wrap: wrap; align-content: flex-start">
+                        <div style="padding-left: 8px; padding-right: 8px; overflow: hidden; justify-content: center; align-items: center; gap: 8px; display: flex; flex-wrap: wrap; align-content: center">
+                            <div style="padding: 4px; overflow: hidden; justify-content: flex-start; align-items: center; gap: 4px; display: flex">
+                                <div style="width: 12px; height: 12px; position: relative">
+                                    <div style="width: 1px; height: 1px; left: 6px; top: 6px; position: absolute">
+                                        <div style="width: 12px; height: 12px; left: -6px; top: -6px; position: absolute; background: var(--PRIMARY1, #2563EB); border: 1px white solid"></div>
+                                    </div>
+                                </div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">2026</div>
+                            </div>
+                        </div>
+                        <div style="padding-left: 8px; padding-right: 8px; overflow: hidden; justify-content: center; align-items: center; gap: 8px; display: flex; flex-wrap: wrap; align-content: center">
+                            <div style="padding: 4px; overflow: hidden; justify-content: flex-start; align-items: center; gap: 4px; display: flex">
+                                <div style="width: 16px; height: 16px; position: relative">
+                                    <div style="width: 16px; height: 2px; left: 0px; top: 7px; position: absolute; background: var(--PRIMARY1, #2563EB)"></div>
+                                    <div style="width: 1px; height: 1px; left: 8px; top: 8px; position: absolute">
+                                        <div style="width: 8px; height: 8px; left: -4px; top: -4px; position: absolute; background: white; border-radius: 9999px; border: 1px var(--PRIMARY1, #2563EB) solid"></div>
+                                    </div>
+                                </div>
+                                <div style="color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; word-wrap: break-word">2020</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index2-container-1440 bg-grey" style="padding-top: 50px; padding-bottom: 50px; gap: 30px; justify-content: center;">
+            <div class="index2-container-1200" style="gap: 30px;">
+                <div style="align-self: flex-start; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 40px; font-family: Inter; font-weight: 700; line-height: 48px; word-wrap: break-word">Top ngành nghề nổi bật</div>
+                <div style="width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 38px; margin-top: 30px;">
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_kinh_doanh_ban_hang.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Kinh doanh - Bán hàng" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Kinh doanh - Bán hàng</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">13.421 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_marketing.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Marketing - PR - Quảng cáo" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Marketing - PR - Quảng cáo</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">3.421 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_cham_soc_khach_hang.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Chăm sóc khách hàng" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Chăm sóc khách hàng</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">1.321 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_nhan_su_tai_chinh.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Nhân sự - Hành chính" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Nhân sự - Hành chính</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">7.314 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_cong_nghe_thong_tin.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Công nghệ thông tin" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Công nghệ thông tin</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">2.708 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_tai_chinh_ngan_hang.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Tài chính - Ngân hàng" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Tài chính - Ngân hàng</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">1.691 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_bat_dong_san.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Bất động sản" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Bất động sản</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">421 việc làm</div>
+                </div>
+                <div data-property-1="Default" style="width: 280px; height: 280px; box-sizing: border-box; padding-top: 48px; padding-bottom: 47px; padding-left: 29px; padding-right: 30px; background: var(--NEUTRAL2, #E7E8E9); border-radius: 16px; flex-direction: column; justify-content: center; align-items: center; gap: 6px; display: inline-flex">
+                    <div style="width: 115px; height: 115px; padding: 10px; justify-content: center; align-items: center; display: inline-flex">
+                        <img src="assets/icons/ic_ke_toan.svg" style="width: 100%; height: 100%; object-fit: contain;" alt="Kế toán - Kiểm toán - Thuế" />
+                    </div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--Black, black); font-size: 16px; font-family: Inter; font-weight: 600; line-height: 19.20px; word-wrap: break-word">Kế toán - Kiểm toán - Thuế</div>
+                    <div style="width: 221px; height: 24px; text-align: center; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14.40px; word-wrap: break-word">9.491 việc làm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="index2-container-1440" style="padding-top: 50px; padding-bottom: 39px; background: var(--NEUTRAL0, white); justify-content: center;">
+        <div class="index2-container-1200" style="opacity: 0.80; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 36px;">
+            <div style="height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
+            <div style="width: 240px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                <div style="width: 128px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Giới Thiệu</div>
+                <div style="align-self: stretch; height: 97px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.</div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
+                <a href="index.html" style="justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 32px; font-family: Inter; font-weight: 700; line-height: 38.40px; word-wrap: break-word; text-decoration: none">JOBGOS</a>
+                <div style="justify-content: flex-start; align-items: center; gap: 5px; display: inline-flex">
+                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                        <div style="width: 20px; height: 19.95px; left: 2px; top: 2px; position: absolute; background: var(--Black, black)"></div>
+                    </div>
+                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                        <div style="width: 20px; height: 14px; left: 2px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                    </div>
+                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                        <div style="width: 0.84px; height: 0.67px; left: 12.08px; top: 23.14px; position: absolute"></div>
+                        <div style="width: 18px; height: 18px; left: 3px; top: 3px; position: absolute; background: var(--Black, black)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 257px; height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Về JobGos</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Giới thiệu
+            </div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tuyển dụng
+            </div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Liên hệ
+            </div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hỏi đáp
+            </div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Chính sách bảo mật
+            </div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Điều khoản sử dụng</div>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Hồ sơ & CV</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Quản lý CV</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tạo CV online</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Thư viện CV</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hướng dẫn viết CV</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 330px; height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Dành cho ứng viên
+        </div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tìm việc làm</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm theo ngành</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm theo địa điểm</div>
+                        <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm nổi bật</div>
+                        <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm mới nhất</div>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Dành cho nhà tuyển dụng</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Đăng tin tuyển dụng</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Quản lý tin tuyển dụng</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tìm kiếm ứng viên</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Báo cáo & thống kê</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 249px; height: 320px; padding-left: 10px; padding-right: 10px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Khám phá</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Gợi ý việc làm</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Blog & chia sẻ</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Cẩm nang nghề nghiệp</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Công cụ hỗ trợ</div>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Thông tin liên hệ</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hà Nội, Việt Nam</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">contact@jobgos.vn</div>
+                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">0123 456 789</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="index2-container-1440" style="padding-top: 16px; padding-bottom: 16px; background: var(--NEUTRAL0, white);">
+        <div class="index2-container-1200" style="height: 50px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+            <div style="justify-content: flex-start; display: flex; flex-direction: column"><span style="color: var(--Black, black); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">© 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.</span></div>
+        </div>
+    </div>
+</div>
+  </div>
+    <script>
+        (function () {
+
+            function dedupeCategoryRows() {
+                var list = document.querySelector('.index2-canvas div[style*="width: 236px; height: 348px; left: 22px; top: 63px; position: absolute"]');
+                if (!list) {
+                    return;
+                }
+
+                var rows = Array.from(list.children).filter(function (item) {
+                    return (item.getAttribute('style') || '').includes('border-bottom: 1px var(--Black, black) solid');
+                });
+
+                var seenTop = new Set();
+                rows.forEach(function (row) {
+                    var top = (row.style.top || '').trim();
+                    if (!top) {
+                        return;
+                    }
+
+                    if (seenTop.has(top)) {
+                        row.remove();
+                        return;
+                    }
+
+                    seenTop.add(top);
+                });
+            }
+
+            function normalizeBannerAndCategoryLayout() {
+                var block = document.querySelector('.index2-canvas div[style*="width: 1200px; height: 555px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex"]');
+                if (!block) {
+                    return;
+                }
+
+                var children = Array.from(block.children);
+                if (children.length < 3) {
+                    return;
+                }
+
+                var category = children[1];
+                var banner = children[2];
+
+                if (!category || !banner) {
+                    return;
+                }
+
+                var row = block.querySelector('.index2-hero-row');
+                if (!row) {
+                    row = document.createElement('div');
+                    row.className = 'index2-hero-row';
+                    row.style.width = '1200px';
+                    row.style.display = 'flex';
+                    row.style.alignItems = 'flex-start';
+                    row.style.gap = '24px';
+                    row.style.marginTop = '37.4px';
+
+                    block.insertBefore(row, category);
+                    row.appendChild(category);
+                    row.appendChild(banner);
+                }
+
+                category.style.width = '276px';
+                category.style.height = '363px';
+                category.style.flex = '0 0 276px';
+
+                banner.style.width = '880px';
+                banner.style.height = '363px';
+                banner.style.flex = '0 0 880px';
+            }
+
+            function normalizeBestJobsLayout() {
+                var headSection = document.querySelector('.index2-best-jobs-head-section') || Array.from(document.querySelectorAll('.index2-canvas div')).find(function (el) {
+                    var style = el.getAttribute('style') || '';
+                    return style.includes('padding-left: 80px') && style.includes('padding-right: 80px') && (el.textContent || '').includes('Việc làm tốt nhất');
+                });
+
+                if (headSection) {
+                    headSection.classList.add('index2-best-jobs-head-section');
+                }
+
+                var section = document.querySelector('.index2-best-jobs-section') || Array.from(document.querySelectorAll('.index2-canvas div')).find(function (el) {
+                    var style = el.getAttribute('style') || '';
+                    return style.includes('padding-left: 10px') && style.includes('padding-right: 10px') && style.includes('padding-top: 34px') && (el.textContent || '').includes('Gợi ý:');
+                });
+
+                if (!section) {
+                    return;
+                }
+
+                section.classList.add('index2-best-jobs-section');
+
+                var list = section.querySelector('.index2-best-jobs-list');
+
+                if (!list) {
+                    list = Array.from(section.children).find(function (child) {
+                        var cardsInChild = Array.from(child.children).filter(function (grandchild) {
+                            var cardStyle = grandchild.getAttribute('style') || '';
+                            return cardStyle.includes('width: 379px; height: 176px;') && cardStyle.includes('background: white;') && cardStyle.includes('border-radius: 12px');
+                        });
+
+                        return cardsInChild.length >= 6;
+                    });
+                }
+
+                if (!list) {
+                    var sampleCard = section.querySelector('div[style*="width: 379px; height: 176px;"][style*="background: white;"][style*="border-radius: 12px"]');
+                    if (sampleCard && sampleCard.parentElement) {
+                        list = sampleCard.parentElement;
+                    }
+                }
+
+                if (list) {
+                    list.classList.add('index2-best-jobs-list');
+
+                    Array.from(list.children).forEach(function (child) {
+                        var style = child.getAttribute('style') || '';
+                        if (style.includes('width: 379px; height: 176px;') && style.includes('background: white;') && style.includes('border-radius: 12px')) {
+                            child.classList.add('index2-best-jobs-card');
+                        }
+                    });
+                }
+
+                var tip = section.querySelector('.index2-best-jobs-tip') || Array.from(section.querySelectorAll('div')).find(function (el) {
+                    return (el.textContent || '').includes('Gợi ý:');
+                });
+
+                if (tip) {
+                    tip.classList.add('index2-best-jobs-tip');
+                }
+
+                var dropdown = document.querySelector('.index2-best-jobs-dropdown') ||
+                    document.querySelector('.index2-canvas div[style*="width: 253px; height: 256px; left: 153px; top: 69px; position: absolute"]') ||
+                    section.querySelector('div[style*="width: 253px;"][style*="height: 256px;"][style*="position: absolute"]');
+                if (dropdown) {
+                    dropdown.classList.add('index2-best-jobs-dropdown');
+                }
+            }
+
+            function setupGenericChipScroller(shellSelector) {
+                var shell = document.querySelector(shellSelector);
+                if (!shell || shell.dataset.scrollerReady === '1') {
+                    return;
+                }
+
+                var track = shell.querySelector('.index2-exp-scroll-track');
+                var viewport = shell.querySelector('.index2-exp-scroll-viewport');
+                if (!track || !viewport) {
+                    return;
+                }
+
+                var prevButton = shell.querySelector('.index2-exp-prev');
+                var nextButton = shell.querySelector('.index2-exp-next');
+
+                var offset = 0;
+
+                function getVisibleWidth() {
+                    return Math.max(viewport.clientWidth, 0);
+                }
+
+                function getMaxOffset() {
+                    return Math.max(track.scrollWidth - getVisibleWidth(), 0);
+                }
+
+                function updateButtonState() {
+                    var maxOffset = getMaxOffset();
+                    var atStart = offset <= 1;
+                    var atEnd = offset >= maxOffset - 1;
+
+                    if (prevButton) {
+                        prevButton.classList.toggle('is-disabled', atStart);
+                    }
+
+                    if (nextButton) {
+                        nextButton.classList.toggle('is-disabled', atEnd);
+                    }
+                }
+
+                function applyOffset() {
+                    track.style.transform = 'translateX(' + (-offset) + 'px)';
+                    updateButtonState();
+                }
+
+                function scrollByStep(direction) {
+                    var sampleChip = track.firstElementChild;
+                    var chipWidth = sampleChip ? sampleChip.getBoundingClientRect().width : 220;
+                    var step = Math.max(Math.round(chipWidth * 1.5), 250); 
+                    var maxOffset = getMaxOffset();
+
+                    offset = Math.min(Math.max(offset + (step * direction), 0), maxOffset);
+                    applyOffset();
+                }
+
+                function bindNavAction(button, direction) {
+                    if (!button) {
+                        return;
+                    }
+
+                    button.addEventListener('click', function () {
+                        scrollByStep(direction);
+                    });
+
+                    button.addEventListener('keydown', function (event) {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            scrollByStep(direction);
+                        }
+                    });
+                }
+
+                bindNavAction(prevButton, -1);
+                bindNavAction(nextButton, 1);
+
+                viewport.addEventListener('wheel', function (event) {
+                    if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    scrollByStep(event.deltaY > 0 ? 1 : -1);
+                }, { passive: false });
+
+                window.addEventListener('resize', function () {
+                    offset = Math.min(offset, getMaxOffset());
+                    applyOffset();
+                });
+
+                shell.dataset.scrollerReady = '1';
+                window.requestAnimationFrame(applyOffset);
+            }
+
+            function setupBannerSlider() {
+                var row = document.querySelector('.index2-hero-row');
+                if (!row || row.children.length < 2) {
+                    return;
+                }
+
+                var banner = row.children[1];
+                if (!banner || banner.dataset.sliderReady === '1') {
+                    return;
+                }
+
+                var sources = [
+                    'assets/images/recruitment-banner-figma.png',
+                    'assets/images/recruitment-banner-figma.png',
+                    'assets/images/recruitment-banner-figma.png'
+                ];
+
+                var normalizedSources = sources.map(function (source) {
+                    if (/^(https?:|data:|file:|\/|\.\.\/)/.test(source)) {
+                        return source;
+                    }
+
+                    return '../' + source.replace(/^\.\//, '');
+                });
+
+                if (normalizedSources.length <= 1) {
+                    return;
+                }
+
+                banner.dataset.sliderReady = '1';
+                banner.classList.add('index2-hero-banner');
+
+                var controls = document.createElement('div');
+                controls.className = 'index2-hero-slider-controls';
+
+                var prevButton = document.createElement('button');
+                prevButton.className = 'index2-hero-slider-btn index2-hero-slider-btn-prev';
+                prevButton.type = 'button';
+                prevButton.setAttribute('aria-label', 'Banner trước');
+
+                var nextButton = document.createElement('button');
+                nextButton.className = 'index2-hero-slider-btn index2-hero-slider-btn-next';
+                nextButton.type = 'button';
+                nextButton.setAttribute('aria-label', 'Banner kế tiếp');
+
+                var dots = document.createElement('div');
+                dots.className = 'index2-hero-slider-dots';
+
+                var dotButtons = [];
+                var currentIndex = 0;
+                var autoTimer = null;
+
+                function renderSlide(index) {
+                    currentIndex = (index + normalizedSources.length) % normalizedSources.length;
+                    var nextSource = normalizedSources[currentIndex];
+
+                    banner.style.setProperty('--hero-banner-image', 'url(' + nextSource + ')');
+
+                    dotButtons.forEach(function (dot, dotIndex) {
+                        dot.classList.toggle('is-active', dotIndex === currentIndex);
+                    });
+                }
+
+                function stopAutoPlay() {
+                    if (autoTimer) {
+                        window.clearInterval(autoTimer);
+                        autoTimer = null;
+                    }
+                }
+
+                function startAutoPlay() {
+                    stopAutoPlay();
+                    autoTimer = window.setInterval(function () {
+                        renderSlide(currentIndex + 1);
+                    }, 4500);
+                }
+
+                normalizedSources.forEach(function (_, index) {
+                    var dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'index2-hero-slider-dot';
+                    dot.setAttribute('aria-label', 'Chọn banner ' + (index + 1));
+                    dot.addEventListener('click', function () {
+                        renderSlide(index);
+                        startAutoPlay();
+                    });
+                    dots.appendChild(dot);
+                    dotButtons.push(dot);
+                });
+
+                prevButton.addEventListener('click', function () {
+                    renderSlide(currentIndex - 1);
+                    startAutoPlay();
+                });
+
+                nextButton.addEventListener('click', function () {
+                    renderSlide(currentIndex + 1);
+                    startAutoPlay();
+                });
+
+                banner.addEventListener('mouseenter', stopAutoPlay);
+                banner.addEventListener('mouseleave', startAutoPlay);
+
+                controls.appendChild(prevButton);
+                controls.appendChild(dots);
+                controls.appendChild(nextButton);
+                banner.appendChild(controls);
+
+                renderSlide(0);
+                startAutoPlay();
+            }
+
+            dedupeCategoryRows();
+            normalizeBannerAndCategoryLayout();
+            normalizeBestJobsLayout();
+            setupGenericChipScroller('.index2-exp-scroll-shell:not(.index2-company-chips-scroller)');
+            setupGenericChipScroller('.index2-company-chips-scroller');
+            setupBannerSlider();
+            renderMarketCharts();
+
+            function renderMarketCharts() {
+                var sectionTitle = Array.from(document.querySelectorAll('div')).find(function (node) {
+                    return (node.textContent || '').trim() === 'Thị trường việc làm hôm nay';
+                });
+
+                if (!sectionTitle) {
+                    return;
+                }
+
+                var section = sectionTitle.closest('div[style*="background: linear-gradient(287deg"]');
+                if (!section) {
+                    return;
+                }
+
+                var cards = Array.from(section.querySelectorAll('div[style*="width: 360px; height: 360px; padding-top: 32px; padding-bottom: 16px; padding-left: 16px; padding-right: 16px;"]'));
+                if (cards.length < 2) {
+                    return;
+                }
+
+                cards.sort(function (leftCard, rightCard) {
+                    return leftCard.getBoundingClientRect().left - rightCard.getBoundingClientRect().left;
+                });
+
+                var xLabels = ['Figma', 'Sketch', 'XD', 'PS', 'AI', 'CorelDRAW', 'InDesign', 'Canva', 'Webflow', 'Affinity', 'Marker', 'Figma'];
+                var lineValuesPrimary = [1800, 2600, 2400, 4100, 5200, 6400, 5900, 7600, 6900, 8100, 7200, 9000];
+                var lineValuesSecondary = [1000, 1400, 1600, 1800, 2300, 2500, 2800, 3200, 3600, 3400, 3700, 4200];
+                var barValues = [28, 34, 41, 22, 100, 76, 18, 68, 39, 84, 26, 55];
+
+                function buildXAxisLabels(labels) {
+                    return labels.map(function (label) {
+                        return '<div style="position:relative; height: 64px; overflow:hidden;">' +
+                            '<div style="position:absolute; left:50%; bottom:8px; transform:translateX(-50%) rotate(-60deg); transform-origin:center bottom; white-space:nowrap; color: rgba(0, 0, 0, 0.70); font-size: 8px; font-family: Inter; font-weight: 400; line-height: 10px;">' +
+                            label +
+                            '</div>' +
+                            '</div>';
+                    }).join('');
+                }
+
+                function buildPolyPoints(values, width, height, minValue, maxValue) {
+                    var step = width / (values.length - 1);
+                    return values.map(function (value, index) {
+                        var ratio = (value - minValue) / (maxValue - minValue);
+                        var x = index * step;
+                        var y = height - (ratio * height);
+                        return x.toFixed(2) + ',' + y.toFixed(2);
+                    }).join(' ');
+                }
+
+                function buildPlotGrid(width, height, rowCount) {
+                    var grid = [];
+                    for (var index = 0; index <= rowCount; index += 1) {
+                        var y = (height / rowCount) * index;
+                        grid.push('<line x1="0" y1="' + y.toFixed(2) + '" x2="' + width + '" y2="' + y.toFixed(2) + '" stroke="rgba(0, 0, 25, 0.15)" stroke-width="1" />');
+                    }
+                    return grid.join('');
+                }
+
+                function buildLineChart() {
+                    var plotWidth = 268;
+                    var plotHeight = 180;
+                    var primaryPoints = buildPolyPoints(lineValuesPrimary, plotWidth, plotHeight, 0, 9000);
+                    var secondaryPoints = buildPolyPoints(lineValuesSecondary, plotWidth, plotHeight, 0, 9000);
+                    var primaryArea = '0,' + plotHeight + ' ' + primaryPoints + ' ' + plotWidth + ',' + plotHeight;
+                    var labels = ['9000', '7500', '6000', '4500', '3000', '1500', '0'];
+
+                    return '' +
+                        '<div style="width:100%; height:100%; display:flex; flex-direction:column; gap:8px; box-sizing:border-box;">' +
+                            '<div style="display:flex; align-items:flex-start; gap:8px; flex: 1 1 auto; min-height: 230px;">' +
+                                '<div style="width: 36px; height: 100%; display:flex; flex-direction:column; justify-content:space-between; align-items:flex-end; padding-top: 6px; padding-bottom: 16px; box-sizing:border-box; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14px;">' +
+                                    labels.map(function (value) { return '<div>' + value + '</div>'; }).join('') +
+                                '</div>' +
+                                '<div style="position:relative; flex:1 1 auto; min-width:0; height: 100%; overflow:hidden;">' +
+                                    '<svg viewBox="0 0 268 180" preserveAspectRatio="none" width="100%" height="180" style="display:block;">' +
+                                        '<rect x="0" y="0" width="268" height="180" fill="transparent" />' +
+                                        buildPlotGrid(268, 180, 6) +
+                                        '<polygon points="' + primaryArea + '" fill="rgba(37, 99, 235, 0.10)" />' +
+                                        '<polyline points="' + secondaryPoints + '" fill="none" stroke="rgba(37, 99, 235, 0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />' +
+                                        '<polyline points="' + primaryPoints + '" fill="none" stroke="var(--PRIMARY1, #2563EB)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />' +
+                                        lineValuesSecondary.map(function (value, index) {
+                                            var step = 268 / (lineValuesSecondary.length - 1);
+                                            var x = index * step;
+                                            var y = 180 - ((value / 9000) * 180);
+                                            return '<circle cx="' + x.toFixed(2) + '" cy="' + y.toFixed(2) + '" r="3.5" fill="white" stroke="rgba(37, 99, 235, 0.35)" stroke-width="2" />';
+                                        }).join('') +
+                                        lineValuesPrimary.map(function (value, index) {
+                                            var step = 268 / (lineValuesPrimary.length - 1);
+                                            var x = index * step;
+                                            var y = 180 - ((value / 9000) * 180);
+                                            return '<circle cx="' + x.toFixed(2) + '" cy="' + y.toFixed(2) + '" r="4" fill="white" stroke="var(--PRIMARY1, #2563EB)" stroke-width="2" />';
+                                        }).join('') +
+                                    '</svg>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div style="padding-left: 36px; padding-right: 4px; display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); align-items:end; height: 64px;">' +
+                                buildXAxisLabels(xLabels) +
+                            '</div>' +
+                            '<div style="padding-left: 36px; display:flex; align-items:center; gap: 16px; height: 20px; color: var(--NEUTRAL5, #2E3132); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14px;">' +
+                                '<div style="display:flex; align-items:center; gap: 6px;">' +
+                                    '<span style="width: 10px; height: 10px; border-radius: 2px; background: var(--PRIMARY1, #2563EB); display:inline-block;"></span>' +
+                                    '<span>2026</span>' +
+                                '</div>' +
+                                '<div style="display:flex; align-items:center; gap: 6px;">' +
+                                    '<span style="width: 10px; height: 2px; border-radius: 9999px; background: rgba(37, 99, 235, 0.35); display:inline-block; position:relative;"></span>' +
+                                    '<span>2020</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                }
+
+                function buildBarChart() {
+                    var plotWidth = 268;
+                    var plotHeight = 180;
+                    var labels = ['100', '80', '60', '40', '20', '0'];
+                    var barWidth = 14;
+                    var gap = 8;
+                    var bars = barValues.map(function (value, index) {
+                        var x = index * (barWidth + gap);
+                        var height = (value / 100) * plotHeight;
+                        var y = plotHeight - height;
+                        var opacity = index === 4 ? 1 : 0.72;
+                        return '<rect x="' + x.toFixed(2) + '" y="' + y.toFixed(2) + '" width="' + barWidth + '" height="' + height.toFixed(2) + '" rx="2" fill="var(--PRIMARY1, #2563EB)" opacity="' + opacity + '" />';
+                    }).join('');
+
+                    return '' +
+                        '<div style="width:100%; height:100%; display:flex; flex-direction:column; gap:8px; box-sizing:border-box;">' +
+                            '<div style="display:flex; align-items:flex-start; gap:8px; flex: 1 1 auto; min-height: 230px;">' +
+                                '<div style="width: 36px; height: 100%; display:flex; flex-direction:column; justify-content:space-between; align-items:flex-end; padding-top: 6px; padding-bottom: 16px; box-sizing:border-box; color: rgba(0, 0, 0, 0.70); font-size: 12px; font-family: Inter; font-weight: 400; line-height: 14px;">' +
+                                    labels.map(function (value) { return '<div>' + value + '</div>'; }).join('') +
+                                '</div>' +
+                                '<div style="position:relative; flex:1 1 auto; min-width:0; height: 100%; overflow:hidden;">' +
+                                    '<svg viewBox="0 0 268 180" preserveAspectRatio="none" width="100%" height="180" style="display:block;">' +
+                                        '<rect x="0" y="0" width="268" height="180" fill="transparent" />' +
+                                        buildPlotGrid(268, 180, 5) +
+                                        bars +
+                                    '</svg>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div style="padding-left: 36px; padding-right: 4px; display:grid; grid-template-columns:repeat(12, minmax(0, 1fr)); align-items:end; height: 64px;">' +
+                                buildXAxisLabels(xLabels) +
+                            '</div>' +
+                        '</div>';
+                }
+
+                cards[0].innerHTML = buildLineChart();
+                cards[1].innerHTML = buildBarChart();
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập - JobGos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    /* Specific styles for Login Page based on user input */
+    body.login-body {
+      background-color: #F9FAFB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .login-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 40px 0;
+    }
+    .login-card {
+      width: 571px; /* 491 + 40 + 40 */
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      padding: 40px;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .login-title {
+      color: #2563EB;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: normal;
+    }
+    .login-subtitle {
+      color: #000000;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .form-group {
+      width: 100%;
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* Small distance between label and input */
+    }
+    .label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    .form-label {
+      color: #434655;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .forgot-link {
+        color: #2563EB;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .form-input {
+      width: 491px;
+      height: 48px;
+      background-color: #F3F4F5;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 16px;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #111827;
+      outline: none;
+    }
+    .form-input:focus {
+        background-color: #E5E7EB;
+    }
+    .form-input::placeholder {
+        color: #9CA3AF;
+    }
+    .checkbox-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 32px;
+        color: #4B5563;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .checkbox-container input {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        border-radius: 999px; /* Attempt circular as per screenshot if possible */
+        accent-color: #2563EB;
+    }
+    .login-btn {
+      width: 491px;
+      height: 48px;
+      background-color: #2563EB;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.2s;
+    }
+    .login-btn:hover {
+        background-color: #1D4ED8;
+    }
+    .divider {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
+        color: #9CA3AF;
+        font-size: 11px;
+        font-weight: 600;
+    }
+    .divider::before, .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background-color: #F3F4F5;
+    }
+    .social-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+    .social-btn-img {
+        height: 48px;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .social-btn-img:hover {
+        transform: translateY(-2px);
+    }
+    .signup-footer {
+        text-align: center;
+        font-size: 14px;
+        color: #4B5563;
+    }
+    .signup-link {
+        color: #2563EB;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .page-footer {
+        margin-top: 40px;
+        display: flex;
+        gap: 32px;
+        color: #6B7280;
+        font-size: 12px;
+    }
+    .page-footer a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .page-footer a:hover {
+        color: #2563EB;
+    }
+  </style>
+</head>
+<body class="login-body">
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="assets/images/logo.svg" alt="JobGos Logo" style="height: 80px; margin-bottom: 20px;">
+                <div class="login-subtitle">Chào mừng quay trở lại</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">ĐỊA CHỈ EMAIL</label>
+                <input type="email" class="form-input" placeholder="name@company.com">
+            </div>
+
+            <div class="form-group">
+                <div class="label-row">
+                    <label class="form-label">MẬT KHẨU</label>
+                    <a href="#" class="forgot-link">Quên mật khẩu?</a>
+                </div>
+                <input type="password" class="form-input" placeholder="********">
+            </div>
+
+            <label class="checkbox-container">
+                <input type="checkbox">
+                <span>Ghi nhớ tôi trong 30 ngày</span>
+            </label>
+
+            <button class="login-btn" onclick="simulateLogin(event)">
+                Đăng nhập
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 8H15M15 8L9 2M15 8L9 14" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <div style="margin-top: 32px;" class="divider">HOẶC</div>
+
+            <div class="social-buttons">
+                <img src="assets/images/bt_google.svg" alt="Google" class="social-btn-img">
+                <img src="assets/images/bt_facebook.svg" alt="Facebook" class="social-btn-img">
+            </div>
+
+            <div class="signup-footer">
+                Chưa có tài khoản? <a href="register.html" class="signup-link">Đăng ký</a>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <a href="#">Chính sách bảo mật</a>
+            <a href="#">Điều khoản dịch vụ</a>
+            <a href="#">Trung tâm trợ giúp</a>
+        </div>
+    </div>
+    <script>
+        function simulateLogin(event) {
+            if (event) event.preventDefault();
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
