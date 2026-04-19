@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH - JobGos</title>
+    <link rel="stylesheet" href="css/index_2.css" />
+    <link rel="stylesheet" href="css/company.css" />
+    <style>
+        /* Header State Styles Sync from index.html */
+        .logged-in-only { display: none !important; }
+        .guest-only { display: flex !important; }
+        .is-logged-in .logged-in-only { display: flex !important; }
+        .is-logged-in .guest-only { display: none !important; }
+
+        .nav-caret {
+            width: 8px;
+            height: 8px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: translateY(-2px) rotate(45deg);
+            display: inline-block;
+            margin-left: 4px;
+            transition: transform 0.2s;
+        }
+
+        .header-icon-btn {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        /* Search bar integration styles for consistency */
+        .index2-search-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                document.body.classList.add('is-logged-in');
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.reload();
+        }
+    </script>
+</head>
+<body>
+    <!-- Header Bar (Dual State) -->
+    <div style="width: 100%; height: 64px; background: white; display: flex; justify-content: center; border-bottom: 1px solid #E2E8F0; box-sizing: border-box; position: sticky; top: 0; z-index: 100;">
+        <div style="width: 100% !important; max-width: 1200px; height: 64px; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+            <a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;">
+                <div style="color: var(--PRIMARY1, #2563EB); font-size: 28px; font-family: Inter; font-weight: 700; line-height: 1; letter-spacing: -0.3px;">JobGos</div>
+            </a>
+            <nav style="display: flex; align-items: center; gap: 28px; flex: 1; justify-content: center; min-width: 0;">
+                <a href="search.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Việc làm</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="#" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Công ty</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="#" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Blog</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="#" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Liên hệ</span>
+                    <span class="nav-caret"></span>
+                </a>
+            </nav>
+
+            <!-- Guest -->
+            <div class="guest-only" style="display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                <a href="#" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box; background: white;">Đăng ký</a>
+                <a href="#" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); background: var(--PRIMARY1, #2563EB); color: white; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box;">Đăng nhập</a>
+            </div>
+
+            <!-- Logged In -->
+            <div class="logged-in-only" style="display: none; align-items: center; gap: 16px; flex-shrink: 0;">
+                <img src="assets/icons/ic_notifications.svg" alt="Noti" class="header-icon-btn">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="assets/icons/ic_user_after_login.svg" alt="User" class="header-icon-btn" onclick="logout()" title="Logout">
+                    <div class="employer-cta" style="border-left: 1px solid #E2E8F0; padding-left: 12px;">
+                        <span style="font-size: 12px; color: #64748B;">Bạn là nhà tuyển dụng?</span>
+                        <a href="#" style="font-size: 13px; color: #111827; font-weight: 700; text-decoration: none;">Đăng tuyển ngay >></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="index.html">Danh sách công ty</a>
+            <span>></span>
+            <span class="text-main">CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</span>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="company-hero">
+            <div class="hero-banner" style="background-image: url('assets/images/company_background.png');"></div>
+            <div class="hero-info-bar">
+                <div class="company-logo-large">
+                    <img src="assets/images/logo-1.png" alt="Logo">
+                    <div class="name">THIÊN BÌNH</div>
+                    <div class="slogan">Lựa chọn để thành công</div>
+                </div>
+                <div class="hero-info-text">
+                    <h1>CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</h1>
+                    <div class="hero-meta">
+                        <div class="hero-meta-item">
+                            <img src="assets/icons/ic_internet.svg" alt="Website">
+                            <span>Thienbinh.com</span>
+                        </div>
+                        <div class="hero-meta-item">
+                            <img src="assets/icons/ic_company.svg" alt="Size">
+                            <span>25 - 99 nhân viên</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn-follow-hero">+ Theo dõi công ty</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="company-layout">
+            <!-- Sidebar (Left) -->
+            <aside class="sidebar">
+                <div class="card">
+                    <h2 class="section-title">Thông tin liên hệ</h2>
+                    <div class="sidebar-list">
+                        <div class="sidebar-item">
+                            <div class="sidebar-item-title">
+                                <img src="assets/icons/ic_dia_diem.svg" alt="Map">
+                                <span>Địa chỉ công ty:</span>
+                            </div>
+                            <p class="sidebar-text">Hồ Chí Minh: 77 Lê Cao Lãng, Phường Phú Thạnh</p>
+                        </div>
+                        <div class="sidebar-item">
+                            <div class="sidebar-item-title">
+                                <img src="assets/icons/ic_map_pin.svg" alt="MapIcon">
+                                <span>Xem bản đồ:</span>
+                            </div>
+                            <div class="map-container">
+                                <img src="assets/images/ban-do.png" alt="Map Screenshot">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content (Right) -->
+            <main class="main-content">
+                <!-- Info Section -->
+                <div class="card">
+                    <h2 class="section-title">Giới thiệu công ty</h2>
+                    <div class="intro-text">
+                        <ul>
+                            <li>CÔNG TY CỔ PHẦN QUỐC TẾ BÌNH THIÊN BÌNH tên tiếng Anh Thanh Tien Textile Garment Company Limited (TTText Co.,LTD) là một đơn vị cung cấp túi vải hàng đầu trên thị trường tại TP.HCM và Hà Nội. Với kinh nghiệm nhiều năm hoạt động trên lĩnh vực sản xuất và phân phối mẫu túi vải này, chúng tôi tự tin mang đến cho khách hàng những sản phẩm đẹp, chất lượng nhất.</li>
+                            <li>Túi Vải Thành Tiến chuyên nhận thiết kế, sản xuất, may, in các loại túi vải, balo túi xách,... hàng đầu tại Việt Nam. Với mong muốn mở rộng quy mô kinh doanh và đáp ứng được hầu hết yêu cầu của khách hàng. Chúng tôi hiện đang cung ứng và sản xuất nhiều sản phẩm tiêu biểu và mẫu mã thiết kế vô cùng đa dạng.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Jobs Section -->
+                <div class="jobs-section card">
+                    <h2 class="section-title">Việc làm tuyển dụng</h2>
+                    <div class="index2-search-bar" data-property-1="Default" style="margin-bottom: 20px;">
+                        <div class="index2-search-input-group">
+                            <div style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                <div style="color: black; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Từ khóa:</div>
+                                <div style="color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Việc, công ty,...</div>
+                            </div>
+                        </div>
+                        <div class="index2-search-input-group">
+                            <div style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
+                                <div style="color: black; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Địa điểm:</div>
+                                <div style="color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Tỉnh/thành, quận...</div>
+                            </div>
+                        </div>
+                        <a href="search.html" class="index2-search-button" data-property-1="Default" style="text-decoration: none;">
+                            <div>Tìm kiếm</div>
+                        </a>
+                    </div>
+                    
+                    <div class="job-list">
+                        <!-- Job Item 1 -->
+                        <a href="details.html" class="job-card-horizontal">
+                            <div class="job-logo-box">
+                                <img src="assets/images/logo-1.png" alt="Company Logo">
+                            </div>
+                            <div class="job-content">
+                                <h3 class="job-title">Kỹ sư AI / Robotics</h3>
+                                <p class="job-company-name">ARI Robo</p>
+                                <div class="job-badges">
+                                    <span class="job-badge">TP. Hồ Chí Minh</span>
+                                    <span class="job-badge">4 năm</span>
+                                </div>
+                            </div>
+                            <div class="job-salary-tag">8 - 15 triệu</div>
+                        <div class="job-save-btn">
+                            <img src="assets/icons/ic_save.svg" alt="Save">
+                        </div>
+                    </a>
+
+                    <!-- Job Item 2 -->
+                    <a href="details.html" class="job-card-horizontal">
+                        <div class="job-logo-box">
+                            <div style="background: #eee; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 800; color: #cc0000; font-size: 24px;">VNG</div>
+                        </div>
+                        <div class="job-content">
+                            <h3 class="job-title">Nhân viên Chuỗi cung ứng nông sản</h3>
+                            <p class="job-company-name">Agribi</p>
+                            <div class="job-badges">
+                                <span class="job-badge">Bình Dương</span>
+                                <span class="job-badge">1 năm</span>
+                            </div>
+                        </div>
+                        <div class="job-salary-tag">8 - 15 triệu + thưởng</div>
+                        <div class="job-save-btn">
+                            <img src="assets/icons/ic_save.svg" alt="Save">
+                        </div>
+                    </a>
+
+                    <!-- Job Item 3 -->
+                    <a href="details.html" class="job-card-horizontal">
+                        <div class="job-logo-box">
+                            <div style="background: #fdfdfd; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: 800; color: #ff6600; font-size: 24px;">◉</div>
+                        </div>
+                        <div class="job-content">
+                            <h3 class="job-title">Kỹ sư Cơ khí / Sản xuất</h3>
+                            <p class="job-company-name">Vinatech</p>
+                            <div class="job-badges">
+                                <span class="job-badge">Hà Nội</span>
+                                <span class="job-badge">3 năm</span>
+                            </div>
+                        </div>
+                        <div class="job-salary-tag">20 - 35 triệu</div>
+                        <div class="job-save-btn">
+                            <img src="assets/icons/ic_save.svg" alt="Save">
+                        </div>
+                    </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer Area (Refined to match mockup scale) -->
+    <div style="background: white; border-top: 1px solid #E2E8F0; padding: 60px 0 30px;">
+        <div class="container" style="display: grid; grid-template-columns: 280px 1fr; gap: 60px;">
+            <div>
+                <h3 style="color: #2563EB; font-size: 20px; font-weight: 700; margin-bottom: 20px;">Giới Thiệu</h3>
+                <p style="font-size: 13px; color: #6B7280; line-height: 1.6; margin-bottom: 24px;">JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.</p>
+                <div style="color: #2563EB; font-size: 32px; font-weight: 800; margin-bottom: 16px;">JOBGOS</div>
+                <div style="display: flex; gap: 12px;">
+                    <img src="assets/images/bt_facebook.svg" style="width: 24px; height: 24px;" alt="FB">
+                    <img src="assets/images/bt_facebook.svg" style="width: 24px; height: 24px; filter: hue-rotate(180deg);" alt="YT">
+                    <img src="assets/images/bt_facebook.svg" style="width: 24px; height: 24px; filter: hue-rotate(90deg);" alt="IG">
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <h3 style="color: #2563EB; font-size: 18px; font-weight: 700;">Về JobGos</h3>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Giới thiệu</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Tuyển dụng</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Liên hệ</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Hỏi đáp</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Chính sách bảo mật</a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <h3 style="color: #2563EB; font-size: 18px; font-weight: 700;">Dành cho ứng viên</h3>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Tìm việc làm</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Việc làm theo ngành</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Việc làm theo địa điểm</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Việc làm nổi bật</a>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <h3 style="color: #2563EB; font-size: 18px; font-weight: 700;">Khám phá</h3>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Gợi ý việc làm</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Blog & chia sẻ</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Cẩm nang nghề nghiệp</a>
+                    <a href="#" style="font-size: 13px; color: #2E3132; text-decoration: none;">Công cụ hỗ trợ</a>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 60px; font-size: 11px; color: #6B7280;">
+            © 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.
+        </div>
+    </div>
+</body>
+</html>

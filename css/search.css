@@ -502,6 +502,30 @@ body.search-body {
     box-shadow: inset 0 0 0 1px #2f6df6;
     height: 180px;
     box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.10);
+}
+
+.result-card:focus-within {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18), 0 16px 28px rgba(15, 23, 42, 0.10);
+}
+
+.result-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.result-logo,
+.result-body {
+    position: relative;
+    z-index: 0;
 }
 
 .result-logo {
@@ -591,6 +615,7 @@ body.search-body {
     border: none;
     border-radius: 0;
     background: transparent;
+    z-index: 2;
 }
 
 .result-save img {
