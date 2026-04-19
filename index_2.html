@@ -1,66 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JobGos - Prototype</title>
   <link rel="stylesheet" href="css/index_2.css" />
-  <style>
-    /* Header State Styles */
-    .logged-in-only { display: none !important; }
-    .guest-only { display: flex !important; }
-
-    .is-logged-in .logged-in-only { display: flex !important; }
-    .is-logged-in .guest-only { display: none !important; }
-
-    .nav-caret {
-        width: 8px;
-        height: 8px;
-        border-right: 1.5px solid currentColor;
-        border-bottom: 1.5px solid currentColor;
-        transform: translateY(-2px) rotate(45deg);
-        display: inline-block;
-        margin-left: 4px;
-        transition: transform 0.2s;
-    }
-
-    .employer-cta {
-        display: flex;
-        flex-direction: column;
-        font-size: 13px;
-        line-height: 1.4;
-        color: #434655;
-        margin-left: 12px;
-    }
-
-    .employer-cta .highlight {
-        color: #111827;
-        font-weight: 600;
-    }
-
-    .header-icon-btn {
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-        transition: opacity 0.2s;
-    }
-
-    .header-icon-btn:hover {
-        opacity: 0.8;
-    }
-  </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('isLoggedIn') === 'true') {
-        document.body.classList.add('is-logged-in');
-      }
-    });
-
-    function logout() {
-      localStorage.removeItem('isLoggedIn');
-      window.location.reload();
-    }
-  </script>
 </head>
 <body class="index2-body">
   <div class="index2-canvas">
@@ -71,40 +15,26 @@
                 <div style="color: var(--PRIMARY1, #2563EB); font-size: 28px; font-family: Inter; font-weight: 700; line-height: 1; letter-spacing: -0.3px;">JobGos</div>
             </a>
             <nav style="display: flex; align-items: center; gap: 28px; flex: 1; justify-content: center; min-width: 0;">
-                <a href="search.html" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                <a href="search.html" style="display: inline-flex; align-items: center; gap: 4px; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
                     <span>Việc làm</span>
-                    <span class="nav-caret"></span>
+                    <span style="width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); display: inline-block;"></span>
                 </a>
-                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                <a href="index.html" style="display: inline-flex; align-items: center; gap: 4px; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
                     <span>Công ty</span>
-                    <span class="nav-caret"></span>
+                    <span style="width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); display: inline-block;"></span>
                 </a>
-                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                <a href="index.html" style="display: inline-flex; align-items: center; gap: 4px; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
                     <span>Blog</span>
-                    <span class="nav-caret"></span>
+                    <span style="width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); display: inline-block;"></span>
                 </a>
-                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                <a href="index.html" style="display: inline-flex; align-items: center; gap: 4px; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
                     <span>Liên hệ</span>
-                    <span class="nav-caret"></span>
+                    <span style="width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); display: inline-block;"></span>
                 </a>
             </nav>
-
-            <!-- Guest Header State -->
-            <div class="guest-only" style="display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;">
-                <a href="register.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box; background: white;">Đăng ký</a>
+            <div style="display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                <a href="index.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box; background: white;">Đăng ký</a>
                 <a href="login.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); background: var(--PRIMARY1, #2563EB); color: white; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box;">Đăng nhập</a>
-            </div>
-
-            <!-- Logged-in Header State -->
-            <div class="logged-in-only" style="display: none; align-items: center; gap: 16px; flex-shrink: 0;">
-                <img src="assets/icons/ic_notifications.svg" alt="Thông báo" class="header-icon-btn">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <img src="assets/icons/ic_user_after_login.svg" alt="User" class="header-icon-btn" onclick="logout()" title="Click to Logout (Prototype)">
-                    <div class="employer-cta" style="border-left: 1px solid #E2E8F0; padding-left: 12px;">
-                        <span style="font-size: 12px; color: #64748B;">Bạn là nhà tuyển dụng?</span>
-                        <a href="#" style="font-size: 13px; color: #111827; font-weight: 700; text-decoration: none;">Đăng tuyển ngay >></a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

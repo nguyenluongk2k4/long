@@ -460,7 +460,9 @@ body.index2-body {
 
 /* Search Section */
 .index2-search-bar {
-    width: 1200px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    box-sizing: border-box !important;
     height: 80px !important;
     padding: 16px 20px 16px 10px !important;
     background: white !important;
@@ -477,7 +479,9 @@ body.index2-body {
 }
 
 .index2-search-input-group {
-    width: 510px !important;
+    width: auto !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
     height: 60px !important;
     padding: 0px 24px !important;
     background: var(--NEUTRAL2, #E7E8E9) !important;
@@ -494,7 +498,8 @@ body.index2-body {
 }
 
 .index2-search-button {
-    width: 138px !important;
+    flex: 0 0 138px !important;
+    width: auto !important;
     height: 60px !important;
     background: var(--PRIMARY1, #2563EB) !important;
     border-radius: 32px !important;
