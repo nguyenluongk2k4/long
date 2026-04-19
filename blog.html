@@ -3,20 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết công việc | JobGos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Blog JobGos - Kiến thức nghề nghiệp & Xu hướng tuyển dụng</title>
     <link rel="stylesheet" href="css/index_2.css">
-    <link rel="stylesheet" href="css/details.css">
+    <link rel="stylesheet" href="css/blog.css">
     <style>
-        /* Header State Styles */
-        .logged-in-only { display: none !important; }
-        .guest-only { display: flex !important; }
-
-        .is-logged-in .logged-in-only { display: flex !important; }
-        .is-logged-in .guest-only { display: none !important; }
-
+        /* Global Reset & Header/Footer consistency */
+        body { margin: 0; font-family: 'Inter', sans-serif; background: #F3F4F5; }
         .nav-caret {
             width: 8px;
             height: 8px;
@@ -28,48 +20,36 @@
             transition: transform 0.2s;
         }
 
-        .employer-cta {
-            display: flex;
-            flex-direction: column;
-            font-size: 13px;
-            line-height: 1.4;
-            color: #434655;
-            margin-left: 12px;
-        }
-
-        .header-icon-btn {
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .header-icon-btn:hover {
-            opacity: 0.8;
-        }
+        /* Active link color */
+        .nav-active { color: var(--PRIMARY1, #2563EB) !important; }
+        .header-icon-btn { width: 40px; height: 40px; cursor: pointer; transition: opacity 0.2s; }
+        .header-icon-btn:hover { opacity: 0.8; }
+        .employer-cta { display: flex; flex-direction: column; font-size: 13px; line-height: 1.4; color: #434655; margin-left: 12px; }
+        .logged-in-only { display: none !important; }
+        .is-logged-in .logged-in-only { display: flex !important; }
+        .is-logged-in .guest-only { display: none !important; }
     </style>
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        if (localStorage.getItem('isLoggedIn') === 'true') {
-          document.body.classList.add('is-logged-in');
-        }
-      });
+        document.addEventListener('DOMContentLoaded', () => {
+          if (localStorage.getItem('isLoggedIn') === 'true') {
+            document.body.classList.add('is-logged-in');
+          }
+        });
 
-      function logout() {
-        localStorage.removeItem('isLoggedIn');
-        window.location.reload();
-      }
+        function logout() {
+          localStorage.removeItem('isLoggedIn');
+          window.location.reload();
+        }
     </script>
 </head>
-<body class="index2-body">
-    <!-- Header -->
+<body>
     <div style="width: 100%; height: 64px; background: white; display: flex; justify-content: center; border-bottom: 1px solid #E2E8F0; box-sizing: border-box; position: sticky; top: 0; z-index: 100;">
         <div style="width: 100% !important; max-width: 1200px; height: 64px; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
             <a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;">
                 <div style="color: var(--PRIMARY1, #2563EB); font-size: 28px; font-family: Inter; font-weight: 700; line-height: 1; letter-spacing: -0.3px;">JobGos</div>
             </a>
             <nav style="display: flex; align-items: center; gap: 28px; flex: 1; justify-content: center; min-width: 0;">
-                <a href="search.html" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                <a href="search.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
                     <span>Việc làm</span>
                     <span class="nav-caret"></span>
                 </a>
@@ -77,7 +57,7 @@
                     <span>Công ty</span>
                     <span class="nav-caret"></span>
                 </a>
-                <a href="blog.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                <a href="blog.html" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
                     <span>Blog</span>
                     <span class="nav-caret"></span>
                 </a>
@@ -107,243 +87,228 @@
         </div>
     </div>
 
-    <!-- Search Section -->
-    <div class="index2-container-1440" style="padding-top: 32px; padding-bottom: 32px; background: #DBEAFE; display: flex; justify-content: center;">
-        <div class="index2-container-1200" style="height: auto;">
-            <div class="index2-search-bar" data-property-1="Default">
-                <div class="index2-search-input-group">
-                    <div style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
-                        <div style="color: black; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Từ khóa:</div>
-                        <div style="color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Việc, công ty,...</div>
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <div style="max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between;">
+                <div style="max-width: 600px;">
+                    <h1>Blog JobGos</h1>
+                    <p>Khám phá những kiến thức nghề nghiệp chuyên sâu, cập nhật xu hướng tuyển dụng mới nhất và bí quyết chinh phục nhà tuyển dụng hàng đầu.</p>
+                    
+                    <div class="blog-search-container">
+                        <img src="assets/icons/ic_search.svg" alt="Search" width="20">
+                        <input type="text" placeholder="Tìm kiếm bài viết, chủ đề hoặc kỹ năng...">
+                        <button class="blog-search-btn">Tìm kiếm</button>
                     </div>
                 </div>
-                <div class="index2-search-input-group">
-                    <div style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 5px; display: flex">
-                        <div style="color: black; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Địa điểm:</div>
-                        <div style="color: var(--NEUTRAL4, rgba(67, 70, 85, 0.76)); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16.80px; word-wrap: break-word">Tỉnh/thành, quận...</div>
-                    </div>
+                <div class="hero-banner-image">
+                    <img src="assets/images/blog/fragment_banner_job.png" alt="Banner Job" style="max-width: 500px; height: auto;">
                 </div>
-                <a href="search.html" class="index2-search-button" data-property-1="Default" style="text-decoration: none;">
-                    <div>Tìm kiếm</div>
-                </a>
             </div>
         </div>
+    </section>
+
+    <!-- Breadcrumbs -->
+    <div class="blog-breadcrumbs">
+        <a href="index.html">Trang chủ</a> <span>></span> Blog
     </div>
 
-    <main class="container">
-        <!-- Breadcrumbs -->
-        <nav class="breadcrumbs">
-            <a href="index.html">Trang chủ</a>
-            <span style="color: #9CA3AF; margin: 0 4px;">&gt;</span>
-            <a href="search.html">Tìm việc làm</a>
-            <span style="color: #9CA3AF; margin: 0 4px;">&gt;</span>
-            <span class="current">Nhân Viên Kế Toán Tổng Hợp - LÀM NỘI BỘ /Từ 3 năm kinh nghiệm</span>
-        </nav>
-
-        <div class="details-layout">
-            <!-- Left Content -->
-            <div class="main-content">
-                <article class="card job-header-card">
-                    <h1 class="job-title">Nhân Viên Kế Toán Tổng Hợp - LÀM NỘI BỘ /Từ 3 năm kinh nghiệm</h1>
-                    
-                    <div class="job-meta-grid">
-                        <div class="meta-item">
-                            <div class="meta-icon">
-                                <img src="assets/icons/ic_money.svg" alt="Salary">
-                            </div>
-                            <div class="meta-info">
-                                <label>Thu nhập</label>
-                                <span>Thỏa thuận</span>
-                            </div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-icon">
-                                <img src="assets/icons/ic_dia_diem2.svg" alt="Location">
-                            </div>
-                            <div class="meta-info">
-                                <label>Địa điểm</label>
-                                <span>TP. Hồ Chí Minh</span>
-                            </div>
-                        </div>
-                        <div class="meta-item">
-                            <div class="meta-icon">
-                                <img src="assets/icons/ic_expriences.svg" alt="Experience">
-                            </div>
-                            <div class="meta-info">
-                                <label>Kinh nghiệm</label>
-                                <span>2 năm</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="job-deadline">
-                        Hạn nộp hồ sơ: <strong>01/05/20262026 (còn 29 ngày)</strong>
-                    </div>
-
-                    <div class="job-actions">
-                        <button class="btn-apply">
-                            <img src="assets/icons/ic_send.svg" alt="" style="width: 24px;"> 
-                            Ứng tuyển ngay
-                        </button>
-                        <button class="btn-save">
-                            <img src="assets/icons/ic_save.svg" alt="" style="width: 20px;"> 
-                            Lưu tin
-                        </button>
-                    </div>
-                </article>
-
-                <section class="card job-details">
-                    <h2 class="section-title">Chi tiết tin tuyển dụng</h2>
-                    
-                    <div class="detail-section">
-                        <h3 style="font-size: 16px; margin-bottom: 16px;">Yêu cầu:</h3>
-                        <div class="tag-list">
-                            <span class="tag">2 năm kinh nghiệm</span>
-                            <span class="tag">Cao đẳng trở lên</span>
-                            <span class="tag">Tiếng Anh thành thạo</span>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h3 style="font-size: 16px; margin-bottom: 16px;">Chuyên môn:</h3>
-                        <div class="tag-list">
-                            <span class="tag">B2C</span>
-                            <span class="tag">B2B</span>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h2 class="section-title" style="border: none; padding: 0; margin-bottom: 20px;">Mô tả công việc</h2>
-                        <div class="section-content">
-                            <ul>
-                                <li>Tư vấn và giới thiệu sản phẩm đến khách hàng: đồng phục công ty, đồng phục lớp, nhà hàng – khách sạn, áo thun sự kiện, túi vải canvas, túi tote, bao bì...</li>
-                                <li>Tiếp nhận và chăm sóc khách hàng qua các kênh: Facebook, Zalo, Hotline.</li>
-                                <li>Lập báo giá, lên đơn hàng và theo dõi tiến độ sản xuất.</li>
-                                <li>Phối hợp với bộ phận thiết kế và sản xuất để đảm bảo đơn hàng đúng yêu cầu.</li>
-                                <li>Duy trì, chăm sóc và phát triển tệp khách hàng hiện có.</li>
-                                <li>Thực hiện các công việc khác theo phân công của cấp trên.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h2 class="section-title" style="border: none; padding: 0; margin-bottom: 20px;">Yêu cầu ứng viên</h2>
-                        <div class="section-content">
-                            <ul>
-                                <li>Nữ, độ tuổi từ 24 – 30.</li>
-                                <li>Giao tiếp tốt, nhanh nhẹn, chủ động trong công việc.</li>
-                                <li>Ưu tiên ứng viên có kinh nghiệm trong lĩnh vực bán hàng, tư vấn, chăm sóc khách hàng.</li>
-                                <li>Sử dụng cơ bản các công cụ văn phòng (Word, Excel) và nền tảng chat (Fanpage, Zalo).</li>
-                                <li>Có tinh thần trách nhiệm, cầu tiến và mong muốn gắn bó lâu dài.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h2 class="section-title" style="border: none; padding: 0; margin-bottom: 20px;">Thu nhập</h2>
-                        <div class="section-content">
-                            <p>• Thu nhập khi đạt 100% KPI: 14 - 20 triệu VND</p>
-                            <p>• Thu nhập tính theo tỷ lệ đạt KPI</p>
-                            <p>• Lương cứng: Từ 6 triệu VND trở lên</p>
-                            <p>• Lương cứng không phụ thuộc doanh số</p>
-                        </div>
-                    </div>
-
-                    <div class="detail-section">
-                        <h2 class="section-title" style="border: none; padding: 0; margin-bottom: 20px;">Quyền lợi</h2>
-                        <div class="section-content">
-                            <ul>
-                                <li>Thu nhập hấp dẫn: 14 – 20 triệu/tháng++ (lương cứng + hoa hồng + thưởng).</li>
-                                <li>Thưởng doanh số, thưởng lễ Tết, sinh nhật đầy đủ.</li>
-                                <li>Tham gia BHXH, BHYT, BHTN đầy đủ theo quy định.</li>
-                                <li>Được đào tạo bài bản về sản phẩm & kỹ năng bán hàng.</li>
-                                <li>Môi trường trẻ trung, năng động, đồng nghiệp hỗ trợ.</li>
-                                <li>Cơ hội thăng tiến rõ ràng lên Trưởng nhóm / Quản lý.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+    <!-- Main Content Layout -->
+    <main class="blog-layout">
+        <!-- Left: Blog Posts -->
+        <div class="blog-main">
+            <div class="blog-content-header">
+                <h2>Bài viết mới nhất</h2>
+                <div class="view-toggles">
+                    <img src="assets/images/blog/bt_grids.png" alt="Grid" class="view-btn active">
+                    <img src="assets/images/blog/bt_table.png" alt="List" class="view-btn">
+                </div>
             </div>
 
-            <!-- Sidebar -->
-            <aside class="sidebar">
-                <article class="card company-card">
-                    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;">
-                        <a href="company.html" class="company-logo-wrap" style="flex-shrink: 0; text-decoration: none;">
-                            <img src="assets/images/logo-2.png" alt="Logo" class="company-logo">
-                        </a>
-                        <a href="company.html" style="text-decoration: none; color: inherit;">
-                            <h3 class="company-name" style="margin: 0; font-size: 18px; text-align: left;">CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</h3>
-                        </a>
+            <div class="blog-grid">
+                <!-- Blog Case 1 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <span class="blog-badge">Kỹ năng mềm</span>
+                        <img src="assets/images/blog/blog_1.png" alt="Blog 1">
                     </div>
-                    
-                    <div class="company-stats">
-                        <div class="stat-item">
-                            <img src="assets/icons/details/company-size.svg" alt="">
-                            <div style="display: flex; flex-direction: column;">
-                                <span style="font-size: 13px; color: #6B7280;">Quy mô:</span>
-                                <span style="font-weight: 500;">25 - 99 nhân viên</span>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Làm thế nào để xây dựng thương hiệu cá nhân năm 2024?</h3>
+                        <p class="blog-card-excerpt">Thương hiệu cá nhân không còn là lựa chọn mà là yêu cầu bắt buộc để tiến xa hơn trong sự nghiệp...</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-author">
+                                <img src="assets/images/blog/minh_tran_avt.png" alt="Minh Tran">
+                                <span>Minh Trần</span>
                             </div>
-                        </div>
-                        <div class="stat-item">
-                            <img src="assets/icons/details/industry.svg" alt="">
-                            <div style="display: flex; flex-direction: column;">
-                                <span style="font-size: 13px; color: #6B7280;">Ngành nghề:</span>
-                                <span style="font-weight: 500;">Tài chính – Kế toán</span>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <img src="assets/icons/details/location.svg" alt="">
-                            <div style="display: flex; flex-direction: column;">
-                                <span style="font-size: 13px; color: #6B7280;">Địa điểm:</span>
-                                <span style="font-weight: 500;">Hồ Chí Minh: 77 Lê Cao Lãng, Phường Phú Thạnh, Quận Tân Phú</span>
+                            <div class="blog-time">
+                                <img src="assets/icons/ic_clock.svg" alt="Clock" width="14">
+                                <span>3 Phút đọc</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <a href="company.html" class="company-link" style="color: #2563EB; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 24px;">Xem trang công ty <img src="assets/icons/details/external-link.svg" style="width: 18px;"></a>
                 </article>
 
-                <article class="card info-card">
-                    <h3 class="section-title" style="border: none; padding: 0; margin-bottom: 24px; font-size: 20px;">Thông tin chung</h3>
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <img src="assets/icons/details/ranking.svg" alt="" class="info-icon">
-                            <div class="info-content">
-                                <span class="info-label">Cấp bậc:</span>
-                                <span class="info-value">Nhân viên</span>
+                <!-- Blog Case 2 -->
+                <article class="blog-card">
+                    <div class="blog-card-image" style="background: #FFF;">
+                        <span class="blog-badge" style="background: #F59E0B;">Xu hướng công nghệ</span>
+                        <img src="assets/images/blog/blog_2.png" alt="Blog 2">
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">AI đang thay đổi quy trình tuyển dụng như thế nào?</h3>
+                        <p class="blog-card-excerpt">Tìm hiểu cách các thuật toán đang lọc CV và đánh giá ứng viên, giúp bạn chuẩn bị tốt hơn cho...</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-author">
+                                <img src="assets/images/blog/linh_nguyen_avt.png" alt="Linh Nguyen">
+                                <span>Linh Nguyễn</span>
                             </div>
-                        </div>
-                        <div class="info-item">
-                            <img src="assets/icons/details/education.svg" alt="" class="info-icon">
-                            <div class="info-content">
-                                <span class="info-label">Học vấn:</span>
-                                <span class="info-value">Trung cấp trở lên</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <img src="assets/icons/details/team.svg" alt="" class="info-icon">
-                            <div class="info-content">
-                                <span class="info-label">Số lượng tuyển:</span>
-                                <span class="info-value">12 người</span>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <img src="assets/icons/details/work.svg" alt="" class="info-icon">
-                            <div class="info-content">
-                                <span class="info-label">Hình thức làm việc:</span>
-                                <span class="info-value">Toàn thời gian</span>
+                            <div class="blog-time">
+                                <img src="assets/icons/ic_clock.svg" alt="Clock" width="14">
+                                <span>5 Phút đọc</span>
                             </div>
                         </div>
                     </div>
                 </article>
-            </aside>
+
+                <!-- Blog Case 3 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <span class="blog-badge" style="background: #A855F7;">Cẩm nang nghề nghiệp</span>
+                        <img src="assets/images/blog/blog_3.png" alt="Blog 3">
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">7 câu hỏi phỏng vấn "khó nhằn" và cách trả lời thông minh</h3>
+                        <p class="blog-card-excerpt">Vượt qua áp lực phỏng vấn bằng các chiến thuật xử lý tình huống linh hoạt và tự tin nhất...</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-author">
+                                <img src="assets/images/blog/duc_hoang_avt.png" alt="Duc Hoang">
+                                <span>Đức Hoàng</span>
+                            </div>
+                            <div class="blog-time">
+                                <img src="assets/icons/ic_clock.svg" alt="Clock" width="14">
+                                <span>4 Phút đọc</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Case 4 -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <span class="blog-badge" style="background: #64748B;">Tin tuyển dụng</span>
+                        <img src="assets/images/blog/blog_4.png" alt="Blog 4">
+                    </div>
+                    <div class="blog-card-body">
+                        <h3 class="blog-card-title">Thị trường việc làm IT nửa cuối năm 2024: Cơ hội nào?</h3>
+                        <p class="blog-card-excerpt">Phân tích nhu cầu thực tế về nhân sự trong các mảng DevOps, Cloud và AI tại thị trường Việt...</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-author">
+                                <img src="assets/images/blog/phuong_anh_avt.png" alt="Phuong Anh">
+                                <span>Phương Anh</span>
+                            </div>
+                            <div class="blog-time">
+                                <img src="assets/icons/ic_clock.svg" alt="Clock" width="14">
+                                <span>6 Phút đọc</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="page-item page-nav">
+                    <img src="assets/icons/ic_prev_pagnition.svg" alt="Prev" width="14">
+                </div>
+                <div class="page-item active">1</div>
+                <div class="page-item">2</div>
+                <div class="page-item">3</div>
+                <div class="page-dot">...</div>
+                <div class="page-item">12</div>
+                <div class="page-item page-nav">
+                    <img src="assets/icons/ic_next_pagnition.svg" alt="Next" width="14">
+                </div>
+            </div>
         </div>
+
+        <!-- Right: Sidebar -->
+        <aside class="blog-sidebar">
+            <!-- Categories Widget -->
+            <div class="sidebar-widget">
+                <h4 class="widget-title">Danh mục bài viết</h4>
+                <div class="category-list">
+                    <div class="category-item">
+                        <span class="category-name">Cẩm nang nghề nghiệp</span>
+                        <span class="category-count">24</span>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-name">Xu hướng công nghệ</span>
+                        <span class="category-count">18</span>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-name">Tin tuyển dụng</span>
+                        <span class="category-count">42</span>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-name">Kỹ năng mềm</span>
+                        <span class="category-count">15</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Posts Widget -->
+            <div class="sidebar-widget">
+                <h4 class="widget-title">Bài viết xem nhiều nhất</h4>
+                
+                <div class="popular-post-item">
+                    <div class="popular-post-thumb">
+                        <img src="assets/images/blog/blog_xem_nhieu_nhat1.png" alt="Pop 1">
+                    </div>
+                    <div class="popular-post-info">
+                        <h5 class="popular-post-title">Top 10 công ty tốt nhất Việt Nam 2024</h5>
+                        <div class="popular-post-views">12.4K Lượt xem</div>
+                    </div>
+                </div>
+
+                <div class="popular-post-item">
+                    <div class="popular-post-thumb">
+                        <img src="assets/images/blog/blog_xem_nhieu_nhat2.png" alt="Pop 2">
+                    </div>
+                    <div class="popular-post-info">
+                        <h5 class="popular-post-title">Cách tối ưu hóa CV để vượt qua hệ thống ATS</h5>
+                        <div class="popular-post-views">9.8K Lượt xem</div>
+                    </div>
+                </div>
+
+                <div class="popular-post-item">
+                    <div class="popular-post-thumb">
+                        <img src="assets/images/blog/blog_xem_nhieu_nhat3.png" alt="Pop 3">
+                    </div>
+                    <div class="popular-post-info">
+                        <h5 class="popular-post-title">Đàm phán lương: Những sai lầm phổ biến nhất</h5>
+                        <div class="popular-post-views">7.2K Lượt xem</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile CTA Widget -->
+            <div class="sidebar-cta">
+                <h3>Tìm việc nhanh chóng ngay trên điện thoại</h3>
+                <p>Hơn 50,000+ cơ hội việc làm mới mỗi ngày đang chờ bạn khám phá.</p>
+                <div class="cta-buttons">
+                    <a href="#">
+                        <img src="assets/images/blog/bt_app_store.svg" alt="App Store">
+                    </a>
+                    <a href="#">
+                        <img src="assets/images/blog/bt_google_play.svg" alt="Google Play">
+                    </a>
+                </div>
+            </div>
+        </aside>
     </main>
 
-    <!-- Footer -->
-    <div class="index2-container-1440" style="padding-top: 50px; padding-bottom: 39px; background: var(--NEUTRAL0, white); justify-content: center; display: flex; flex-direction: column; align-items: center; border-top: 1px solid #E2E8F0;">
-        <div class="index2-container-1200" style="opacity: 0.80; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 36px; width: 100%; max-width: 1200px;">
+    <div class="index2-container-1440" style="padding-top: 50px; padding-bottom: 39px; background: var(--NEUTRAL0, white); justify-content: center;">
+        <div class="index2-container-1200" style="opacity: 0.80; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 36px;">
             <div style="height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
             <div style="width: 240px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
                 <div style="width: 128px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Giới Thiệu</div>
@@ -481,12 +446,16 @@
                         <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">0123 456 789</div>
                     </div>
                 </div>
+                <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px; padding-left: 10px;">
+                    <a href="#"><img src="assets/images/blog/bt_app_store.svg" alt="App Store" style="width: 160px; height: auto; display: block;"></a>
+                    <a href="#"><img src="assets/images/blog/bt_google_play.svg" alt="Google Play" style="width: 160px; height: auto; display: block;"></a>
+                </div>
             </div>
         </div>
         </div>
     </div>
-    <div class="index2-container-1440" style="padding-top: 16px; padding-bottom: 16px; background: var(--NEUTRAL0, white); display: flex; justify-content: center;">
-        <div class="index2-container-1200" style="height: 50px; justify-content: center; align-items: center; gap: 10px; display: inline-flex; width: 100%; max-width: 1200px;">
+    <div class="index2-container-1440" style="padding-top: 16px; padding-bottom: 16px; background: var(--NEUTRAL0, white);">
+        <div class="index2-container-1200" style="height: 50px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
             <div style="justify-content: flex-start; display: flex; flex-direction: column"><span style="color: var(--Black, black); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">© 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.</span></div>
         </div>
     </div>

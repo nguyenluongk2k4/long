@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tương lai của ngành Tuyển dụng: Sức mạnh của AI và Tự động hóa - JobGos Blog</title>
+    <link rel="stylesheet" href="css/index_2.css">
+    <link rel="stylesheet" href="css/blog_detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif !important; }
+        /* Shared Header/Footer CSS from index.html head */
+        .logged-in-only { display: none !important; }
+        .guest-only { display: flex !important; }
+        .is-logged-in .logged-in-only { display: flex !important; }
+        .is-logged-in .guest-only { display: none !important; }
+
+        .nav-caret {
+            width: 8px;
+            height: 8px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: translateY(-2px) rotate(45deg);
+            display: inline-block;
+            margin-left: 4px;
+            transition: transform 0.2s;
+        }
+
+        .header-icon-btn { width: 40px; height: 40px; cursor: pointer; transition: opacity 0.2s; }
+        .header-icon-btn:hover { opacity: 0.8; }
+        .employer-cta { display: flex; flex-direction: column; font-size: 13px; line-height: 1.4; color: #434655; margin-left: 12px; }
+        .employer-cta .highlight { color: #111827; font-weight: 600; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          if (localStorage.getItem('isLoggedIn') === 'true') {
+            document.body.classList.add('is-logged-in');
+          }
+        });
+
+        function logout() {
+          localStorage.removeItem('isLoggedIn');
+          window.location.reload();
+        }
+    </script>
+</head>
+<body class="index2-body">
+    <!-- Header synchronized with index.html -->
+    <div style="width: 100%; height: 64px; background: white; display: flex; justify-content: center; border-bottom: 1px solid #E2E8F0; box-sizing: border-box; position: sticky; top: 0; z-index: 100;">
+        <div style="width: 100% !important; max-width: 1200px; height: 64px; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+            <a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;">
+                <div style="color: var(--PRIMARY1, #2563EB); font-size: 28px; font-family: Inter; font-weight: 700; line-height: 1; letter-spacing: -0.3px;">JobGos</div>
+            </a>
+            <nav style="display: flex; align-items: center; gap: 28px; flex: 1; justify-content: center; min-width: 0;">
+                <a href="search.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Việc làm</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Công ty</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="blog.html" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Blog</span>
+                    <span class="nav-caret"></span>
+                </a>
+                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
+                    <span>Liên hệ</span>
+                    <span class="nav-caret"></span>
+                </a>
+            </nav>
+
+            <div class="guest-only" style="display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;">
+                <a href="register.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box; background: white;">Đăng ký</a>
+                <a href="login.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); background: var(--PRIMARY1, #2563EB); color: white; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box;">Đăng nhập</a>
+            </div>
+
+            <div class="logged-in-only" style="display: none; align-items: center; gap: 16px; flex-shrink: 0;">
+                <img src="assets/icons/ic_notifications.svg" alt="Thông báo" class="header-icon-btn">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="assets/icons/ic_user_after_login.svg" alt="User" class="header-icon-btn" onclick="logout()">
+                    <div class="employer-cta" style="border-left: 1px solid #E2E8F0; padding-left: 12px;">
+                        <span style="font-size: 12px; color: #64748B;">Bạn là nhà tuyển dụng?</span>
+                        <a href="#" style="font-size: 13px; color: #111827; font-weight: 700; text-decoration: none;">Đăng tuyển ngay >></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="index2-container-1440">
+        <div class="index2-container-1200">
+            
+            <!-- Breadcrumbs -->
+            <div class="breadcrumb-container" style="width: 100%;">
+                <div class="breadcrumbs">
+                    <a href="index.html">Trang chủ</a>
+                    <span>/</span>
+                    <a href="blog.html">Blog</a>
+                    <span>/</span>
+                    <span class="current">Tương lai của ngành Tuyển dụng: Sức mạnh của AI và Tự động hóa</span>
+                </div>
+            </div>
+
+            <article style="width: 100%;">
+                <!-- Article Header -->
+                <header class="article-header">
+                    <h1 class="article-title">Tương lai của ngành Tuyển dụng: Sức mạnh của AI và Tự động hóa</h1>
+                    <div class="article-meta">
+                        <div class="author-info">
+                            <img src="assets/images/blog_details/avt_author_left_section.png" alt="Author" class="author-avt">
+                            <div>
+                                <div class="author-name">Hồ Lê Minh Anh</div>
+                                <div class="post-stats">
+                                    <div class="stat-item">
+                                        <img src="assets/images/blog_details/ic_clock.svg" alt="Date" width="16">
+                                        <span>15 Tháng 04, 2024</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <img src="assets/images/blog_details/ic_views.svg" alt="Views" width="16">
+                                        <span>15,200 Lượt xem</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="meta-actions">
+                            <img src="assets/images/blog_details/bt_share.svg" alt="Share" class="header-icon-btn" style="width: 24px; height: 24px;">
+                            <button class="btn-copy-link"><img src="assets/images/blog_details/ic_copy.svg" alt="Link" width="16" style="filter: brightness(0) invert(1);"> Sao chép liên kết</button>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="blog-detail-grid">
+                    <!-- Left Section: Article Content -->
+                    <div class="article-main">
+                        <img src="assets/images/blog_details/image_blog.png" alt="Featured Image" class="article-featured-image">
+                        
+                        <div class="article-body">
+                            <p>Trong kỷ nguyên số, Trí tuệ nhân tạo (AI) không còn là khái niệm xa lạ. Trong lĩnh vực tuyển dụng, xu hướng này đang phát triển mạnh mẽ, giúp tối ưu hóa quy trình tìm kiếm và tuyển chọn nhân tài.</p>
+                            
+                            <h2>1. Sàng lọc hồ sơ bằng AI: Tốc độ và Chính xác</h2>
+                            <p>Một trong những thách thức lớn nhất của các nhà tuyển dụng là xử lý hàng nghìn CV cho mỗi vị trí. Công nghệ AI có khả năng phân tích và so sánh các tiêu chuẩn của ứng viên với mô tả công việc, từ đó đưa ra danh sách các ứng viên phù hợp nhất chỉ trong vài giây.</p>
+
+                            <div class="highlight-box">
+                                "AI không thay thế con người trong tuyển dụng, mà nó là công cụ hỗ trợ mạnh mẽ giúp con người đưa ra quyết định sáng suốt và hiệu quả hơn."
+                            </div>
+
+                            <h2>2. Phỏng vấn tự động và Phân tích hành vi</h2>
+                            <p>Các giải pháp phỏng vấn video qua AI cho phép ứng viên thực hiện phỏng vấn tại bất cứ đâu, trong khi hệ thống tự động ghi nhận và phân tích các phản ứng, thái độ của ứng viên thông qua công nghệ nhận diện khuôn mặt và ngôn ngữ.</p>
+
+                            <div class="features-container">
+                                <div class="feature-card">
+                                    <img src="assets/images/blog_details/ic_tang_nang_suat.svg" alt="Icon" class="feature-icon">
+                                    <h3>Tăng năng suất</h3>
+                                    <p>Giải quyết bài toán sàng lọc hàng nghìn hồ sơ mỗi lần tuyển dụng.</p>
+                                </div>
+                                <div class="feature-card">
+                                    <img src="assets/images/blog_details/ic_giam_dinh_kien.svg" alt="Icon" class="feature-icon">
+                                    <h3>Giảm định kiến</h3>
+                                    <p>Loại bỏ các định kiến cá nhân bẩm sinh trong khâu chọn lọc dựa trên dữ liệu.</p>
+                                </div>
+                            </div>
+
+                            <p>Tổng kết lại, sự kết hợp giữa khả năng của AI và sự nhạy bén của con người sẽ là chìa khóa then chốt cho sự thành công của bất kỳ tổ chức nào trong kỉ nguyên này.</p>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="article-tags">
+                            <a href="#" class="tag-item">AI</a>
+                            <a href="#" class="tag-item">Công nghệ</a>
+                            <a href="#" class="tag-item">Tuyển dụng</a>
+                            <a href="#" class="tag-item">JobGos</a>
+                        </div>
+
+                        <!-- Comments Section -->
+                        <section class="comments-section">
+                            <h3 class="comments-header">Bình luận (12)</h3>
+                            
+                            <div class="comment-input-box">
+                                <img src="assets/images/blog_details/avt_user.svg" alt="User" class="comment-input-avt">
+                                <div class="comment-form">
+                                    <textarea class="comment-textarea" placeholder="Viết bình luận của bạn..."></textarea>
+                                    <button class="comment-submit">Gửi bình luận</button>
+                                </div>
+                            </div>
+
+                            <div class="comment-list">
+                                <div class="comment-item">
+                                    <img src="assets/images/blog_details/avt_comment_le_hoang_nam.svg" alt="Le Hoang Nam" class="comment-input-avt">
+                                    <div class="comment-content">
+                                        <div class="comment-author-name">Lê Hoàng Nam</div>
+                                        <div class="comment-text">Bài viết rất hữu ích. AI thực sự đang làm thay đổi cách chúng ta làm việc.</div>
+                                        <div class="comment-actions">
+                                            <span>Thích</span>
+                                            <span>Phản hồi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comment-item">
+                                    <img src="assets/images/blog_details/avt_comment_tran_thanh_thuy.svg" alt="Tran Thanh Thuy" class="comment-input-avt">
+                                    <div class="comment-content">
+                                        <div class="comment-author-name">Trần Thanh Thủy</div>
+                                        <div class="comment-text">Tôi đang tìm hiểu về các công cụ này, cảm ơn tác giả đã chia sẻ!</div>
+                                        <div class="comment-actions">
+                                            <span>Thích</span>
+                                            <span>Phản hồi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Right Section: Sidebar -->
+                    <aside class="sidebar">
+                        <!-- Author Box -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">TÁC GIẢ</h3>
+                            <div class="author-box">
+                                <img src="assets/images/blog_details/avt_author_left_section.png" alt="Author" class="author-box-avt">
+                                <h4 class="author-box-name">Nguyễn Minh Anh</h4>
+                                <p class="author-box-bio">Senior HR Strategy Specialist tại JobPort. Chuyên gia tư vấn về chuyển đổi số trong nhân sự.</p>
+                                <div class="author-actions">
+                                    <button class="btn-sidebar-follow">Theo dõi</button>
+                                    <button class="btn-sidebar-message">Hồ sơ</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Table of Contents -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">MỤC LỤC BÀI VIẾT</h3>
+                            <div class="table-of-contents">
+                                <ul>
+                                    <li class="active"><a href="#section1">Sàng lọc hồ sơ bằng AI</a></li>
+                                    <li><a href="#section2">Phỏng vấn tự động</a></li>
+                                    <li><a href="#section3">Duy trì kết nối con người</a></li>
+                                    <li><a href="#section4">Kết luận</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Related Posts -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">BÀI VIẾT LIÊN QUAN</h3>
+                            <div class="related-list">
+                                <a href="#" class="related-item">
+                                    <img src="assets/images/blog_details/bai_viet_lien_quan1.png" alt="Related" class="related-thumb">
+                                    <div class="related-info">
+                                        <h4 class="related-title">Cách xây dựng thương hiệu cá nhân cho IT</h4>
+                                        <span class="related-date">12 Tháng 10, 2024</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="related-item">
+                                    <img src="assets/images/blog_details/bai_viet_lien_quan2.png" alt="Related" class="related-thumb">
+                                    <div class="related-info">
+                                        <h4 class="related-title">Kỹ năng mềm quan trọng nhất năm 2025</h4>
+                                        <span class="related-date">08 Tháng 10, 2024</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+
+                <!-- Explore More -->
+                <section class="explore-more-section">
+                    <div class="section-header">
+                        <h2 style="font-size: 24px; font-weight: 700; margin: 0;">Khám phá thêm</h2>
+                        <a href="blog.html" style="color: var(--PRIMARY1); text-decoration: none; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                            Xem tất cả bài viết <img src="assets/images/blog_details/ic_xem_tat_ca.svg" alt="Arrow" width="16">
+                        </a>
+                    </div>
+                    <div class="explore-grid">
+                        <a href="#" class="explore-card">
+                            <div class="explore-thumb-container">
+                                <span class="explore-badge">CHM NANG</span>
+                                <img src="assets/images/blog_details/kham_pha_them1.png" alt="Explore" class="explore-thumb">
+                            </div>
+                            <div class="explore-card-body">
+                                <h4 class="explore-card-title">10 Mẹo để vượt qua vòng phỏng vấn kỹ thuật</h4>
+                                <p class="explore-card-desc">Chia sẻ từ các chuyên gia hàng đầu về những điều bạn cần chuẩn bị trước khi bước vào phòng phỏng vấn...</p>
+                                <div class="explore-card-footer">
+                                    <img src="assets/images/blog_details/author_kham_pha_them1.png" alt="Author" class="explore-author-img">
+                                    <span>Hoàng Long • 5 phút đọc</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="explore-card">
+                            <div class="explore-thumb-container">
+                                <span class="explore-badge">XU HƯỚNG</span>
+                                <img src="assets/images/blog_details/kham_pha_them2.png" alt="Explore" class="explore-thumb">
+                            </div>
+                            <div class="explore-card-body">
+                                <h4 class="explore-card-title">Văn hóa làm việc từ xa: Thách thức và Cơ hội</h4>
+                                <p class="explore-card-desc">Làm thế nào để duy trì hiệu suất và sự gắn kết khi đội ngũ không ngồi cùng một văn phòng?</p>
+                                <div class="explore-card-footer">
+                                    <img src="assets/images/blog_details/author_kham_pha_them2.png" alt="Author" class="explore-author-img">
+                                    <span>Bích Ngọc • 10 phút đọc</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="explore-card">
+                            <div class="explore-thumb-container">
+                                <span class="explore-badge">LƯƠNG THƯỞNG</span>
+                                <img src="assets/images/blog_details/kham_pha_them3.png" alt="Explore" class="explore-thumb">
+                            </div>
+                            <div class="explore-card-body">
+                                <h4 class="explore-card-title">Báo cáo mức lương ngành IT năm 2024</h4>
+                                <p class="explore-card-desc">Cập nhật mới nhất về xu hướng thu nhập của các vị trí lập trình viên tại thị trường Việt Nam.</p>
+                                <div class="explore-card-footer">
+                                    <img src="assets/images/blog_details/author_kham_pha_them3.png" alt="Author" class="explore-author-img">
+                                    <span>Quốc Bảo • 15 phút đọc</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Footer synchronized with index.html -->
+    <div class="index2-container-1440" style="padding-top: 50px; padding-bottom: 39px; background: var(--NEUTRAL0, white); justify-content: center;">
+        <div class="index2-container-1200" style="opacity: 0.80; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 36px;">
+            <div style="height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
+            <div style="width: 240px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                <div style="width: 128px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Giới Thiệu</div>
+                <div style="align-self: stretch; height: 97px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.</div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
+                <a href="index.html" style="justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 32px; font-family: Inter; font-weight: 700; line-height: 38.40px; word-wrap: break-word; text-decoration: none">JOBGOS</a>
+                <div style="justify-content: flex-start; align-items: center; gap: 5px; display: inline-flex">
+                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                        <div style="width: 20px; height: 19.95px; left: 2px; top: 2px; position: absolute; background: var(--Black, black)"></div>
+                    </div>
+                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                        <div style="width: 20px; height: 14px; left: 2px; top: 5px; position: absolute; background: var(--Black, black)"></div>
+                    </div>
+                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
+                        <div style="width: 0.84px; height: 0.67px; left: 12.08px; top: 23.14px; position: absolute"></div>
+                        <div style="width: 18px; height: 18px; left: 3px; top: 3px; position: absolute; background: var(--Black, black)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 257px; height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Về JobGos</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Giới thiệu</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tuyển dụng</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Liên hệ</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hỏi đáp</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Chính sách bảo mật</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Điều khoản sử dụng</div>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Hồ sơ & CV</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Quản lý CV</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tạo CV online</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Thư viện CV</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hướng dẫn viết CV</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 330px; height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Dành cho ứng viên</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tìm việc làm</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm theo ngành</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm theo địa điểm</div>
+                        <div style="align-self: stretch; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm nổi bật</div>
+                        <div style="align-self: stretch; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm mới nhất</div>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Dành cho nhà tuyển dụng</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Đăng tin tuyển dụng</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Quản lý tin tuyển dụng</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tìm kiếm ứng viên</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Báo cáo & thống kê</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 249px; height: 320px; padding-left: 10px; padding-right: 10px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Khám phá</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Gợi ý việc làm</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Blog & chia sẻ</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Cẩm nang nghề nghiệp</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Công cụ hỗ trợ</div>
+                    </div>
+                </div>
+            </div>
+            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
+                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Thông tin liên hệ</div>
+                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
+                    </div>
+                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hà Nội, Việt Nam</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">contact@jobgos.vn</div>
+                        <div style="align-self: stretch; height: 17px; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">0123 456 789</div>
+                    </div>
+                </div>
+                <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 12px; padding-left: 10px;">
+                    <a href="#"><img src="assets/images/blog/bt_app_store.svg" alt="App Store" style="width: 160px; height: auto; display: block;"></a>
+                    <a href="#"><img src="assets/images/blog/bt_google_play.svg" alt="Google Play" style="width: 160px; height: auto; display: block;"></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="index2-container-1440" style="padding-top: 16px; padding-bottom: 16px; background: var(--NEUTRAL0, white);">
+        <div class="index2-container-1200" style="height: 50px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+            <div style="justify-content: flex-start; display: flex; flex-direction: column"><span style="color: var(--Black, black); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">© 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.</span></div>
+        </div>
+    </div>
+</body>
+</html>
