@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt hệ thống - Admin JobGos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        .settings-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        
+        .settings-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid #F1F5F9;
+            margin-bottom: 24px;
+        }
+        .settings-card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            font-size: 18px;
+            font-weight: 800;
+            color: #1E293B;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            color: #64748B;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            background: #F1F5F9;
+            border: none;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1E293B;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 32px;
+            border-bottom: 1px solid #E2E8F0;
+            margin-top: 24px;
+        }
+        .nav-tab-item {
+            padding-bottom: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #64748B;
+            cursor: pointer;
+            position: relative;
+        }
+        .nav-tab-item.active {
+            color: #2563EB;
+        }
+        .nav-tab-item.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #2563EB;
+            border-radius: 3px;
+        }
+        
+        .logo-upload-box {
+            background: url('../assets/images/ic_caidathethong/Background+Border_logo he thong.svg') no-repeat center;
+            background-size: contain;
+            border: none;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 20px auto;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-white-pill {
+            background: white;
+            border: 1px solid #F1F5F9;
+            border-radius: 16px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #64748B;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        
+        .security-note {
+            background: #EEF2FF;
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 24px;
+        }
+        
+        .backup-bar {
+            background: #DBEAFE;
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .backup-stat {
+            display: flex;
+            gap: 32px;
+        }
+        .stat-item-b {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .stat-l { font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; }
+        .stat-v { font-size: 24px; font-weight: 800; color: #1E293B; }
+        
+        .btn-white-action {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1E293B;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="manage-companies.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="system-statistics.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="manage-blog.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="system-settings.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/ic_caidathethong/ic_timtheoten,IDemail.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, email hoặc ID...">
+                </div>
+
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify" style="background: transparent;">
+                        <img src="../assets/images/ic_caidathethong/ic_thongbao.svg" alt="Notifications" width="24">
+                        <span class="notify-badge"></span>
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 5px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <!-- Page Title -->
+                <div class="admin-page-title-row">
+                    <div>
+                        <h1 class="admin-page-title">Cài đặt hệ thống</h1>
+                        <p class="admin-page-desc" style="color: #64748B;">Quản lý các cấu hình nền tảng và tham số vận hành của JobsGO.</p>
+                    </div>
+                    <button class="btn-admin-primary" style="padding: 12px 32px;">Lưu thay đổi</button>
+                </div>
+
+                <!-- Tabs -->
+                <nav class="nav-tabs">
+                    <div class="nav-tab-item active">Chung</div>
+                    <div class="nav-tab-item">Bảo mật</div>
+                    <div class="nav-tab-item">Thông báo</div>
+                    <div class="nav-tab-item">Phân quyền</div>
+                    <div class="nav-tab-item">API</div>
+                </nav>
+
+                <div class="settings-container">
+                    <!-- Left Side Columns -->
+                    <div>
+                        <!-- Basic Info -->
+                        <div class="settings-card">
+                            <div class="settings-card-title">
+                                <img src="../assets/images/ic_caidathethong/ic_thong tin co ban.svg" alt="icon">
+                                Thông tin cơ bản
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>TÊN WEBSITE</label>
+                                    <input type="text" value="JobsGO - Việc làm & Tuyển dụng">
+                                </div>
+                                <div class="form-group">
+                                    <label>EMAIL LIÊN HỆ</label>
+                                    <input type="email" value="admin@jobsgo.vn">
+                                </div>
+                            </div>
+                            <div class="form-group" style="max-width: 50%;">
+                                <label>NGÔN NGỮ MẶC ĐỊNH</label>
+                                <select>
+                                    <option>Tiếng Việt (Vietnam)</option>
+                                    <option>English (United States)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- SMTP Config -->
+                        <div class="settings-card">
+                            <div class="settings-card-title" style="justify-content: space-between;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <img src="../assets/images/ic_caidathethong/ic_Cau hinh SMTP.svg" alt="icon">
+                                    Cấu hình SMTP
+                                </div>
+                                <span class="status-pill status-growing" style="font-size: 10px; padding: 4px 12px;">ĐANG HOẠT ĐỘNG</span>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>SMTP HOST</label>
+                                    <input type="text" value="smtp.gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>PORT</label>
+                                    <input type="text" value="587">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>MẬT KHẨU ỨNG DỤNG</label>
+                                <div style="position: relative;">
+                                    <input type="password" value="••••••••••••••••••••">
+                                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="eye" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 18px; opacity: 0.5;">
+                                </div>
+                            </div>
+                            <a href="#" style="color: #2563EB; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-top: 24px; justify-content: flex-end;">
+                                <img src="../assets/images/ic_caidathethong/ic-send.svg" alt="icon" style="width: 14px; ">
+                                Gửi email thử nghiệm
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Side Column -->
+                    <div>
+                        <!-- Logo Upload -->
+                        <div class="settings-card" style="text-align: center; padding: 40px 32px;">
+                            <span style="font-size: 14px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.5px;">LOGO HỆ THỐNG</span>
+                            <div class="logo-upload-box">
+                                <img src="../assets/images/logo.jpg" alt="logo" style="width: 100px; height: auto;">
+                            </div>
+                            <p style="font-size: 13px; color: #94A3B8; line-height: 1.6; margin-bottom: 32px; padding: 0 10px;">Định dạng hỗ trợ: PNG, SVG. Kích thước tối đa: 2MB. Khuyên dùng: 512×512px.</p>
+                            <button class="btn-white-pill">Thay đổi Logo</button>
+                        </div>
+
+                        <!-- Security Note -->
+                        <div class="security-note">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                                <div style="background: white; border-radius: 8px; padding: 6px;">
+                                    <img src="../assets/images/ic_caidathethong/ic_luu y bao mat.svg" alt="icon" width="20">
+                                </div>
+                                <div>
+                                    <div style="font-weight: 800; color: #1E293B;">Lưu ý bảo mật</div>
+                                    <div style="font-size: 11px; color: #64748B;">Cập nhật lúc: 15/10/2023</div>
+                                </div>
+                            </div>
+                            <p style="font-size: 12px; color: #475569; line-height: 1.6; margin-bottom: 16px;">Đảm bảo cấu hình SMTP được bảo mật tuyệt đối. Không chia sẻ mật khẩu ứng dụng cho bất kỳ ai không có thẩm quyền.</p>
+                            <a href="#" style="color: #2563EB; font-weight: 700; font-size: 12px; text-decoration: none;">Xem tài liệu hướng dẫn →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backup Bar -->
+                <div class="backup-bar">
+                    <div class="backup-stat">
+                        <div class="stat-item-b" style="border-right: 1px solid #CBD5E1; padding-right: 48px;">
+                            <span class="stat-l">DUNG LƯỢNG DB</span>
+                            <span class="stat-v">1.2 GB</span>
+                        </div>
+                        <div class="stat-item-b">
+                            <span class="stat-l">THỜI GIAN PHẢN HỒI</span>
+                            <span class="stat-v">124ms</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 24px;">
+                        <span style="font-size: 13px; color: #64748B; font-weight: 600;">Lần cuối sao lưu: 12 phút trước</span>
+                        <button class="btn-admin-primary" style="background: white; color: #1E293B; border: none; padding: 12px 24px;">Sao lưu ngay</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
