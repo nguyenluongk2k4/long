@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý báo cáo & khiếu nại - Admin JobGos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, ID, email...">
+                </div>
+
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify" style="background: transparent;">
+                        <img src="../assets/images/ic_tquanadmin/ic_thongbao.svg" alt="Notifications" width="24">
+                        <span class="notify-badge"></span>
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 5px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <!-- Page Title -->
+                <div class="admin-page-title-area">
+                    <div class="admin-page-title-row">
+                        <div>
+                            <h1 class="admin-page-title">Quản lý báo cáo & khiếu nại</h1>
+                            <p class="admin-page-desc">Theo dõi và xử lý các phản hồi từ cộng đồng người dùng JobsGO.</p>
+                        </div>
+                        <button class="btn-admin-primary">
+                            <img src="../assets/images/ic_tquanadmin/ic_xuatbaocao.svg" alt="Export" width="18" style="margin-right: 8px;">
+                            Xuất báo cáo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="report-metrics-row">
+                    <div class="user-stat-card">
+                        <div class="user-stat-info">
+                            <span class="user-stat-label">TỔNG SỐ BÁO CÁO</span>
+                            <div class="user-stat-value">1,284</div>
+                            <div class="user-stat-trend" style="color: #16A34A;">
+                                <img src="../assets/images/admin-quan-li-bao-cao/ic-tang-truong.svg" alt="up">
+                                12% so với tháng trước
+                            </div>
+                        </div>
+                        <img src="../assets/images/admin-quan-li-bao-cao/bg-tong-so-bao-cao.svg" alt="bg" class="user-stat-img">
+                    </div>
+                    
+                    <div class="user-stat-card">
+                        <div class="user-stat-info">
+                            <span class="user-stat-label">BÁO CÁO CHƯA XỬ LÝ</span>
+                            <div class="user-stat-value" style="color: #EA580C;">42</div>
+                            <div class="user-stat-desc" style="color: #64748B; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                                <img src="../assets/images/admin-quan-li-bao-cao/ic-clocks.svg" alt="clock" width="16">
+                                Cần giải quyết trong 24h
+                            </div>
+                        </div>
+                        <img src="../assets/images/admin-quan-li-bao-cao/bg-bao-cao-chua-xu-li.svg" alt="bg" class="user-stat-img">
+                    </div>
+
+                    <div class="user-stat-card">
+                        <div class="user-stat-info">
+                            <span class="user-stat-label">TỶ LỆ XỬ LÝ ĐÚNG HẠN</span>
+                            <div class="user-stat-value" style="color: #16A34A;">98.2%</div>
+                            <div class="user-stat-desc" style="color: #64748B; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+                                <img src="../assets/images/admin-quan-li-bao-cao/ic-hieu-suat.svg" alt="check" width="16">
+                                Hiệu suất ổn định
+                            </div>
+                        </div>
+                        <img src="../assets/images/admin-quan-li-bao-cao/bg-ti-le-xu-li-dung-han.svg" alt="bg" class="user-stat-img">
+                    </div>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="admin-filter-bar">
+                    <div class="filter-input-group">
+                        <input type="text" placeholder="Nhập từ khóa (công ty, nội dung, người gửi...)">
+                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-search.svg" alt="search" width="20" style="opacity: 0.5;">
+                    </div>
+                    
+                    <div class="admin-filter-dropdown-wrapper" style="min-width: 180px;">
+                        <select class="filter-dropdown" style="padding-right: 40px;">
+                            <option value="">Loại báo cáo</option>
+                            <option value="job">Việc làm</option>
+                            <option value="company">Công ty</option>
+                            <option value="toxic">Nội dung độc hại</option>
+                        </select>
+                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg" class="dropdown-icon" width="12">
+                    </div>
+
+                    <div class="admin-filter-dropdown-wrapper" style="min-width: 160px;">
+                        <select class="filter-dropdown" style="padding-right: 40px;">
+                            <option value="">Trạng thái</option>
+                            <option value="new">Mới</option>
+                            <option value="processing">Đang xử lý</option>
+                            <option value="resolved">Đã giải quyết</option>
+                            <option value="rejected">Từ chối</option>
+                        </select>
+                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg" class="dropdown-icon" width="12">
+                    </div>
+
+                    <button class="btn-clear-filter">Xóa lọc</button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="admin-table-container">
+                    <div style="padding: 24px 32px; border-bottom: 1px solid #F1F5F9;">
+                        <h3 style="font-size: 18px; font-weight: 800; color: #1E293B;">Danh sách khiếu nại gần đây</h3>
+                    </div>
+                    
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>NGƯỜI GỬI</th>
+                                <th>LOẠI BÁO CÁO</th>
+                                <th style="width: 30%;">NỘI DUNG TÓM TẮT</th>
+                                <th>NGÀY GỬI</th>
+                                <th>TRẠNG THÁI</th>
+                                <th style="text-align: center;">HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Hoàng Đức Anh</span>
+                                        <span class="job-brand-admin">anh.hoang@email.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="report-tag tag-job">Việc làm</span></td>
+                                <td>
+                                    <span style="color: #475569; font-size: 14px;">Bất ứng viên nộp tiền trước (phí hồ sơ, |...</span>
+                                </td>
+                                <td><span style="color: #64748B;">12/09/2024</span></td>
+                                <td>
+                                    <div class="status-pill status-new">
+                                        <div class="status-dot"></div>
+                                        Mới
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="action-buttons-admin" style="justify-content: center;">
+                                        <div class="btn-action-admin btn-view">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
+                                        </div>
+                                        <div class="btn-action-admin btn-delete">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Đỗ Thanh Tùng</span>
+                                        <span class="job-brand-admin">tung.do@email.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="report-tag tag-company">Công ty</span></td>
+                                <td>
+                                    <span style="color: #475569; font-size: 14px;">Tuyển dụng nhưng không có hợp đồng</span>
+                                </td>
+                                <td><span style="color: #64748B;">14/08/2026</span></td>
+                                <td>
+                                    <div class="status-pill status-processing">
+                                        <div class="status-dot"></div>
+                                        Đang xử lý
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="action-buttons-admin" style="justify-content: center;">
+                                        <div class="btn-action-admin btn-view">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
+                                        </div>
+                                        <div class="btn-action-admin btn-delete">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Vũ Minh Khôi</span>
+                                        <span class="job-brand-admin">khoi.vu@email.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="report-tag tag-toxic">Nội dung độc hại</span></td>
+                                <td>
+                                    <span style="color: #475569; font-size: 14px;">Nhà tuyển dụng có hành vi không chuy...</span>
+                                </td>
+                                <td><span style="color: #64748B;">03/12/2025</span></td>
+                                <td>
+                                    <div class="status-pill status-resolved">
+                                        <div class="status-dot"></div>
+                                        Đã giải quyết
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="action-buttons-admin" style="justify-content: center;">
+                                        <div class="btn-action-admin btn-view">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
+                                        </div>
+                                        <div class="btn-action-admin btn-delete">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Trịnh Quang Huy</span>
+                                        <span class="job-brand-admin">huy.trinh@email.com</span>
+                                    </div>
+                                </td>
+                                <td><span class="report-tag tag-company">Công ty</span></td>
+                                <td>
+                                    <span style="color: #475569; font-size: 14px;">Mức lương thực tế thấp hơn hoặc khôn...</span>
+                                </td>
+                                <td><span style="color: #64748B;">21/09/2023</span></td>
+                                <td>
+                                    <div class="status-pill status-rejected">
+                                        <div class="status-dot"></div>
+                                        Từ chối
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="action-buttons-admin" style="justify-content: center;">
+                                        <div class="btn-action-admin btn-view">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
+                                        </div>
+                                        <div class="btn-action-admin btn-delete">
+                                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination -->
+                    <div class="admin-pagination">
+                        <span style="color: #64748B; font-size: 14px;">Hiển thị 1 - 10 của 1,284 báo cáo</span>
+                        <div class="pagination-pills">
+                            <div class="pills-arrow"><img src="../assets/images/admin-quan-li-nguoi-dung/ic-prev-pagnitions.svg" alt="<"></div>
+                            <div class="pills-item active">1</div>
+                            <div class="pills-item">2</div>
+                            <div class="pills-item">3</div>
+                            <div class="pills-item">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/ic-loadmore-pagnition.svg" alt="...">
+                            </div>
+                            <div class="pills-item">129</div>
+                            <div class="pills-arrow"><img src="../assets/images/admin-quan-li-nguoi-dung/ic-next-pagnitions.svg" alt=">"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Help Box -->
+                <div class="info-box-report">
+                    <div class="">
+                        <img src="../assets/images/admin-quan-li-bao-cao/ic-meo.svg" alt="info">
+                    </div>
+                    <div class="info-box-content">
+                        <h4>Mẹo xử lý báo cáo</h4>
+                        <p>Để duy trì chất lượng cộng đồng, hãy ưu tiên xử lý các báo cáo có nhãn "Việc làm" và "Công ty" trước. Những khiếu nại này thường ảnh hưởng trực tiếp đến uy tín của nền tảng.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
