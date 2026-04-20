@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý người dùng - Admin JobGos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_tong_quan.svg" alt="O">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item active">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_nguoi_dung.svg" alt="U">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_tin_tuyen_dung.svg" alt="J">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_cong_ty.svg" alt="C">
+                    Quản lý công ty
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_bao_cao_va_khieu_nai.svg" alt="B">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_thong_ke_he_thong.svg" alt="T">
+                    Thống kê hệ thống
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_blog.svg" alt="B">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_cai_dat_he_thong.svg" alt="S">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/user-dashboard/ic-ho-tro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, ID, email...">
+                </div>
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify"><img src="../assets/images/user-dashboard/ic-notifications.svg" alt="N" width="24"></div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; padding: 8px 16px; border-radius: 8px; font-weight: 600;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <!-- Title Row -->
+                <div class="admin-page-title-area">
+                    <div class="admin-page-title-row">
+                        <div>
+                            <h1 class="admin-page-title">Quản lý người dùng</h1>
+                            <p class="admin-page-desc">Phân tích và điều phối danh sách nhân sự trên hệ thống JobsGO.</p>
+                        </div>
+                        <button class="btn-admin-primary">
+                            <img src="../assets/images/admin-quan-li-nguoi-dung/ic-them-nguoi-dung.svg" alt="+">
+                            Thêm người dùng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User Metrics Row -->
+                <div class="user-metrics-row">
+                    <div class="user-stat-card">
+                        <div class="user-stat-info">
+                            <div class="user-stat-label">TỔNG NGƯỜI DÙNG</div>
+                            <div class="user-stat-value">12,482</div>
+                            <div class="user-stat-trend">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/ic-live-nguoi-dung-dang-online-card-report.svg" alt="^" width="14">
+                                +12% so với tháng trước
+                            </div>
+                        </div>
+                        <img src="../assets/images/admin-quan-li-nguoi-dung/bg-card-report-tong-nguoi-dung.svg" alt="bg" class="user-stat-img">
+                    </div>
+                    <div class="user-stat-card blue" style="display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;">
+                        <div class="stat-icon-box">
+                            <img src="../assets/images/admin-quan-li-nguoi-dung/ic-nguoi-dung-dang-online-card-report.svg" alt="online" style="filter: brightness(0) invert(1);">
+                        </div>
+                        <div class="user-stat-info" style="margin-top: auto;">
+                            <div class="user-stat-value">284</div>
+                            <div class="user-stat-desc">Người dùng đang online</div>
+                        </div>
+                        <div class="live-badge">LIVE</div>
+                    </div>
+                </div>
+
+                <!-- Filter Bar -->
+                <div class="admin-filter-bar">
+                    <div class="filter-input-group">
+                        <img src="../assets/images/user-dashboard/ic-search.svg" alt="S" width="18">
+                        <input type="text" placeholder="Tìm theo tên, email hoặc ID...">
+                    </div>
+                    <div class="admin-filter-dropdown-wrapper">
+                        <select class="filter-dropdown">
+                            <option>Tất cả vai trò</option>
+                            <option>Nhà tuyển dụng</option>
+                            <option>Ứng viên</option>
+                        </select>
+                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg" alt="v" class="dropdown-icon" width="12">
+                    </div>
+                    <div class="admin-filter-dropdown-wrapper">
+                        <select class="filter-dropdown">
+                            <option>Trạng thái</option>
+                            <option>Hoạt động</option>
+                            <option>Bị khóa</option>
+                        </select>
+                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg" alt="v" class="dropdown-icon" width="12">
+                    </div>
+                    <button class="btn-clear-filter">Xóa lọc</button>
+                </div>
+
+                <!-- Users Table -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>NGƯỜI DÙNG</th>
+                                <th>VAI TRÒ</th>
+                                <th>NGÀY TẠO</th>
+                                <th>TRẠNG THÁI</th>
+                                <th>THAO TÁC</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-1.svg" alt="User" class="company-logo-admin" style="border-radius: 50%;">
+                                        <div class="job-info-cell">
+                                            <span class="job-title-admin">Phan Nhật Minh</span>
+                                            <span class="job-brand-admin">minh.phan@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin" style="background: #FFF7ED; color: #F59E0B;">Nhà tuyển dụng</span></td>
+                                <td><span style="color: #64748B;">09/04/2023</span></td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #22C55E; font-weight: 700; font-size: 12px; text-transform: uppercase;">
+                                        <div style="width: 6px; height: 6px; background: #22C55E; border-radius: 50%;"></div>
+                                        Hoạt động
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-action-admin btn-view">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/ic-view.svg" alt="V">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-2.svg" alt="User" class="company-logo-admin" style="border-radius: 50%;">
+                                        <div class="job-info-cell">
+                                            <span class="job-title-admin">Vũ Minh Khôi</span>
+                                            <span class="job-brand-admin">khoi.vu@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin" style="background: #FFF7ED; color: #F59E0B;">Nhà tuyển dụng</span></td>
+                                <td><span style="color: #64748B;">25/11/2024</span></td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #22C55E; font-weight: 700; font-size: 12px; text-transform: uppercase;">
+                                        <div style="width: 6px; height: 6px; background: #22C55E; border-radius: 50%;"></div>
+                                        Hoạt động
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-action-admin btn-view">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/ic-view.svg" alt="V">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-3.svg" alt="User" class="company-logo-admin" style="border-radius: 50%;">
+                                        <div class="job-info-cell">
+                                            <span class="job-title-admin">Đỗ Thanh Tùng</span>
+                                            <span class="job-brand-admin">tung.do@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin" style="background: #FFF7ED; color: #F59E0B;">Nhà tuyển dụng</span></td>
+                                <td><span style="color: #64748B;">17/08/2021</span></td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #94A3B8; font-weight: 700; font-size: 12px; text-transform: uppercase;">
+                                        <div style="width: 6px; height: 6px; background: #94A3B8; border-radius: 50%;"></div>
+                                        Bị khóa
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-action-admin btn-view">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/ic-view.svg" alt="V">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-4.svg" alt="User" class="company-logo-admin" style="border-radius: 50%;">
+                                        <div class="job-info-cell">
+                                            <span class="job-title-admin">Lê Hoàng Nam</span>
+                                            <span class="job-brand-admin">nam.le@email.com</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin" style="background: #EFF6FF; color: #2563EB;">Ứng viên</span></td>
+                                <td><span style="color: #64748B;">03/12/2025</span></td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #94A3B8; font-weight: 700; font-size: 12px; text-transform: uppercase;">
+                                        <div style="width: 6px; height: 6px; background: #94A3B8; border-radius: 50%;"></div>
+                                        Bị khóa
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-action-admin btn-view">
+                                        <img src="../assets/images/admin-quan-li-nguoi-dung/ic-view.svg" alt="V">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="admin-pagination">
+                        <span style="color: #64748B; font-size: 14px;">Hiển thị <strong>1-10</strong> trong số <strong>1,248</strong> người dùng</span>
+                        <div class="pagination-pills">
+                            <div class="pills-arrow"><img src="../assets/images/admin-quan-li-nguoi-dung/ic-prev-pagnitions.svg" alt="<"></div>
+                            <div class="pills-item active">1</div>
+                            <div class="pills-item">2</div>
+                            <div class="pills-item">3</div>
+                            <div class="pills-item">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/ic-loadmore-pagnition.svg" alt="...">
+                            </div>
+                            <div class="pills-item">125</div>
+                            <div class="pills-arrow"><img src="../assets/images/admin-quan-li-nguoi-dung/ic-next-pagnitions.svg" alt=">"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Promo Block -->
+                <div class="user-promo-block">
+                    <div class="user-promo-content">
+                        <h2 class="user-promo-title">Phân tích hành vi người dùng</h2>
+                        <p class="user-promo-desc">
+                            Sử dụng công cụ quản trị của chúng tôi để tối ưu hóa trải nghiệm ứng viên và đối tác nhà tuyển dụng. Nền tảng hướng tới sự minh bạch và kết nối bền vững.
+                        </p>
+                        <div class="user-promo-avatars">
+                            <div class="avatar-stack">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-1.svg" alt="U1">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-2.svg" alt="U2">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/avt-user-3.svg" alt="U3">
+                                <div class="avatar-more">+21</div>
+                            </div>
+                            <div style="font-size: 14px;">
+                                <strong style="display: block; color: white;">QUẢN TRỊ VIÊN TRỰC TUYẾN</strong>
+                                <span>Hiện có 24 quản trị viên đang làm việc</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="position: absolute; right: -50px; bottom: -50px; width: 300px; height: 300px; border: 40px solid rgba(255,255,255,0.05); border-radius: 50%;"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

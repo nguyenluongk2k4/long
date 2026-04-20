@@ -1,0 +1,164 @@
+/* Admin Global Styles - Shared across all Admin pages */
+:root {
+    --ADMIN-BG: #FAFAFA;
+    --ADMIN-GRAY: #64748B;
+    --ADMIN-BORDER: #E2E8F0;
+    --ADMIN-HEADER-BG: #F3F4F5;
+}
+
+/* Header Search Bar - Exactly 682px width */
+.admin-header-search {
+    position: relative;
+    width: 682px;
+    height: 40px;
+    background: #F1F5F9;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-header-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #1E293B;
+    width: 100%;
+    font-size: 14px;
+    padding: 9px 16px 10px 40px; /* User spec: p-top 9, p-right 16, p-bottom 10, p-left 40 */
+}
+
+.admin-header-search img {
+    position: absolute;
+    left: 16px;
+    opacity: 0.5;
+}
+
+/* Common Buttons */
+.btn-admin-primary {
+    background: #2563EB;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-admin-primary:hover {
+    background: #1D4ED8;
+}
+
+/* Page Title Area */
+.admin-page-title-area {
+    margin-bottom: 30px;
+}
+
+.admin-page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.admin-page-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1E293B;
+    margin: 0;
+}
+
+.admin-page-desc {
+    color: var(--ADMIN-GRAY);
+    margin: 0;
+    font-size: 15px;
+}
+
+/* Shared Components (Badges, Buttons) */
+.status-badge-admin {
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.status-rejected { background: #FEF2F2; color: #EF4444; }
+.status-pending { background: #FFF7ED; color: #F59E0B; }
+.status-approved { background: #F0FDF4; color: #22C55E; }
+
+.action-buttons-admin {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-action-admin {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover { background: #FEF2F2; }
+
+/* Table Components (Job, Company, Location) */
+.job-info-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.job-title-admin {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.job-brand-admin {
+    font-size: 12px;
+    color: #94A3B8;
+}
+
+.company-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.company-logo-admin {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.company-name-admin {
+    font-weight: 700;
+    font-size: 15px;
+    color: #1E293B;
+}
+
+.salary-admin {
+    color: #475569;
+    font-weight: 500;
+}
+
+.location-admin {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #64748B;
+    font-size: 14px;
+}

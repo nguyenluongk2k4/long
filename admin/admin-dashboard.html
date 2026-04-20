@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan hệ thống - Admin JobGos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, ID, email...">
+                </div>
+
+                <div class="header-right">
+                    <div class="icon-notify" style="background: transparent;">
+                        <img src="../assets/images/ic_tquanadmin/ic_thongbao.svg" alt="Notifications" width="24">
+                        <span class="notify-badge"></span>
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 20px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 15px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <!-- Page Title -->
+                <div class="admin-page-title-area">
+                    <div class="admin-page-title-row">
+                        <div>
+                            <h1 class="admin-page-title">Tổng quan hệ thống</h1>
+                            <p class="admin-page-desc">Dữ liệu cập nhật mới nhất vào hôm nay, 24 Tháng 5, 2024</p>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <div class="filter-dropdown" style="padding: 10px 16px; background: white; display: flex; align-items: center; gap: 8px; border-radius: 8px;">
+                                <img src="../assets/images/ic_tquanadmin/ic_calendar.svg" alt="cal" width="18">
+                                <span style="font-size: 14px; font-weight: 600; color: #1E293B;">1 ngày trước</span>
+                                <img src="../assets/images/ic_tquanadmin/ic_dropdown.svg" alt="v" width="14" style="margin-left: 5px;">
+                            </div>
+                            <a href="#" class="btn-admin-primary">
+                                <img src="../assets/images/ic_tquanadmin/ic_xuatbaocao.svg" alt="Export">
+                                Xuất báo cáo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Overview Row -->
+                <section class="admin-overview-stats">
+                    <div class="stat-card-v2">
+                        <div class="stat-v2-info">
+                            <span class="stat-v2-label">Tổng số người dùng</span>
+                            <span class="stat-v2-value">1.284.092</span>
+                            <div class="stat-v2-trend" style="color: #10B981;">
+                                <img src="../assets/images/ic_tquanadmin/ic_tangtruong.svg" alt="up">
+                                +12.5% tháng này
+                            </div>
+                        </div>
+                        <div class="stat-v2-icon">
+                            <img src="../assets/images/ic_tquanadmin/ic_tongsonguoidung.svg" alt="users" width="24">
+                        </div>
+                    </div>
+                    <div class="stat-card-v2">
+                        <div class="stat-v2-info">
+                            <span class="stat-v2-label">Tin tuyển dụng</span>
+                            <span class="stat-v2-value">45.210</span>
+                            <div class="stat-v2-trend" style="color: #10B981;">
+                                <img src="../assets/images/ic_tquanadmin/ic_tangtruong.svg" alt="up">
+                                +8.2% tuần này
+                            </div>
+                        </div>
+                        <div class="stat-v2-icon">
+                            <img src="../assets/images/ic_tquanadmin/ic_tintuyendung.svg" alt="jobs" width="24">
+                        </div>
+                    </div>
+                    <div class="stat-card-v2">
+                        <div class="stat-v2-info">
+                            <span class="stat-v2-label">Công ty</span>
+                            <span class="stat-v2-value">8.432</span>
+                            <div class="stat-v2-trend" style="color: #94A3B8;">
+                                <span>— Ổn định</span>
+                            </div>
+                        </div>
+                        <div class="stat-v2-icon">
+                            <img src="../assets/images/ic_tquanadmin/ic_congty.svg" alt="companies" width="24">
+                        </div>
+                    </div>
+                    <div class="stat-card-v2">
+                        <div class="stat-v2-info">
+                            <span class="stat-v2-label">Báo cáo/khiếu nại</span>
+                            <span class="stat-v2-value">124</span>
+                            <div class="stat-v2-badge">
+                                <img src="../assets/images/ic_tquanadmin/ic_24vieccanxulygap.svg" alt="!" width="12" style="margin-right: 4px;">
+                                24 việc cần xử lý gấp
+                            </div>
+                        </div>
+                        <div class="stat-v2-icon" style="background: #FEF2F2;">
+                            <img src="../assets/images/ic_tquanadmin/ic_baocaokhieunai.svg" alt="reports" width="24">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Charts Row -->
+                <section class="admin-charts-row">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Xu hướng tuyển dụng</h3>
+                                <p class="chart-subtitle">Số lượng tin đăng mới trong 6 tháng qua</p>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background: #2563EB;"></div>
+                                    <span>TIN MỚI</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-dot" style="background: #CBD5E1;"></div>
+                                    <span>HOÀN THÀNH</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-content" style="text-align: center;">
+                            <img src="../assets/images/ic_tquanadmin/Chartxuhuongtuyendung.png" alt="Trend Chart" style="width: 100%; max-height: 300px; object-fit: contain;">
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Trạng thái tin tuyển dụng</h3>
+                                <p class="chart-subtitle">Phân phối trạng thái hiện tại</p>
+                            </div>
+                        </div>
+                        <div class="chart-content" style="text-align: center; position: relative; padding-top: 20px;">
+                            <img src="../assets/images/ic_tquanadmin/Pie Chart_ Trạng thái tin tuyển dụng.svg" alt="Status Chart" style="width: 100%; max-height: 250px; object-fit: contain;">
+                            <!-- Legend for pie chart -->
+                            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 12px; text-align: left; padding: 0 10px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="legend-item"><div class="legend-dot" style="background: #2563EB;"></div><span style="color: #475569; font-weight: 500;">Đã duyệt</span></div>
+                                    <span style="font-weight: 700; color: #1E293B;">65%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="legend-item"><div class="legend-dot" style="background: #F59E0B;"></div><span style="color: #475569; font-weight: 500;">Chờ duyệt</span></div>
+                                    <span style="font-weight: 700; color: #1E293B;">25%</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div class="legend-item"><div class="legend-dot" style="background: #EF4444;"></div><span style="color: #475569; font-weight: 500;">Bị từ chối</span></div>
+                                    <span style="font-weight: 700; color: #1E293B;">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Jobs Table Row (V3 Style) -->
+                <section class="admin-table-v3-wrapper">
+                    <!-- Part 1: Title Area -->
+                    <div class="table-v3-title-area">
+                        <div>
+                            <h3 style="font-size: 20px; font-weight: 800; color: #1E293B; margin: 0;">Tin tuyển dụng mới nhất</h3>
+                            <p style="font-size: 14px; color: #64748B; margin-top: 6px;">Cập nhật theo thời gian thực từ hệ thống</p>
+                        </div>
+                        <a href="manage-jobs.html" style="color: #2563EB; font-weight: 700; font-size: 14px; text-decoration: none; border-bottom: 2.5px solid #2563EB; padding-bottom: 2px;">Xem tất cả</a>
+                    </div>
+
+                    <!-- Part 2 & 3: Table Content -->
+                    <table class="admin-table-v3">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">TÊN CÔNG VIỆC</th>
+                                <th style="width: 25%;">CÔNG TY</th>
+                                <th style="width: 15%;">NGÀY TẠO</th>
+                                <th style="width: 15%;">TRẠNG THÁI</th>
+                                <th style="width: 15%;">HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="company-cell">
+                                            <img src="../assets/images/ic_tquanadmin/Background_NhanvienIT.svg" alt="IT" class="company-logo-admin" style="width: 44px; height: 44px;">
+                                            <div class="job-info-cell">
+                                                <span class="job-title-admin">Nhân viên IT Support / Kỹ thuật hệ thống</span>
+                                                <span class="job-brand-admin">Cyber Eye</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1E293B; font-size: 15px;">VNG Solutions</div>
+                                        <div style="color: #94A3B8; font-size: 12px;">Công nghệ – Hệ thống</div>
+                                    </td>
+                                    <td><span style="color: #64748B; font-weight: 500;">30/12/2020</span></td>
+                                    <td><span class="status-badge-admin status-rejected">Bị từ chối</span></td>
+                                    <td>
+                                        <div class="action-buttons-admin">
+                                            <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="18"></div>
+                                            <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D" width="18"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="company-cell">
+                                            <img src="../assets/images/ic_tquanadmin/Background_Nhanvienchuoicungungnongsan.svg" alt="Supply" class="company-logo-admin" style="width: 44px; height: 44px;">
+                                            <div class="job-info-cell">
+                                                <span class="job-title-admin">Nhân viên Chuỗi cung ứng nông sản</span>
+                                                <span class="job-brand-admin">Agribi</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1E293B; font-size: 15px;">Việt Tiệp</div>
+                                        <div style="color: #94A3B8; font-size: 12px;">Marketing – Truyền thông</div>
+                                    </td>
+                                    <td><span style="color: #64748B; font-weight: 500;">12/05/2023</span></td>
+                                    <td><span class="status-badge-admin status-pending">Chờ duyệt</span></td>
+                                    <td>
+                                        <div class="action-buttons-admin">
+                                            <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="18"></div>
+                                            <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D" width="18"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="company-cell">
+                                            <img src="../assets/images/ic_tquanadmin/Background_kysunangluongtaitao.svg" alt="Energy" class="company-logo-admin" style="width: 44px; height: 44px;">
+                                            <div class="job-info-cell">
+                                                <span class="job-title-admin">Kỹ sư Năng lượng tái tạo</span>
+                                                <span class="job-brand-admin">Green Energy</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1E293B; font-size: 15px;">Công ty Trường An</div>
+                                        <div style="color: #94A3B8; font-size: 12px;">Kinh doanh – Thương mại</div>
+                                    </td>
+                                    <td><span style="color: #64748B; font-weight: 500;">12/09/2024</span></td>
+                                    <td><span class="status-badge-admin status-pending">Chờ duyệt</span></td>
+                                    <td>
+                                        <div class="action-buttons-admin">
+                                            <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="18"></div>
+                                            <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D" width="18"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="company-cell">
+                                            <img src="../assets/images/ic_tquanadmin/Background_NhanvienIT.svg" alt="Marketing" class="company-logo-admin" style="width: 44px; height: 44px;">
+                                            <div class="job-info-cell">
+                                                <span class="job-title-admin">Nhân viên Marketing</span>
+                                                <span class="job-brand-admin">Việt Tiệp</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="font-weight: 700; color: #1E293B; font-size: 15px;">Dell</div>
+                                        <div style="color: #94A3B8; font-size: 12px;">Công nghệ – Phần cứng</div>
+                                    </td>
+                                    <td><span style="color: #64748B; font-weight: 500;">14/08/2026</span></td>
+                                    <td><span class="status-badge-admin status-rejected">Bị từ chối</span></td>
+                                    <td>
+                                        <div class="action-buttons-admin">
+                                            <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="18"></div>
+                                            <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D" width="18"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
