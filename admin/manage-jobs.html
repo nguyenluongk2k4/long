@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tin tuyển dụng - Admin JobGos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+</head>
+<body style="background: #FFFFFF;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_tong_quan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_nguoi_dung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item active">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_tin_tuyen_dung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_cong_ty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_bao_cao_va_khieu_nai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_thong_ke_he_thong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_blog.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_cai_dat_he_thong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/user-dashboard/ic-ho-tro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18" style="position: absolute; left: 14px; opacity: 0.5;">
+                    <input type="text" placeholder="Tìm theo tên, ID, email...">
+                </div>
+
+                <div class="header-right">
+                    <div class="icon-notify" style="background: transparent;">
+                        <img src="../assets/images/user-dashboard/ic-notifications.svg" alt="Notifications" width="24">
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 20px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 15px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="dashboard-content" style="padding: 40px; background: white;">
+                <div class="admin-page-title-area">
+                    <div class="admin-page-title-row">
+                        <div>
+                            <h1 class="admin-page-title">Quản lý tin tuyển dụng</h1>
+                            <p class="admin-page-desc">Quản lý và kiểm duyệt các bài đăng tuyển dụng trên hệ thống.</p>
+                        </div>
+                        <a href="#" class="btn-admin-primary">
+                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-download.svg" alt="Export">
+                            Xuất danh sách
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="admin-filter-bar">
+                    <div class="filter-input-group">
+                        <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18" class="search-icon-gray">
+                        <input type="text" placeholder="Tìm theo vị trí, công ty...">
+                    </div>
+                    <select class="filter-dropdown">
+                        <option value="">Địa điểm</option>
+                        <option value="hanoi">Hà Nội</option>
+                        <option value="hcm">TP. Hồ Chí Minh</option>
+                        <option value="danang">Đà Nẵng</option>
+                        <option value="cantho">Cần Thơ</option>
+                    </select>
+                    <button class="btn-clear-filter">Xóa lọc</button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="admin-tabs">
+                    <div class="admin-tab active">Tất cả(128)</div>
+                    <div class="admin-tab neutral">Chờ duyệt(42)</div>
+                    <div class="admin-tab neutral">Đã duyệt(58)</div>
+                    <div class="admin-tab neutral">Bị từ chối(28)</div>
+                </div>
+
+                <!-- Table -->
+                <div class="admin-table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Tiêu đề tin</th>
+                                <th style="width: 25%;">Công ty</th>
+                                <th style="width: 12%;">Lương</th>
+                                <th style="width: 13%;">Địa điểm</th>
+                                <th style="width: 10%;">Trạng thái</th>
+                                <th style="width: 10%;">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Item 1 -->
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Kỹ sư Nông nghiệp</span>
+                                        <span class="job-brand-admin">Vũ Lâm Green Agriculture</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/logo-1.png" alt="AR Robo" class="company-logo-admin">
+                                        <div>
+                                            <div class="company-name-admin">AR Robo</div>
+                                            <div style="font-size: 12px; color: #64748B;">AI - Robotics</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="salary-admin">Thỏa thuận</span></td>
+                                <td>
+                                    <div class="location-admin">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-destinations.svg" alt="loc" width="14">
+                                        Cần Thơ
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin status-rejected">Bị từ chối</span></td>
+                                <td>
+                                    <div class="action-buttons-admin">
+                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-approve"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-ticked.svg" alt="A"></div>
+                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Item 2 -->
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Nhân viên Chuỗi cung ứng nông sản</span>
+                                        <span class="job-brand-admin">Agribi</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/logo-2.png" alt="VietNet" class="company-logo-admin">
+                                        <div>
+                                            <div class="company-name-admin">VietNet</div>
+                                            <div style="font-size: 12px; color: #64748B;">Công nghệ - Thiết bị mạng</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="salary-admin">20 – 35 triệu</span></td>
+                                <td>
+                                    <div class="location-admin">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-destinations.svg" alt="loc" width="14">
+                                        Lâm Đồng
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin status-pending">Chờ duyệt</span></td>
+                                <td>
+                                    <div class="action-buttons-admin">
+                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-approve"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-ticked.svg" alt="A"></div>
+                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Item 3 -->
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Backend Developer (Java/ Python)</span>
+                                        <span class="job-brand-admin">VNG Solutions</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/logo-3.png" alt="AR Robo" class="company-logo-admin">
+                                        <div>
+                                            <div class="company-name-admin">AR Robo</div>
+                                            <div style="font-size: 12px; color: #64748B;">AI - Robotics</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="salary-admin">8 – 12 triệu</span></td>
+                                <td>
+                                    <div class="location-admin">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-destinations.svg" alt="loc" width="14">
+                                        Hà Nội
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin status-approved">Đã duyệt</span></td>
+                                <td>
+                                    <div class="action-buttons-admin">
+                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-approve"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-ticked.svg" alt="A"></div>
+                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Item 4 -->
+                            <tr>
+                                <td>
+                                    <div class="job-info-cell">
+                                        <span class="job-title-admin">Kỹ sư AI / Robotics</span>
+                                        <span class="job-brand-admin">AR Robo</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="company-cell">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/logo-4.png" alt="AR Robo" class="company-logo-admin">
+                                        <div>
+                                            <div class="company-name-admin">Vũ Lâm Green Agriculture</div>
+                                            <div style="font-size: 12px; color: #64748B;">Nông nghiệp – Công nghệ xanh</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="salary-admin">Thỏa thuận</span></td>
+                                <td>
+                                    <div class="location-admin">
+                                        <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-destinations.svg" alt="loc" width="14">
+                                        Bình Dương
+                                    </div>
+                                </td>
+                                <td><span class="status-badge-admin status-rejected">Bị từ chối</span></td>
+                                <td>
+                                    <div class="action-buttons-admin">
+                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-approve"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-ticked.svg" alt="A"></div>
+                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Pagination Footer -->
+                    <div class="admin-pagination">
+                        <div style="font-size: 14px; color: #64748B;">
+                            Hiển thị <span style="font-weight: 700;">1 - 10</span> trong <span style="font-weight: 700;">128</span> tin tuyển dụng
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <div class="btn-action-admin" style="background: #F1F5F9;"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_prev_pagnition.svg" alt="<"></div>
+                            <div class="admin-tab active" style="min-width: 36px; text-align: center; padding: 8px 0;">1</div>
+                            <div class="admin-tab neutral" style="min-width: 36px; text-align: center; padding: 8px 0;">2</div>
+                            <div class="admin-tab neutral" style="min-width: 36px; text-align: center; padding: 8px 0;">3</div>
+                            <div style="padding: 0 5px;">...</div>
+                            <div class="admin-tab neutral" style="min-width: 36px; text-align: center; padding: 8px 0;">12</div>
+                            <div class="btn-action-admin" style="background: #F1F5F9;"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_next_pagnition.svg" alt=">"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Bottom Cards -->
+                <div class="admin-stats-bottom">
+                    <div class="stat-card-admin active">
+                        <div class="stat-icon-box" style="background: rgba(255,255,255,0.2);">
+                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_tong_tin_dang.svg" alt="T" width="24">
+                        </div>
+                        <div class="stat-value-admin">1,284</div>
+                        <div class="stat-label-admin">Tổng tin đăng</div>
+                        <div class="stat-badge-percent">+12%</div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <div class="stat-icon-box">
+                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_dang_cho_duyet.svg" alt="C" width="24">
+                        </div>
+                        <div class="stat-value-admin" style="color: #1E293B;">42</div>
+                        <div class="stat-label-admin" style="color: #64748B;">Đang chờ duyệt</div>
+                        <div style="width: 8px; height: 8px; background: #FF7332; border-radius: 50%; position: absolute; top: 24px; right: 24px;"></div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <div class="stat-icon-box">
+                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_da_kick_hoat.svg" alt="A" width="24">
+                        </div>
+                        <div class="stat-value-admin" style="color: #1E293B;">912</div>
+                        <div class="stat-label-admin" style="color: #64748B;">Đã kích hoạt</div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <div class="stat-icon-box">
+                            <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_bi_tu_choi.svg" alt="R" width="24">
+                        </div>
+                        <div class="stat-value-admin" style="color: #1E293B;">32</div>
+                        <div class="stat-label-admin" style="color: #64748B;">Tin bị từ chối</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
