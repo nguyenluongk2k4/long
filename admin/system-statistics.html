@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê hệ thống - Admin JobGos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        .stats-grid-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        
+        .card-stats-main {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid #F1F5F9;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+        .chart-title-box h3 { font-size: 20px; font-weight: 800; color: #1E293B; }
+        .chart-legend { display: flex; gap: 16px; margin-top: 8px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: #64748B; }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        
+        .growth-badge-large {
+            text-align: right;
+            color: #2563EB;
+            font-weight: 800;
+            font-size: 20px;
+        }
+        
+        .industry-hot-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid #F1F5F9;
+            height: fit-content;
+        }
+        .industry-bar-row {
+            margin-bottom: 20px;
+        }
+        .industry-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 8px;
+        }
+        .progress-container {
+            height: 6px;
+            background: #F1F5F9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill { height: 100%; border-radius: 10px; }
+        
+        .total-apply-card {
+            background: #0046B5;
+            border-radius: 24px;
+            padding: 32px;
+            color: white;
+            margin-top: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .total-apply-card::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 150px;
+            height: 150px;
+            background: url('../assets/images/ic_quanlycongty/ic_thongkehethong.svg') no-repeat center;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+        
+        .revenue-table-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            margin-top: 32px;
+            border: 1px solid #F1F5F9;
+        }
+        
+        .tab-switcher {
+            display: flex;
+            background: #E2E8F0;
+            padding: 4px;
+            border-radius: 12px;
+            width: fit-content;
+        }
+        .tab-item {
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #64748B;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-item.active {
+            background: white;
+            color: #1E293B;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .status-pill.status-new { background: #F1F5F9; color: #64748B; border: none; }
+        .status-pill.status-stable { background: #EEF2FF; color: #4F46E5; border: none; }
+        .status-pill.status-growing { background: #F0FDF4; color: #16A34A; border: none; }
+    </style>
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="manage-companies.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="system-statistics.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/ic_quanlythongkehethong/ic_timtheoten,IDemail.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, email hoặc ID...">
+                </div>
+
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify" style="background: transparent;">
+                        <img src="../assets/images/ic_quanlythongkehethong/ic_thongbao.svg" alt="Notifications" width="24">
+                        <span class="notify-badge"></span>
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 5px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <!-- Page Title -->
+                <div class="admin-page-title-row" style="margin-bottom: 0;">
+                    <div>
+                        <h1 class="admin-page-title">Thống kê hệ thống</h1>
+                        <p class="admin-page-desc" style="color: #64748B;">Phân tích chuyên sâu về hiệu suất nền tảng JobsGO</p>
+                    </div>
+                    <div class="tab-switcher">
+                        <div class="tab-item">Tuần</div>
+                        <div class="tab-item active">Tháng</div>
+                        <div class="tab-item">Quý</div>
+                        <div class="tab-item">Năm</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid-top">
+                    <!-- Growth Chart Card -->
+                    <div class="card-stats-main">
+                        <div class="chart-header">
+                            <div class="chart-title-box">
+                                <h3>Phân tích tăng trưởng người dùng</h3>
+                                <div class="chart-legend">
+                                    <div class="legend-item"><span class="dot" style="background: #2563EB;"></span> Ứng viên</div>
+                                    <div class="legend-item"><span class="dot" style="background: #F97316;"></span> Nhà tuyển dụng</div>
+                                </div>
+                            </div>
+                            <div class="growth-badge-large">
+                                +12.5%
+                                <div style="font-size: 10px; color: #94A3B8; font-weight: 600;">SO VỚI THÁNG TRƯỚC</div>
+                            </div>
+                        </div>
+                        <img src="../assets/images/ic_quanlythongkehethong/BarLineChart_Phan tich tang truong nguoi dung.svg" alt="Chart" style="width: 100%; margin-top: 20px;">
+                    </div>
+
+                    <!-- Side Stats -->
+                    <div>
+                        <div class="industry-hot-card">
+                            <h3 style="font-size: 18px; font-weight: 800; color: #1E293B; margin-bottom: 24px;">Lĩnh vực nghề nghiệp hot</h3>
+                            
+                            <div class="industry-bar-row">
+                                <div class="industry-bar-label">
+                                    <span>Công nghệ - Phần cứng</span>
+                                    <span style="color: #64748B;">1,240 tin</span>
+                                </div>
+                                <div class="progress-container">
+                                    <div class="progress-fill" style="width: 85%; background: #2563EB;"></div>
+                                </div>
+                            </div>
+
+                            <div class="industry-bar-row">
+                                <div class="industry-bar-label">
+                                    <span>Tài chính - Ngân hàng</span>
+                                    <span style="color: #64748B;">500 tin</span>
+                                </div>
+                                <div class="progress-container">
+                                    <div class="progress-fill" style="width: 45%; background: #94A3B8;"></div>
+                                </div>
+                            </div>
+
+                            <div class="industry-bar-row">
+                                <div class="industry-bar-label">
+                                    <span>Nội thất - Thiết kế</span>
+                                    <span style="color: #64748B;">1,240 tin</span>
+                                </div>
+                                <div class="progress-container">
+                                    <div class="progress-fill" style="width: 85%; background: #2563EB;"></div>
+                                </div>
+                            </div>
+
+                            <div class="industry-bar-row">
+                                <div class="industry-bar-label">
+                                    <span>Bất động sản</span>
+                                    <span style="color: #64748B;">500 tin</span>
+                                </div>
+                                <div class="progress-container">
+                                    <div class="progress-fill" style="width: 45%; background: #94A3B8;"></div>
+                                </div>
+                            </div>
+
+                            <a href="#" style="display: block; text-align: center; color: #2563EB; font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 12px;">Xem tất cả lĩnh vực</a>
+                        </div>
+
+                        <div class="total-apply-card">
+                            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Tổng lượt ứng tuyển</span>
+                            <div style="font-size: 36px; font-weight: 800; margin: 8px 0;">156,892</div>
+                            <div style="background: rgba(255,255,255,0.2); width: fit-content; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+                                <img src="../assets/images/ic_quanlythongkehethong/ic-tang.svg" alt="up" width="12" style="filter: brightness(0) invert(1);">
+                                24%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Table Section -->
+                <div class="revenue-table-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                        <div>
+                            <h3 style="font-size: 20px; font-weight: 800; color: #1E293B;">Thống kê doanh thu</h3>
+                            <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Dữ liệu doanh thu được mô phỏng nhằm phục vụ đánh giá hiệu quả hệ thống.</p>
+                        </div>
+                        <button class="btn-admin-primary" style="background: #E2E8F0; color: #2563EB; border: none; padding: 8px 20px;">
+                            <img src="../assets/images/ic_quanlythongkehethong/ic_Xuat bao cao.svg" alt="down" width="18" style="margin-right: 8px;">
+                            Xuất báo cáo
+                        </button>
+                    </div>
+
+                    <table class="admin-table">
+                        <thead style="background: #E7E8E9;">
+                            <tr>
+                                <th style="padding: 20px 24px;">TÊN GÓI DỊCH VỤ</th>
+                                <th style="text-align: center;">SỐ LƯỢNG BÁN</th>
+                                <th style="text-align: center;">ĐƠN GIÁ TRUNG BÌNH</th>
+                                <th style="text-align: center;">TỔNG DOANH THU</th>
+                                <th style="text-align: center;">TRẠNG THÁI</th>
+                                <th style="text-align: center;">HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 24px;">
+                                    <div style="font-weight: 800; color: #1E293B; font-size: 16px;">Standard Post</div>
+                                    <div style="font-size: 12px; color: #64748B; margin-top: 4px;">Đăng tin cơ bản tiết kiệm</div>
+                                </td>
+                                <td style="text-align: center; font-weight: 700;">850</td>
+                                <td style="text-align: center; font-weight: 700;">12M</td>
+                                <td style="text-align: center; font-weight: 800; color: #2563EB;">300,000,000</td>
+                                <td style="text-align: center;"><span class="status-pill status-new">MỚI</span></td>
+                                <td style="text-align: center;">
+                                    <img src="../assets/images/ic_quanlythongkehethong/ic_Hanh dong.svg" alt="action" style="cursor: pointer;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 24px;">
+                                    <div style="font-weight: 800; color: #1E293B; font-size: 16px;">JobsGO Pro Max</div>
+                                    <div style="font-size: 12px; color: #64748B; margin-top: 4px;">Ưu tiên hiển thị & lọc CV bằng AI</div>
+                                </td>
+                                <td style="text-align: center; font-weight: 700;">850</td>
+                                <td style="text-align: center; font-weight: 700;">12M</td>
+                                <td style="text-align: center; font-weight: 800; color: #2563EB;">1,000,000,000</td>
+                                <td style="text-align: center;"><span class="status-pill status-stable">ỔN ĐỊNH</span></td>
+                                <td style="text-align: center;">
+                                    <img src="../assets/images/ic_quanlythongkehethong/ic_Hanh dong.svg" alt="action" style="cursor: pointer;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 24px;">
+                                    <div style="font-weight: 800; color: #1E293B; font-size: 16px;">Employer Branding</div>
+                                    <div style="font-size: 12px; color: #64748B; margin-top: 4px;">Quảng bá thương hiệu công ty</div>
+                                </td>
+                                <td style="text-align: center; font-weight: 700;">850</td>
+                                <td style="text-align: center; font-weight: 700;">150K</td>
+                                <td style="text-align: center; font-weight: 800; color: #2563EB;">1,000,000,000</td>
+                                <td style="text-align: center;"><span class="status-pill status-growing">TĂNG TRƯỞNG</span></td>
+                                <td style="text-align: center;">
+                                    <img src="../assets/images/ic_quanlythongkehethong/ic_Hanh dong.svg" alt="action" style="cursor: pointer;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
