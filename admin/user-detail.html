@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết người dùng - Admin JobGos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        .user-detail-header-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .user-header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .user-header-info h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .status-badge-active {
+            font-size: 10px;
+            font-weight: 800;
+            color: #10B981;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+        }
+        .status-dot-active {
+            width: 6px;
+            height: 6px;
+            background: #10B981;
+            border-radius: 50%;
+        }
+        .user-sub-info {
+            font-size: 14px;
+            color: #64748B;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-ban-user {
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: 1px solid #F1F5F9;
+            background: white;
+            color: #DC2626;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-ban-user:hover {
+            background: #FEF2F2;
+            border-color: #FEE2E2;
+        }
+
+        .user-grid-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        /* Left Column Cards */
+        .info-card-sidebar {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .sidebar-card-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .sidebar-info-item {
+            margin-bottom: 20px;
+        }
+        .sidebar-info-label {
+            font-size: 12px;
+            color: #94A3B8;
+            margin-bottom: 4px;
+            display: block;
+            font-weight: 500;
+        }
+        .sidebar-info-value {
+            font-size: 14px;
+            color: #1E293B;
+            font-weight: 700;
+            word-break: break-all;
+        }
+        .verification-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .verification-text h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 2px;
+        }
+        .verification-text p {
+            font-size: 11px;
+            color: #94A3B8;
+        }
+
+        /* Right Column Tabs & Stats */
+        .user-detail-tabs {
+            display: flex;
+            gap: 32px;
+            border-bottom: 1px solid #F1F5F9;
+            margin-bottom: 32px;
+        }
+        .tab-item-u {
+            padding: 12px 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #64748B;
+            cursor: pointer;
+            position: relative;
+        }
+        .tab-item-u.active {
+            color: #2563EB;
+        }
+        .tab-item-u.active::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563EB;
+        }
+
+        .user-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .stat-card-u {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .stat-icon-u {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-info-u .s-label {
+            font-size: 12px;
+            color: #64748B;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .stat-info-u .s-value {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1E293B;
+        }
+        .trend-u {
+            font-size: 11px;
+            font-weight: 700;
+            color: #10B981;
+            margin-left: 8px;
+        }
+
+        /* History Table Card */
+        .history-card-u {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .history-table-u {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+        }
+        .history-table-u th {
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            padding: 16px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .history-table-u td {
+            padding: 20px 16px;
+            font-size: 14px;
+            color: #475569;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .device-info-u {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .status-login-success { color: #10B981; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .success-dot { width: 6px; height: 6px; background: #10B981; border-radius: 50%; }
+        .status-login-failed { color: #DC2626; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .failed-dot { width: 6px; height: 6px; background: #DC2626; border-radius: 50%; }
+
+        /* Notes Card */
+        .notes-card-u {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .notes-textarea {
+            width: 100%;
+            height: 160px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: none;
+            margin-top: 20px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .notes-textarea:focus {
+            border-color: #2563EB;
+        }
+        .notes-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            align-items: center;
+            gap: 16px;
+        }
+        .btn-save-note-u {
+            width: 129px;
+            height: 36px;
+            border-radius: 8px;
+            padding: 8px 24px;
+            background: #2E3132;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+        .btn-save-note-u:hover {
+            opacity: 0.9;
+        }
+        /* Ban Modal V3 */
+        .ban-modal-v3-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(4px);
+        }
+        .ban-modal-v3-container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: modalFadeIn 0.3s ease;
+        }
+        .ban-modal-v3-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .ban-modal-v3-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+        }
+        .ban-modal-v3-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 12px;
+        }
+        .ban-modal-v3-desc {
+            font-size: 15px;
+            color: #64748B;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+        .form-group-ban {
+            margin-bottom: 24px;
+        }
+        .ban-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #94A3B8;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .ban-select, .ban-textarea {
+            width: 100%;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .ban-select:focus, .ban-textarea:focus {
+            border-color: #2563EB;
+        }
+        .ban-textarea {
+            height: 120px;
+            resize: none;
+        }
+        .ban-checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #475569;
+            margin-bottom: 32px;
+            cursor: pointer;
+        }
+        .ban-modal-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn-ban-confirm {
+            background: #BA1A1A;
+            color: white;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+        }
+        .btn-ban-cancel {
+            background: white;
+            border: 1px solid #E2E8F0;
+            color: #64748B;
+            font-weight: 700;
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+        }
+
+        /* Success Alert - Top Center */
+        .toast-ban-success {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 16px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            transition: top 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            min-width: 420px;
+            border: 1px solid #F1F5F9;
+        }
+        .toast-ban-success.show {
+            top: 40px;
+        }
+    </style>
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="manage-companies.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="system-statistics.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="manage-blog.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="system-settings.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Area -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/ic_caidathethong/ic_timtheoten,IDemail.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, email hoặc ID...">
+                </div>
+
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify" style="background: transparent; position: relative; cursor: pointer;" onclick="location.href='notifications.html'">
+                        <img src="../assets/images/ic_caidathethong/ic_thongbao.svg" alt="Notifications" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 5px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <!-- Header Card -->
+                <div class="user-detail-header-card">
+                    <div class="user-header-left">
+                        <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-avt.svg" alt="Avatar" width="80" height="80">
+                        <div class="user-header-info">
+                            <h1>Nguyễn Văn An <span class="status-badge-active"><span class="status-dot-active"></span> HOẠT ĐỘNG</span></h1>
+                            <div class="user-sub-info">
+                                <span>ID: #USR-8821</span>
+                                <span>&bull;</span>
+                                <span style="color: #2563EB; font-weight: 700;">Nhà tuyển dụng</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-ban-user" onclick="showBanModal()">
+                        <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-ban.svg" alt="ban" width="18">
+                        Khóa tài khoản
+                    </button>
+                </div>
+
+                <div class="user-grid-container">
+                    <!-- Left Sidebar Info -->
+                    <div class="user-sidebar-col">
+                        <div class="info-card-sidebar">
+                            <span class="sidebar-card-title">THÔNG TIN CƠ BẢN</span>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Email</span>
+                                <span class="sidebar-info-value">an.nguyen@company.com</span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Số điện thoại</span>
+                                <span class="sidebar-info-value">+84 901 234 567</span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Vai trò</span>
+                                <span class="sidebar-info-value" style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-role-nha-tuyen-dung.svg" alt="role" width="16">
+                                    Nhà tuyển dụng
+                                </span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Ngày tham gia</span>
+                                <span class="sidebar-info-value">15 tháng 10, 2023</span>
+                            </div>
+                        </div>
+
+                        <div class="info-card-sidebar">
+                            <span class="sidebar-card-title">TRẠNG THÁI XÁC THỰC</span>
+                            <div class="verification-box">
+                                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/img-da-xac-minh.svg" alt="verified" width="32">
+                                <div class="verification-text">
+                                    <h4>Đã xác minh danh tính</h4>
+                                    <p>Xác thực qua CCCD/Hộ chiếu</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main content col -->
+                    <div class="user-main-col">
+                        <div class="user-detail-tabs">
+                            <div class="tab-item-u active">Tổng quan</div>
+                            <div class="tab-item-u">Lịch sử hoạt động</div>
+                        </div>
+
+                        <div class="user-stats-grid">
+                            <div class="stat-card-u">
+                                <div class="stat-icon-u">
+                                    <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/img-luot-dang-nhap.svg" alt="login">
+                                </div>
+                                <div class="stat-info-u">
+                                    <span class="s-label">Lượt đăng nhập <span class="trend-u">+12% &uarr;</span></span>
+                                    <span class="s-value">1,248</span>
+                                </div>
+                            </div>
+                            <div class="stat-card-u">
+                                <div class="stat-icon-u">
+                                    <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/img-so-bao-cao-nhan.svg" alt="report">
+                                </div>
+                                <div class="stat-info-u">
+                                    <span class="s-label">Số báo cáo nhận <span style="color: #94A3B8; font-weight: 600; margin-left: 8px;">Tháng này</span></span>
+                                    <span class="s-value">02</span>
+                                </div>
+                            </div>
+                            <div class="stat-card-u">
+                                <div class="stat-icon-u">
+                                    <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/img-xep-hang.svg" alt="rank">
+                                </div>
+                                <div class="stat-info-u">
+                                    <span class="s-label">Điểm uy tín <span style="color: #94A3B8; font-weight: 600; margin-left: 8px;">Xếp hạng</span></span>
+                                    <span class="s-value">9.8<span style="font-size: 14px; color: #94A3B8; font-weight: 600;">/10</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="history-card-u">
+                            <span class="sidebar-card-title">LỊCH SỬ ĐĂNG NHẬP</span>
+                            <table class="history-table-u">
+                                <thead>
+                                    <tr>
+                                        <th>THỜI GIAN</th>
+                                        <th>THIẾT BỊ</th>
+                                        <th>ĐỊA CHỈ IP</th>
+                                        <th>TRẠNG THÁI</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 700;">Hôm nay, 08:45</td>
+                                        <td>
+                                            <div class="device-info-u">
+                                                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-mac.svg" alt="mac" width="16">
+                                                MacBook Pro - Chrome
+                                            </div>
+                                        </td>
+                                        <td style="font-family: 'Courier New', Courier, monospace;">192.168.1.1</td>
+                                        <td><span class="status-login-success"><span class="success-dot"></span> Thành công</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">Hôm qua, 22:15</td>
+                                        <td>
+                                            <div class="device-info-u">
+                                                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-iphone.svg" alt="iphone" width="16">
+                                                iPhone 15 Pro - Safari
+                                            </div>
+                                        </td>
+                                        <td style="font-family: 'Courier New', Courier, monospace;">113.161.45.12</td>
+                                        <td><span class="status-login-success"><span class="success-dot"></span> Thành công</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">12 Th10, 14:20</td>
+                                        <td>
+                                            <div class="device-info-u">
+                                                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-window.svg" alt="win" width="16">
+                                                Windows PC - Edge
+                                            </div>
+                                        </td>
+                                        <td style="font-family: 'Courier New', Courier, monospace;">42.115.89.231</td>
+                                        <td><span class="status-login-success"><span class="success-dot"></span> Thành công</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">10 Th10, 09:12</td>
+                                        <td>
+                                            <div class="device-info-u">
+                                                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-iphone.svg" alt="iphone" width="16">
+                                                iPhone 15 Pro - Safari
+                                            </div>
+                                        </td>
+                                        <td style="font-family: 'Courier New', Courier, monospace;">113.161.45.12</td>
+                                        <td><span class="status-login-success"><span class="success-dot"></span> Thành công</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight: 700;">08 Th10, 18:30</td>
+                                        <td>
+                                            <div class="device-info-u">
+                                                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/ic-mac.svg" alt="mac" width="16">
+                                                MacBook Pro - Chrome
+                                            </div>
+                                        </td>
+                                        <td style="font-family: 'Courier New', Courier, monospace;">192.168.1.1</td>
+                                        <td><span class="status-login-failed"><span class="failed-dot"></span> Thất bại</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="notes-card-u">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <span class="sidebar-card-title" style="margin-bottom: 0;">GHI CHÚ QUẢN TRỊ</span>
+                                <span style="font-size: 11px; color: #94A3B8; font-style: italic;">Chỉ quản trị viên mới nhìn thấy</span>
+                            </div>
+                            <textarea class="notes-textarea" placeholder="Nhập ghi chú quan trọng về người dùng này..."></textarea>
+                            <div class="notes-footer">
+                                <button class="btn-save-note-u">Lưu ghi chú</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Khóa Tài Khoản -->
+    <div id="banUserModal" class="ban-modal-v3-overlay">
+        <div class="ban-modal-v3-container">
+            <div class="ban-modal-v3-header">
+                <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/modal/ic-title-khoa-tai-khoan.svg" alt="lock" class="ban-modal-v3-icon">
+                <h2 class="ban-modal-v3-title">Khóa tài khoản người dùng</h2>
+                <p class="ban-modal-v3-desc">Tài khoản sẽ bị tạm ngừng hoạt động. Người dùng sẽ không thể đăng nhập hoặc thực hiện các thao tác trên hệ thống trong thời gian bị khóa.</p>
+            </div>
+
+            <div class="form-group-ban">
+                <label class="ban-label">THỜI GIAN KHÓA</label>
+                <select class="ban-select">
+                    <option>Vô thời hạn</option>
+                    <option>30 ngày</option>
+                    <option>60 ngày</option>
+                    <option>90 ngày</option>
+                </select>
+            </div>
+
+            <div class="form-group-ban">
+                <label class="ban-label">LÝ DO KHÓA (BẮT BUỘC)</label>
+                <select class="ban-select">
+                    <option>Vi phạm chính sách cộng đồng</option>
+                    <option>Spam tin tuyển dụng</option>
+                    <option>Lừa đảo ứng viên</option>
+                    <option>Khác</option>
+                </select>
+            </div>
+
+            <div class="form-group-ban">
+                <label class="ban-label">LÝ DO KHÓA TÀI KHOẢN <span style="color: #DC2626;">*</span></label>
+                <textarea class="ban-textarea" placeholder="Nhập lý do cụ thể..."></textarea>
+            </div>
+
+            <label class="ban-checkbox-row">
+                <input type="checkbox">
+                Gửi email thông báo cho người dùng
+            </label>
+
+            <div class="ban-modal-actions">
+                <button class="btn-ban-cancel" onclick="closeBanModal()">Hủy</button>
+                <button class="btn-ban-confirm" onclick="confirmBan()">Xác nhận khóa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Thành công -->
+    <div id="banSuccessAlert" class="toast-ban-success">
+        <img src="../assets/images/admin-quan-li-nguoi-dung/chi-tiet/modal/ic-title-khoa-tai-khoan.svg" alt="success" width="48">
+        <span style="font-size: 16px; font-weight: 800; color: #0F172A; flex: 1;">Khóa tài khoản người dùng thành công</span>
+        <div style="color: #94A3B8; font-size: 24px; cursor: pointer;" onclick="closeBanAlert()">&times;</div>
+    </div>
+
+    <script>
+        function showBanModal() {
+            document.getElementById('banUserModal').style.display = 'flex';
+        }
+        function closeBanModal() {
+            document.getElementById('banUserModal').style.display = 'none';
+        }
+        function closeBanAlert() {
+            document.getElementById('banSuccessAlert').classList.remove('show');
+        }
+        function confirmBan() {
+            closeBanModal();
+            const alert = document.getElementById('banSuccessAlert');
+            alert.classList.add('show');
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
