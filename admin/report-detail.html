@@ -199,6 +199,392 @@
             font-size: 11px;
             font-weight: 700;
         }
+
+        /* Modal Styles */
+        .modal-overlay-j {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay-j.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content-v2-j {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            width: 720px;
+            max-width: 90vw;
+            padding: 48px;
+        }
+        .modal-overlay-j.active .modal-content-v2-j {
+            transform: translateY(0);
+        }
+
+        .modal-title-j {
+            font-size: 40px;
+            font-weight: 800;
+            color: #2563EB;
+            margin-bottom: 8px;
+        }
+        .modal-subtitle-j {
+            font-size: 14px;
+            color: #64748B;
+            margin-bottom: 40px;
+        }
+
+        .section-label-j {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1E3A8A;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .solve-options-j {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .solve-card-j {
+            border: 2px solid #F1F5F9;
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .solve-card-j:hover { background: #F8FAFC; border-color: #E2E8F0; }
+        .solve-card-j.active {
+            border-color: #2563EB;
+            background: white;
+            box-shadow: 0 0 0 1px #2563EB;
+        }
+
+        .card-icon-j {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .card-main-j {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .card-name-j {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1E293B;
+        }
+        .card-desc-j {
+            font-size: 12px;
+            color: #64748B;
+            line-height: 1.5;
+        }
+
+        .reason-textarea-j {
+            width: 100%;
+            height: 120px;
+            border: 2px solid #F1F5F9;
+            border-radius: 16px;
+            padding: 20px;
+            font-size: 14px;
+            color: #1E293B;
+            font-family: inherit;
+            margin-bottom: 32px;
+            background: #F8FAFC;
+            resize: none;
+            transition: all 0.2s;
+        }
+        .reason-textarea-j:focus {
+            outline: none;
+            border-color: #2563EB;
+            background: white;
+        }
+
+        .handling-actions-j {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .action-checkbox-j {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .custom-check-j {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #CBD5E1;
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .action-checkbox-j input { display: none; }
+        .action-checkbox-j input:checked + .custom-check-j {
+            background: #2563EB;
+            border-color: #2563EB;
+        }
+        .action-checkbox-j input:checked + .custom-check-j::after {
+            content: "";
+            width: 10px;
+            height: 5px;
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(-45deg) translateY(-1px);
+        }
+
+        .action-text-j {
+            font-size: 14px;
+            color: #475569;
+        }
+        .action-label-j {
+            font-weight: 700;
+            color: #1E293B;
+            display: block;
+        }
+        .action-sub-j {
+            font-size: 12px;
+            color: #94A3B8;
+            font-style: italic;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .modal-footer-j {
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid #F1F5F9;
+            margin: 0 -48px -48px;
+            padding: 24px 48px;
+            background: #F8FAFC;
+            border-radius: 0 0 32px 32px;
+        }
+        .btn-cancel-j {
+            padding: 12px 32px;
+            border-radius: 10px;
+            border: 1px solid #E2E8F0;
+            background: white;
+            color: #64748B;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-cancel-j:hover { background: #F1F5F9; }
+
+        .btn-confirm-solve-j {
+            background: #2563EB;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-confirm-solve-j:hover { background: #1D4ED8; transform: translateY(-1px); }
+
+        /* Animation for Toast */
+        @keyframes slideDownToast {
+            from { top: -100px; opacity: 0; transform: translateX(-50%); }
+            to { top: 40px; opacity: 1; transform: translateX(-50%); }
+        }
+        @keyframes slideUpToast {
+            from { top: 40px; opacity: 1; transform: translateX(-50%); }
+            to { top: -100px; opacity: 0; transform: translateX(-50%); }
+        }
+        .success-toast-j {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid #DCFCE7;
+        }
+        /* Reject Modal Specifics */
+        .modal-content-v3-j {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            width: 720px;
+            max-width: 90vw;
+            padding: 48px;
+            text-align: center;
+        }
+        .modal-overlay-j.active .modal-content-v3-j {
+            transform: translateY(0);
+        }
+
+        .icon-bg-red-j {
+            width: 80px;
+            height: 80px;
+            background: #FEE2E2;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .modal-title-black-j {
+            font-size: 32px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .reject-select-j {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #334155;
+            background: white;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9L12 15L18 9' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        .reject-textarea-j {
+            width: 100%;
+            height: 120px;
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 16px;
+            font-size: 14px;
+            color: #334155;
+            margin-top: 8px;
+            resize: none;
+            font-family: inherit;
+        }
+
+        .btn-confirm-reject-j {
+            background: #BA1A1A;
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            width: 50%;
+            transition: all 0.2s;
+        }
+        .btn-confirm-reject-j:hover { background: #9F1239; }
+
+        .btn-white-cancel-j {
+            background: white;
+            color: #64748B;
+            border: 1px solid #E2E8F0;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            width: 50%;
+            transition: all 0.2s;
+        }
+        .btn-white-cancel-j:hover { background: #F8FAFC; }
+
+        /* Compact & Balanced Toast Styles (Exactly like Screenshot) */
+        .top-success-alert-j {
+            display: none;
+            padding: 14px 24px;
+            background: white;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000;
+            border: 1px solid #F1F5F9;
+            align-items: center;
+            gap: 12px;
+            width: fit-content;
+        }
+
+        .alert-content-wrapper-j {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast-text-j {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .toast-resolved-text { color: #2563EB; }
+        .toast-rejected-text { color: #000; }
+
+        .close-toast-v2-j {
+            color: #475569;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+            margin-left: 32px; /* Pull the X away as per screenshot */
+            font-weight: 400;
+        }
+
+        .icon-box-toast-j {
+            width: 28px;
+            height: 28px;
+            background: #FEE2E2;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Animation for Toast */
+        @keyframes slideDownToast {
+            from { top: -100px; opacity: 0; transform: translateX(-50%); }
+            to { top: 24px; opacity: 1; transform: translateX(-50%); }
+        }
+        @keyframes slideUpToast {
+            from { top: 24px; opacity: 1; transform: translateX(-50%); }
+            to { top: -100px; opacity: 0; transform: translateX(-50%); }
+        }
     </style>
 </head>
 <body style="background: #FAFAFA;">
@@ -302,7 +688,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn-solve-j">
+                    <button class="btn-solve-j" onclick="showSolveModal()">
                         <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/ic-giai-quyet.svg" alt="V" width="18">
                         Giải quyết
                     </button>
@@ -435,5 +821,217 @@
             </div>
         </main>
     </div>
+    <!-- Standardized Resolved Toast (Horizontal, No Icon) -->
+    <div id="toastResolved" class="top-success-alert-j">
+        <span class="toast-text-j toast-resolved-text">Đã giải quyết báo cáo</span>
+        <div class="close-toast-v2-j" onclick="hideToast('toastResolved')">&times;</div>
+    </div>
+
+    <!-- Standardized Rejected Toast (Horizontal, with Icon) -->
+    <div id="toastRejected" class="top-success-alert-j">
+        <div class="">
+            <img src="../assets/images/admin-quan-li-bao-cao/modal/ic-title-bao-cao-vi-pham.svg" alt="!" width="30">
+        </div>
+        <span class="toast-text-j toast-rejected-text">Đã từ chối báo cáo vi phạm</span>
+        <div class="close-toast-v2-j" onclick="hideToast('toastRejected')">&times;</div>
+    </div>
+
+    <!-- Modal Giải quyết báo cáo -->
+    <div id="solveModal" class="modal-overlay-j">
+        <div class="modal-content-v2-j">
+            <h2 class="modal-title-j">Giải quyết báo cáo #RP-1284</h2>
+            <p class="modal-subtitle-j">Vui lòng xem xét kỹ các bằng chứng trước khi thực hiện.</p>
+
+            <div class="modal-section-j">
+                <span class="section-label-j">01. KẾT QUẢ GIẢI QUYẾT</span>
+                <div class="solve-options-j">
+                    <div class="solve-card-j active" onclick="selectSolveOption(this, 'approve')">
+                        <img src="../assets/images/admin-quan-li-bao-cao/modal/icon-dong-y-bao-cao.svg" alt="Yes" class="card-icon-j">
+                        <div class="card-main-j">
+                            <span class="card-name-j">Chấp nhận báo cáo</span>
+                            <span class="card-desc-j">Xác nhận có hành vi vi phạm chính sách cộng đồng.</span>
+                        </div>
+                    </div>
+                    <div class="solve-card-j" onclick="selectSolveOption(this, 'reject')">
+                        <img src="../assets/images/admin-quan-li-bao-cao/modal/ic-tu-choi-bao-cao.svg" alt="No" class="card-icon-j">
+                        <div class="card-main-j">
+                            <span class="card-name-j">Từ chối báo cáo</span>
+                            <span class="card-desc-j">Không đủ bằng chứng hoặc nội dung báo cáo hợp lệ.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section-j">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <span class="section-label-j" style="margin-bottom: 0;">02. LÝ DO CHI TIẾT</span>
+                    <span style="font-size: 10px; font-weight: 800; color: #64748B; background: #F1F5F9; padding: 2px 8px; border-radius: 4px;">BẮT BUỘC</span>
+                </div>
+                <textarea class="reason-textarea-j" placeholder="Nhập lý do giải quyết chi tiết để gửi cho các bên liên quan..."></textarea>
+            </div>
+
+            <div class="modal-section-j">
+                <span class="section-label-j">03. HÀNH ĐỘNG XỬ LÝ</span>
+                <div class="handling-actions-j">
+                    <label class="action-checkbox-j">
+                        <input type="checkbox" checked>
+                        <div class="custom-check-j"></div>
+                        <span class="action-text-j">Gửi thông báo cho người báo cáo (Reporter)</span>
+                    </label>
+                    <label class="action-checkbox-j">
+                        <input type="checkbox" checked>
+                        <div class="custom-check-j"></div>
+                        <span class="action-text-j">Gửi thông báo cho đối tượng bị báo cáo (Reported)</span>
+                    </label>
+                    <label class="action-checkbox-j">
+                        <input type="checkbox">
+                        <div class="custom-check-j"></div>
+                        <div class="action-text-j">
+                            <span class="action-label-j">Khóa tài khoản đối tượng bị báo cáo</span>
+                            <span class="action-sub-j">Áp dụng ngay lập tức nếu chọn "Chấp nhận báo cáo"</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-footer-j">
+                <button class="btn-cancel-j" onclick="closeSolveModal()">Hủy</button>
+                <button class="btn-confirm-solve-j" onclick="confirmSolve()">
+                    <img src="../assets/images/admin-quan-li-bao-cao/modal/ic-bt-xac-nhan-giai-quyet.svg" alt="V" width="18">
+                    Xác nhận giải quyết
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Từ chối báo cáo -->
+    <div id="rejectModal" class="modal-overlay-j">
+        <div class="modal-content-v3-j">
+            <div class="">
+                <img src="../assets/images/admin-quan-li-bao-cao/modal/ic-title-bao-cao-vi-pham.svg" alt="Alert">
+            </div>
+            
+            <h2 class="modal-title-black-j">Từ chối báo cáo vi phạm</h2>
+            <p style="font-size: 14px; color: #64748B; margin-bottom: 32px;">Hành động này sẽ đóng báo cáo mà không xử lý vi phạm.</p>
+
+            <div style="text-align: left;">
+                <span style="font-size: 13px; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.5px;">LÝ DO TỪ CHỐI (BẮT BUỘC)</span>
+                <select class="reject-select-j">
+                    <option value="">Chọn lý do từ chối báo cáo</option>
+                    <option value="1">Nội dung không vi phạm</option>
+                    <option value="2">Thiếu bằng chứng xác thực</option>
+                    <option value="3">Báo cáo spam/không hợp lệ</option>
+                </select>
+            </div>
+
+            <div style="text-align: left; margin-top: 24px;">
+                <span style="font-size: 13px; font-weight: 800; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.5px;">PHẢN HỒI CHI TIẾT CHO NGƯỜI GỬI</span>
+                <textarea class="reject-textarea-j" placeholder="Nhập lý do cụ thể..."></textarea>
+            </div>
+
+            <div class="handling-actions-j" style="margin-top: 24px; margin-bottom: 32px;">
+                <label class="action-checkbox-j">
+                    <input type="checkbox">
+                    <div class="custom-check-j"></div>
+                    <span class="action-text-j" style="font-size: 14px; color: #1E293B; font-weight: 500;">Gửi thông báo email cho người báo cáo</span>
+                </label>
+                <label class="action-checkbox-j">
+                    <input type="checkbox">
+                    <div class="custom-check-j"></div>
+                    <span class="action-text-j" style="font-size: 14px; color: #1E293B; font-weight: 500;">Đánh dấu báo cáo giả mạo/spam (nếu cần)</span>
+                </label>
+            </div>
+
+            <div style="display: flex; gap: 24px;">
+                <button class="btn-white-cancel-j" onclick="closeRejectModal()">Hủy</button>
+                <button class="btn-confirm-reject-j" onclick="confirmReject()">Xác nhận từ chối</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSolveModal() {
+            document.getElementById('solveModal').classList.add('active');
+        }
+
+        function closeSolveModal() {
+            document.getElementById('solveModal').classList.remove('active');
+        }
+
+        function showRejectModal() {
+            document.getElementById('rejectModal').classList.add('active');
+        }
+
+        function closeRejectModal() {
+            document.getElementById('rejectModal').classList.remove('active');
+        }
+
+        function selectSolveOption(el, type) {
+            document.querySelectorAll('.solve-card-j').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+            
+            if (type === 'reject') {
+                setTimeout(() => {
+                    closeSolveModal();
+                    showRejectModal();
+                }, 300);
+            }
+        }
+
+        function confirmSolve() {
+            closeSolveModal();
+            showSuccessToast('toastResolved');
+            
+            setTimeout(() => {
+                updateStatusPin('Đã giải quyết', '#2563EB', '#EFF6FF');
+            }, 500);
+        }
+
+        function confirmReject() {
+            closeRejectModal();
+            showSuccessToast('toastRejected');
+            
+            setTimeout(() => {
+                updateStatusPin('Đã từ chối', '#BA1A1A', '#FFF1F2');
+            }, 500);
+        }
+
+        function updateStatusPin(text, color, bg) {
+            const pins = document.querySelector('.status-pin-j.pin-new-j');
+            if(pins) {
+                pins.style.background = bg;
+                pins.style.color = color;
+                pins.innerHTML = `<span style="width: 6px; height: 6px; border-radius: 50%; background: ${color};"></span>${text}`;
+            }
+        }
+
+        function showSuccessToast(id) {
+            const toast = document.getElementById(id);
+            toast.style.display = 'flex';
+            toast.style.animation = 'slideDownToast 0.4s ease forwards';
+            
+            setTimeout(() => {
+                hideToast(id);
+            }, 4000);
+        }
+
+        function hideToast(id) {
+            const toast = document.getElementById(id);
+            if (toast) {
+                toast.style.animation = 'slideUpToast 0.4s ease forwards';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 400);
+            }
+        }
+
+        // Close modal on click outside
+        window.addEventListener('click', function(e) {
+            const solveModal = document.getElementById('solveModal');
+            const rejectModal = document.getElementById('rejectModal');
+            if (e.target === solveModal) closeSolveModal();
+            if (e.target === rejectModal) closeRejectModal();
+        });
+    </script>
 </body>
 </html>
