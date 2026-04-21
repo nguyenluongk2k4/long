@@ -11,7 +11,130 @@
     <link rel="stylesheet" href="../css/admin_global.css">
     <link rel="stylesheet" href="../css/admin_dashboard.css">
     <link rel="stylesheet" href="../css/admin_management.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
     <style>
+        /* Modal Styles */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .admin-modal-container {
+            background: white;
+            width: 720px;
+            max-width: 90vw;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header-v4 {
+            padding: 48px 48px 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .modal-body-v4 { padding: 0 48px 32px; }
+        .modal-footer-v4 {
+            padding: 32px 48px 48px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 40px;
+            background: #F8FAFC;
+        }
+
+        .backup-option-card {
+            padding: 20px 24px;
+            border: 1.5px solid #F1F5F9;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 700;
+            color: #1E293B;
+            font-size: 18px;
+        }
+        .backup-option-card.active {
+            border-color: #F1F5F9;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .radio-indicator {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #E2E8F0;
+            position: relative;
+        }
+        .backup-option-card.active .radio-indicator {
+            border-color: #2563EB;
+            background: #2563EB;
+        }
+        .backup-option-card.active .radio-indicator::after {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px; height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .note-box-v4 {
+            background: #EFF6FF;
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            border: 1px solid #DBEAFE;
+        }
+
+        /* Toast Alert */
+        .admin-toast-alert {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            transform: translateX(120%);
+            background: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 2000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-toast-alert.show {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #94A3B8;
+            line-height: 1;
+            transition: color 0.2s;
+            margin-left: 10px;
+        }
         .settings-container {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -103,6 +226,34 @@
             align-items: center;
             justify-content: center;
         }
+
+        .form-group-modal-v5 {
+            margin-bottom: 24px;
+        }
+        .form-group-modal-v5 label {
+            display: block;
+            font-size: 18px;
+            font-weight: 800;
+            color: #475569;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .form-group-modal-v5 input, .form-group-modal-v5 textarea {
+            width: 100%;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #1E293B;
+            box-sizing: border-box;
+            background: #FFFFFF;
+        }
+        .form-group-modal-v5 textarea {
+            height: 140px;
+            resize: none;
+        }
+
         .btn-white-pill {
             background: white;
             border: 1px solid #F1F5F9;
@@ -305,7 +456,7 @@
                                     <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="eye" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 18px; opacity: 0.5;">
                                 </div>
                             </div>
-                            <a href="#" style="color: #2563EB; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-top: 24px; justify-content: flex-end;">
+                            <a href="javascript:void(0)" onclick="openTestEmailModal()" style="color: #2563EB; font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-top: 24px; justify-content: flex-end;">
                                 <img src="../assets/images/ic_caidathethong/ic-send.svg" alt="icon" style="width: 14px; ">
                                 Gửi email thử nghiệm
                             </a>
@@ -355,11 +506,178 @@
                     </div>
                     <div style="display: flex; align-items: center; gap: 24px;">
                         <span style="font-size: 13px; color: #64748B; font-weight: 600;">Lần cuối sao lưu: 12 phút trước</span>
-                        <button class="btn-admin-primary" style="background: white; color: #1E293B; border: none; padding: 12px 24px;">Sao lưu ngay</button>
+                        <button class="btn-admin-primary" style="background: white; color: #1E293B; border: none; padding: 12px 24px;" onclick="openBackupModal()">Sao lưu ngay</button>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- Success Alert -->
+    <div id="successToast" class="admin-toast-alert">
+        <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="v" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Sao lưu dữ liệu thành công</span>
+        <div class="toast-close" onclick="hideToastAlert()">&times;</div>
+    </div>
+
+    <!-- Backup Modal -->
+    <div id="backupModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v4">
+                <img src="../assets/images/ic_caidathethong/modal/ic-sao-luu.svg" alt="backup" width="64" style="flex-shrink: 0;">
+                <div>
+                    <h2 style="font-size: 36px; font-weight: 800; color: #1E293B; margin-bottom: 8px;">Sao lưu dữ liệu hệ thống</h2>
+                    <p style="font-size: 14px; color: #64748B;">Tạo bản sao lưu hiện tại của toàn bộ cơ sở dữ liệu và cấu hình hệ thống.</p>
+                </div>
+            </div>
+            
+            <div class="modal-body-v4">
+                <div style="margin-bottom: 24px;">
+                    <label style="font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase; margin-bottom: 16px; display: block; letter-spacing: 0.1em;">LOẠI SAO LƯU</label>
+                    <div class="backup-option-card active" onclick="selectBackupOption(this)">
+                        <div class="radio-indicator"></div>
+                        <span>Toàn bộ dữ liệu</span>
+                    </div>
+                    <div class="backup-option-card" onclick="selectBackupOption(this)">
+                        <div class="radio-indicator"></div>
+                        <span>Chỉ cấu hình</span>
+                    </div>
+                    <div class="backup-option-card" onclick="selectBackupOption(this)">
+                        <div class="radio-indicator"></div>
+                        <span>Chỉ dữ liệu người dùng</span>
+                    </div>
+                </div>
+
+                <div class="note-box-v4">
+                    <img src="../assets/images/ic_caidathethong/modal/ic-info.svg" alt="info" width="24" style="flex-shrink: 0;">
+                    <p style="font-size: 14px; color: #1E40AF; line-height: 1.6; font-weight: 500;">
+                        <span style="font-weight: 800;">Lưu ý:</span> Quá trình sao lưu có thể mất vài phút tùy thuộc vào dung lượng dữ liệu hiện tại (Hiện tại: 1.2 GB).
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-footer-v4">
+                <button onclick="closeBackupModal()" style="background: transparent; border: none; font-weight: 800; color: #2563EB; cursor: pointer; font-size: 16px;">Hủy</button>
+                <button class="btn-admin-primary" style="padding: 14px 32px; border-radius: 12px; font-size: 16px; display: flex; align-items: center; gap: 12px;" onclick="handleBackup()">
+                    Bắt đầu sao lưu <img src="../assets/images/ic_caidathethong/modal/ic-luu-y.svg" alt="arrow" width="16" style="filter: brightness(0) invert(1) rotate(-45deg);">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Alert (Email) -->
+    <div id="emailSuccessToast" class="admin-toast-alert">
+        <img src="../assets/images/ic_caidathethong/modal/ic-send-mail.svg" alt="v" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Gửi email thử nghiệm thành công</span>
+        <div class="toast-close" onclick="hideEmailToastAlert()">&times;</div>
+    </div>
+
+    <!-- Test Email Modal -->
+    <div id="testEmailModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v4">
+                <img src="../assets/images/ic_caidathethong/modal/ic-send-mail.svg" alt="mail" width="64" style="flex-shrink: 0;">
+                <div>
+                    <h2 style="font-size: 36px; font-weight: 800; color: #1E293B; margin-bottom: 8px;">Gửi email thử nghiệm</h2>
+                    <p style="font-size: 16px; color: #64748B;">Sử dụng tính năng này để kiểm tra cấu hình SMTP hiện tại.</p>
+                </div>
+            </div>
+            
+            <div class="modal-body-v4">
+                <div class="form-group-modal-v5">
+                    <label>EMAIL NGƯỜI NHẬN</label>
+                    <input type="email" placeholder="Nhập địa chỉ email để nhận thư thử nghiệm">
+                </div>
+                <div class="form-group-modal-v5">
+                    <label>NỘI DUNG THÔNG BÁO (TÙY CHỌN)</label>
+                    <textarea placeholder="Nhập tin nhắn mẫu..."></textarea>
+                </div>
+
+                <div class="note-box-v4" style="margin-top: 0;">
+                    <img src="../assets/images/ic_caidathethong/modal/ic-info.svg" alt="info" width="24" style="flex-shrink: 0;">
+                    <p style="font-size: 15px; color: #1E40AF; line-height: 1.6; font-weight: 500;">
+                        Hệ thống sẽ gửi một email mẫu chứa thông tin kỹ thuật để kiểm tra kết nối.
+                    </p>
+                </div>
+            </div>
+
+            <div class="modal-footer-v4">
+                <button onclick="closeTestEmailModal()" style="background: transparent; border: none; font-weight: 800; color: #2563EB; cursor: pointer; font-size: 16px;">Hủy</button>
+                <button class="btn-admin-primary" style="padding: 14px 32px; border-radius: 12px; font-size: 16px; display: flex; align-items: center; gap: 12px;" onclick="handleSendTestEmail()">
+                    Gửi ngay <img src="../assets/images/ic_caidathethong/modal/ic-luu-y.svg" alt="arrow" width="16" style="filter: brightness(0) invert(1) rotate(-45deg);">
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openBackupModal() {
+            document.getElementById('backupModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBackupModal() {
+            document.getElementById('backupModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openTestEmailModal() {
+            document.getElementById('testEmailModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTestEmailModal() {
+            document.getElementById('testEmailModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectBackupOption(element) {
+            document.querySelectorAll('.backup-option-card').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function handleBackup() {
+            closeBackupModal();
+            showToastAlert();
+        }
+
+        function handleSendTestEmail() {
+            closeTestEmailModal();
+            showEmailToastAlert();
+        }
+
+        function showToastAlert() {
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                hideToastAlert();
+            }, 5000);
+        }
+
+        function hideToastAlert() {
+            document.getElementById('successToast').classList.remove('show');
+        }
+
+        function showEmailToastAlert() {
+            const toast = document.getElementById('emailSuccessToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                hideEmailToastAlert();
+            }, 5000);
+        }
+
+        function hideEmailToastAlert() {
+            document.getElementById('emailSuccessToast').classList.remove('show');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('backupModal')) {
+                closeBackupModal();
+            }
+            if (event.target == document.getElementById('testEmailModal')) {
+                closeTestEmailModal();
+            }
+        }
+    </script>
 </body>
 </html>

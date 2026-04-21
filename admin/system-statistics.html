@@ -12,6 +12,173 @@
     <link rel="stylesheet" href="../css/admin_dashboard.css">
     <link rel="stylesheet" href="../css/admin_management.css">
     <style>
+        /* Modal Styles */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .admin-modal-container {
+            background: white;
+            width: 800px;
+            max-width: 90vw;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header-v3 {
+            padding: 48px 48px 24px;
+            text-align: center;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .modal-body-v3 { padding: 32px 48px; }
+        .modal-footer-v3 {
+            padding: 32px 48px 48px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        .applied-time-box {
+            background: #E7E8E9;
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .form-grid-v3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .form-group-v3 label {
+            font-size: 24px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 16px;
+            display: block;
+            text-transform: uppercase;
+        }
+        .form-group-v3 select {
+            width: 100%;
+            height: 48px;
+            padding: 14px 16px;
+            border: 1px solid #E2E8F0;
+            background: #FFFFFF;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #1E293B;
+            appearance: none;
+            background-image: url('../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg');
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .format-grid-v3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .format-card-v3 {
+            background: #F8FAFC;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .format-card-v3.active {
+            background: white;
+            border-color: #2563EB;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+        }
+        .format-card-v3 .radio-circle {
+            width: 24px; height: 24px;
+            border: 2px solid #E2E8F0;
+            border-radius: 50%;
+            position: absolute;
+            right: 20px;
+        }
+        .format-card-v3.active .radio-circle {
+            border-color: #2563EB;
+            background: #2563EB;
+        }
+        .format-card-v3.active .radio-circle::after {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px; height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .email-box-v3 {
+            background: #F1F5F9;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .email-box-v3 input[type="checkbox"] {
+            width: 24px; height: 24px;
+            cursor: pointer;
+        }
+
+        /* Toast Alert */
+        .admin-toast-alert {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            transform: translateX(120%);
+            background: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 2000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-toast-alert.show {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #94A3B8;
+            line-height: 1;
+            transition: color 0.2s;
+            margin-left: 10px;
+        }
+
         .stats-grid-top {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -302,7 +469,7 @@
                             <h3 style="font-size: 20px; font-weight: 800; color: #1E293B;">Thống kê doanh thu</h3>
                             <p style="font-size: 13px; color: #64748B; margin-top: 4px;">Dữ liệu doanh thu được mô phỏng nhằm phục vụ đánh giá hiệu quả hệ thống.</p>
                         </div>
-                        <button class="btn-admin-primary" style="background: #E2E8F0; color: #2563EB; border: none; padding: 8px 20px;">
+                        <button class="btn-admin-primary" style="background: #E2E8F0; color: #2563EB; border: none; padding: 8px 20px;" onclick="openExportModal()">
                             <img src="../assets/images/ic_quanlythongkehethong/ic_Xuat bao cao.svg" alt="down" width="18" style="margin-right: 8px;">
                             Xuất báo cáo
                         </button>
@@ -365,5 +532,141 @@
             </div>
         </main>
     </div>
+
+    <!-- Success Alert -->
+    <div id="successToast" class="admin-toast-alert">
+        <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="v" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Xuất báo cáo thành công</span>
+        <div class="toast-close" onclick="hideToastAlert()">&times;</div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="exportModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v3">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 8px;">
+                    <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="down" width="40" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+                    <h2 style="font-size: 40px; font-weight: 800; color: #2563EB;">Xuất báo cáo</h2>
+                </div>
+                <p style="font-size: 14px; color: #64748B;">chọn loại báo cáo và định dạng file để tải về.</p>
+            </div>
+            
+            <div class="modal-body-v3">
+                <div class="applied-time-box">
+                    <img src="../assets/images/ic_tquanadmin/modal/ic-calendar.svg" alt="cal" width="24">
+                    <div style="text-align: center;">
+                        <div style="font-weight: 800; color: #000; font-size: 14px; margin-bottom: 4px;">Khoảng thời gian đã được áp dụng</div>
+                        <div style="font-size: 13px; color: #64748B;">12/05/2023 - 12/05/2023</div>
+                    </div>
+                </div>
+
+                <div class="form-grid-v3">
+                    <div class="form-group-v3">
+                        <label>LOẠI DỮ LIỆU</label>
+                        <select>
+                            <option>Tất cả chỉ số</option>
+                            <option>Doanh thu</option>
+                            <option>Người dùng</option>
+                        </select>
+                    </div>
+                    <div class="form-group-v3">
+                        <label>PHÂN NHÓM THEO</label>
+                        <select>
+                            <option>Tháng</option>
+                            <option>Tuần</option>
+                            <option>Ngày</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="font-size: 24px; font-weight: 800; color: #000; margin-bottom: 16px; text-transform: uppercase;">ĐỊNH DẠNG BÁO CÁO</h3>
+                    <div class="format-grid-v3">
+                        <div class="format-card-v3 active" onclick="selectFormatV3(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-pdf.svg" alt="pdf" width="36">
+                            <div>
+                                <div style="font-weight: 800; font-size: 20px; color: #1E293B;">PDF</div>
+                                <div style="font-size: 12px; color: #94A3B8;">Để xem và chia sẻ</div>
+                            </div>
+                            <div class="radio-circle"></div>
+                        </div>
+                        <div class="format-card-v3" onclick="selectFormatV3(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-excel.svg" alt="excel" width="36">
+                            <div>
+                                <div style="font-weight: 800; font-size: 20px; color: #1E293B;">Excel</div>
+                                <div style="font-size: 12px; color: #94A3B8;">Chỉnh sửa và phân tích</div>
+                            </div>
+                            <div class="radio-circle"></div>
+                        </div>
+                        <div class="format-card-v3" onclick="selectFormatV3(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-csv.svg" alt="csv" width="36">
+                            <div>
+                                <div style="font-weight: 800; font-size: 20px; color: #1E293B;">CSV</div>
+                                <div style="font-size: 12px; color: #94A3B8;">Dữ liệu thuần</div>
+                            </div>
+                            <div class="radio-circle"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="email-box-v3">
+                    <input type="checkbox">
+                    <div style="flex: 1;">
+                        <div style="font-size: 20px; font-weight: 800; color: #000; text-transform: uppercase;">GỬI BÁO CÁO QUA EMAIL</div>
+                        <p style="font-size: 11px; color: #64748B; margin: 4px 0 12px;">Hệ thống sẽ gửi link tải báo cáo về địa chỉ email này khi hoàn tất.</p>
+                        <input type="text" value="admin@jobgos.com" style="width: 100%; height: 44px; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 8px; background: white; font-size: 14px; box-sizing: border-box;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer-v3">
+                <button onclick="closeExportModal()" style="padding: 10px 32px; border-radius: 8px; border: 1px solid #E2E8F0; background: white; font-weight: 700; color: #64748B; cursor: pointer; font-size: 14px;">Hủy</button>
+                <button class="btn-admin-primary" style="padding: 10px 32px; border-radius: 8px; font-size: 14px; display: flex; align-items: center; gap: 8px;" onclick="handleExport()">
+                    <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="v" style="width: 16px; filter: brightness(0) invert(1);">
+                    Xuất báo cáo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openExportModal() {
+            document.getElementById('exportModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectFormatV3(element) {
+            document.querySelectorAll('.format-card-v3').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function handleExport() {
+            closeExportModal();
+            showToastAlert();
+        }
+
+        function showToastAlert() {
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                hideToastAlert();
+            }, 5000);
+        }
+
+        function hideToastAlert() {
+            document.getElementById('successToast').classList.remove('show');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('exportModal')) {
+                closeExportModal();
+            }
+        }
+    </script>
 </body>
 </html>

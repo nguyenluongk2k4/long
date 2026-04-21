@@ -11,6 +11,195 @@
     <link rel="stylesheet" href="../css/admin_global.css">
     <link rel="stylesheet" href="../css/admin_dashboard.css">
     <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        /* Modal Styles */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .admin-modal-container {
+            background: white;
+            width: 800px;
+            max-width: 90vw;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header-v2 {
+            padding: 48px 48px 32px;
+            text-align: center;
+        }
+        .modal-body-v2 { padding: 0 48px 32px; }
+        .modal-footer-v2 {
+            padding: 32px 48px 48px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-top: 1px solid #F1F5F9;
+        }
+
+        .report-section-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 24px;
+        }
+
+        .time-pill-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .time-pill {
+            padding: 8px 0;
+            background: transparent;
+            color: #94A3B8;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            margin-right: 32px;
+        }
+        .time-pill.active {
+            color: #2563EB;
+            box-shadow: none;
+        }
+
+        .form-grid-v2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .form-group-v2 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group-v2 label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-group-v2 input, .form-group-v2 select {
+            width: 100%;
+            height: 48px;
+            padding: 14px 16px;
+            border: none;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0px 0px 0px 1px #C3C6D74D;
+            font-size: 15px;
+            color: #1E293B;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+        .select-wrapper-v2 { position: relative; }
+        .select-wrapper-v2::after {
+            content: "";
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px; height: 12px;
+            background: url('../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg') no-repeat center;
+            pointer-events: none;
+        }
+        .form-group-v2 select { appearance: none; }
+
+        .format-selection {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            color: #1E293B;
+        }
+        .radio-custom {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #E2E8F0;
+            position: relative;
+            background: white;
+        }
+        .radio-option.active .radio-custom {
+            border-color: #2563EB;
+        }
+        .radio-option.active .radio-custom::after {
+            content: "";
+            position: absolute;
+            top: 4px; left: 4px;
+            width: 12px; height: 12px;
+            background: #2563EB;
+            border-radius: 50%;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            cursor: pointer;
+        }
+        .checkbox-row input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        /* Toast Alert */
+        .admin-toast-alert {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            transform: translateX(120%);
+            background: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 2000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-toast-alert.show {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #94A3B8;
+            line-height: 1;
+            transition: color 0.2s;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body style="background: #FAFAFA;">
     <div class="dashboard-layout">
@@ -96,7 +285,7 @@
                             <h1 class="admin-page-title">Quản lý báo cáo & khiếu nại</h1>
                             <p class="admin-page-desc">Theo dõi và xử lý các phản hồi từ cộng đồng người dùng JobsGO.</p>
                         </div>
-                        <button class="btn-admin-primary">
+                        <button class="btn-admin-primary" onclick="openExportModal()">
                             <img src="../assets/images/ic_tquanadmin/ic_xuatbaocao.svg" alt="Export" width="18" style="margin-right: 8px;">
                             Xuất báo cáo
                         </button>
@@ -340,5 +529,132 @@
             </div>
         </main>
     </div>
+
+    <!-- Success Alert -->
+    <div id="successToast" class="admin-toast-alert">
+        <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="v" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Xuất báo cáo thành công</span>
+        <div class="toast-close" onclick="hideToastAlert()">&times;</div>
+    </div>
+
+    <!-- Export Report Modal -->
+    <div id="exportModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v2">
+                <h2 style="font-size: 48px; font-weight: 800; color: #2563EB; margin-bottom: 12px;">Xuất báo cáo</h2>
+                <p style="font-size: 18px; color: #64748B;">Chọn phạm vi và định dạng để xuất dữ liệu báo cáo.</p>
+            </div>
+            
+            <div class="modal-body-v2">
+                <div style="margin-bottom: 32px;">
+                    <h3 class="report-section-title">Khoảng thời gian <span style="font-weight: 500; font-size: 20px; color: #1E293B;">(Tùy chọn)</span></h3>
+                    <div class="time-pill-row">
+                        <div class="time-pill active" onclick="selectTimePill(this)">7 ngày trước</div>
+                        <div class="time-pill" onclick="selectTimePill(this)">30 ngày trước</div>
+                        <div class="time-pill" onclick="selectTimePill(this)">3 tháng trước</div>
+                        <div class="time-pill" onclick="selectTimePill(this)">6 tháng trước</div>
+                    </div>
+                </div>
+
+                <div class="form-grid-v2">
+                    <div class="form-group-v2">
+                        <label>LOẠI BÁO CÁO</label>
+                        <div class="select-wrapper-v2">
+                            <select>
+                                <option>Tất cả</option>
+                                <option>Việc làm</option>
+                                <option>Công ty</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-v2">
+                        <label>TRẠNG THÁI</label>
+                        <div class="select-wrapper-v2">
+                            <select>
+                                <option>Tất cả</option>
+                                <option>Mới</option>
+                                <option>Đang xử lý</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="font-size: 13px; font-weight: 800; color: #94A3B8; text-transform: uppercase; margin-bottom: 16px; display: block;">ĐỊNH DẠNG FILE</label>
+                    <div class="format-selection">
+                        <div class="radio-option active" onclick="selectRadio(this)">
+                            <div class="radio-custom"></div>
+                            <span>PDF</span>
+                        </div>
+                        <div class="radio-option" onclick="selectRadio(this)">
+                            <div class="radio-custom"></div>
+                            <span>CSV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="checkbox-row">
+                        <input type="checkbox" checked>
+                        <span style="font-weight: 700; color: #1E293B; font-size: 16px;">Gửi báo cáo qua email</span>
+                    </label>
+                    <input type="text" value="Admin@jobgos.pro" style="width: 100%; height: 60px; padding: 14px 24px; border: none; background: white; border-radius: 12px; box-shadow: 0px 0px 0px 1px #C3C6D74D; font-size: 18px; color: #1E293B; margin-bottom: 24px; box-sizing: border-box;">
+                    <div style="height: 1px; background: #F1F5F9; margin-top: 10px;"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer-v2">
+                <button onclick="closeExportModal()" style="padding: 12px 40px; border-radius: 12px; border: 1.5px solid #F1F5F9; background: white; font-weight: 700; color: #2563EB; cursor: pointer; font-size: 16px;">Hủy</button>
+                <button class="btn-admin-primary" style="padding: 12px 40px; border-radius: 12px; font-size: 16px;" onclick="handleExport()">
+                    Xuất báo cáo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openExportModal() {
+            document.getElementById('exportModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectTimePill(element) {
+            document.querySelectorAll('.time-pill').forEach(p => p.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function selectRadio(element) {
+            document.querySelectorAll('.radio-option').forEach(r => r.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function handleExport() {
+            closeExportModal();
+            showToastAlert();
+        }
+
+        function showToastAlert() {
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                hideToastAlert();
+            }, 5000);
+        }
+
+        function hideToastAlert() {
+            document.getElementById('successToast').classList.remove('show');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('exportModal')) {
+                closeExportModal();
+            }
+        }
+    </script>
 </body>
 </html>

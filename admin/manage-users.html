@@ -8,6 +8,132 @@
     <link rel="stylesheet" href="../css/user_dashboard.css">
     <link rel="stylesheet" href="../css/admin_global.css">
     <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        /* Modal Styles */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .admin-modal-container {
+            background: white;
+            width: 800px;
+            max-width: 90vw;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header-v2 {
+            padding: 48px 48px 32px;
+            text-align: center;
+        }
+        .modal-body-v2 { padding: 0 48px 32px; }
+        .modal-footer-v2 {
+            padding: 32px 48px 48px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-top: 1px solid #F1F5F9;
+        }
+
+        .form-grid-v2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .form-group-v2 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group-v2 label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1E293B;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-group-v2 input, .form-group-v2 select {
+            width: 100%;
+            height: 48px;
+            padding: 14px 16px;
+            border: none;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0px 0px 0px 1px #C3C6D74D;
+            font-size: 15px;
+            color: #1E293B;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+        .form-group-v2 input:focus, .form-group-v2 select:focus {
+            border-color: #2563EB;
+            background: white;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .select-wrapper-v2 {
+            position: relative;
+        }
+        .select-wrapper-v2::after {
+            content: "";
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: url('../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg') no-repeat center;
+            pointer-events: none;
+        }
+        .form-group-v2 select {
+            appearance: none;
+        }
+
+        /* Toast Alert */
+        .admin-toast-alert {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            transform: translateX(120%);
+            background: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 2000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-toast-alert.show {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #94A3B8;
+            line-height: 1;
+            transition: color 0.2s;
+            margin-left: 10px;
+        }
+        .toast-close:hover { color: #1E293B; }
+    </style>
 </head>
 <body style="background: #FAFAFA;">
     <div class="dashboard-layout">
@@ -88,7 +214,7 @@
                             <h1 class="admin-page-title">Quản lý người dùng</h1>
                             <p class="admin-page-desc">Phân tích và điều phối danh sách nhân sự trên hệ thống JobsGO.</p>
                         </div>
-                        <button class="btn-admin-primary">
+                        <button class="btn-admin-primary" onclick="openAddUserModal()">
                             <img src="../assets/images/admin-quan-li-nguoi-dung/ic-them-nguoi-dung.svg" alt="+">
                             Thêm người dùng
                         </button>
@@ -296,7 +422,117 @@
                     <div style="position: absolute; right: -50px; bottom: -50px; width: 300px; height: 300px; border: 40px solid rgba(255,255,255,0.05); border-radius: 50%;"></div>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
+
+    <!-- Success Alert -->
+    <div id="successToast" class="admin-toast-alert">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Thêm người dùng mới thành công</span>
+        <div class="toast-close" onclick="hideToastAlert()">&times;</div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v2">
+                <h2 style="font-size: 48px; font-weight: 800; color: #2563EB; margin-bottom: 12px;">Thêm người dùng mới</h2>
+                <p style="font-size: 18px; color: #64748B;">Nhập thông tin để tạo tài khoản người dùng trong hệ thống.</p>
+            </div>
+            
+            <div class="modal-body-v2">
+                <form id="addUserForm" class="form-grid-v2">
+                    <div class="form-group-v2">
+                        <label>HỌ VÀ TÊN</label>
+                        <input type="text" placeholder="Nhập họ tên">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>EMAIL</label>
+                        <input type="email" placeholder="Nhập email">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>SỐ ĐIỆN THOẠI</label>
+                        <input type="tel" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>VAI TRÒ</label>
+                        <div class="select-wrapper-v2">
+                            <select>
+                                <option>Quản trị viên</option>
+                                <option>Nhà tuyển dụng</option>
+                                <option>Ứng viên</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-v2">
+                        <label>TRẠNG THÁI</label>
+                        <div class="select-wrapper-v2">
+                            <select>
+                                <option>Hoạt động</option>
+                                <option>Bị khóa</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-v2">
+                        <label>MẬT KHẨU</label>
+                        <input type="password" placeholder="••••••••">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>XÁC NHẬN MẬT KHẨU</label>
+                        <input type="password" placeholder="••••••••">
+                    </div>
+                    <div class="form-group-v2" style="justify-content: center;">
+                        <p style="font-size: 13px; color: #64748B; margin: 0; line-height: 1.5;">
+                            Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số.
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer-v2">
+                <button onclick="closeAddUserModal()" style="padding: 12px 40px; border-radius: 12px; border: 1.5px solid #F1F5F9; background: white; font-weight: 700; color: #64748B; cursor: pointer; font-size: 16px;">Hủy</button>
+                <button class="btn-admin-primary" style="padding: 12px 40px; border-radius: 12px; font-size: 16px;" onclick="handleAddUser()">
+                    Tạo người dùng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openAddUserModal() {
+            document.getElementById('addUserModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddUserModal() {
+            document.getElementById('addUserModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleAddUser() {
+            closeAddUserModal();
+            showToastAlert();
+        }
+
+        function showToastAlert() {
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show');
+            
+            // Auto hide after 5s
+            setTimeout(() => {
+                hideToastAlert();
+            }, 5000);
+        }
+
+        function hideToastAlert() {
+            document.getElementById('successToast').classList.remove('show');
+        }
+
+        // Close on overlay click
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('addUserModal')) {
+                closeAddUserModal();
+            }
+        }
+    </script>
 </body>
 </html>

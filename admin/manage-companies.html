@@ -94,6 +94,155 @@
         .eff-val { font-size: 48px; font-weight: 800; margin-bottom: 8px; }
         .eff-label { font-size: 14px; font-weight: 600; opacity: 0.9; }
         .eff-desc { font-size: 12px; opacity: 0.7; margin-top: auto; }
+
+        /* Modal Styles */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .admin-modal-container {
+            background: white;
+            width: 800px;
+            max-width: 90vw;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header-v2 {
+            padding: 48px 48px 32px;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .modal-body-v2 { padding: 0 48px 32px; }
+        .modal-footer-v2 {
+            padding: 32px 48px 48px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            background: #F8FAFC;
+        }
+
+        .form-grid-v2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .form-group-v2 {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group-v2 label {
+            font-size: 13px;
+            font-weight: 800;
+            color: #1E293B;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-group-v2 input, .form-group-v2 select {
+            width: 100%;
+            height: 48px;
+            padding: 14px 16px;
+            border: none;
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0px 0px 0px 1px #C3C6D74D;
+            font-size: 15px;
+            color: #1E293B;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+        .form-group-v2 input:focus, .form-group-v2 select:focus {
+            border-color: #2563EB;
+            background: white;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .select-wrapper-v2 { position: relative; }
+        .select-wrapper-v2::after {
+            content: "";
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: url('../assets/images/admin-quan-li-tin-tuyen-dung/ic-dropdown.svg') no-repeat center;
+            pointer-events: none;
+        }
+        .form-group-v2 select { appearance: none; }
+
+        .logo-upload-box {
+            grid-column: span 2;
+            margin-top: 8px;
+            background: #F8FAFC;
+            border: 2px dashed #E2E8F0;
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .logo-upload-box:hover {
+            border-color: #2563EB;
+            background: #EFF6FF;
+        }
+        .upload-placeholder-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Toast Alert */
+        .admin-toast-alert {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            transform: translateX(120%);
+            background: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 2000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .admin-toast-alert.show {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            cursor: pointer;
+            font-size: 20px;
+            color: #94A3B8;
+            line-height: 1;
+            transition: color 0.2s;
+            margin-left: 10px;
+        }
+        .toast-close:hover { color: #1E293B; }
     </style>
 </head>
 <body style="background: #FAFAFA;">
@@ -180,7 +329,7 @@
                             <h1 class="admin-page-title">Quản lý công ty</h1>
                             <p class="admin-page-desc">Giám sát và quản lý danh sách đối tác doanh nghiệp trên nền tảng.</p>
                         </div>
-                        <button class="btn-admin-primary">
+                        <button class="btn-admin-primary" onclick="openAddCompanyModal()">
                             <img src="../assets/images/ic_quanlycongty/ic_themcongty.svg" alt="Add" width="18" style="margin-right: 8px;">
                             Thêm công ty
                         </button>
@@ -413,5 +562,131 @@
             </div>
         </main>
     </div>
+
+    <!-- Success Alert -->
+    <div id="successToast" class="admin-toast-alert">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Thêm công ty mới thành công</span>
+        <div class="toast-close" onclick="hideToastAlert()">&times;</div>
+    </div>
+
+    <!-- Add Company Modal -->
+    <div id="addCompanyModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v2">
+                <div>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #2563EB; margin-bottom: 8px;">Thêm công ty mới</h2>
+                    <p style="font-size: 18px; color: #64748B;">Nhập thông tin chi tiết để khởi tạo hồ sơ doanh nghiệp.</p>
+                </div>
+                <div onclick="closeAddCompanyModal()" style="cursor: pointer; font-size: 32px; color: #94A3B8;">&times;</div>
+            </div>
+            
+            <div class="modal-body-v2">
+                <form id="addCompanyForm" class="form-grid-v2">
+                    <div class="form-group-v2">
+                        <label>TÊN CÔNG TY</label>
+                        <input type="text" placeholder="Nhập tên công ty">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>SỐ ĐIỆN THOẠI LIÊN HỆ</label>
+                        <input type="tel" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>MÃ SỐ THUẾ</label>
+                        <input type="text" placeholder="Nhập mã số thuế">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>EMAIL DOANH NGHIỆP</label>
+                        <input type="email" placeholder="Nhập email">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>LĨNH VỰC KINH DOANH</label>
+                        <div class="select-wrapper-v2">
+                            <select>
+                                <option>Chọn lĩnh vực</option>
+                                <option>Công nghệ thông tin</option>
+                                <option>Bất động sản</option>
+                                <option>Tài chính / Ngân hàng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-v2">
+                        <label>WEBSITE</label>
+                        <input type="text" placeholder="Nhập website công ty">
+                    </div>
+                    <div class="form-group-v2">
+                        <label>QUY MÔ NHÂN SỰ</label>
+                        <div class="select-wrapper-v2">
+                            <select>
+                                <option>1 - 20 nhân sự</option>
+                                <option>21 - 100 nhân sự</option>
+                                <option>100+ nhân sự</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group-v2">
+                        <label>ĐỊA CHỈ TRỤ SỞ</label>
+                        <input type="text" placeholder="Nhập địa chỉ công ty">
+                    </div>
+
+                    <div class="form-group-v2" style="grid-column: span 2;">
+                        <label>LOGO CÔNG TY</label>
+                        <div class="logo-upload-box">
+                            <div class="upload-placeholder-icon">
+                                <img src="../assets/images/ic_quanlycongty/modal/ic-upload.svg" alt="Upload" width="80">
+                            </div>
+                            <div>
+                                <div style="font-size: 18px; font-weight: 700; color: #1E293B; margin-bottom: 4px;">Tải lên logo chính thức</div>
+                                <div style="font-size: 14px; color: #94A3B8; line-height: 1.5;">
+                                    Định dạng PNG, JPG hoặc SVG. Dung lượng tối đa 5MB. Kích thước khuyến nghị 400x400px.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer-v2">
+                <button onclick="closeAddCompanyModal()" style="padding: 12px 40px; border-radius: 12px; border: 1px solid #E2E8F0; background: white; font-weight: 700; color: #64748B; cursor: pointer; font-size: 16px;">Hủy</button>
+                <button class="btn-admin-primary" style="padding: 12px 40px; border-radius: 12px; font-size: 16px;" onclick="handleAddCompany()">
+                    Tạo công ty
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openAddCompanyModal() {
+            document.getElementById('addCompanyModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddCompanyModal() {
+            document.getElementById('addCompanyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleAddCompany() {
+            closeAddCompanyModal();
+            showToastAlert();
+        }
+
+        function showToastAlert() {
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                hideToastAlert();
+            }, 5000);
+        }
+
+        function hideToastAlert() {
+            document.getElementById('successToast').classList.remove('show');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('addCompanyModal')) {
+                closeAddCompanyModal();
+            }
+        }
+    </script>
 </body>
 </html>

@@ -143,16 +143,16 @@
             right: 40px;
             transform: translateX(120%);
             background: white;
-            padding: 16px 24px;
+            padding: 18px 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
             display: flex;
             align-items: center;
-            gap: 16px;
-            z-index: 2000;
+            justify-content: center;
+            gap: 20px;
+            z-index: 2050;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
-            min-width: 350px;
             pointer-events: none;
         }
         .admin-toast-alert.show {
@@ -161,13 +161,14 @@
             pointer-events: auto;
         }
         .toast-close {
-            margin-left: auto;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 20px;
             color: #94A3B8;
-            padding: 4px;
             line-height: 1;
+            transition: color 0.2s;
+            margin-left: 10px;
         }
+        .toast-close:hover { color: #1E293B; }
     </style>
 </head>
 <body style="background: #FAFAFA;">
@@ -500,7 +501,7 @@
     <div id="successToast" class="admin-toast-alert">
         <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="v" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
         <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Xuất báo cáo thành công</span>
-        <div class="toast-close" onclick="hideToastAlert()">×</div>
+        <div class="toast-close" onclick="hideToastAlert()">&times;</div>
     </div>
 
     <!-- Export Report Modal -->
