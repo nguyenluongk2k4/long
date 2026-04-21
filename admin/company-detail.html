@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết công ty - Admin JobGos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        .detail-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .company-profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .risk-warning-box {
+            background: #FFF7ED;
+            border: 1px solid #FFEDD5;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 24px 0;
+            display: flex;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            text-align: left;
+            gap: 20px;
+        }
+        .info-label { color: #64748B; font-weight: 500; min-width: 80px; }
+        .info-value { color: #1E293B; font-weight: 700; text-align: right; }
+
+        .stat-grid-j {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .stat-box-j {
+            border-radius: 16px;
+            padding: 20px;
+            color: white;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+        }
+
+        .tabs-header-j {
+            display: flex;
+            gap: 32px;
+            background: #43465533;
+            padding: 12px 32px 0;
+            border-radius: 12px 12px 0 0;
+        }
+        .tab-item-j {
+            padding: 12px 0;
+            font-weight: 700;
+            color: #475569;
+            cursor: pointer;
+            position: relative;
+            font-size: 14px;
+        }
+        .tab-item-j.active {
+            color: #2563EB;
+        }
+        .tab-item-j.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 3px;
+            background: #2563EB;
+            border-radius: 3px;
+        }
+
+        .doc-card-j {
+            background: #F8FAFC;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #F1F5F9;
+            flex: 1;
+        }
+        .doc-img-wrapper {
+            height: 200px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .doc-label-tag {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #1E293B;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .approval-footer-j {
+            background: white;
+            border-radius: 20px;
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .status-badge-orange {
+            background: #FFF7ED;
+            color: #EA580C;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            width: fit-content;
+        }
+
+        .job-table-header-j {
+            background: #43465533;
+            border-bottom: none;
+        }
+        .job-table-header-j th {
+            padding: 24px 32px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .job-table-header-j th:last-child {
+            border-right: none;
+        }
+        .admin-table-v3 {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        .admin-table-v3 tbody td {
+            padding: 24px 32px;
+            vertical-align: middle;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .admin-table-v3 tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .avatar-group-j {
+            display: flex;
+            align-items: center;
+        }
+        .avatar-item-j {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-left: -12px;
+        }
+        .avatar-item-j:first-child { margin-left: 0; }
+        .avatar-more-j {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: #F1F5F9;
+            color: #64748B;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: -12px;
+        }
+        .status-pill-v3 {
+            padding: 6px 0;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+        }
+        .status-success-j { background: #DCFCE7; color: #16A34A; }
+        .status-warning-j { background: #FEF9C3; color: #CA8A04; }
+
+        /* Modal & Alert Styles */
+        .modal-overlay-j {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .download-modal-j {
+            background: white;
+            border-radius: 24px;
+            width: 540px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .modal-header-j {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .modal-icon-box-j {
+            width: 56px;
+            height: 56px;
+            background: #EFF6FF;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .file-info-box-j {
+            background: #F8FAFC;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .warning-box-j {
+            background: #FFFBEB;
+            border: 1px solid #FEF3C7;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .btn-cancel-j {
+            padding: 14px 40px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            background: white;
+            color: #1E293B;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-download-now-j {
+            padding: 14px 40px;
+            border-radius: 12px;
+            background: #1156D2;
+            color: white;
+            font-weight: 700;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .btn-confirm-reject-j {
+            padding: 14px 40px;
+            border-radius: 12px;
+            background: #BA1A1A;
+            color: white;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .success-alert-j {
+            position: fixed;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 16px;
+            padding: 16px 24px;
+            display: none;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 2000;
+            animation: slideDownJ 0.3s ease-out forwards;
+        }
+
+        /* Reject Modal Specifics */
+        .modal-icon-box-red-j {
+            width: 80px;
+            height: 80px;
+            background: #FEE2E2;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .field-label-j {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .select-j, .textarea-j {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #1E293B;
+            background: white;
+            font-family: inherit;
+            margin-bottom: 20px;
+        }
+        .textarea-j { height: 120px; resize: none; color: #64748B; }
+        .checkbox-group-j {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: #475569;
+            cursor: pointer;
+        }
+        .checkbox-group-j input { width: 20px; height: 20px; cursor: pointer; }
+
+        /* Report Modal Specifics */
+        .reported-entity-card-j {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        .dropzone-j {
+            border: 2px dashed #CBD5E1;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .dropzone-j:hover { border-color: #2563EB; background: #F8FAFC; }
+
+        .modal-icon-box-blue-j {
+            width: 80px;
+            height: 80px;
+            background: #EFF6FF;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .info-box-blue-j {
+            background: #EFF6FF;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        @keyframes slideDownJ {
+            from { transform: translate(-50%, -100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+        @keyframes slideUpJ {
+            from { transform: translate(-50%, 0); opacity: 1; }
+            to { transform: translate(-50%, -100%); opacity: 0; }
+        }
+    </style>
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_tong_quan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_nguoi_dung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_tin_tuyen_dung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="manage-companies.html" class="menu-item active">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_cong_ty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_bao_cao_va_khieu_nai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="system-statistics.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_thong_ke_he_thong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="manage-blog.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_quan_li_blog.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="system-settings.html" class="menu-item">
+                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic_cai_dat_he_thong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/user-dashboard/ic-ho-tro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, ID, email...">
+                </div>
+                <div class="header-right">
+                    <div class="icon-notify" style="background: transparent; cursor: pointer;">
+                        <img src="../assets/images/user-dashboard/ic-notifications.svg" alt="Notifications" width="24">
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 20px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 15px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="dashboard-content" style="padding: 32px 40px;">
+                <!-- Breadcrumbs -->
+                <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #64748B; margin-bottom: 16px;">
+                    <span>Quản lý công ty></span>
+                    <span style="color: #1E293B; font-weight: 500;">Chi tiết công ty</span>
+                </div>
+
+                <!-- Page Header Title & Actions -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+                    <div>
+                        <h1 style="font-size: 28px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</h1>
+                        <div class="status-badge-orange">
+                            <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-cho-xac-minh.svg" alt="!" width="14">
+                            Chờ xác minh
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button onclick="openReportModal()" style="padding: 12px 20px; border-radius: 12px; background: #F1F5F9; border: none; font-weight: 700; color: #475569; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-bt-bao-cao-vi-pham.svg" alt="!" width="18">
+                            Báo cáo vi phạm
+                        </button>
+                        <button onclick="openLockModal()" style="padding: 12px 20px; border-radius: 12px; background: #BA1A1A; border: none; font-weight: 700; color: white; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-khoa-tai-khoan.svg" alt="!" width="18">
+                            Khóa tài khoản
+                        </button>
+                    </div>
+                </div>
+
+                <div class="detail-container">
+                    <!-- Left Sidebar -->
+                    <div class="sidebar-content-j">
+                        <div class="company-profile-card">
+                            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar-thien-binh.svg" alt="Logo" style="max-width: 100%;">
+                            </div>
+                            <h2 style="font-size: 18px; font-weight: 800; color: #0F172A; line-height: 1.4;">CÔNG TY CỔ PHẦN QUỐC TẾ THIÊN BÌNH</h2>
+                            
+                            <div class="risk-warning-box">
+                                <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-canh-bao-rui-ro.svg" alt="!" width="20" style="flex-shrink: 0;">
+                                <div style="font-size: 11px; color: #EA580C; font-weight: 600;">
+                                    Cảnh báo rủi ro<br>
+                                    <span style="font-weight: 400; color: #9A3412;">Công ty này đã bị người dùng báo cáo 2 lần trong tháng qua.</span>
+                                </div>
+                            </div>
+
+                            <div class="info-list" style="margin-top: 32px;">
+                                <div class="info-item">
+                                    <span class="info-label">Quy mô:</span>
+                                    <span class="info-value">25 - 99 nhân viên</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Ngành nghề:</span>
+                                    <span class="info-value">Tài chính – Kế toán</span>
+                                </div>
+                                <div class="info-item" style="flex-direction: column; align-items: flex-start;">
+                                    <span class="info-label" style="margin-bottom: 8px;">Địa điểm:</span>
+                                    <span class="info-value" style="text-align: left; line-height: 1.5;">Hồ Chí Minh: 77 Lê Cao Lãng, Phường Phú Thạnh</span>
+                                </div>
+                            </div>
+
+                            <a href="#" style="display: flex; align-items: center; justify-content: center; gap: 8px; color: #2563EB; font-weight: 800; font-size: 18px; text-decoration: none; margin-top: 32px; border-top: 1px solid #F1F5F9; padding-top: 24px;">
+                                Xem trang công ty
+                                <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-xem-trang-cong-ty.svg" alt=">" width="16">
+                            </a>
+                        </div>
+
+                        <div class="stat-grid-j">
+                            <div class="stat-box-j" style="background: url('../assets/images/ic_quanlycongty/chi-tiet/bg-report-card-tin-tuyen-dung.svg') no-repeat center/cover;">
+                                <div style="font-size: 11px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; opacity: 0.8;">Tin tuyển dụng</div>
+                                <div style="font-size: 32px; font-weight: 800; margin-bottom: 8px;">24</div>
+                                <div style="font-size: 10px; padding: 4px 8px; background: rgba(255,255,255,0.2); border-radius: 4px; display: inline-block;">+12% tháng này</div>
+                            </div>
+                            <div class="stat-box-j" style="background: url('../assets/images/ic_quanlycongty/chi-tiet/bg-report-do-tin-cay.svg') no-repeat center/cover;">
+                                <div style="font-size: 11px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; opacity: 0.8;">Độ tin cậy</div>
+                                <div style="font-size: 32px; font-weight: 800;">98.5%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="main-content-j">
+                        <div class="content-card-j" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 32px;">
+                            <div class="tabs-header-j">
+                                <div class="tab-item-j active">Tin tuyển dụng (24)</div>
+                                <div class="tab-item-j">Lịch sử báo cáo</div>
+                            </div>
+                            <div style="padding: 0 0 32px;">
+                                <table class="admin-table-v3">
+                                    <thead class="job-table-header-j">
+                                        <tr>
+                                            <th style="width: 40%; text-align: left;">VỊ TRÍ TUYỂN DỤNG</th>
+                                            <th style="width: 15%; text-align: left;">NGÀY ĐĂNG</th>
+                                            <th style="width: 25%; text-align: left;">ỨNG VIÊN</th>
+                                            <th style="width: 15%; text-align: left;">TRẠNG THÁI</th>
+                                            <th style="width: 5%;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div style="font-weight: 700; color: #0F172A; font-size: 18px; margin-bottom: 4px;">Kỹ sư Cơ khí / Sản xuất</div>
+                                                <div style="font-size: 14px; color: #64748B;">Vinatech</div>
+                                            </td>
+                                            <td style="color: #64748B; font-weight: 500;">09/04/2023</td>
+                                            <td>
+                                                <div class="avatar-group-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar1.svg" class="avatar-item-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar2.svg" class="avatar-item-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar3.svg" class="avatar-item-j">
+                                                    <div class="avatar-more-j">+12</div>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-pill-v3 status-success-j">Đã duyệt</span></td>
+                                            <td style="text-align: right;"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="24" style="cursor: pointer;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="font-weight: 700; color: #0F172A; font-size: 18px; margin-bottom: 4px;">Lập trình viên Frontend (ReactJS)</div>
+                                                <div style="font-size: 14px; color: #64748B;">Atigit</div>
+                                            </td>
+                                            <td style="color: #64748B; font-weight: 500;">03/02/2022</td>
+                                            <td>
+                                                <div class="avatar-group-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar1.svg" class="avatar-item-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar2.svg" class="avatar-item-j">
+                                                    <div class="avatar-more-j">+12</div>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-pill-v3 status-warning-j">Chờ duyệt</span></td>
+                                            <td style="text-align: right;"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="24" style="cursor: pointer;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div style="font-weight: 700; color: #0F172A; font-size: 18px; margin-bottom: 4px;">Nhân viên Kinh doanh</div>
+                                                <div style="font-size: 14px; color: #64748B;">Thiên Bình Corp</div>
+                                            </td>
+                                            <td style="color: #64748B; font-weight: 500;">20/11/2021</td>
+                                            <td>
+                                                <div class="avatar-group-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar1.svg" class="avatar-item-j">
+                                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/avtar3.svg" class="avatar-item-j">
+                                                    <div class="avatar-more-j">+12</div>
+                                                </div>
+                                            </td>
+                                            <td><span class="status-pill-v3 status-success-j">Đã duyệt</span></td>
+                                            <td style="text-align: right;"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V" width="24" style="cursor: pointer;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="text-align: center; margin-top: 24px;">
+                                    <a href="#" style="color: #2563EB; font-weight: 800; font-size: 14px; text-decoration: none;">Xem tất cả 24 tin tuyển dụng</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                                <h3 style="font-size: 20px; font-weight: 800; color: #1E293B;">Thông tin xác thực & Pháp lý</h3>
+                                <a href="javascript:void(0)" onclick="openDownloadModal()" style="display: flex; align-items: center; gap: 8px; color: #2563EB; font-weight: 700; font-size: 13px; text-decoration: none;">
+                                    <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-download.svg" alt="dl" width="16" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+                                    Tải xuống hồ sơ
+                                </a>
+                            </div>
+                            <div style="display: flex; gap: 24px;">
+                                <div class="doc-card-j">
+                                    <div class="doc-img-wrapper">
+                                        <img src="../assets/images/ic_quanlycongty/chi-tiet/giay-phep-kinh-doanh.svg" alt="GPKD" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                                        <div class="doc-label-tag">Giấy phép kinh doanh</div>
+                                    </div>
+                                </div>
+                                <div class="doc-card-j">
+                                    <div class="doc-img-wrapper">
+                                        <img src="../assets/images/ic_quanlycongty/chi-tiet/chung-nhan-ma-so-thue.svg" alt="MST" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                                        <div class="doc-label-tag">Chứng nhận mã số thuế</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Approval Floating Footer -->
+                        <div class="approval-footer-j">
+                            <div style="display: flex; align-items: center; gap: 40px;">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span style="font-size: 11px; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.5px;">Thao tác phê duyệt</span>
+                                    <span style="font-size: 14px; font-weight: 700; color: #475569;">Đang chọn: Công ty ABC</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 16px;">
+                                <button onclick="openRejectModal()" style="padding: 12px 32px; border-radius: 12px; background: white; border: 1px solid #E2E8F0; font-weight: 700; color: #475569; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-tu-choi.svg" alt="X" width="14">
+                                    Từ chối
+                                </button>
+                                <button onclick="openApproveModal()" style="padding: 12px 32px; border-radius: 12px; background: #2563EB; border: none; font-weight: 800; color: white; display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <img src="../assets/images/ic_quanlycongty/chi-tiet/ic-phe-duyet-doanh-nghiep.svg" alt="V" width="18">
+                                    Phê duyệt Doanh nghiệp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Download -->
+    <div class="modal-overlay-j" id="downloadModal">
+        <div class="download-modal-j">
+            <div class="modal-header-j">
+                <div class="modal-icon-box-j">
+                    <img src="../assets/images/ic_quanlycongty/modal/ic-download.svg" alt="DL" width="28">
+                </div>
+                <h2 style="font-size: 32px; font-weight: 800; color: #0F172A;">Xác nhận tải xuống</h2>
+            </div>
+            <p style="font-size: 16px; color: #475569; line-height: 1.6;">Bạn có chắc chắn muốn tải xuống bản gốc của giấy phép kinh doanh này không?</p>
+            
+            <div class="file-info-box-j">
+                <img src="../assets/images/ic_quanlycongty/modal/ic-pdf.svg" alt="PDF" width="48">
+                <div>
+                    <div style="font-size: 18px; font-weight: 800; color: #1E293B; margin-bottom: 4px;">Giấy-phép-kinh-doanh-TechNova.pdf</div>
+                    <div style="font-size: 14px; color: #64748B; display: flex; align-items: center; gap: 12px;">
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <img src="../assets/images/ic_quanlycongty/modal/ic-file-size.svg" alt="S" width="14">
+                            2.4 MB
+                        </span>
+                        <span style="display: flex; align-items: center; gap: 6px;">
+                            <img src="../assets/images/ic_quanlycongty/modal/ic-file.svg" alt="F" width="14">
+                            PDF
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box-j">
+                <img src="../assets/images/ic_quanlycongty/modal/ic-warning-file.svg" alt="!" width="24" style="flex-shrink: 0;">
+                <p style="font-size: 14px; color: #92400E; font-weight: 600; line-height: 1.5; margin: 0;">Tệp tin này chứa thông tin bảo mật của doanh nghiệp. Vui lòng bảo quản cẩn thận.</p>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 16px;">
+                <button class="btn-cancel-j" onclick="closeDownloadModal()">Hủy</button>
+                <button class="btn-download-now-j" onclick="handleDownload()">
+                    <img src="../assets/images/ic_quanlycongty/modal/ic-download-bt.svg" alt="DL" width="18">
+                    Tải xuống ngay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Reject -->
+    <div class="modal-overlay-j" id="rejectModal">
+        <div class="download-modal-j" style="text-align: center;">
+            <div class="">
+                <img src="../assets/images/ic_quanlycongty/modal/ic-tu-choi.svg" alt="!">
+            </div>
+            <h2 style="font-size: 32px; font-weight: 800; color: #0F172A; margin-bottom: 12px;">Xác nhận từ chối doanh nghiệp</h2>
+            <p style="font-size: 16px; color: #475569; line-height: 1.6; margin-bottom: 32px;">Hành động này sẽ thông báo cho doanh nghiệp về việc hồ sơ không được phê duyệt.</p>
+            
+            <div style="text-align: left;">
+                <label class="field-label-j">LÝ DO TỪ CHỐI</label>
+                <select class="select-j">
+                    <option>Chọn lý do từ chối hồ sơ</option>
+                    <option>Hồ sơ không hợp lệ</option>
+                    <option>Thông tin sai sự thật</option>
+                    <option>Thiếu chứng từ pháp lý</option>
+                </select>
+
+                <label class="field-label-j">NHẬP CHI TIẾT LÝ DO...</label>
+                <textarea class="textarea-j" placeholder="Vui lòng cung cấp thêm chi tiết để doanh nghiệp có thể sửa đổi và nộp lại hồ sơ..."></textarea>
+
+                <label class="checkbox-group-j">
+                    <input type="checkbox" checked>
+                    <span>Gửi email thông báo cho doanh nghiệp</span>
+                </label>
+                <label class="checkbox-group-j">
+                    <input type="checkbox">
+                    <span>Đánh dấu tài khoản cần theo dõi</span>
+                </label>
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-top: 32px;">
+                <button class="btn-cancel-j" style="flex: 1;" onclick="closeRejectModal()">Hủy</button>
+                <button class="btn-confirm-reject-j" style="flex: 1;" onclick="handleReject()">Xác nhận từ chối</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Alert -->
+    <div class="success-alert-j" id="downloadSuccess">
+        <div style="width: 40px; height: 40px; background: #EFF6FF; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <img src="../assets/images/ic_quanlycongty/modal/ic-download.svg" alt="DL" width="20">
+        </div>
+        <span style="font-size: 18px; font-weight: 800; color: #1E293B;">Đã tải xuống</span>
+        <img src="../assets/images/ic_quanlycongty/modal/ic-close.svg" alt="X" width="14" style="cursor: pointer; margin-left: 20px;" onclick="hideAlert('downloadSuccess')">
+    </div>
+
+    <!-- Reject Alert -->
+    <div class="success-alert-j" id="rejectSuccess">
+        <div style="width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <img src="../assets/images/ic_quanlycongty/modal/ic-tu-choi.svg" alt="!" width="40">
+        </div>
+        <span style="font-size: 18px; font-weight: 800; color: #1E293B;">Xác nhận từ chối doanh nghiệp</span>
+        <img src="../assets/images/ic_quanlycongty/modal/ic-close.svg" alt="X" width="14" style="cursor: pointer; margin-left: 20px;" onclick="hideAlert('rejectSuccess')">
+    </div>
+
+    <!-- Lock Modal -->
+    <div class="modal-overlay-j" id="lockModal">
+        <div class="download-modal-j" style="text-align: center;">
+            <div class="">
+                <img src="../assets/images/ic_quanlycongty/modal/ic-khoa-doanh-nghiep.svg" alt="L">
+            </div>
+            <h2 style="font-size: 32px; font-weight: 800; color: #0F172A; margin-bottom: 12px;">Khóa tài khoản doanh nghiệp</h2>
+            <p style="font-size: 16px; color: #475569; line-height: 1.6; margin-bottom: 32px;">Hành động này sẽ tạm dừng mọi hoạt động tuyển dụng của doanh nghiệp trên nền tảng.</p>
+            
+            <div style="text-align: left;">
+                <label class="field-label-j">THỜI GIAN KHÓA</label>
+                <select class="select-j">
+                    <option>Vô thời hạn</option>
+                    <option>7 ngày</option>
+                    <option>30 ngày</option>
+                    <option>90 ngày</option>
+                </select>
+
+                <label class="field-label-j">LÝ DO KHÓA TÀI KHOẢN <span style="color: #BA1A1A;">*</span></label>
+                <textarea class="textarea-j" placeholder="Nhập lý do cụ thể..."></textarea>
+
+                <label class="checkbox-group-j">
+                    <input type="checkbox">
+                    <span>Gửi email thông báo cho doanh nghiệp</span>
+                </label>
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-top: 32px;">
+                <button class="btn-cancel-j" style="flex: 1;" onclick="closeLockModal()">Hủy</button>
+                <button class="btn-confirm-reject-j" style="flex: 1;" onclick="handleLock()">Xác nhận khóa</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lock Alert -->
+    <div class="success-alert-j" id="lockSuccess">
+        <div style="width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <img src="../assets/images/ic_quanlycongty/modal/ic-khoa-doanh-nghiep.svg" alt="L" width="32">
+        </div>
+        <span style="font-size: 18px; font-weight: 800; color: #1E293B;">Khóa tài khoản doanh nghiệp thành công</span>
+        <img src="../assets/images/ic_quanlycongty/modal/ic-close.svg" alt="X" width="14" style="cursor: pointer; margin-left: 20px;" onclick="hideAlert('lockSuccess')">
+    </div>
+
+    <!-- Report Modal -->
+    <div class="modal-overlay-j" id="reportModal">
+        <div class="download-modal-j" style="text-align: center;">
+            <div class="">
+                <img src="../assets/images/ic_quanlycongty/modal/ic-bao-cao-vi-pham.svg" alt="!">
+            </div>
+            <h2 style="font-size: 32px; font-weight: 800; color: #0F172A; margin-bottom: 12px;">Báo cáo vi phạm doanh nghiệp</h2>
+            <p style="font-size: 16px; color: #475569; line-height: 1.6; margin-bottom: 32px;">Vui lòng cung cấp đầy đủ thông tin để quản trị viên có thể xem xét và xử lý nhanh nhất.</p>
+            
+            <div class="reported-entity-card-j">
+                <div style="border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                    <img src="../assets/images/ic_quanlycongty/modal/avt-cong-ty-abc.svg" alt="ABC">
+                </div>
+                <div>
+                    <div style="font-size: 12px; font-weight: 700; color: #94A3B8; text-transform: uppercase;">DOANH NGHIỆP BỊ BÁO CÁO</div>
+                    <div style="font-size: 20px; font-weight: 800; color: #1E293B;">Công ty ABC</div>
+                </div>
+            </div>
+
+            <div style="text-align: left;">
+                <label class="field-label-j">LOẠI VI PHẠM</label>
+                <select class="select-j">
+                    <option>Chọn loại vi phạm</option>
+                    <option>Thông tin sai sự thật</option>
+                    <option>Lạm dụng nền tảng</option>
+                    <option>Lừa đảo ứng viên</option>
+                </select>
+
+                <label class="field-label-j">MÔ TẢ CHI TIẾT HÀNH VI VI PHẠM</label>
+                <textarea class="textarea-j" placeholder="Nhập chi tiết nội dung vi phạm..."></textarea>
+
+                <label class="field-label-j">MINH CHỨNG (ẢNH CHỤP/TÀI LIỆU)</label>
+                <div class="dropzone-j">
+                    <div style="display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                        <img src="../assets/images/ic_quanlycongty/modal/ic-upload-chung-tu-vi-pham.svg" alt="^">
+                    </div>
+                    <p style="font-size: 14px; color: #475569; font-weight: 600;">Kéo thả hoặc <span style="color: #2563EB; text-decoration: underline;">Tải lên</span></p>
+                    <p style="font-size: 12px; color: #94A3B8; margin-top: 4px;">PNG, JPG, PDF (Max 10MB)</p>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-top: 40px;">
+                <button class="btn-cancel-j" style="flex: 1;" onclick="closeReportModal()">Hủy</button>
+                <button class="btn-confirm-reject-j" style="flex: 1;" onclick="handleReport()">Gửi báo cáo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Alert -->
+    <div class="success-alert-j" id="reportSuccess">
+        <div style="width: 40px; height: 40px; background: #FEE2E2; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <img src="../assets/images/ic_quanlycongty/modal/ic-report-violation.svg" alt="!" width="20">
+        </div>
+        <span style="font-size: 18px; font-weight: 800; color: #1E293B;">Đã báo cáo vi phạm doanh nghiệp</span>
+        <img src="../assets/images/ic_quanlycongty/modal/ic-close.svg" alt="X" width="14" style="cursor: pointer; margin-left: 20px;" onclick="hideAlert('reportSuccess')">
+    </div>
+
+    <!-- Approve Modal -->
+    <div class="modal-overlay-j" id="approveModal">
+        <div class="download-modal-j" style="text-align: center;">
+            <div class="modal-icon-box-blue-j">
+                <img src="../assets/images/ic_quanlycongty/modal/ic-phe-duyet-doanh-nghiep.svg" alt="V">
+            </div>
+            <h2 style="font-size: 32px; font-weight: 800; color: #0F172A; margin-bottom: 12px;">Phê duyệt xác minh doanh nghiệp</h2>
+            <p style="font-size: 16px; color: #475569; line-height: 1.6; margin-bottom: 32px;">Xác nhận thông tin doanh nghiệp là chính xác và cấp dấu "Đã xác minh".</p>
+            
+            <div style="text-align: left;">
+                <label class="field-label-j">CẤP ĐỘ TÀI KHOẢN</label>
+                <select class="select-j">
+                    <option>Verified Enterprise</option>
+                    <option>Premium Business</option>
+                    <option>Standard Business</option>
+                </select>
+
+                <label class="field-label-j">GHI CHÚ PHÊ DUYỆT</label>
+                <textarea class="textarea-j" placeholder="Nhập nhận xét hoặc hướng dẫn cho doanh nghiệp..."></textarea>
+
+                <div class="info-box-blue-j">
+                    <img src="../assets/images/ic_quanlycongty/modal/ic-thong-tin.svg" alt="i" width="24" style="flex-shrink: 0;">
+                    <p style="font-size: 14px; color: #2563EB; font-weight: 600; line-height: 1.5; margin: 0;">Hành động này sẽ gửi một thông báo chính thức đến người đại diện pháp luật của doanh nghiệp qua email.</p>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 16px; margin-top: 32px;">
+                <button class="btn-cancel-j" style="flex: 1;" onclick="closeApproveModal()">Hủy</button>
+                <button class="btn-download-now-j" style="flex: 1; justify-content: center;" onclick="handleApprove()">Phê duyệt ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Approve Success Alert -->
+    <div class="success-alert-j" id="approveSuccess">
+        <div style="width: 40px; height: 40px; background: #EFF6FF; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <img src="../assets/images/ic_quanlycongty/modal/ic-phe-duyet-doanh-nghiep.svg" alt="V" width="30">
+        </div>
+        <span style="font-size: 18px; font-weight: 800; color: #1E293B;">Phê duyệt xác minh doanh nghiệp thành công</span>
+        <img src="../assets/images/ic_quanlycongty/modal/ic-close.svg" alt="X" width="14" style="cursor: pointer; margin-left: 20px;" onclick="hideAlert('approveSuccess')">
+    </div>
+
+    <script>
+        function openDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'flex';
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+
+        function openRejectModal() {
+            document.getElementById('rejectModal').style.display = 'flex';
+        }
+
+        function closeRejectModal() {
+            document.getElementById('rejectModal').style.display = 'none';
+        }
+
+        function openLockModal() {
+            document.getElementById('lockModal').style.display = 'flex';
+        }
+
+        function closeLockModal() {
+            document.getElementById('lockModal').style.display = 'none';
+        }
+
+        function openReportModal() {
+            document.getElementById('reportModal').style.display = 'flex';
+        }
+
+        function closeReportModal() {
+            document.getElementById('reportModal').style.display = 'none';
+        }
+
+        function openApproveModal() {
+            document.getElementById('approveModal').style.display = 'flex';
+        }
+
+        function closeApproveModal() {
+            document.getElementById('approveModal').style.display = 'none';
+        }
+
+        function handleDownload() {
+            closeDownloadModal();
+            showSuccessAlert('downloadSuccess');
+        }
+
+        function handleReject() {
+            closeRejectModal();
+            showSuccessAlert('rejectSuccess');
+        }
+
+        function handleLock() {
+            closeLockModal();
+            showSuccessAlert('lockSuccess');
+        }
+
+        function handleReport() {
+            closeReportModal();
+            showSuccessAlert('reportSuccess');
+        }
+
+        function handleApprove() {
+            closeApproveModal();
+            showSuccessAlert('approveSuccess');
+        }
+
+        function showSuccessAlert(id) {
+            const alert = document.getElementById(id);
+            alert.style.display = 'flex';
+            alert.style.animation = 'slideDownJ 0.3s ease-out forwards';
+            
+            setTimeout(() => {
+                hideAlert(id);
+            }, 3000);
+        }
+
+        function hideAlert(id) {
+            const alert = document.getElementById(id);
+            if (!alert) return;
+            alert.style.animation = 'slideUpJ 0.3s ease-out forwards';
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 300);
+        }
+    </script>

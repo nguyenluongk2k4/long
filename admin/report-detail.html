@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết báo cáo #RP-1284 - Admin JobGos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+    <style>
+        .report-layout-j {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .card-j {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+
+        .status-pin-j {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pin-new-j { background: #DCFCE7; color: #166534; }
+        .pin-processing-j { background: #FFEDD5; color: #9A3412; }
+
+        .info-row-j {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .info-box-v2-j {
+            background: #F8FAFC;
+            border-radius: 16px;
+            padding: 20px;
+        }
+        .box-label-j {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94A3B8;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .evidence-grid-j {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .evidence-item-j {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #F1F5F9;
+            height: 120px;
+            background: #F8FAFC;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .evidence-item-j:hover { transform: translateY(-4px); border-color: #2563EB; }
+        .evidence-img-j { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+
+        .sidebar-card-j {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+        }
+        .card-title-j {
+            font-size: 13px;
+            font-weight: 800;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .entity-profile-j {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .entity-avt-j { width: 56px; height: 56px; border-radius: 16px; object-fit: cover; }
+
+        .stat-item-j {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #F1F5F9;
+            font-size: 13px;
+        }
+        .stat-item-j:last-child { border-bottom: none; }
+
+        .timeline-j {
+            margin-top: 24px;
+            position: relative;
+        }
+        .timeline-j::before {
+            content: "";
+            position: absolute;
+            left: 7px; top: 0; bottom: 0; width: 2px;
+            background: #F1F5F9;
+        }
+        .timeline-item-j {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 24px;
+        }
+        .timeline-dot-j {
+            position: absolute;
+            left: 0; top: 4px; width: 16px; height: 16px;
+            background: white;
+            border: 2px solid #2563EB;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .dot-gray-j { border-color: #CBD5E1; }
+
+        .textarea-j {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #1E293B;
+            background: white;
+            font-family: inherit;
+            margin-bottom: 20px;
+            height: 100px;
+            resize: none;
+        }
+
+        .btn-solve-j {
+            background: #2563EB;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-view-profile-j {
+            width: 100%;
+            background: #2563EB;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        .btn-save-note-j {
+            width: 100%;
+            background: #EFF6FF;
+            color: #2563EB;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .badge-count-j {
+            background: #F1F5F9;
+            color: #475569;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="manage-companies.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="system-statistics.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="manage-blog.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="system-settings.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, ID, email...">
+                </div>
+
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify" style="background: transparent; cursor: pointer;" onclick="location.href='notifications.html'">
+                        <img src="../assets/images/ic_tquanadmin/ic_thongbao.svg" alt="Notifications" width="24">
+                        <span class="notify-badge"></span>
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 5px; padding: 8px 20px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <div class="breadcrumb" style="margin-bottom: 24px;">
+                    Quản lý báo cáo & khiếu nại > Chi tiết báo cáo
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <span style="font-size: 11px; font-weight: 700; color: #94A3B8; text-transform: uppercase;">CHI TIẾT KHIẾU NẠI</span>
+                            <span style="font-size: 10px; font-weight: 800; color: #2563EB; background: #EFF6FF; padding: 2px 8px; border-radius: 4px;">SỬ DỤNG NỘI BỘ</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <h1 style="font-size: 32px; font-weight: 800; color: #0F172A; margin: 0;">Chi tiết báo cáo #RP-1284</h1>
+                            <div style="display: flex; gap: 8px;">
+                                <span class="status-pin-j pin-new-j">
+                                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #166534;"></span>
+                                    Mới
+                                </span>
+                                <span class="status-pin-j pin-processing-j">
+                                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #9A3412;"></span>
+                                    Đang xử lý
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-solve-j">
+                        <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/ic-giai-quyet.svg" alt="V" width="18">
+                        Giải quyết
+                    </button>
+                </div>
+
+            <div class="report-layout-j">
+                <div class="report-main-col">
+                    <div class="card-j">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <h2 style="font-size: 20px; font-weight: 800; color: #1E293B; margin: 0;">Nội dung khiếu nại</h2>
+                            <span style="font-size: 13px; color: #94A3B8; font-weight: 500;">12:45, 24 Tháng 5, 2024</span>
+                        </div>
+                        
+                        <div class="info-row-j">
+                            <div class="info-box-v2-j">
+                                <span class="box-label-j">LOẠI VI PHẠM</span>
+                                <span style="font-size: 15px; font-weight: 700; color: #BA1A1A;">Lừa đảo / giả mạo</span>
+                            </div>
+                            <div class="info-box-v2-j">
+                                <span class="box-label-j">MỨC ĐỘ ƯU TIÊN</span>
+                                <div style="display: flex; align-items: center; gap: 8px; color: #EA580C; font-weight: 700; font-size: 15px;">
+                                    <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/ic-muc-do-uu-tien-cao.svg" alt="!">
+                                    Ưu tiên cao
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 style="font-size: 14px; font-weight: 800; color: #475569; margin-bottom: 12px;">Chi tiết mô tả</h3>
+                        <p style="font-size: 14px; color: #64748B; line-height: 1.8; margin: 0;">
+                            Người dùng này đã đăng tin tuyển dụng ảo nhằm mục đích lừa đảo lấy thông tin cá nhân của ứng viên. Tôi đã nộp đơn và họ yêu cầu tôi gửi ảnh chụp 2 mặt CMND/CCCD và thông tin số tài khoản ngân hàng để "xác minh hồ sơ" trước khi phỏng vấn. Khi tôi từ chối, họ đã có những lời lẽ xúc phạm và đe dọa. Rất mong ban quản trị kiểm tra và xử lý tài khoản này để bảo vệ cộng đồng.
+                        </p>
+                    </div>
+
+                    <div class="card-j">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                            <h2 style="font-size: 20px; font-weight: 800; color: #1E293B; margin: 0;">Minh chứng (Evidence)</h2>
+                            <span class="badge-count-j">4 TẬP TIN</span>
+                        </div>
+
+                        <div class="evidence-grid-j">
+                            <div class="evidence-item-j">
+                                <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/envidence-1.svg" alt="EV1" class="evidence-img-j">
+                            </div>
+                            <div class="evidence-item-j">
+                                <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/envidence-2.svg" alt="EV2" class="evidence-img-j">
+                            </div>
+                            <div class="evidence-item-j" style="background: white; border: 1px dashed #E2E8F0;">
+                                <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/envidence-3-ic-pdf-file.svg" alt="PDF" width="32" style="margin-bottom: 8px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">LOG_REPORT.PDF</span>
+                            </div>
+                            <div class="evidence-item-j" style="background: white; border: 1px dashed #E2E8F0;">
+                                <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/envidence-4-ic-ghim-file.svg" alt="CSV" width="32" style="margin-bottom: 8px;">
+                                <span style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase;">CHAT_EXPORT.CSV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-side-col">
+                    <div class="sidebar-card-j">
+                        <span class="card-title-j">NGƯỜI GỬI BÁO CÁO</span>
+                        <div class="entity-profile-j">
+                            <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/avt-nguoi-gui-bao-cao.svg" alt="User" class="entity-avt-j">
+                            <div>
+                                <div style="font-size: 16px; font-weight: 800; color: #1E293B;">Nguyễn Minh Tuấn</div>
+                                <div style="font-size: 12px; color: #2563EB; font-weight: 500;">Ứng viên • Đã xác minh</div>
+                            </div>
+                        </div>
+                        <div style="background: #F8FAFC; border-radius: 12px; padding: 16px; margin-top: 16px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                                <span style="color: #64748B;">Tổng số báo cáo đã gửi</span>
+                                <span style="font-weight: 800; color: #1E293B;">24</span>
+                            </div>
+                        </div>
+                        <a href="javascript:void(0)" style="display: flex; align-items: center; justify-content: center; gap: 8px; color: #475569; font-size: 13px; font-weight: 700; text-decoration: none; margin-top: 20px;">
+                            Xem lịch sử
+                            <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/ic-xem-lich-su.svg" alt="->" width="14">
+                        </a>
+                    </div>
+
+                    <div class="sidebar-card-j">
+                        <span class="card-title-j">ĐỐI TƯỢNG BỊ KHIẾU NẠI</span>
+                        <div style="background: #FFF1F2; border-radius: 12px; padding: 16px; margin-bottom: 20px; display: flex; gap: 12px; border: 1px solid #FFE4E6;">
+                            <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/avt-techglobal.svg" alt="TG" width="40" height="40" style="border-radius: 8px;">
+                            <div>
+                                <div style="font-size: 14px; font-weight: 800; color: #1E293B;">TechGlobal Solutions Corp.</div>
+                                <div style="font-size: 11px; color: #9F1239; font-weight: 600;">Hồ sơ công ty • Nhà tuyển dụng</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item-j">
+                            <span style="color: #64748B;">Vi phạm trong quá khứ</span>
+                            <span style="background: #BA1A1A; color: white; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 800;">3</span>
+                        </div>
+                        <div class="stat-item-j">
+                            <span style="color: #64748B;">Tin tuyển dụng đang hoạt động</span>
+                            <span style="font-weight: 800; color: #1E293B;">8</span>
+                        </div>
+                        <div class="stat-item-j">
+                            <span style="color: #64748B;">Điểm tin cậy</span>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-weight: 800; color: #BA1A1A;">42/100</span>
+                                <img src="../assets/images/admin-quan-li-bao-cao/chi-tiet/ic-down-trend-diem-vi-pham.svg" alt="dec" width="12">
+                            </div>
+                        </div>
+
+                        <button class="btn-view-profile-j">Kiểm tra hồ sơ</button>
+                    </div>
+
+                    <div class="sidebar-card-j">
+                        <span class="card-title-j">GHI CHÚ NỘI BỘ</span>
+                        <textarea class="textarea-j" placeholder="Nhập ghi chú hoặc kết luận xử lý..."></textarea>
+                        
+                        <span style="font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase;">LỊCH SỬ THAO TÁC</span>
+                        <div class="timeline-j">
+                            <div class="timeline-item-j">
+                                <div class="timeline-dot-j"></div>
+                                <div style="font-size: 13px; font-weight: 800; color: #1E293B;">Báo cáo được tạo</div>
+                                <div style="font-size: 11px; color: #94A3B8;">Hệ thống • 24 Th05, 12:45</div>
+                            </div>
+                            <div class="timeline-item-j" style="margin-bottom: 0;">
+                                <div class="timeline-dot-j dot-gray-j"></div>
+                                <div style="font-size: 13px; color: #94A3B8; font-style: italic;">Chưa có thêm thao tác nào...</div>
+                            </div>
+                        </div>
+
+                        <button class="btn-save-note-j" style="margin-top: 32px;">Lưu ghi chú</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

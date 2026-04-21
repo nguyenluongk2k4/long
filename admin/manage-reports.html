@@ -368,11 +368,15 @@
                         <h3 style="font-size: 18px; font-weight: 800; color: #1E293B;">Danh sách khiếu nại gần đây</h3>
                     </div>
                     
+                    <style>
+                        .admin-table tbody tr { cursor: pointer; }
+                        .admin-table tbody tr:hover { background: #F8FAFC !important; }
+                    </style>
                     <table class="admin-table">
                         <thead>
                             <tr>
                                 <th>NGƯỜI GỬI</th>
-                                <th>LOẠI BÁO CÁO</th>
+                                <th>LOẠI BÁO BÁO</th>
                                 <th style="width: 30%;">NỘI DUNG TÓM TẮT</th>
                                 <th>NGÀY GỬI</th>
                                 <th>TRẠNG THÁI</th>
@@ -380,7 +384,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr onclick="location.href='report-detail.html'">
                                 <td>
                                     <div class="job-info-cell">
                                         <span class="job-title-admin">Hoàng Đức Anh</span>
@@ -400,7 +404,7 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view">
+                                        <div class="btn-action-admin btn-view" onclick="location.href='report-detail.html'">
                                             <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
                                         </div>
                                         <div class="btn-action-admin btn-delete">
@@ -409,7 +413,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr onclick="location.href='report-detail.html'">
                                 <td>
                                     <div class="job-info-cell">
                                         <span class="job-title-admin">Đỗ Thanh Tùng</span>
@@ -429,7 +433,7 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view">
+                                        <div class="btn-action-admin btn-view" onclick="location.href='report-detail.html'">
                                             <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
                                         </div>
                                         <div class="btn-action-admin btn-delete">
@@ -438,7 +442,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr onclick="location.href='report-detail.html'">
                                 <td>
                                     <div class="job-info-cell">
                                         <span class="job-title-admin">Vũ Minh Khôi</span>
@@ -458,7 +462,7 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view">
+                                        <div class="btn-action-admin btn-view" onclick="location.href='report-detail.html'">
                                             <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
                                         </div>
                                         <div class="btn-action-admin btn-delete">
@@ -467,7 +471,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr onclick="location.href='report-detail.html'">
                                 <td>
                                     <div class="job-info-cell">
                                         <span class="job-title-admin">Trịnh Quang Huy</span>
@@ -487,7 +491,7 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view">
+                                        <div class="btn-action-admin btn-view" onclick="location.href='report-detail.html'">
                                             <img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V">
                                         </div>
                                         <div class="btn-action-admin btn-delete">
