@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm bài viết mới - Admin JobGos</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/user_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_global.css">
+    <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <link rel="stylesheet" href="../css/admin_management.css">
+    <link rel="stylesheet" href="../css/admin_toast.css">
+    <style>
+        .add-blog-layout-j {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .blog-editor-column-j {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .blog-sidebar-column-j {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .blog-card-j {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #E7E8E9;
+            box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-title-input-j {
+            width: 100%;
+            border: none;
+            font-size: 36px;
+            font-weight: 800;
+            color: #1E293B;
+            outline: none;
+            padding: 0;
+            margin-bottom: 8px;
+        }
+        .blog-title-input-j::placeholder { color: #CBD5E1; }
+
+        .blog-permalink-j {
+            font-size: 14px;
+            color: #64748B;
+        }
+        .blog-permalink-j span { color: #2563EB; cursor: pointer; }
+
+        /* Fake Editor */
+        .editor-container-j {
+            border: 1px solid #E7E8E9;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+        .editor-toolbar-j {
+            padding: 12px 16px;
+            border-bottom: 1px solid #E7E8E9;
+            background: #F8FAFC;
+        }
+        .editor-content-j {
+            flex: 1;
+            padding: 32px;
+            font-size: 16px;
+            color: #1E293B;
+            line-height: 1.8;
+            outline: none;
+        }
+        .editor-content-j:empty:before {
+            content: attr(data-placeholder);
+            color: #94A3B8;
+        }
+
+        /* Sidebar Cards */
+        .sidebar-actions-j {
+            display: flex;
+            gap: 12px;
+        }
+        .btn-preview-j {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #2563EB;
+            background: white;
+            color: #2563EB;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-post-j {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: #2563EB;
+            color: white;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0px 4px 12px rgba(37, 99, 235, 0.2);
+            transition: all 0.2s;
+        }
+        .btn-preview-j:hover {
+            background: #F1F5F9;
+            border-color: #1D4ED8;
+            color: #1D4ED8;
+        }
+        .btn-post-j:hover {
+            background: #1D4ED8;
+            box-shadow: 0px 6px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .sidebar-card-title-j {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1E293B;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-list-j {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .category-item-j {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #475569;
+            font-weight: 600;
+        }
+        .category-item-j input { width: 18px; height: 18px; cursor: pointer; }
+
+        .featured-image-box-j {
+            border: 2px dashed #E2E8F0;
+            border-radius: 12px;
+            padding: 32px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .featured-image-box-j:hover { border-color: #2563EB; background: #F8FAFC; }
+
+        .tag-input-wrapper-j {
+            position: relative;
+            margin-top: 16px;
+        }
+        .tag-input-j {
+            width: 100%;
+            height: 48px;
+            padding: 12px 40px 12px 16px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .tag-pills-j {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .tag-pill-j {
+            background: #F1F5F9;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tag-pill-j span { font-size: 16px; cursor: pointer; opacity: 0.5; }
+
+        .excerpt-textarea-j {
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: none;
+            margin-bottom: 8px;
+        }
+
+        /* SEO Section */
+        .seo-input-group-j { margin-bottom: 16px; }
+        .seo-input-group-j label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #94A3B8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .seo-field-j {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .gp-title-j { color: #1a0dab; font-size: 18px; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .gp-link-j { color: #006621; font-size: 14px; margin-bottom: 4px; }
+        .gp-desc-j { color: #545454; font-size: 13px; line-height: 1.4; }
+
+        /* Confirmation Modal Specific Styles */
+        .publish-preview-box-j {
+            background: #F1F5F9;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .publish-preview-title-j {
+            font-size: 11px;
+            font-weight: 800;
+            color: #2563EB;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .publish-preview-content-j h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .schedule-options-j {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+        .schedule-card-j {
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .schedule-card-j.active { border-color: #2563EB; background: #F0F7FF; }
+        .radio-circle-j {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            border: 2px solid #E2E8F0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .schedule-card-j.active .radio-circle-j { border-color: #2563EB; }
+        .schedule-card-j.active .radio-circle-j::after {
+            content: "";
+            width: 10px; height: 10px;
+            background: #2563EB;
+            border-radius: 50%;
+        }
+
+        .display-options-j {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 24px;
+        }
+        .toggle-row-j {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .toggle-switch-j {
+            position: relative;
+            display: inline-block;
+            width: 44px; height: 24px;
+        }
+        .toggle-switch-j input { opacity: 0; width: 0; height: 0; }
+        .slider-j {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #E2E8F0;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider-j:before {
+            position: absolute;
+            content: "";
+            height: 18px; width: 18px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider-j { background-color: #2563EB; }
+        input:checked + .slider-j:before { transform: translateX(20px); }
+
+        .checkbox-group-j {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .checkbox-item-j {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #64748B;
+            cursor: pointer;
+        }
+        .checkbox-item-j input { width: 18px; height: 18px; cursor: pointer; }
+
+        .modal-footer-gray-j {
+            background: #F8FAFC;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin: 0 -48px -48px;
+            border-top: 1px solid #E7E8E9;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        /* Modal Overlay & Base */
+        .modal-overlay-j {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .modal-content-v2-j {
+            background: white;
+            border-radius: 24px;
+            width: 700px;
+            max-width: 90vw;
+            padding: 32px;
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+            animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modalSlideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body style="background: #FAFAFA;">
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <a href="admin-dashboard.html" style="text-decoration: none;">
+                    <span style="color: var(--PRIMARY1); font-size: 32px; font-weight: 800;">JobGos</span>
+                </a>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="admin-dashboard.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_tongquan.svg" alt="Overview">
+                    Tổng quan
+                </a>
+                <a href="manage-users.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlynguoidung.svg" alt="Users">
+                    Quản lý người dùng
+                </a>
+                <a href="manage-jobs.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlytuyendung.svg" alt="Jobs">
+                    Quản lý tin tuyển dụng
+                </a>
+                <a href="manage-companies.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlycongty.svg" alt="Companies">
+                    Quản lý công ty
+                </a>
+                <a href="manage-reports.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlybaocao&khieunai.svg" alt="Reports">
+                    Quản lý báo cáo & khiếu nại
+                </a>
+                <a href="system-statistics.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_thongkehethong.svg" alt="Stats">
+                    Thống kê hệ thống
+                </a>
+                <a href="manage-blog.html" class="menu-item active">
+                    <img src="../assets/images/ic_tquanadmin/ic_quanlyblognoidung.svg" alt="Blog">
+                    Quản lý blog/nội dung
+                </a>
+                <a href="system-settings.html" class="menu-item">
+                    <img src="../assets/images/ic_tquanadmin/ic_caidathethong.svg" alt="Settings">
+                    Cài đặt hệ thống
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#" class="btn-help">
+                    <img src="../assets/images/ic_tquanadmin/ic_hotro.svg" alt="Support">
+                    Hỗ trợ
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Area -->
+        <main class="main-area">
+            <!-- Header Bar -->
+            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+                <div class="admin-header-search">
+                    <img src="../assets/images/ic_caidathethong/ic_timtheoten,IDemail.svg" alt="Search" width="18">
+                    <input type="text" placeholder="Tìm theo tên, email hoặc ID...">
+                </div>
+
+                <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+                    <div class="icon-notify" style="background: transparent; position: relative; cursor: pointer;">
+                        <img src="../assets/images/ic_caidathethong/ic_thongbao.svg" alt="Notifications" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+                    </div>
+                    <div class="header-user-info" style="display: flex; align-items: center; gap: 12px; margin-left: 10px;">
+                        <div style="text-align: right;">
+                            <div style="font-weight: 700; font-size: 14px; color: #1E293B;">Admin JobsGO</div>
+                            <div style="font-size: 12px; color: #64748B;">Hồ sơ</div>
+                        </div>
+                        <img src="../assets/images/user-dashboard/avatar.png" alt="Admin" width="40" height="40" style="border-radius: 50%;">
+                    </div>
+                    <button class="btn-logout-header" style="border: 1px solid #2563EB; color: #2563EB; background: white; margin-left: 5px; padding: 8px 16px;">Đăng xuất</button>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: 40px;">
+                <div class="breadcrumb-j" style="font-size: 14px; color: #64748B; margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+                    <a href="manage-blog.html" style="color: inherit; text-decoration: none;">Quản lý blog/nội dung</a> <img src="../assets/images/admin-quan-li-nguoi-dung/ic-next-pagnitions.svg" alt=">" width="10"> <span style="font-weight: 700; color: #475569;">Thêm bài viết mới</span>
+                </div>
+
+                <div class="add-blog-layout-j">
+                    <!-- Left Column: Editor -->
+                    <div class="blog-editor-column-j">
+                        <div class="blog-card-j">
+                            <input type="text" class="blog-title-input-j" placeholder="Nhập tiêu đề bài viết tại đây.">
+                            <p class="blog-permalink-j">Đường dẫn: jobgos.vn/blog/ <span>tieu-de-bai-viet-cua-ban</span></p>
+                        </div>
+
+                        <div class="editor-container-j">
+                            <div class="editor-toolbar-j">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ckeditor-sample-tool.svg" alt="toolbar" style="max-width: 100%;">
+                            </div>
+                            <div class="editor-content-j" contenteditable="true" data-placeholder="Bắt đầu viết nội dung bài viết của bạn ở đây..."></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sidebar -->
+                    <div class="blog-sidebar-column-j">
+                        <div class="sidebar-actions-j">
+                            <button class="btn-preview-j" onclick="location.href='blog-preview.html'">Preview</button>
+                            <button class="btn-post-j" onclick="openConfirmModal()">Đăng bài</button>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="blog-card-j">
+                            <div class="sidebar-card-title-j">
+                                Chuyên mục
+                            </div>
+                            <div class="category-list-j">
+                                <label class="category-item-j">
+                                    <input type="checkbox"> Tin tức tuyển dụng
+                                </label>
+                                <label class="category-item-j">
+                                    <input type="checkbox" checked> Cẩm nang nghề nghiệp
+                                </label>
+                                <label class="category-item-j">
+                                    <input type="checkbox"> Kỹ năng phỏng vấn
+                                </label>
+                                <label class="category-item-j">
+                                    <input type="checkbox"> Lương & Phúc lợi
+                                </label>
+                            </div>
+                            <a href="#" style="display: flex; align-items: center; gap: 8px; color: #2563EB; font-weight: 700; font-size: 13px; text-decoration: none; margin-top: 20px;">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-add.svg" alt="+" width="16">
+                                Thêm chuyên mục mới
+                            </a>
+                        </div>
+
+                        <!-- Featured Image -->
+                        <div class="blog-card-j">
+                            <div class="sidebar-card-title-j">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-anh-dai-dien.svg" alt="img" width="20">
+                                Ảnh đại diện
+                            </div>
+                            <div class="featured-image-box-j">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-upload.svg" alt="upload" width="40" style="margin-bottom: 12px;">
+                                <p style="font-size: 13px; color: #94A3B8; font-weight: 500; line-height: 1.4;">Kéo thả hoặc click để tải lên<br>(1200x630px)</p>
+                            </div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="blog-card-j">
+                            <div class="sidebar-card-title-j">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-tag.svg" alt="tag" width="20">
+                                Thẻ (Tags)
+                            </div>
+                            <div class="tag-pills-j">
+                                <div class="tag-pill-j">Tuyển dụng 2024 <span>&times;</span></div>
+                                <div class="tag-pill-j">Kỹ năng <span>&times;</span></div>
+                            </div>
+                            <div class="tag-input-wrapper-j">
+                                <input type="text" class="tag-input-j" placeholder="Nhập thẻ và nhấn Enter...">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-add-tags.svg" alt="add" width="18" style="position: absolute; right: 12px; top: 15px; cursor: pointer;">
+                            </div>
+                        </div>
+
+                        <!-- Excerpt -->
+                        <div class="blog-card-j">
+                            <div class="sidebar-card-title-j">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-tom-tat.svg" alt="sum" width="20">
+                                Tóm tắt bài viết
+                            </div>
+                            <textarea class="excerpt-textarea-j" placeholder="Viết mô tả ngắn gọn cho bài viết hiển thị ở trang danh sách..."></textarea>
+                            <div style="text-align: right; font-size: 12px; color: #94A3B8; font-weight: 500;">0 / 180 ký tự</div>
+                        </div>
+
+                        <!-- SEO Config -->
+                        <div class="blog-card-j">
+                            <div class="sidebar-card-title-j">
+                                <img src="../assets/images/ic_quanlyblog/them-blog/ic-cau-hinh-seo.svg" alt="seo" width="20">
+                                Cấu hình SEO
+                            </div>
+                            <div class="seo-input-group-j">
+                                <label>Tiêu đề SEO</label>
+                                <input type="text" class="seo-field-j" placeholder="Tiêu đề hiển thị trên Google">
+                            </div>
+                            <div class="seo-input-group-j">
+                                <label>Mô tả SEO (Meta Description)</label>
+                                <textarea class="seo-field-j" style="height: 80px; resize: none;" placeholder="Mô tả nội dung bài viết cho công cụ tìm kiếm"></textarea>
+                            </div>
+                            <div class="google-preview-j" style="background: #F8FAFC; padding: 16px; border-radius: 12px; margin-top: 16px;">
+                                <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                                    <img src="../assets/images/ic_quanlyblog/them-blog/preview-seo.svg" alt="p" width="16">
+                                    <span style="font-size: 11px; color: #94A3B8; font-weight: 700;">Xem trước kết quả tìm kiếm:</span>
+                                </div>
+                                <div class="gp-title-j">Tiêu đề bài viết của bạn | JobGos</div>
+                                <div class="gp-link-j">jobgos.vn > blog > tieu-de-bai-viet-cua-ban</div>
+                                <div class="gp-desc-j">Mô tả SEO của bạn sẽ xuất hiện tại đây khi người dùng tìm kiếm trên Google...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Confirm Publishing Modal -->
+    <div id="confirmModal" class="modal-overlay-j" style="display: none;">
+        <div class="modal-content-v2-j" style="width: 500px; padding: 48px;">
+            <div style="display: flex; align-items: flex-start; gap: 16px;">
+                <img src="../assets/images/ic_quanlyblog/them-blog/modal/ic-xac-nhan-dang-bai.svg" alt="!" width="48">
+                <div>
+                    <h2 class="modal-title-j" style="margin-bottom: 4px;">Xác nhận đăng bài viết</h2>
+                    <p style="font-size: 14px; color: #64748B;">Vui lòng kiểm tra lại thông tin trước khi công khai.</p>
+                </div>
+            </div>
+
+            <div class="publish-preview-box-j">
+                <div class="publish-preview-title-j">XEM TRƯỚC TÓM TẮT</div>
+                <div class="publish-preview-content-j">
+                    <h4 id="previewTitle">Tương lai của Quản trị Nhân sự: Khi AI không chỉ là công cụ hỗ trợ</h4>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span style="background: #E0E7FF; color: #4338CA; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700;">Xu hướng công nghệ</span>
+                        <span style="font-size: 13px; color: #64748B; display: flex; align-items: center; gap: 6px;">
+                            <img src="../assets/images/ic_quanlyblog/them-blog/modal/ic-clock.svg" alt="t" width="14" style="opacity: 0.5;">
+                            5 phút đọc
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase;">LỊCH TRÌNH XUẤT BẢN</div>
+            <div class="schedule-options-j">
+                <div class="schedule-card-j active" onclick="selectSchedule(this)">
+                    <div class="radio-circle-j"></div>
+                    <div>
+                        <div style="font-weight: 800; color: #1E293B; font-size: 15px;">Đăng ngay</div>
+                        <div style="font-size: 12px; color: #94A3B8;">Ngay sau khi xác nhận</div>
+                    </div>
+                </div>
+                <div class="schedule-card-j" onclick="selectSchedule(this)">
+                    <div class="radio-circle-j"></div>
+                    <div>
+                        <div style="font-weight: 800; color: #1E293B; font-size: 15px;">Lên lịch</div>
+                        <div style="font-size: 12px; color: #94A3B8;">Chọn ngày giờ cụ thể</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="display-options-j">
+                <div>
+                    <div style="font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase; margin-bottom: 16px;">VỊ TRÍ HIỂN THỊ</div>
+                    <div class="toggle-row-j">
+                        <span style="font-weight: 700; color: #1E293B; font-size: 14px;">Trang chủ</span>
+                        <label class="toggle-switch-j">
+                            <input type="checkbox" checked>
+                            <span class="slider-j"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-row-j">
+                        <span style="font-weight: 700; color: #1E293B; font-size: 14px;">Bài viết nổi bật</span>
+                        <label class="toggle-switch-j">
+                            <input type="checkbox">
+                            <span class="slider-j"></span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <div style="font-size: 11px; font-weight: 800; color: #94A3B8; text-transform: uppercase; margin-bottom: 16px;">THÔNG BÁO</div>
+                    <div class="checkbox-group-j">
+                        <label class="checkbox-item-j">
+                            <input type="checkbox"> Gửi qua Email
+                        </label>
+                        <label class="checkbox-item-j">
+                            <input type="checkbox"> Mạng xã hội
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer-gray-j">
+                <button class="btn-preview-j" style="padding: 10px 24px; border: 1.5px solid #E2E8F0; color: #2563EB; width: auto; flex: none;" onclick="closeConfirmModal()">Hủy</button>
+                <button class="btn-post-j" style="padding: 10px 32px; width: auto; flex: none;" onclick="handlePublish()">Đăng bài ngay</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/admin_toast.js"></script>
+    <script>
+        function openConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        function selectSchedule(card) {
+            document.querySelectorAll('.schedule-card-j').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+        }
+
+        function handlePublish() {
+            closeConfirmModal();
+            showToast('Đăng bài thành công');
+            setTimeout(() => {
+                location.href = 'manage-blog.html';
+            }, 2000);
+        }
+
+        // Close on overlay click
+        window.onclick = function(event) {
+            const modal = document.getElementById('confirmModal');
+            if (event.target == modal) {
+                closeConfirmModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/admin_global.css">
     <link rel="stylesheet" href="../css/admin_dashboard.css">
     <link rel="stylesheet" href="../css/admin_management.css">
+    <link rel="stylesheet" href="../css/admin_toast.css">
     <style>
         .blog-stats-grid {
             display: grid;
@@ -94,6 +95,83 @@
             background: #F1F5F9;
         }
         .blog-img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Modal Delete Styles */
+        .modal-overlay-v2 {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease-out;
+        }
+        .modal-content-delete {
+            background: white;
+            border-radius: 24px;
+            width: 480px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+            animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modalSlideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-delete-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+        }
+        .modal-delete-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 24px;
+        }
+        .modal-delete-desc {
+            font-size: 16px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .modal-delete-desc b { color: #1E293B; }
+        .modal-delete-desc .warning-text { color: #DC2626; font-weight: 700; }
+
+        .modal-delete-footer {
+            display: flex;
+            gap: 16px;
+        }
+        .btn-modal-cancel {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #E2E8F0;
+            background: white;
+            color: #475569;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .btn-modal-delete {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: #C51D1D;
+            color: white;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0px 4px 12px rgba(197, 29, 29, 0.3);
+        }
+        .btn-delete { cursor: pointer; }
     </style>
 </head>
 <body style="background: #FAFAFA;">
@@ -179,7 +257,7 @@
                         <h1 class="admin-page-title">Quản lý blog/nội dung</h1>
                         <p class="admin-page-desc" style="color: #64748B;">Kiến tạo và điều phối các nội dung chất lượng cho cộng đồng tìm việc và nhà tuyển dụng.</p>
                     </div>
-                    <button class="btn-admin-primary" style="padding: 12px 28px; box-shadow: 0px 4px 6px -4px #004AC633, 0px 10px 15px -3px #004AC633;">
+                    <button class="btn-admin-primary" style="padding: 12px 28px; box-shadow: 0px 4px 6px -4px #004AC633, 0px 10px 15px -3px #004AC633;" onclick="location.href='add-blog.html'">
                         <span style="font-size: 20px; margin-right: 8px;">+</span>
                         Viết bài mới
                     </button>
@@ -264,7 +342,7 @@
                                         <div class="blog-img-box">
                                             <img src="../assets/images/ic_quanlycongty/Background_Agribi.svg" alt="A">
                                         </div>
-                                        <div>
+                                        <div style="cursor: pointer;" onclick="location.href='blog-detail.html'">
                                             <div style="font-weight: 800; color: #1E293B;">10 Mẹo Trả Lời Phỏng Vấn Gâ...</div>
                                             <div style="font-size: 11px; color: #3B82F6; font-weight: 700; margin-top: 4px;">Mẹo tìm việc</div>
                                         </div>
@@ -276,8 +354,8 @@
                                 <td style="text-align: center; font-weight: 700; color: #1E293B;">4,120</td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
-                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                        <div class="btn-action-admin btn-view" onclick="location.href='blog-detail.html'"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-delete" onclick="confirmDeleteBlog('10 Mẹo Trả Lời Phỏng Vấn Gây Ấn Tượng')"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
                                     </div>
                                 </td>
                             </tr>
@@ -287,9 +365,9 @@
                                         <div class="blog-img-box">
                                             <img src="../assets/images/ic_quanlycongty/Background_VietNet.svg" alt="A">
                                         </div>
-                                        <div>
-                                            <div style="font-weight: 800; color: #1E293B;">10 Mẹo Trả Lời Phỏng Vấn Gâ...</div>
-                                            <div style="font-size: 11px; color: #3B82F6; font-weight: 700; margin-top: 4px;">Mẹo tìm việc</div>
+                                        <div style="cursor: pointer;" onclick="location.href='blog-detail.html'">
+                                            <div style="font-weight: 800; color: #1E293B;">Bí quyết đàm phán lương cho ng...</div>
+                                            <div style="font-size: 11px; color: #3B82F6; font-weight: 700; margin-top: 4px;">Lương & Phúc lợi</div>
                                         </div>
                                     </div>
                                 </td>
@@ -299,8 +377,8 @@
                                 <td style="text-align: center; font-weight: 700; color: #1E293B;">1,240</td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
-                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                        <div class="btn-action-admin btn-view" onclick="location.href='blog-detail.html'"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-delete" onclick="confirmDeleteBlog('Bí quyết đàm phán lương cho người mới')"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
                                     </div>
                                 </td>
                             </tr>
@@ -310,9 +388,9 @@
                                         <div class="blog-img-box">
                                             <img src="../assets/images/ic_quanlycongty/Background_Aigit.svg" alt="A">
                                         </div>
-                                        <div>
-                                            <div style="font-weight: 800; color: #1E293B;">10 Mẹo Trả Lời Phỏng Vấn Gâ...</div>
-                                            <div style="font-size: 11px; color: #3B82F6; font-weight: 700; margin-top: 4px;">Mẹo tìm việc</div>
+                                        <div style="cursor: pointer;" onclick="location.href='blog-detail.html'">
+                                            <div style="font-weight: 800; color: #1E293B;">Xu hướng tuyển dụng ngành IT...</div>
+                                            <div style="font-size: 11px; color: #3B82F6; font-weight: 700; margin-top: 4px;">Tin tức tuyển dụng</div>
                                         </div>
                                     </div>
                                 </td>
@@ -322,8 +400,8 @@
                                 <td style="text-align: center; font-weight: 700; color: #1E293B;">850</td>
                                 <td>
                                     <div class="action-buttons-admin" style="justify-content: center;">
-                                        <div class="btn-action-admin btn-view"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
-                                        <div class="btn-action-admin btn-delete"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
+                                        <div class="btn-action-admin btn-view" onclick="location.href='blog-detail.html'"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-view.svg" alt="V"></div>
+                                        <div class="btn-action-admin btn-delete" onclick="confirmDeleteBlog('Xu hướng tuyển dụng ngành IT 2024')"><img src="../assets/images/admin-quan-li-tin-tuyen-dung/ic-trash.svg" alt="D"></div>
                                     </div>
                                 </td>
                             </tr>
@@ -369,5 +447,47 @@
             </div>
         </main>
     </div>
+
+    <!-- Modal Xóa bài viết -->
+    <div id="deleteBlogModal" class="modal-overlay-v2">
+        <div class="modal-content-delete">
+            <img src="../assets/images/ic_quanlyblog/them-blog/modal/ic-title-xoa-bai-viet-co-bg.svg" alt="!" class="modal-delete-icon">
+            <h3 class="modal-delete-title">Xác nhận xóa bài viết</h3>
+            <p class="modal-delete-desc">
+                Bạn có chắc chắn muốn xóa bài viết '<b id="deleteTargetTitle">Tương lai của ngành Tuyển dụng...</b>' không? Hành động này <span class="warning-text">không thể hoàn tác</span>.
+            </p>
+            <div class="modal-delete-footer">
+                <button class="btn-modal-cancel" onclick="closeDeleteModal()">Hủy</button>
+                <button class="btn-modal-delete" onclick="handleDelete()">
+                    <img src="../assets/images/ic_quanlyblog/them-blog/modal/ic-bt-xoa-bai-viet.svg" alt="trash" width="18">
+                    Xác nhận xóa
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin_toast.js"></script>
+    <script>
+        function confirmDeleteBlog(title) {
+            document.getElementById('deleteTargetTitle').innerText = title;
+            document.getElementById('deleteBlogModal').style.display = 'flex';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteBlogModal').style.display = 'none';
+        }
+
+        function handleDelete() {
+            closeDeleteModal();
+            showToast('Đã xóa bài viết thành công!');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('deleteBlogModal');
+            if (event.target == modal) {
+                closeDeleteModal();
+            }
+        }
+    </script>
 </body>
 </html>

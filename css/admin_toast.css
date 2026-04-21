@@ -1,0 +1,35 @@
+/* Shared Toast styles for Admin */
+.top-success-alert-j {
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 14px 24px;
+    min-width: 320px;
+    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.close-toast-v2-j {
+    font-size: 24px;
+    color: #94A3B8;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-toast-v2-j:hover {
+    color: #1E293B;
+}
+
+@keyframes slideDown { 
+    from { transform: translate(-50%, -60px); opacity: 0; } 
+    to { transform: translate(-50%, 0); opacity: 1; } 
+}
