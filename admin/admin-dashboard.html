@@ -8,6 +8,167 @@
     <link rel="stylesheet" href="../css/user_dashboard.css">
     <link rel="stylesheet" href="../css/admin_global.css">
     <link rel="stylesheet" href="../css/admin_dashboard.css">
+    <style>
+        /* Modal Styles */
+        .admin-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-out;
+        }
+        .admin-modal-container {
+            background: white;
+            width: 800px;
+            max-width: 90vw;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header-v2 {
+            padding: 40px 48px 32px;
+            text-align: center;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .modal-body-v2 { padding: 32px 48px; }
+        .modal-footer-v2 {
+            padding: 24px 48px 48px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        
+        .time-banner {
+            background: #F1F5F9;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .report-section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 20px;
+        }
+        
+        .report-type-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .report-type-card {
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 32px 16px 48px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .report-type-card.active {
+            border-color: #2563EB;
+            background: #EFF6FF;
+        }
+        .report-type-card .radio-indicator {
+            position: absolute;
+            bottom: 16px; left: 16px;
+            width: 18px; height: 18px;
+            border: 2px solid #CBD5E1;
+            border-radius: 50%;
+        }
+        .report-type-card.active .radio-indicator {
+            border-color: #2563EB;
+            background: #2563EB;
+            box-shadow: inset 0 0 0 4px white;
+        }
+        
+        .format-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        .format-card {
+            border: 1.5px solid #F1F5F9;
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .format-card.active {
+            border-color: #2563EB;
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+        }
+        .format-card .radio-indicator {
+            position: absolute;
+            top: 12px; right: 12px;
+            width: 18px; height: 18px;
+            border: 2px solid #CBD5E1;
+            border-radius: 50%;
+        }
+        .format-card.active .radio-indicator {
+            border-color: #2563EB;
+            background: #2563EB;
+            box-shadow: inset 0 0 0 4px white;
+        }
+
+        /* Toast Alert */
+        .admin-toast-alert {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            transform: translateX(120%);
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 2000;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            min-width: 350px;
+            pointer-events: none;
+        }
+        .admin-toast-alert.show {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .toast-close {
+            margin-left: auto;
+            cursor: pointer;
+            font-size: 24px;
+            color: #94A3B8;
+            padding: 4px;
+            line-height: 1;
+        }
+    </style>
 </head>
 <body style="background: #FAFAFA;">
     <div class="dashboard-layout">
@@ -99,7 +260,7 @@
                                 <span style="font-size: 14px; font-weight: 600; color: #1E293B;">1 ngày trước</span>
                                 <img src="../assets/images/ic_tquanadmin/ic_dropdown.svg" alt="v" width="14" style="margin-left: 5px;">
                             </div>
-                            <a href="#" class="btn-admin-primary">
+                            <a href="javascript:void(0)" class="btn-admin-primary" onclick="openExportModal()">
                                 <img src="../assets/images/ic_tquanadmin/ic_xuatbaocao.svg" alt="Export">
                                 Xuất báo cáo
                             </a>
@@ -334,5 +495,159 @@
             </div>
         </main>
     </div>
+
+    <!-- Export Success Alert -->
+    <div id="successToast" class="admin-toast-alert">
+        <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="v" width="24" style="filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+        <span style="font-size: 16px; font-weight: 700; color: #2563EB;">Xuất báo cáo thành công</span>
+        <div class="toast-close" onclick="hideToastAlert()">×</div>
+    </div>
+
+    <!-- Export Report Modal -->
+    <div id="exportModal" class="admin-modal-overlay">
+        <div class="admin-modal-container">
+            <div class="modal-header-v2">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px;">
+                    <img src="../assets/images/ic_tquanadmin/modal/ic-download.svg" alt="download" width="28">
+                    <h2 style="font-size: 32px; font-weight: 800; color: #2563EB; margin: 0;">Xuất báo cáo</h2>
+                </div>
+                <p style="font-size: 14px; color: #64748B;">chọn loại báo cáo và định dạng file để tải về.</p>
+            </div>
+            
+            <div class="modal-body-v2">
+                <!-- Time Banner -->
+                <div class="time-banner">
+                    <img src="../assets/images/ic_tquanadmin/modal/ic-calendar.svg" alt="cal" width="20">
+                    <div style="text-align: center;">
+                        <div style="font-size: 14px; font-weight: 700; color: #1E293B;">Khoảng thời gian đã được áp dụng</div>
+                        <div style="font-size: 13px; color: #64748B; margin-top: 4px;">12/05/2023 – 12/05/2023</div>
+                    </div>
+                </div>
+
+                <!-- Report Type Section -->
+                <div>
+                    <h3 class="report-section-title">Loại báo cáo</h3>
+                    <div class="report-type-grid">
+                        <div class="report-type-card active" onclick="selectReportType(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-tong-quan-he-thong.svg" alt="sys" style="margin-bottom: 12px;">
+                            <div style="font-size: 14px; font-weight: 700; color: #64748B;">Tổng quan hệ thống</div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                        <div class="report-type-card" onclick="selectReportType(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-tin-tuyen-dung.svg" alt="jobs" style="margin-bottom: 12px;">
+                            <div style="font-size: 14px; font-weight: 700; color: #64748B;">Tin tuyển dụng</div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                        <div class="report-type-card" onclick="selectReportType(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-doanh-nghiep.svg" alt="biz" style="margin-bottom: 12px;">
+                            <div style="font-size: 14px; font-weight: 700; color: #64748B;">Doanh nghiệp</div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                        <div class="report-type-card" onclick="selectReportType(this)">
+                            <img src="../assets/images/ic_tquanadmin/modal/ic-nguoi-dung.svg" alt="users" style="margin-bottom: 12px;">
+                            <div style="font-size: 14px; font-weight: 700; color: #64748B;">Người dùng</div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Format Section -->
+                <div>
+                    <h3 class="report-section-title">Định dạng báo cáo</h3>
+                    <div class="format-grid">
+                        <div class="format-card active" onclick="selectFormat(this)">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <img src="../assets/images/ic_tquanadmin/modal/ic-pdf.svg" alt="pdf" width="36">
+                                <div>
+                                    <div style="font-size: 20px; font-weight: 800; color: #1E293B;">PDF</div>
+                                    <div style="font-size: 12px; color: #94A3B8; font-weight: 500;">Để xem và chia sẻ</div>
+                                </div>
+                            </div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                        <div class="format-card" onclick="selectFormat(this)">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <img src="../assets/images/ic_tquanadmin/modal/ic-excel.svg" alt="excel" width="36">
+                                <div>
+                                    <div style="font-size: 20px; font-weight: 800; color: #1E293B;">Excel</div>
+                                    <div style="font-size: 12px; color: #94A3B8; font-weight: 500;">Chỉnh sửa và phân tích</div>
+                                </div>
+                            </div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                        <div class="format-card" onclick="selectFormat(this)">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <img src="../assets/images/ic_tquanadmin/modal/ic-csv.svg" alt="csv" width="36">
+                                <div>
+                                    <div style="font-size: 20px; font-weight: 800; color: #1E293B;">CSV</div>
+                                    <div style="font-size: 12px; color: #94A3B8; font-weight: 500;">Dữ liệu thuần</div>
+                                </div>
+                            </div>
+                            <div class="radio-indicator"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer-v2">
+                <button onclick="closeExportModal()" style="padding: 12px 32px; border-radius: 8px; border: 1px solid #E2E8F0; background: white; font-weight: 700; color: #64748B; cursor: pointer;">Hủy</button>
+                <button style="padding: 12px 32px; border-radius: 8px; border: 1.5px solid #2563EB; background: white; font-weight: 800; color: #2563EB; cursor: pointer; display: flex; align-items: center; gap: 8px;" onclick="handleExport()">
+                    <img src="../assets/images/ic_tquanadmin/ic_xuatbaocao.svg" alt="v" style="width: 18px; filter: invert(36%) sepia(84%) saturate(3015%) hue-rotate(211deg) brightness(97%) contrast(93%);">
+                    Xuất báo cáo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openExportModal() {
+            document.getElementById('exportModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function selectReportType(element) {
+            document.querySelectorAll('.report-type-card').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function selectFormat(element) {
+            document.querySelectorAll('.format-card').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function handleExport() {
+            const type = document.querySelector('.report-type-card.active div').innerText;
+            const format = document.querySelector('.format-card.active div div').innerText;
+            
+            closeExportModal();
+            showToastAlert();
+        }
+
+        function showToastAlert() {
+            const toast = document.getElementById('successToast');
+            toast.classList.add('show');
+            
+            // Auto hide after 5s
+            setTimeout(() => {
+                hideToastAlert();
+            }, 5000);
+        }
+
+        function hideToastAlert() {
+            document.getElementById('successToast').classList.remove('show');
+        }
+
+        // Close on overlay click
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('exportModal')) {
+                closeExportModal();
+            }
+        }
+    </script>
 </body>
 </html>
