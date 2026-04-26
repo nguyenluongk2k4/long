@@ -4,54 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tìm kiếm việc làm - JobGos</title>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tìm kiếm việc làm - JobGos</title>
   <link rel="stylesheet" href="css/index_2.css" />
   <link rel="stylesheet" href="css/search.css" />
+  <link rel="stylesheet" href="user/user_layout.css" />
+  <script src="user/layout-manager.js" defer></script>
 </head>
 <body class="search-body">
   <div class="search-page">
-    <div style="width: 100%; height: 64px; background: white; display: flex; justify-content: center; border-bottom: 1px solid #E2E8F0; box-sizing: border-box; position: sticky; top: 0; z-index: 100;">
-        <div style="width: 100% !important; max-width: 1200px; height: 64px; padding: 0 24px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
-            <a href="index.html" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0;">
-                <div style="color: var(--PRIMARY1, #2563EB); font-size: 28px; font-family: Inter; font-weight: 700; line-height: 1; letter-spacing: -0.3px;">JobGos</div>
-            </a>
-            <nav style="display: flex; align-items: center; gap: 28px; flex: 1; justify-content: center; min-width: 0;">
-                <a href="search.html" style="display: inline-flex; align-items: center; color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
-                    <span>Việc làm</span>
-                    <span class="nav-caret"></span>
-                </a>
-                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
-                    <span>Công ty</span>
-                    <span class="nav-caret"></span>
-                </a>
-                <a href="blog.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
-                    <span>Blog</span>
-                    <span class="nav-caret"></span>
-                </a>
-                <a href="index.html" style="display: inline-flex; align-items: center; color: #111827; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap;">
-                    <span>Liên hệ</span>
-                    <span class="nav-caret"></span>
-                </a>
-            </nav>
-
-            <!-- Guest Header State -->
-            <div class="guest-only" style="display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0;">
-                <a href="register.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); color: var(--PRIMARY1, #2563EB); font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box; background: white;">Đăng ký</a>
-                <a href="login.html" style="height: 40px; padding: 0 18px; border-radius: 9999px; border: 1px solid var(--PRIMARY1, #2563EB); background: var(--PRIMARY1, #2563EB); color: white; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 38px; text-decoration: none; box-sizing: border-box;">Đăng nhập</a>
-            </div>
-
-            <!-- Logged-in Header State -->
-            <div class="logged-in-only" style="display: none; align-items: center; gap: 16px; flex-shrink: 0;">
-                <img src="assets/icons/ic_notifications.svg" alt="Thông báo" class="header-icon-btn">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <img src="assets/icons/ic_user_after_login.svg" alt="User" class="header-icon-btn" onclick="logout()" title="Click to Logout (Prototype)">
-                    <div class="employer-cta" style="border-left: 1px solid #E2E8F0; padding-left: 12px;">
-                        <span style="font-size: 12px; color: #64748B;">Bạn là nhà tuyển dụng?</span>
-                        <a href="#" style="font-size: 13px; color: #111827; font-weight: 700; text-decoration: none;">Đăng tuyển ngay >></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="header-container"></div>
 
     <main class="search-main">
       <section class="search-section search-hero">
@@ -237,153 +203,9 @@
                       </article>
                     </div>
                   </div>
-                </section>      <div class="index2-container-1440" style="padding-top: 50px; padding-bottom: 39px; background: var(--NEUTRAL0, white); justify-content: center;">
-        <div class="index2-container-1200" style="opacity: 0.80; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 36px;">
-            <div style="height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex">
-            <div style="width: 240px; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                <div style="width: 128px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Giới Thiệu</div>
-                <div style="align-self: stretch; height: 97px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.</div>
-            </div>
-            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 5px; display: flex">
-                <a href="index.html" style="justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 32px; font-family: Inter; font-weight: 700; line-height: 38.40px; word-wrap: break-word; text-decoration: none">JOBGOS</a>
-                <div style="justify-content: flex-start; align-items: center; gap: 5px; display: inline-flex">
-                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
-                        <div style="width: 20px; height: 19.95px; left: 2px; top: 2px; position: absolute; background: var(--Black, black)"></div>
-                    </div>
-                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
-                        <div style="width: 20px; height: 14px; left: 2px; top: 5px; position: absolute; background: var(--Black, black)"></div>
-                    </div>
-                    <div style="width: 24px; height: 24px; position: relative; overflow: hidden">
-                        <div style="width: 0.84px; height: 0.67px; left: 12.08px; top: 23.14px; position: absolute"></div>
-                        <div style="width: 18px; height: 18px; left: 3px; top: 3px; position: absolute; background: var(--Black, black)"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 257px; height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
-                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Về JobGos</div>
-                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Giới thiệu
-            </div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tuyển dụng
-            </div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Liên hệ
-            </div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hỏi đáp
-            </div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Chính sách bảo mật
-            </div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Điều khoản sử dụng</div>
-                    </div>
-                </div>
-            </div>
-            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
-                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Hồ sơ & CV</div>
-                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Quản lý CV</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tạo CV online</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Thư viện CV</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hướng dẫn viết CV</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 330px; height: 320px; padding-left: 10px; padding-right: 10px; border-right: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
-                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Dành cho ứng viên
-        </div>
-                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tìm việc làm</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm theo ngành</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm theo địa điểm</div>
-                        <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm nổi bật</div>
-                        <div style="align-self: stretch; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Việc làm mới nhất</div>
-                    </div>
-                </div>
-            </div>
-            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
-                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Dành cho nhà tuyển dụng</div>
-                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Đăng tin tuyển dụng</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Quản lý tin tuyển dụng</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Tìm kiếm ứng viên</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Báo cáo & thống kê</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="width: 249px; height: 320px; padding-left: 10px; padding-right: 10px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-            <div style="align-self: stretch; height: 157px; border-bottom: 1px var(--PRIMARY1, #2563EB) solid; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
-                <div style="width: 227px; height: 28px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Khám phá</div>
-                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Gợi ý việc làm</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Blog & chia sẻ</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Cẩm nang nghề nghiệp</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Công cụ hỗ trợ</div>
-                    </div>
-                </div>
-            </div>
-            <div style="align-self: stretch; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 11px; display: flex">
-                <div style="align-self: stretch; height: 20px; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">Thông tin liên hệ</div>
-                <div style="align-self: stretch; padding-left: 10px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex">
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                        <div style="width: 8px; height: 8px; background: var(--PRIMARY1, #2563EB); border-radius: 9999px"></div>
-                    </div>
-                    <div style="flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">Hà Nội, Việt Nam</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">contact@jobgos.vn</div>
-                        <div style="align-self: stretch; height: 17px; justify-content: center; display: flex; flex-direction: column; color: var(--NEUTRAL5, #2E3132); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">0123 456 789</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="index2-container-1440" style="padding-top: 16px; padding-bottom: 16px; background: var(--NEUTRAL0, white);">
-        <div class="index2-container-1200" style="height: 50px; justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
-            <div style="justify-content: flex-start; display: flex; flex-direction: column"><span style="color: var(--Black, black); font-size: 14px; font-family: Inter; font-weight: 400; line-height: 16.80px; word-wrap: break-word">© 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.</span></div>
-        </div>
-    </div>
+                </section>
+    </main>
+    <div id="footer-container"></div>
+  </div>
 </body>
 </html>

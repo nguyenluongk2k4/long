@@ -4,45 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cập nhật hồ sơ - JobGos Quản lý ứng viên</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/update_profile.css">
+    <link rel="stylesheet" href="user/user_layout.css" />
+    <script src="user/layout-manager.js" defer></script>
 </head>
 <body>
     <div class="profile-page-wrapper">
-        <!-- New Horizontal Header -->
-        <header class="site-header">
-            <div class="header-container">
-                <div class="header-left">
-                    <a href="user-dashboard.html" class="logo-text">JobGos</a>
-                    <nav class="main-nav">
-                        <a href="index.html">Việc làm <span class="nav-caret"></span></a>
-                        <a href="update-profile.html" class="active">Hồ sơ</a>
-                        <a href="manage-cv.html">Quản lý CV</a>
-                        <a href="#">Liên hệ <span class="nav-caret"></span></a>
-                    </nav>
-                </div>
-                
-                <div class="header-right">
-                    <div class="notify-wrapper">
-                        <button class="icon-btn">
-                            <img src="assets/images/user-dashboard/ic-notifications.svg" alt="Notifications" width="24">
-                            <span class="notify-badge"></span>
-                        </button>
-                    </div>
-                    <div class="header-divider"></div>
-                    <div class="header-user-info">
-                        <div class="user-text">
-                            <span class="user-name">Ninh Khoa</span>
-                            <span class="user-role">Ứng viên</span>
-                        </div>
-                        <div class="user-avatar-header">
-                            <img src="assets/images/profile/avatar-user.png" alt="Avatar">
-                        </div>
-                    </div>
-                    <button class="btn-logout">Đăng xuất</button>
-                </div>
-            </div>
-        </header>
+    <div id="header-container"></div>
 
         <!-- Main Content (Full Width) -->
         <main class="main-content-profile">
@@ -102,6 +69,7 @@
                 </div>
             </div>
         </main>
+        <div id="footer-container"></div>
     </div>
 </body>
 </html>
