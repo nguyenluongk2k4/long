@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý CV - JobGos</title>
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="css/manage-cv.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="user/layout-manager.js" defer></script>
+</head>
+<body class="jobgos-root">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <main class="manage-cv-container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb-nav">
+            <a href="index.html">Trang chủ</a>
+            <span>&gt;</span>
+            <span>CV của tôi</span>
+        </nav>
+
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>Nâng tầm sự nghiệp của bạn với một CV ấn tượng</h1>
+            <p>Tối ưu hóa khả năng được nhà tuyển dụng chú ý bằng cách cập nhật những thành tựu mới nhất của bạn.</p>
+        </header>
+
+        <!-- Hero Section: Upload & Tips -->
+        <section class="hero-grid">
+            <!-- Upload Card -->
+            <div class="upload-card">
+                <div class="upload-icon-container">
+                    <img src="assets/images/quan-li-cv-ung-vien/ic-upload-cv-co-bg.svg" alt="Upload" width="80">
+                </div>
+                <h3>Kéo và thả tệp tại đây</h3>
+                <p>Hỗ trợ các định dạng PDF, DOCX, hoặc RTF (Tối đa 10MB)</p>
+                <button class="btn-choose-file">
+                    <img src="assets/images/quan-li-cv-ung-vien/ic-add.svg" alt="" width="20">
+                    Chọn tệp từ máy tính
+                </button>
+            </div>
+
+            <!-- Tips Card -->
+            <div class="tips-card">
+                <span class="tip-label">MẸO NGHỀ NGHIỆP</span>
+                <h2>Bạn có biết 80% CV bị loại bởi hệ thống ATS?</h2>
+                <p>Hãy đảm bảo CV của bạn có chứa các từ khóa chuyên môn phù hợp với vị trí ứng tuyển để tăng cơ hội vượt qua vòng sơ loại.</p>
+            </div>
+        </section>
+
+        <!-- CV List Section -->
+        <section style="border-radius: 8px;" class="cv-list-section">
+            <div class="section-header">
+                <h2 style="margin: 0px;">Danh sách CV đã tải lên</h2>
+                <span class="usage-badge">2/5 TỆP ĐÃ DÙNG</span>
+            </div>
+
+            <div class="cv-list-container">
+                <!-- PDF CV Item -->
+                <div class="cv-item-row">
+                    <div class="cv-icon-box">
+                        <img src="assets/images/quan-li-cv-ung-vien/ic-cv-1-pdf-co-bg.svg" alt="PDF" width="56">
+                    </div>
+                    <div class="cv-content">
+                        <h3 class="cv-name">NinhKhoa.pdf</h3>
+                        <div class="cv-meta">
+                            <div class="meta-item">
+                                <img src="assets/images/quan-li-cv-ung-vien/ic-calendar.svg" alt="" width="16">
+                                Cập nhật: 12/05/2024
+                            </div>
+                            <div class="meta-item">
+                                <img src="assets/images/quan-li-cv-ung-vien/ic-file.svg" alt="" width="16">
+                                1.2 MB
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cv-actions">
+                        <button class="btn-detail">Xem chi tiết</button>
+                        <button class="btn-delete">
+                            <img src="assets/images/quan-li-cv-ung-vien/ic-trash.svg" alt="Delete" width="20">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- DOCX CV Item -->
+                <div class="cv-item-row">
+                    <div class="cv-icon-box">
+                        <img src="assets/images/quan-li-cv-ung-vien/ic-cv-2-docx-co-bg.svg" alt="DOCX" width="56">
+                    </div>
+                    <div class="cv-content">
+                        <h3 class="cv-name">NinhKhoa.docx</h3>
+                        <div class="cv-meta">
+                            <div class="meta-item">
+                                <img src="assets/images/quan-li-cv-ung-vien/ic-calendar.svg" alt="" width="16">
+                                Cập nhật: 05/04/2024
+                            </div>
+                            <div class="meta-item">
+                                <img src="assets/images/quan-li-cv-ung-vien/ic-file.svg" alt="" width="16">
+                                850 KB
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cv-actions">
+                        <a href="cv-detail.html" class="btn-detail" style="text-decoration: none;">Xem chi tiết</a>
+                        <button class="btn-delete">
+                            <img src="assets/images/quan-li-cv-ung-vien/ic-trash.svg" alt="Delete" width="20">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+</body>
+</html>

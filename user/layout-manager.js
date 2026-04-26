@@ -154,7 +154,7 @@ const JOBGOS_CONFIG = {
                 title: "Quản lý CV",
                 icon: "assets/images/ic_file_menu.png",
                 links: [
-                    { label: "CV của tôi", link: "user-dashboard.html" },
+                    { label: "CV của tôi", link: "manage-cv.html" },
                     { label: "Chi tiết CV", link: "#" }
                 ]
             },
@@ -171,7 +171,7 @@ const JOBGOS_CONFIG = {
                 icon: "assets/images/ic_file_menu.png",
                 links: [
                     { label: "Hồ sơ của tôi", link: "update-profile.html" },
-                    { label: "Sửa thông tin hồ sơ", link: "#" }
+                    { label: "Sửa thông tin hồ sơ", link: "update-profile.html?edit=true" }
                 ]
             }
         ]

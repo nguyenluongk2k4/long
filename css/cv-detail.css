@@ -1,0 +1,255 @@
+/* CV Detail Page Styling - JobGos 2026 */
+
+.cv-detail-container {
+    max-width: 1200px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #64748B;
+    margin-bottom: 24px;
+}
+
+.breadcrumb-nav a {
+    color: #2563EB;
+    text-decoration: none;
+}
+
+/* Header Info Card */
+.cv-header-card {
+    background: #F8FAFC;
+    border-radius: 24px;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 48px;
+}
+
+.cv-avatar-wrapper {
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+}
+
+.cv-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.cv-basic-info h1 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 8px;
+}
+
+.cv-job-title {
+    font-size: 20px;
+    color: #64748B;
+    font-weight: 500;
+    margin-bottom: 24px;
+    font-style: italic;
+}
+
+.cv-contact-info {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: #64748B;
+}
+
+/* Main Content: 2 Columns */
+.cv-content-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 60px;
+}
+
+/* Sidebar Sections */
+.cv-section-sidebar {
+    margin-bottom: 40px;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.section-head::before {
+    content: "";
+    width: 20px;
+    height: 1px;
+    background: #CBD5E1;
+}
+
+.section-head h2 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.cv-summary-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #475569;
+}
+
+.cv-summary-text p {
+    margin-bottom: 12px;
+}
+
+.cv-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cv-tag {
+    font-size: 14px;
+    color: #475569;
+}
+
+.cv-edu-item {
+    margin-bottom: 20px;
+}
+
+.edu-year {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563EB;
+    margin-bottom: 4px;
+}
+
+.edu-school {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 4px;
+}
+
+.edu-degree {
+    font-size: 13px;
+    color: #64748B;
+}
+
+/* Main Timeline Column */
+.cv-timeline {
+    position: relative;
+    padding-left: 24px;
+    border-left: 1px solid #E2E8F0;
+}
+
+.experience-item {
+    position: relative;
+    padding-bottom: 48px;
+}
+
+.experience-item::before {
+    content: "";
+    position: absolute;
+    left: -32px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    background: #1E293B;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.experience-item:first-child::before {
+    background: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.role-name {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 4px;
+}
+
+.company-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2563EB;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.exp-period {
+    font-size: 13px;
+    color: #94A3B8;
+    font-weight: 600;
+}
+
+.status-badge {
+    background: #EFF6FF;
+    color: #2563EB;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.exp-details {
+    padding-left: 0;
+    list-style: none;
+}
+
+.exp-details li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 12px;
+}
+
+.exp-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2563EB;
+    font-weight: 900;
+}
+
+@media (max-width: 1024px) {
+    .cv-content-grid {
+        grid-template-columns: 1fr;
+    }
+    .cv-header-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cv-contact-info {
+        justify-content: center;
+    }
+}

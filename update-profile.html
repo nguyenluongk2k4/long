@@ -3,73 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cập nhật hồ sơ - JobGos Quản lý ứng viên</title>
-    <link rel="stylesheet" href="user/user_layout.css" />
+    <title>Hồ sơ của tôi - JobGos</title>
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="user/layout-manager.js" defer></script>
 </head>
-<body>
-    <div class="profile-page-wrapper">
+<body class="jobgos-root">
+    <!-- Header -->
     <div id="header-container"></div>
 
-        <!-- Main Content (Full Width) -->
-        <main class="main-content-profile">
-
-            <!-- Profile Content Area -->
-            <div class="profile-container">
-                <div class="breadcrumb">
-                    <a href="user-dashboard.html">Trang chủ</a>
-                    <img src="assets/icons/ic_next.svg" alt=">" width="12">
-                    <span>Hồ sơ</span>
-                </div>
-
-                <div class="profile-grid">
-                    <!-- Left Sidebar Profile -->
-                    <div class="profile-left-column">
-                        <div class="profile-card profile-avatar-card">
-                            <img src="assets/images/profile/avatar-user.png" alt="User Avatar" class="avatar-square">
-                        </div>
-                        
-                        <div class="profile-card cv-status-card">
-                            <h3 class="cv-card-title">CV đã được tải lên</h3>
-                            <div class="cv-empty-state">
-                                <img src="assets/images/profile/upload-cv.png" alt="Upload CV" class="cv-icon-small">
-                                <p>Chưa có CV nào</p>
-                                <button class="btn-up-cv">Up CV</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Form Column -->
-                    <div class="profile-card profile-form-card">
-                        <h2 class="form-title">Thông tin cá nhân</h2>
-                        <form class="profile-form">
-                            <div class="form-stacked-grid">
-                                <div class="form-group">
-                                    <label>Họ và tên</label>
-                                    <input type="text" value="Ninh Khoa" placeholder="Nhập họ và tên">
-                                </div>
-                                <div class="form-group">
-                                    <label>Số điện thoại</label>
-                                    <input type="text" value="0358993432" placeholder="Nhập số điện thoại">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" value="khoaninh3012@gmail.com" placeholder="Nhập email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Mục tiêu</label>
-                                    <textarea placeholder="Nhập mục tiêu nghề nghiệp" rows="4"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-footer">
-                                <button type="submit" class="btn-save-profile">Chỉnh sửa hồ sơ</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <!-- Main Content wrapper with conditional class -->
+    <main class="profile-container" id="profile-page-root">
+        <div class="profile-header">
+            <!-- View Breadcrumb -->
+            <div class="breadcrumb-nav view-mode-only">
+                <span class="current">Hồ sơ của tôi</span>
             </div>
-        </main>
-        <div id="footer-container"></div>
-    </div>
+            <!-- Edit Breadcrumb -->
+            <div class="breadcrumb-nav edit-mode-only">
+                <a href="javascript:void(0)" onclick="toggleEditMode(false)">Hồ sơ của tôi</a>
+                <span>&gt;</span>
+                <span class="current">Chỉnh sửa hồ sơ</span>
+            </div>
+
+            <h1 class="view-mode-only">Hồ sơ của tôi</h1>
+            <h1 class="edit-mode-only">Sửa hồ sơ cá nhân</h1>
+            <p>Quản lý thông tin cá nhân và tài liệu của bạn để tối ưu hóa khả năng được các nhà tuyển dụng hàng đầu săn đón.</p>
+        </div>
+
+        <div class="profile-grid">
+            <!-- Sidebar Left -->
+            <aside class="profile-sidebar">
+                <div class="sidebar-card profile-info-card">
+                    <div class="avatar-container">
+                        <img src="assets/images/ho-so-cua-toi/avatar-user.png" alt="Avatar" class="profile-avatar">
+                    </div>
+                    <h2 class="profile-name">Ninh Khoa</h2>
+                    <div class="activity-status">Hoạt động lần cuối: 2 giờ trước</div>
+                </div>
+
+                <!-- CV Card -->
+                <div class="sidebar-card cv-card">
+                    <div class="card-header">
+                        <span class="header-label">CV CỦA TÔI</span>
+                        <img src="assets/images/ho-so-cua-toi/ic-cv-cua-toi.svg" alt="Verified" width="20" class="verified-tick">
+                    </div>
+                    
+                    <div class="cv-file-info">
+                        <div class="file-icon">
+                            <img src="assets/images/ho-so-cua-toi/ic-cv-co-bg.svg" alt="CV" width="36">
+                        </div>
+                        <div class="file-details">
+                            <div class="file-name bold">NinhKhoa.pdf</div>
+                            <div class="file-meta">PDF • 1.2 MB</div>
+                        </div>
+                    </div>
+                    <button class="btn-update-cv">
+                        <img src="assets/images/ho-so-cua-toi/ic-cap-nhat-cv-moi.svg" alt="">
+                        CẬP NHẬT CV MỚI
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Form Right -->
+            <section class="profile-main">
+                <div class="main-card">
+                    <div class="card-content-header">
+                        <h2 class="view-mode-only">Thông tin chi tiết</h2>
+                        <h2 class="edit-mode-only">Cài đặt thông tin</h2>
+                        <p class="edit-mode-only required-notice"><span class="red-star">(*)</span> các thông tin bắt buộc</p>
+                        <p class="view-mode-only">Cập nhật thông tin để nhà tuyển dụng có thể liên lạc với bạn dễ dàng hơn.</p>
+                    </div>
+
+                    <form class="profile-form" id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>HỌ VÀ TÊN <span class="red-star edit-mode-only">(*)</span></label>
+                                <input type="text" value="Ninh Khoa" placeholder="Nhập họ và tên" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>SỐ ĐIỆN THOẠI <span class="red-star edit-mode-only">(*)</span></label>
+                                <input type="text" value="0345678910" placeholder="Nhập số điện thoại" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>ĐỊA CHỈ EMAIL <span class="red-star edit-mode-only">(*)</span></label>
+                            <input type="email" value="khoaninh3012@gmail.com" placeholder="Nhập địa chỉ email" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>MỤC TIÊU NGHỀ NGHIỆP</label>
+                            <textarea placeholder="Chia sẻ về mục tiêu nghề nghiệp của bạn..." readonly>Tôi là một Product Designer đam mê việc kiến tạo các trải nghiệm số có sức ảnh hưởng. Với hơn 5 năm kinh nghiệm, tôi đặt mục tiêu trở thành một Senior Design Lead, tập trung vào việc tối ưu hóa sự giao thoa giữa nhu cầu người dùng và mục tiêu kinh doanh bền vững thông qua ngôn ngữ thiết kế tinh tế và có tính ứng dụng cao.</textarea>
+                        </div>
+
+                        <!-- Action Buttons View Mode -->
+                        <div class="form-actions view-mode-only">
+                            <button type="button" class="btn-submit-profile" onclick="toggleEditMode(true)">
+                                Sửa hồ sơ
+                                <img src="assets/images/ho-so-cua-toi/ic-sua-ho-so.svg" alt="">
+                            </button>
+                        </div>
+
+                        <!-- Action Buttons Edit Mode -->
+                        <div class="form-actions-edit edit-mode-only">
+                            <button type="button" class="btn-cancel" onclick="toggleEditMode(false)">Hủy bỏ</button>
+                            <button type="button" class="btn-save-profile" onclick="toggleEditMode(false)">
+                                Lưu hồ sơ
+                                <img src="assets/images/ho-so-cua-toi/ic-sua-ho-so.svg" alt="">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Bottom Features -->
+                <div class="bottom-features-grid">
+                    <div class="feature-item verified-profile">
+                        <div class="feature-icon-bg">
+                            <img src="assets/images/ho-so-cua-toi/ic-ho-so-da-xac-minh-co-bg.svg" alt="">
+                        </div>
+                        <div class="feature-text">
+                            <h4>Hồ sơ đã xác minh</h4>
+                            <p>Tài khoản đạt mức độ tin cậy tối đa.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item job-opportunities">
+                        <div class="feature-icon-bg">
+                            <img src="assets/images/ho-so-cua-toi/ic-co-hoi-viec-lam.svg" alt="">
+                        </div>
+                        <div class="feature-text">
+                            <h4>Cơ hội việc làm</h4>
+                            <p>12 nhà tuyển dụng xem hồ sơ tuần này.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('edit') === 'true') {
+                toggleEditMode(true);
+            }
+        });
+
+        function toggleEditMode(isEditing) {
+            const root = document.getElementById('profile-page-root');
+            const form = document.getElementById('profileForm');
+            const inputs = form.querySelectorAll('input, textarea');
+
+            if (isEditing) {
+                root.classList.add('is-editing');
+                inputs.forEach(input => input.removeAttribute('readonly'));
+                // Update URL flag without reload
+                window.history.replaceState(null, '', '?edit=true');
+                form.querySelector('input').focus();
+            } else {
+                root.classList.remove('is-editing');
+                inputs.forEach(input => input.setAttribute('readonly', 'true'));
+                // Remove URL flag
+                window.history.replaceState(null, '', window.location.pathname);
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,435 @@
+/* Profile Page Styling - JobGos 2026 */
+
+.profile-container {
+    max-width: 1300px;
+    margin: 40px auto 80px;
+    padding: 0 40px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Visibility Toggles */
+.edit-mode-only {
+    display: none !important;
+}
+
+#profile-page-root.is-editing .edit-mode-only {
+    display: flex !important;
+}
+
+#profile-page-root.is-editing .view-mode-only {
+    display: none !important;
+}
+
+/* Specific display types for certain tags */
+#profile-page-root.is-editing span.edit-mode-only,
+#profile-page-root.is-editing p.edit-mode-only {
+    display: inline-block !important;
+}
+
+#profile-page-root.is-editing h1.edit-mode-only,
+#profile-page-root.is-editing h2.edit-mode-only {
+    display: block !important;
+}
+
+/* Readonly Input Styling */
+.form-group input[readonly],
+.form-group textarea[readonly] {
+    background: #F8FAFC !important;
+    border-color: #F1F5F9 !important;
+    cursor: default;
+    box-shadow: none !important;
+}
+
+
+.profile-header {
+    margin-bottom: 40px;
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #64748B;
+    margin-bottom: 24px;
+}
+
+.breadcrumb-nav a {
+    color: #64748B;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb-nav a:hover {
+    color: #2563EB;
+}
+
+.breadcrumb-nav span.current {
+    color: #2563EB;
+    font-weight: 600;
+}
+
+.profile-header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.red-star {
+    color: #EF4444;
+    font-weight: 700;
+}
+
+.required-notice {
+    font-size: 14px !important;
+    color: #64748B !important;
+    margin-top: 4px;
+}
+
+.form-actions-edit {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.btn-cancel {
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    color: #2563EB;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.btn-save-profile {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-save-profile:hover {
+    background: #1D4ED8;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.profile-header p {
+    font-size: 16px;
+    color: #64748B;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Grid Layout */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Sidebar Styling */
+.sidebar-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.profile-info-card {
+    text-align: center;
+}
+
+.avatar-container {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    padding: 8px;
+    background: #F8FAFC;
+    border: 1px dashed #CBD5E1;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 8px;
+}
+
+.activity-status {
+    font-size: 14px;
+    color: #94A3B8;
+}
+
+/* CV Card */
+.cv-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.header-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #64748B;
+}
+
+.verified-tick {
+    filter: invert(34%) sepia(85%) saturate(1512%) hue-rotate(117deg) brightness(97%) contrast(104%);
+}
+
+.cv-file-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+.file-icon.red-doc-bg {
+    background: #FEF2F2 !important;
+    border-radius: 12px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-name.bold {
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.file-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-name {
+    font-weight: 700;
+    color: #1E293B;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.file-meta {
+    font-size: 12px;
+    color: #94A3B8;
+    font-weight: 600;
+}
+
+.btn-update-cv {
+    width: 100%;
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.btn-update-cv:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+}
+
+/* Main Profile Styling */
+.main-card {
+    background: white;
+    border-radius: 32px;
+    padding: 48px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.05);
+    margin-bottom: 32px;
+}
+
+.card-content-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.card-content-header p {
+    font-size: 15px;
+    color: #64748B;
+    margin-bottom: 40px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    color: #94A3B8;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #1E293B;
+    font-weight: 500;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    background: white;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    min-height: 180px;
+    resize: none;
+    line-height: 1.6;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.btn-submit-profile {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-submit-profile:hover {
+    background: #1D4ED8;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+/* Bottom Features */
+.bottom-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.feature-item {
+    padding: 25px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.verified-profile {
+    background: #2563EB;
+    color: white;
+}
+
+.job-opportunities {
+    background: white;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.feature-icon-bg {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.feature-text h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.feature-text p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.job-opportunities .feature-text h4 {
+    color: #2563EB;
+}
+
+.job-opportunities .feature-text p {
+    color: #64748B;
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bottom-features-grid {
+        grid-template-columns: 1fr;
+    }
+}

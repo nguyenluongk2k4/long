@@ -1,0 +1,267 @@
+/* CV Management Page Styling - JobGos 2026 */
+
+.manage-cv-container {
+    max-width: 1200px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #64748B;
+    margin-bottom: 24px;
+}
+
+.breadcrumb-nav a {
+    color: #2563EB;
+    text-decoration: none;
+}
+
+.page-header {
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: #64748B;
+    max-width: 800px;
+}
+
+/* Top Section: Upload & Tips */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.upload-card {
+    background: white;
+    border: 2px dashed #E2E8F0;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.upload-card:hover {
+    border-color: #2563EB;
+    background: #F8FAFC;
+}
+
+.upload-icon-container {
+    margin-bottom: 24px;
+}
+
+.upload-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.upload-card p {
+    font-size: 14px;
+    color: #94A3B8;
+    margin-bottom: 32px;
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+.btn-choose-file {
+    background: #2563EB;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-choose-file:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.tips-card {
+    background: #2563EB;
+    color: white;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tip-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.tips-card h2 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.tips-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* CV List Section */
+.cv-list-section {
+    background: white;
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #1E293B;
+}
+
+.usage-badge {
+    background: #E2E8F0;
+    color: #64748B;
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.cv-list-container {
+    background: transparent;
+}
+
+.cv-item-row {
+    background: #F3F4F5;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 32px;
+    margin-bottom: 12px;
+    transition: transform 0.2s;
+}
+
+.cv-item-row:hover {
+    transform: translateX(4px);
+    background: #EDF0F2;
+}
+
+.cv-item-row:last-child {
+    margin-bottom: 0;
+}
+
+.cv-icon-box {
+    flex-shrink: 0;
+}
+
+.cv-content {
+    flex-grow: 1;
+}
+
+.cv-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 8px;
+}
+
+.cv-meta {
+    display: flex;
+    gap: 24px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #64748B;
+    font-weight: 600;
+}
+
+.cv-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-detail {
+    background: white;
+    color: #2563EB;
+    border: 1px solid #E2E8F0;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-detail:hover {
+    background: #F8FAFC;
+    border-color: #2563EB;
+}
+
+.btn-delete {
+    width: 44px;
+    height: 44px;
+    background: #F1F5F9;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-delete:hover {
+    background: #FEE2E2;
+}
+
+@media (max-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
