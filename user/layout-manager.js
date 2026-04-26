@@ -6,51 +6,138 @@
 const JOBGOS_CONFIG = {
     brand: {
         name: "JobsGo",
-        logo: "assets/icons/logo-primary.svg", // Fallback text used if image fails
+        logo: "assets/icons/logo-primary.svg",
+        link: "index.html",
         slogan: "Kết nối đam mê, kiến tạo sự nghiệp."
     },
     navigation: [
-        { label: "Việc làm", link: "search.html", hasDropdown: true },
-        { label: "Công ty", link: "company.html" },
-        { label: "Blog", link: "blog.html" },
-        { label: "Về chúng tôi", link: "#" }
+        { 
+            label: "Việc làm", 
+            id: "nav-jobs",
+            link: "search.html",
+            subLinks: [
+                { label: "Tìm việc làm", link: "search.html", isPrimary: true },
+                { label: "Việc làm đã lưu", link: "#" },
+                { label: "Việc làm đã ứng tuyển", link: "#" },
+                { label: "Việc làm phù hợp", link: "#" }
+            ]
+        },
+        { 
+            label: "Công ty", 
+            id: "nav-companies",
+            link: "company.html",
+            subLinks: [
+                { label: "Danh sách công ty", link: "company.html", isPrimary: true },
+                { label: "Công ty nổi bật", link: "#" },
+                { label: "Công ty đang tuyển dụng", link: "#" },
+                { label: "Đánh giá công ty", link: "#" }
+            ]
+        },
+        { 
+            label: "Blog", 
+            id: "nav-blog",
+            link: "blog.html",
+            subLinks: [
+                { label: "Tất cả bài viết", link: "blog.html", isPrimary: true },
+                { label: "Kinh nghiệm tìm việc", link: "blog-job-experience.html" },
+                { label: "Cẩm nang nghề nghiệp", link: "blog-career-guide.html" },
+                { label: "Tin tức thị trường", link: "blog-market-news.html" }
+            ]
+        },
+        { 
+            label: "Liên hệ", 
+            id: "nav-contact",
+            link: "#",
+            subLinks: [
+                { label: "Hỗ trợ khách hàng", link: "#", isPrimary: true },
+                { label: "Gửi yêu cầu hỗ trợ", link: "#" },
+                { label: "Chính sách & Điều khoản", link: "about.html" },
+                { label: "Báo lỗi hệ thống", link: "#" }
+            ]
+        }
     ],
     footer: {
         about: "JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.",
-        sections: [
+        columns: [
             {
-                title: "Về JobGos",
-                links: [
-                    { label: "Giới thiệu", link: "index.html" },
-                    { label: "Tuyển dụng", link: "#" },
-                    { label: "Liên hệ", link: "#" },
-                    { label: "Hỏi đáp", link: "#" }
+                sections: [
+                    {
+                        title: "Giới Thiệu",
+                        content: "JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa."
+                    }
+                ],
+                showSocial: true,
+                showLogo: true
+            },
+            {
+                sections: [
+                    {
+                        title: "Về JobGos",
+                        links: [
+                            { label: "Giới thiệu", link: "about.html" },
+                            { label: "Tuyển dụng", link: "#" },
+                            { label: "Liên hệ", link: "#" },
+                            { label: "Hỏi đáp", link: "#" },
+                            { label: "Chính sách bảo mật", link: "about.html" },
+                            { label: "Điều khoản sử dụng", link: "about.html" }
+                        ]
+                    },
+                    {
+                        title: "Hồ sơ & CV",
+                        links: [
+                            { label: "Quản lý CV", link: "user-dashboard.html" },
+                            { label: "Tạo CV online", link: "#" },
+                            { label: "Thư viện CV", link: "#" },
+                            { label: "Hướng dẫn viết CV", link: "#" }
+                        ]
+                    }
                 ]
             },
             {
-                title: "Hồ sơ & CV",
-                links: [
-                    { label: "Quản lý CV", link: "user-dashboard.html" },
-                    { label: "Tạo CV online", link: "#" },
-                    { label: "Thư viện CV", link: "#" },
-                    { label: "Hướng dẫn viết CV", link: "#" }
+                sections: [
+                    {
+                        title: "Dành cho ứng viên",
+                        links: [
+                            { label: "Tìm việc làm", link: "search.html" },
+                            { label: "Việc làm theo ngành", link: "#" },
+                            { label: "Việc làm theo địa điểm", link: "#" },
+                            { label: "Việc làm nổi bật", link: "#" },
+                            { label: "Việc làm mới nhất", link: "#" }
+                        ]
+                    },
+                    {
+                        title: "Dành cho nhà tuyển dụng",
+                        links: [
+                            { label: "Đăng tin tuyển dụng", link: "#" },
+                            { label: "Quản lý tin tuyển dụng", link: "#" },
+                            { label: "Tìm kiếm ứng viên", link: "#" },
+                            { label: "Báo cáo & thống kê", link: "#" }
+                        ]
+                    }
                 ]
             },
             {
-                title: "Dành cho ứng viên",
-                links: [
-                    { label: "Tìm việc làm", link: "search.html" },
-                    { label: "Việc làm theo ngành", link: "#" },
-                    { label: "Việc làm địa điểm", link: "#" },
-                    { label: "Việc làm mới nhất", link: "#" }
+                sections: [
+                    {
+                        title: "Khám phá",
+                        links: [
+                            { label: "Gợi ý việc làm", link: "#" },
+                            { label: "Blog & chia sẻ", link: "blog.html" },
+                            { label: "Cẩm nang nghề nghiệp", link: "blog-career-guide.html" },
+                            { label: "Công cụ hỗ trợ", link: "#" }
+                        ]
+                    },
+                    {
+                        title: "Thông tin liên hệ",
+                        links: [
+                            { label: "Hà Nội, Việt Nam", link: "#" },
+                            { label: "contact@jobgos.vn", link: "mailto:contact@jobgos.vn" },
+                            { label: "0123 456 789", link: "tel:0123456789" }
+                        ]
+                    }
                 ]
             }
         ],
-        contact: {
-            address: "Hà Nội, Việt Nam",
-            email: "contact@jobgos.vn",
-            phone: "0123 456 789"
-        },
         copyright: "© 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.",
         userDropdown: [
             {
@@ -102,7 +189,24 @@ class LayoutManager {
         if (!container) return;
 
         const navHtml = this.config.navigation.map(item => `
-            <a href="${item.link}" class="user-nav-link">${item.label}</a>
+            <div class="user-nav-item-wrapper" id="${item.id}-wrapper">
+                <a href="${item.link}" class="user-nav-link" id="${item.id}-trigger">
+                    ${item.label}
+                    <img src="assets/images/admin-quan-li-tin-tuyen-dung/chi-tiet/ic-dropdown.svg" class="nav-arrow-icon" alt="">
+                </a>
+                <div class="user-nav-dropdown" id="${item.id}-dropdown">
+                    <div class="nav-dropdown-pointer"></div>
+                    <div class="nav-dropdown-header">${item.label.toUpperCase()}</div>
+                    <div class="nav-dropdown-list">
+                        ${item.subLinks.map(sub => `
+                            <a href="${sub.link}" class="nav-dropdown-link ${sub.isPrimary ? 'primary-link' : ''}">
+                                ${sub.label}
+                                ${sub.isPrimary ? `<img src="assets/images/blog-tin-tuc-thi-truong/ic-xem-chi-tiet.svg" alt="" width="14">` : ''}
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
         `).join('');
 
         const dropdownHtml = this.config.footer.userDropdown.map(section => `
@@ -121,10 +225,12 @@ class LayoutManager {
         `).join('');
 
         const authHtml = this.isLoggedIn ? `
-            <div class="user-auth-btns">
-                <div class="user-avatar-wrapper" id="user-avatar-trigger">
-                    <img src="assets/images/avtar_user_sample.svg" alt="User" class="user-avatar-img">
-                    <span class="avatar-caret-custom"></span>
+            <div class="user-auth-logged-in">
+                <div class="user-avatar-trigger-wrapper" id="user-avatar-trigger">
+                    <div class="user-avatar-wrapper">
+                        <img src="assets/images/avtar_user_sample.svg" alt="User" class="user-avatar-img">
+                        <div class="avatar-caret-custom"></div>
+                    </div>
                 </div>
 
                 <div class="employer-cta">
@@ -133,15 +239,15 @@ class LayoutManager {
                 </div>
 
                 <!-- User Dropdown Menu -->
-                <div class="user-dropdown" id="user-dropdown-menu">
+                <div class="user-dropdown-menu" id="user-dropdown-menu">
                     <div class="dropdown-user-info">
                         <img src="assets/images/avtar_user_sample.svg" alt="Avatar" style="width: 64px; border-radius: 50%; border: 2px solid var(--primary); padding: 2px;">
                         <div class="info-details">
-                            <h4>Ninh Khoa</h4>
-                            <p style="color: #64748b; display: flex; align-items: center; gap: 4px;">
+                            <h4>Nguyen Luong</h4>
+                            <p style="color: #64748b; display: flex; align-items: center; gap: 4px; font-size: 13px;">
                                 <img src="assets/icons/ic_ticked.svg" style="width: 14px;" onerror="this.style.display='none'"> Tài khoản đã xác thực
                             </p>
-                            <p style="font-size: 11px; opacity: 0.7;">ID: 12345678</p>
+                            <p style="font-size: 11px; opacity: 0.7;">ID: 10293847</p>
                         </div>
                         <div class="close-dropdown" id="close-dropdown-btn">×</div>
                     </div>
@@ -150,37 +256,68 @@ class LayoutManager {
                         ${dropdownHtml}
                     </div>
 
-                    <button class="logout-btn-dropdown" onclick="layoutManager.logout()">
-                        <img src="assets/images/ic_log_out.svg" alt="">
-                        ĐĂNG XUẤT
-                    </button>
+                    <div class="dropdown-logout-wrapper">
+                        <button class="logout-btn-dropdown" onclick="layoutManager.logout()">
+                            <img src="assets/images/ic_log_out.svg" alt="">
+                            ĐĂNG XUẤT
+                        </button>
+                    </div>
                 </div>
             </div>
         ` : `
             <div class="user-auth-btns">
-                <a href="register.html" class="btn-secondary">Đăng ký</a>
-                <a href="login.html" class="btn-primary">Đăng nhập</a>
+                <a href="#" class="auth-btn btn-secondary" onclick="localStorage.setItem('isLoggedIn', 'true'); window.location.reload();">Đăng ký</a>
+                <a href="#" class="auth-btn btn-primary" onclick="localStorage.setItem('isLoggedIn', 'true'); window.location.reload();">Đăng nhập</a>
             </div>
         `;
 
         container.innerHTML = `
             <header class="user-header-sticky">
                 <div class="user-header-container">
-                    <a href="index.html" class="user-brand">${this.config.brand.name}</a>
+                    <a href="${this.config.brand.link}" class="user-brand">
+                        <img src="${this.config.brand.logo}" alt="${this.config.brand.name}" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                        <span style="display: none;">${this.config.brand.name}</span>
+                    </a>
+
                     <nav class="user-nav">
                         ${navHtml}
                     </nav>
-                    ${authHtml}
+
+                    <div class="user-actions">
+                        ${authHtml}
+                    </div>
                 </div>
             </header>
         `;
 
         if (this.isLoggedIn) {
-            this.initializeDropdown();
+            this.initializeUserDropdown();
         }
+        this.initializeNavDropdowns();
     }
 
-    initializeDropdown() {
+    initializeNavDropdowns() {
+        this.config.navigation.forEach(item => {
+            const wrapper = document.getElementById(`${item.id}-wrapper`);
+            const trigger = document.getElementById(`${item.id}-trigger`);
+            const dropdown = document.getElementById(`${item.id}-dropdown`);
+
+            if (wrapper && trigger && dropdown) {
+                // Hover behavior
+                wrapper.addEventListener('mouseenter', () => {
+                    dropdown.classList.add('is-active');
+                    trigger.classList.add('is-active');
+                });
+                wrapper.addEventListener('mouseleave', () => {
+                    dropdown.classList.remove('is-active');
+                    trigger.classList.remove('is-active');
+                });
+            }
+        });
+    }
+
+    initializeUserDropdown() {
         const trigger = document.getElementById('user-avatar-trigger');
         const menu = document.getElementById('user-dropdown-menu');
         const closeBtn = document.getElementById('close-dropdown-btn');
@@ -211,7 +348,7 @@ class LayoutManager {
             }
         });
 
-        // Close on Scroll (optional but recommended for sticky headers)
+        // Close on Scroll
         window.addEventListener('scroll', () => {
             if (menu.classList.contains('is-active')) {
                 closeMenu();
@@ -223,43 +360,39 @@ class LayoutManager {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        const sectionsHtml = this.config.footer.sections.map(section => `
+        const columnsHtml = this.config.footer.columns.map(col => `
             <div class="footer-col">
-                <h4 class="footer-col-title">${section.title}</h4>
-                <ul class="footer-links">
-                    ${section.links.map(link => `<li><a href="${link.link}" class="footer-link">${link.label}</a></li>`).join('')}
-                </ul>
+                ${col.sections.map(section => `
+                    <div class="footer-section">
+                        <h4 class="footer-col-title">${section.title}</h4>
+                        ${section.content ? `<p class="footer-desc">${section.content}</p>` : ''}
+                        ${section.links ? `
+                            <ul class="footer-links">
+                                ${section.links.map(link => `
+                                    <li class="footer-link"><a href="${link.link}">${link.label}</a></li>
+                                `).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                `).join('')}
+                ${col.showLogo ? `<div class="footer-logo-text">JOBGOS</div>` : ''}
+                ${col.showSocial ? `
+                    <div class="footer-socials">
+                         <a href="#" class="social-icon"><img src="assets/icons/ic_fb.svg" alt="Facebook" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733547.png'"></a>
+                         <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Youtube" width="20"></a>
+                         <a href="#" class="social-icon"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="20"></a>
+                    </div>
+                ` : ''}
             </div>
         `).join('');
 
         container.innerHTML = `
             <footer class="user-footer">
-                <div class="user-footer-grid">
-                    <div class="footer-col-brand">
-                        <a href="index.html" class="user-brand">${this.config.brand.name}</a>
-                        <p class="footer-desc">${this.config.footer.about}</p>
-                        <div class="footer-socials">
-                             <a href="#" class="social-icon"><img src="assets/icons/ic_fb.svg" alt="Facebook" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733547.png'"></a>
-                             <a href="#" class="social-icon"><img src="assets/icons/ic_linkedin.svg" alt="Linkedin" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3536/3536505.png'"></a>
-                             <a href="#" class="social-icon"><img src="assets/icons/ic_youtube.svg" alt="Youtube" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1384/1384060.png'"></a>
-                        </div>
-                    </div>
-                    ${sectionsHtml}
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Liên hệ</h4>
-                        <ul class="footer-links" style="gap: 16px;">
-                            <li class="footer-link"><img src="https://cdn-icons-png.flaticon.com/512/484/484167.png" width="16"> ${this.config.footer.contact.address}</li>
-                            <li class="footer-link"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="16"> ${this.config.footer.contact.email}</li>
-                            <li class="footer-link"><img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" width="16"> ${this.config.footer.contact.phone}</li>
-                        </ul>
-                    </div>
+                <div class="footer-main">
+                    ${columnsHtml}
                 </div>
                 <div class="footer-bottom">
                     <p>${this.config.footer.copyright}</p>
-                    <div style="display: flex; gap: 24px;">
-                        <a href="#" style="text-decoration: none; color: inherit;">Privacy Policy</a>
-                        <a href="#" style="text-decoration: none; color: inherit;">Terms of Service</a>
-                    </div>
                 </div>
             </footer>
         `;

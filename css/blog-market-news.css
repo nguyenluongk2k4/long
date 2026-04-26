@@ -1,0 +1,318 @@
+/* Market News Blog Specific Styles */
+.market-news-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Breadcrumb */
+.blog-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.blog-breadcrumb a {
+    text-decoration: none;
+    color: var(--blog-text-muted, #64748B);
+}
+
+.blog-breadcrumb span {
+    color: #2563EB;
+    font-weight: 500;
+}
+
+/* Page Header */
+.market-header {
+    margin-bottom: 40px;
+}
+
+.market-header h1 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #1E293B;
+    margin: 0 0 16px 0;
+}
+
+.market-header p {
+    font-size: 16px;
+    color: #64748B;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Hero Section */
+.market-hero {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.hero-banner {
+    width: 600px;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #2563EB;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-content-meta {
+    margin-top: 24px;
+}
+
+.hero-date-tag {
+    display: flex;
+    gap: 12px;
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 12px;
+}
+
+.hero-date-tag .tag {
+    color: #2563EB;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1E293B;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+.hero-excerpt {
+    font-size: 15px;
+    color: #64748B;
+    line-height: 1.6;
+}
+
+/* Sidebar Xu hướng */
+.market-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.trending-widget h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563EB;
+    margin-bottom: 20px;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-cloud span {
+    padding: 8px 16px;
+    background: #F1F5F9;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #64748B;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tag-cloud span:hover {
+    background: #E2E8F0;
+    color: #1E293B;
+}
+
+.market-news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.market-news-item {
+    text-decoration: none;
+}
+
+.market-news-item .category {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563EB;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.market-news-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+}
+
+.market-news-item:hover h4 {
+    color: #2563EB;
+}
+
+.market-news-item .date {
+    font-size: 12px;
+    color: #94A3B8;
+}
+
+/* Blog Grid Area */
+.blog-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.market-card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.market-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.card-thumb {
+    height: 200px;
+}
+
+.card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.card-meta .tag {
+    color: #2563EB;
+    text-transform: uppercase;
+    background: #EFF6FF;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.card-meta .date {
+    color: #94A3B8;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1E293B;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.card-excerpt {
+    font-size: 14px;
+    color: #64748B;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563EB;
+}
+
+/* Pagination - Standardized */
+.blog-pagination {
+    display: flex;
+    gap: 8px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.page-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1E293B;
+    transition: all 0.2s;
+}
+
+.page-item:hover:not(.active) {
+    background: #F1F5F9;
+}
+
+.page-item.active {
+    background: #2563EB;
+    color: white;
+    border-color: #2563EB;
+}
+
+.page-dot {
+    display: flex;
+    align-items: center;
+    color: #94A3B8;
+}
+
+@media (max-width: 992px) {
+    .market-hero, .blog-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
