@@ -272,7 +272,7 @@
                         <span class="viewer-text">Đang được xem bởi 5 thành viên khác</span>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn-outline-reject">Từ chối</button>
+                        <button class="btn-outline-reject" onclick="openRejectModal()">Từ chối</button>
                         <button class="btn-primary-approve" onclick="openApproveModal()">Phê duyệt hồ sơ</button>
                     </div>
                 </div>
@@ -381,6 +381,87 @@
         </div>
     </div>
 
+    <!-- Approve Candidate Modal -->
+    <div id="approveModal" class="modal-overlay" style="display: none;">
+        <div class="approve-modal-container">
+            <div class="modal-header-centered">
+                <h1>Phê duyệt hồ sơ</h1>
+                <p class="modal-desc">Bạn đang thực hiện phê duyệt hồ sơ của <strong>Nguyễn Minh Anh</strong>. Vui lòng xác nhận các bước tiếp theo để tiến hành quy trình tuyển dụng.</p>
+            </div>
+
+            <div class="approve-options">
+                <p class="section-label">BƯỚC TIẾP THEO</p>
+                
+                <label class="approve-option active" onclick="selectApproveOption(this)">
+                    <div class="option-content">
+                        <p class="option-title">Lên lịch Hẹn phỏng vấn</p>
+                        <p class="option-desc">Gửi lời mời phỏng vấn trực tiếp hoặc online.</p>
+                    </div>
+                    <div class="custom-radio"></div>
+                    <input type="radio" name="next_step" value="interview" checked style="display: none;">
+                </label>
+
+                <label class="approve-option" onclick="selectApproveOption(this)">
+                    <div class="option-content">
+                        <p class="option-title">Chỉ phê duyệt</p>
+                        <p class="option-desc">Lưu trạng thái và xử lý sau.</p>
+                    </div>
+                    <div class="custom-radio"></div>
+                    <input type="radio" name="next_step" value="approve_only" style="display: none;">
+                </label>
+            </div>
+
+            <div class="modal-footer-actions">
+                <button class="btn-modal-cancel" onclick="closeApproveModal()">Hủy</button>
+                <button class="btn-modal-submit" onclick="handleApproveSubmit()">Phê duyệt ứng viên</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reject Candidate Modal -->
+    <div id="rejectModal" class="modal-overlay" style="display: none;">
+        <div class="reject-modal-container">
+            <div class="modal-header-centered">
+                <h1>Xác nhận từ chối hồ sơ</h1>
+            </div>
+
+            <div class="reject-candidate-card">
+                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/avatar-user.svg" alt="candidate" class="reject-avatar">
+                <div class="reject-candidate-info">
+                    <p class="reject-name">Nguyễn Minh Tuấn</p>
+                    <p class="reject-pos">Vị trí: Senior UI/UX Designer</p>
+                </div>
+            </div>
+
+            <div class="reject-form">
+                <div class="form-group">
+                    <label>Lý do từ chối</label>
+                    <div class="custom-select-wrapper">
+                        <select class="custom-select">
+                            <option>Kỹ năng chưa phù hợp</option>
+                            <option>Kinh nghiệm chưa đủ</option>
+                            <option>Mức lương không phù hợp</option>
+                            <option>Đã tìm được ứng viên khác</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-group">
+                        <label>Phản hồi chi tiết</label>
+                        <span class="sub-label">Sẽ gửi đến ứng viên qua Email</span>
+                    </div>
+                    <textarea class="reject-textarea">Vị trí này đã tìm được người phù hợp trước đó hoặc kế hoạch tuyển dụng của phòng ban có sự thay đổi đột xuất.</textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer-actions">
+                <button class="btn-modal-cancel" onclick="closeRejectModal()">Hủy</button>
+                <button class="btn-modal-reject" onclick="handleRejectSubmit()">Xác nhận Từ chối</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Success Toast -->
     <div id="successToast" class="modal-overlay" style="display: none; align-items: flex-start; padding-top: 40px; pointer-events: none; background: transparent;">
         <div class="success-dialog-container" style="min-width: 280px;">
@@ -433,6 +514,19 @@
         function handleApproveSubmit() {
             closeApproveModal();
             showToast("Phê duyệt ứng viên thành công");
+        }
+
+        function openRejectModal() {
+            document.getElementById('rejectModal').style.display = 'flex';
+        }
+
+        function closeRejectModal() {
+            document.getElementById('rejectModal').style.display = 'none';
+        }
+
+        function handleRejectSubmit() {
+            closeRejectModal();
+            showToast("Đã từ chối ứng viên");
         }
 
         function showToast(message) {
