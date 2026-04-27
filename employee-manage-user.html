@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách ứng viên | JobGos</title>
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/manage-user.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="employer-layout-root">
+        <!-- Left Sidebar Injected Here -->
+        <div id="employer-sidebar-container"></div>
+        
+        <div class="employer-main-container">
+            <!-- Top Header Injected Here -->
+            <div id="employer-header-container"></div>
+            
+            <div class="employer-content-area">
+                <div class="breadcrumb" style="margin-bottom: 24px; font-size: 13px; color: #6B7280;">
+                    Quản lý ứng viên > <span style="color: #2563EB;">Danh sách ứng viên</span>
+                </div>
+
+                <div class="manage-user-header">
+                    <div>
+                        <h1>Danh sách ứng viên</h1>
+                        <p>Bạn có <strong style="color: #2563EB;">128</strong> hồ sơ ứng tuyển mới trong tuần này.</p>
+                    </div>
+                    <button class="btn-export">
+                        <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-xuat-bao-cao.svg" alt="export">
+                        Xuất báo cáo
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-section">
+                    <div class="filter-group">
+                        <label>Lọc theo vị trí ứng tuyển</label>
+                        <select class="filter-select">
+                            <option>Tất cả vị trí</option>
+                            <option>Marketing Manager</option>
+                            <option>UI/UX Designer</option>
+                            <option>Senior Frontend Developer</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Trạng thái</label>
+                        <select class="filter-select">
+                            <option>Trạng thái</option>
+                            <option>Đã duyệt</option>
+                            <option>Mới</option>
+                            <option>Từ chối</option>
+                            <option>Đang xử lý</option>
+                        </select>
+                    </div>
+                    <button class="btn-clear-filter">Xóa lọc</button>
+                </div>
+
+                <!-- Users Table -->
+                <div class="users-table-card">
+                    <div class="table-header-main">
+                        <div class="th-label">Ứng viên</div>
+                        <div class="th-label">Vị trí ứng tuyển</div>
+                        <div class="th-label">Ngày ứng tuyển</div>
+                        <div class="th-label">Trạng thái</div>
+                        <div class="th-label" style="text-align: right;">Thao tác</div>
+                    </div>
+
+                    <div class="users-body">
+                        <!-- User 1 -->
+                        <div class="user-row">
+                            <div class="candidate-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/avatar-bui-gia-huy.svg" alt="avatar" class="user-avatar">
+                                <div class="user-name-email">
+                                    <span class="user-name">Bùi Gia Huy</span>
+                                    <span class="user-email">huy.bui@email.com</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="position-tag marketing">Marketing Manager</span>
+                            </div>
+                            <div class="apply-date">03/02/2022</div>
+                            <div>
+                                <span class="status-pill approved">Đã duyệt</span>
+                            </div>
+                            <div class="action-btns">
+                                <button class="action-btn" title="Xem">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-view.svg" alt="view">
+                                </button>
+                                <button class="action-btn" title="Xóa">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-trash.svg" alt="trash">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- User 2 -->
+                        <div class="user-row">
+                            <div class="candidate-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/avatar-le-hoang-nam.svg" alt="avatar" class="user-avatar">
+                                <div class="user-name-email">
+                                    <span class="user-name">Lê Hoàng Nam</span>
+                                    <span class="user-email">nam.le@email.com</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="position-tag marketing">Marketing Manager</span>
+                            </div>
+                            <div class="apply-date">12/09/2024</div>
+                            <div>
+                                <span class="status-pill new">Mới</span>
+                            </div>
+                            <div class="action-btns">
+                                <button class="action-btn" title="Xem">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-view.svg" alt="view">
+                                </button>
+                                <button class="action-btn" title="Xóa">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-trash.svg" alt="trash">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- User 3 -->
+                        <div class="user-row">
+                            <div class="candidate-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/avatar-do-thanh-tung.svg" alt="avatar" class="user-avatar">
+                                <div class="user-name-email">
+                                    <span class="user-name">Đỗ Thanh Tùng</span>
+                                    <span class="user-email">tung.do@email.com</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="position-tag design">UI/UX Designer</span>
+                            </div>
+                            <div class="apply-date">25/09/2024</div>
+                            <div>
+                                <span class="status-pill rejected">Từ chối</span>
+                            </div>
+                            <div class="action-btns">
+                                <button class="action-btn" title="Xem">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-view.svg" alt="view">
+                                </button>
+                                <button class="action-btn" title="Xóa">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-trash.svg" alt="trash">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- User 4 -->
+                        <div class="user-row">
+                            <div class="candidate-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/avatar-vu-minh-khoi.svg" alt="avatar" class="user-avatar">
+                                <div class="user-name-email">
+                                    <span class="user-name">Vũ Minh Khôi</span>
+                                    <span class="user-email">khoi.vu@email.com</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="position-tag design">UI/UX Designer</span>
+                            </div>
+                            <div class="apply-date">14/08/2024</div>
+                            <div>
+                                <span class="status-pill rejected">Từ chối</span>
+                            </div>
+                            <div class="action-btns">
+                                <button class="action-btn" title="Xem">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-view.svg" alt="view">
+                                </button>
+                                <button class="action-btn" title="Xóa">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-trash.svg" alt="trash">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- User 5 -->
+                        <div class="user-row">
+                            <div class="candidate-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/avatar-phan-minh-nhat.svg" alt="avatar" class="user-avatar">
+                                <div class="user-name-email">
+                                    <span class="user-name">Phan Nhật Minh</span>
+                                    <span class="user-email">minh.phan@email.com</span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="position-tag dev">Senior Frontend Developer</span>
+                            </div>
+                            <div class="apply-date">17/08/2021</div>
+                            <div>
+                                <span class="status-pill processing">Đang xử lý</span>
+                            </div>
+                            <div class="action-btns">
+                                <button class="action-btn" title="Xem">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-view.svg" alt="view">
+                                </button>
+                                <button class="action-btn" title="Xóa">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-trash.svg" alt="trash">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-area">
+                        <div class="results-info">Hiển thị <strong>1 - 10</strong> trong số <strong>428</strong> ứng viên</div>
+                        <div class="pagination-controls">
+                            <a href="#" class="page-link arrow">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-prev-pagnition.svg" alt="prev">
+                            </a>
+                            <a href="#" class="page-link active">1</a>
+                            <a href="#" class="page-link">2</a>
+                            <a href="#" class="page-link">3</a>
+                            <a href="#" class="page-link arrow">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-next-pagnition.svg" alt="next">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Stats -->
+                <div class="bottom-grid">
+                    <div class="promo-card">
+                        <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-tang-toc-tuyen-dung.svg" alt="rocket" style="width: 48px;">
+                        <h3>Tăng tốc tuyển dụng</h3>
+                        <p>Sử dụng AI của JosGO để tự động lọc hồ sơ phù hợp nhất với yêu cầu của bạn.</p>
+                    </div>
+
+                    <div class="stats-detail-card">
+                        <div class="">
+                            <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-ti-le-chuyen-doi-phong-van.svg" alt="chart" >
+                        </div>
+                        <div class="stats-content">
+                            <h3>Tỷ lệ chuyển đổi phỏng vấn</h3>
+                            <p class="desc">Tháng này hiệu suất tuyển dụng của bạn tăng <strong>+12.4%</strong> so với tháng trước.</p>
+                            <div class="mini-stats-row">
+                                <span class="mini-stat-pill">Frontend: 85%</span>
+                                <span class="mini-stat-pill">Design: 62%</span>
+                                <span class="mini-stat-pill">Marketing: 44%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="employer-footer-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="employer/employer-layout-manager.js"></script>
+</body>
+</html>
