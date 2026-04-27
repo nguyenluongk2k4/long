@@ -256,8 +256,7 @@
                         </section>
 
                         <div class="form-actions-bar card">
-                            <button type="button" class="btn-preview" onclick="location.href='preview-job.html'">Xem trước</button>
-                            <button type="button" class="btn-submit" onclick="openConfirmModal()">Cập nhật tin ngay</button>
+                            <button type="button" class="btn-submit" onclick="openSuccessDialog()">Lưu & cập nhật tin ngay</button>
                         </div>
                     </form>
                 </div>
@@ -265,83 +264,21 @@
             </div>
         </div>
 
-        <!-- Confirmation Modal -->
-        <div id="confirmPostModal" class="modal-overlay" style="display: none;">
-            <div class="confirm-job-modal">
-                <div class="modal-left-brand">
-                    <img width="40px" src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-xac-nhan.svg" alt="Check" class="brand-icon-check">
-                    <div class="brand-content">
-                        <h2>Xác nhận cập nhật?</h2>
-                        <p>Thông tin tin tuyển dụng sẽ được cập nhật ngay lập tức đến các ứng viên.</p>
-                    </div>
-                </div>
-                <div class="modal-right-content">
-                    <h2>Xác nhận cập nhật</h2>
-                    <p class="modal-subtitle">Vui lòng kiểm tra lại thay đổi trước khi lưu.</p>
-                    
-                    <div class="confirm-info-list">
-                        <div class="info-item-box">
-                            <div class="info-details">
-                                <label>Tên công việc</label>
-                                <div class="value" style="display: flex; align-items: center; gap: 8px;">
-                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-ten-cong-viec.svg" alt="Job" >
-                                    Backend Developer (Java/Python)
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="info-row-grid">
-                            <div class="info-item-box">
-                                <div class="info-details">
-                                    <label>Mã tin đăng</label>
-                                    <div class="value" style="display: flex; align-items: center; gap: 8px;">
-                                        #JG-8829
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="info-item-box">
-                                <div class="info-details">
-                                    <label>Thời gian hiệu lực</label>
-                                    <div class="value" style="display: flex; align-items: center; gap: 8px;">
-                                        <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-thoi-gian-hien-thi.svg" alt="Time" style="width: 16px;">
-                                        Còn 12 ngày
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer-btns">
-                        <button type="button" class="btn-modal-cancel" onclick="closeConfirmModal()">Hủy</button>
-                        <button type="button" class="btn-modal-submit" onclick="handleSubmitSuccess()">Lưu thay đổi</button>
-                    </div>
-                </div>
+        <!-- Success Dialog Modal -->
+        <div id="successDialogModal" class="modal-overlay" style="display: none;">
+            <div class="success-dialog-modal">
+                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-thanh-cong-dialog.svg" alt="Success" class="success-icon">
+                <h2>Lưu & Cập nhật thành công</h2>
             </div>
-        </div>
-
-        <!-- Success Toast -->
-        <div id="successToast" class="success-toast">
-            <span>Đã cập nhật tin tuyển dụng thành công</span>
         </div>
     </div>
 
     <script src="employer/employer-layout-manager.js"></script>
     <script>
         // Modal logic
-        function openConfirmModal() {
-            document.getElementById('confirmPostModal').style.display = 'flex';
-        }
-
-        function closeConfirmModal() {
-            document.getElementById('confirmPostModal').style.display = 'none';
-        }
-
-        function handleSubmitSuccess() {
-            closeConfirmModal();
-            const toast = document.getElementById('successToast');
-            toast.classList.add('active');
+        function openSuccessDialog() {
+            document.getElementById('successDialogModal').style.display = 'flex';
             setTimeout(() => {
-                toast.classList.remove('active');
                 location.href = 'employee-manage-job.html';
             }, 2000);
         }

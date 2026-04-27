@@ -379,7 +379,7 @@ textarea {
     background: var(--primary-hover);
 }
 
-/* --- CONFIRM POST MODAL --- */
+/* --- MODAL OVERLAY --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -393,179 +393,26 @@ textarea {
     z-index: 1000;
 }
 
-.confirm-job-modal {
+/* Success Dialog Modal */
+.success-dialog-modal {
     background: #FFFFFF;
-    width: 800px;
-    max-width: 90%;
+    width: 400px;
+    padding: 40px;
     border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-.modal-left-brand {
-    background: #2563EB;
-    width: 280px;
-    padding: 40px;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.success-dialog-modal .success-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
 }
 
-
-
-.brand-content h2 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    line-height: 1.2;
-}
-
-.brand-content p {
-    font-size: 16px;
-    line-height: 1.5;
-    opacity: 0.9;
-}
-
-.modal-right-content {
-    flex: 1;
-    padding: 40px;
-}
-
-.modal-right-content h2 {
+.success-dialog-modal h2 {
     font-size: 28px;
     font-weight: 700;
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.modal-subtitle {
-    font-size: 15px;
-    color: #6B7280;
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.confirm-info-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.info-item-box {
-    background: #F9FAFB;
-    border-radius: 12px;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.info-icon-sq {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-.info-details label {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    color: #9CA3AF;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-}
-
-.info-details .value {
-    font-size: 16px;
-    font-weight: 700;
     color: #111827;
-}
-
-.info-row-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.value-package { color: #2563EB; display: flex; align-items: center; gap: 8px; }
-.value-package img { width: 14px; }
-
-.modal-options {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.option-check {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #4B5563;
-    cursor: pointer;
-}
-
-.option-check input {
-    width: 20px;
-    height: 20px;
-    accent-color: #2563EB;
-}
-
-.modal-footer-btns {
-    margin-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 16px;
-}
-
-.btn-modal-cancel {
-    background: #F3F4F6;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: 700;
-    color: #2563EB;
-    cursor: pointer;
-}
-
-.btn-modal-submit {
-    background: #2563EB;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: 700;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
-/* Success Toast */
-.success-toast {
-    position: fixed;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #FFFFFF;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 16px 40px;
-    border-radius: 12px;
-    z-index: 2000;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.success-toast.active {
-    top: 40px;
-}
-
-.success-toast span {
-    font-size: 20px;
-    font-weight: 700;
-    color: #2563EB;
+    margin: 0;
 }
 
