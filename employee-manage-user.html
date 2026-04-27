@@ -27,7 +27,7 @@
                         <h1>Danh sách ứng viên</h1>
                         <p>Bạn có <strong style="color: #2563EB;">128</strong> hồ sơ ứng tuyển mới trong tuần này.</p>
                     </div>
-                    <button class="btn-export">
+                    <button class="btn-export" onclick="openExportModal()">
                         <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/ic-xuat-bao-cao.svg" alt="export">
                         Xuất báo cáo
                     </button>
@@ -245,6 +245,111 @@
         </div>
     </div>
 
+    <!-- Export Modal -->
+    <div id="exportReportModal" class="modal-overlay" style="display: none;">
+        <div class="export-modal-container">
+            <h2>Xuất báo cáo danh sách ứng viên</h2>
+            
+            <div class="export-section">
+                <label class="section-title">ĐỊNH DẠNG TỆP</label>
+                <div class="format-grid">
+                    <div class="format-card active" onclick="selectFormat(this)">
+                        <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/modal/ic-excel.svg" alt="excel">
+                        <span class="name">Excel</span>
+                        <span class="ext">.xlsx</span>
+                    </div>
+                    <div class="format-card" onclick="selectFormat(this)">
+                        <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/modal/ic-pdf.svg" alt="pdf">
+                        <span class="name">PDF</span>
+                        <span class="ext">.pdf</span>
+                    </div>
+                    <div class="format-card" onclick="selectFormat(this)">
+                        <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/modal/ic-csv.svg" alt="csv">
+                        <span class="name">CSV</span>
+                        <span class="ext">.csv</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="export-section">
+                <div class="options-header">
+                    <label class="section-title">TÙY CHỌN THÔNG TIN</label>
+                    <label class="option-item">
+                        <input type="checkbox" onchange="toggleSelectAll(this)">
+                        <span>Chọn tất cả</span>
+                    </label>
+                </div>
+                <div class="options-grid">
+                    <label class="option-item">
+                        <input type="checkbox" checked>
+                        <span>Họ tên</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" checked>
+                        <span>Vị trí ứng tuyển</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" checked>
+                        <span>Email</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" checked>
+                        <span>Ngày ứng tuyển</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox">
+                        <span>Số điện thoại</span>
+                    </label>
+                    <label class="option-item">
+                        <input type="checkbox" checked>
+                        <span>Trạng thái</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-footer-actions">
+                <button class="btn-modal-secondary" onclick="closeExportModal()">Hủy</button>
+                <button class="btn-modal-primary" onclick="handleExport()">Xuất báo cáo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successExportModal" class="modal-overlay" style="display: none; align-items: flex-start; padding-top: 40px;">
+        <div class="success-dialog-container">
+            <h3>Xuất báo cáo danh sách ứng viên thành công</h3>
+        </div>
+    </div>
+
     <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        function openExportModal() {
+            document.getElementById('exportReportModal').style.display = 'flex';
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportReportModal').style.display = 'none';
+        }
+
+        function selectFormat(element) {
+            document.querySelectorAll('.format-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function toggleSelectAll(checkbox) {
+            const checkboxes = document.querySelectorAll('.options-grid input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = checkbox.checked);
+        }
+
+        function handleExport() {
+            closeExportModal();
+            const successModal = document.getElementById('successExportModal');
+            successModal.style.display = 'flex';
+            
+            setTimeout(() => {
+                successModal.style.display = 'none';
+            }, 2500);
+        }
+    </script>
 </body>
 </html>
