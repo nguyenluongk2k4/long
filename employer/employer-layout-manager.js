@@ -7,7 +7,7 @@ const EMPLOYER_CONFIG = {
     sidebarMainItems: [
         { id: "nav-overview", label: "Tổng quan", link: "employer-dashboard.html", icon: "ic-tong-quan.svg" },
         { id: "nav-company-profile", label: "Hồ sơ công ty", link: "employer-company-profile.html", icon: "ic-ho-so-cong-ty.svg" },
-        { id: "nav-manage-jobs", label: "Quản lý tin tuyển dụng", link: "manage-jobs.html", icon: "ic-quan-li-tin-tuyen-dung.svg" },
+        { id: "nav-manage-jobs", label: "Quản lý tin tuyển dụng", link: "employee-manage-job.html", icon: "ic-quan-li-tin-tuyen-dung.svg" },
         { id: "nav-manage-candidates", label: "Quản lý ứng viên", link: "#", icon: "ic-quan-li-ung-vien.svg" },
         { id: "nav-reports", label: "Báo cáo & phân tích", link: "#", icon: "ic-bao-cao-phan-tich.svg" }
     ],

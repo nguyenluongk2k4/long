@@ -17,18 +17,17 @@
         <!-- Sidebar Container -->
         <div id="employer-sidebar-container"></div>
 
-        <!-- Main Content Wrapper -->
-        <div class="employer-main-wrapper">
+        <div class="employer-main-container">
             <!-- Header Container -->
             <div id="employer-header-container"></div>
 
             <!-- Page Content -->
-            <main class="employer-content-area">
+            <div class="employer-content-area">
                 
                 <!-- Breadcrumbs -->
                 <div class="breadcrumb-nav">
                     <span>Quản lý tin tuyển dụng</span>
-                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-arrow-right.svg" alt=">">
+                    >
                     <span class="active">Danh sách tin tuyển dụng</span>
                 </div>
 
@@ -49,7 +48,7 @@
                 <!-- Stats Summary Row -->
                 <div class="jobs-stats-row">
                     <div class="stat-box-card">
-                        <div class="stat-icon-wrap" style="background: #EFF6FF;">
+                        <div class="" >
                             <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-tin-dang-hoat-dong.svg" alt="active">
                         </div>
                         <div class="stat-info">
@@ -58,7 +57,7 @@
                         </div>
                     </div>
                     <div class="stat-box-card">
-                        <div class="stat-icon-wrap" style="background: #FFFBEB;">
+                        <div class="" >
                             <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-dang-cho-duyet.svg" alt="pending">
                         </div>
                         <div class="stat-info">
@@ -67,7 +66,7 @@
                         </div>
                     </div>
                     <div class="stat-box-card">
-                        <div class="stat-icon-wrap" style="background: #ECFDF5;">
+                        <div class="" >
                             <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-tong-ung-vien-moi.svg" alt="candidates">
                         </div>
                         <div class="stat-info">
@@ -80,8 +79,8 @@
                 <!-- Jobs Table Section -->
                 <div class="jobs-table-card">
                     <table class="jobs-display-table">
-                        <thead>
-                            <tr>
+                        <thead style="background-color: #43465533;">
+                            <tr >
                                 <th>TIÊU ĐỀ TIN</th>
                                 <th>TRẠNG THÁI</th>
                                 <th>ỨNG VIÊN</th>
@@ -185,13 +184,19 @@
                     <div class="table-footer-row">
                         <div class="results-info">Hiển thị 1-4 trên tổng số 15 tin</div>
                         <div class="pagination-wrap">
-                            <button class="btn-page-arrow"><</button>
+                            <button class="btn-page-arrow">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-prev-pagnition.svg" alt="prev">
+                            </button>
                             <button class="btn-page active">1</button>
                             <button class="btn-page">2</button>
                             <button class="btn-page">3</button>
-                            <span class="page-dots">...</span>
+                            <span class="page-dots">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-three-dot.svg" alt="...">
+                            </span>
                             <button class="btn-page">8</button>
-                            <button class="btn-page-arrow">></button>
+                            <button class="btn-page-arrow">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-next-pagnition.svg" alt="next">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -205,7 +210,7 @@
                     <button class="btn-promo-action" onclick="showUpgradeModal()">Tìm hiểu ngay</button>
                 </div>
 
-            </main>
+            </div>
 
             <!-- Footer Injected Here -->
             <div id="employer-footer-container"></div>
