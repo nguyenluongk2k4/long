@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết công việc | JobGos</title>
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/job-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="employer-layout-root">
+        <!-- Left Sidebar Injected Here -->
+        <div id="employer-sidebar-container"></div>
+        
+        <div class="employer-main-container">
+            <!-- Top Header Injected Here -->
+            <div id="employer-header-container"></div>
+            
+            <div class="employer-content-area" style="padding-bottom: 0;">
+                <div class="breadcrumb" style="margin-bottom: 24px; font-size: 13px; color: #6B7280;">
+                    Quản lý tin tuyển dụng > <span style="color: #2563EB;">Chi tiết công việc trong tin tuyển dụng</span>
+                </div>
+
+                <div class="job-detail-header">
+                    <h1>Senior Product Designer (UI/UX)</h1>
+                    <div class="header-action-group">
+                        <button class="btn-header-outline" onclick="location.href='edit-job.html'">
+                            <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-chinh-sua.svg" alt="Edit">
+                            Chỉnh sửa tin
+                        </button>
+                        <button class="btn-header-outline danger">
+                            <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-dong-tin-tuyen-dung.svg" alt="Close">
+                            Đóng tin tuyển dụng
+                        </button>
+                    </div>
+                </div>
+
+                <div class="job-detail-grid">
+                    <!-- Left Column -->
+                    <div class="detail-left-col">
+                        <!-- General Info Card -->
+                        <div class="detail-side-card">
+                            <div class="side-card-header">
+                                <div class="post-date-wrap">
+                                    <span class="label">Đăng ngày:</span>
+                                    <span class="date">25/09/2024</span>
+                                </div>
+                                <span class="status-badge-detail">Đang hoạt động</span>
+                            </div>
+                            
+                            <div class="info-item-row">
+                                <div class="info-icon-box">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-muc-luong.svg" alt="Salary">
+                                </div>
+                                <div class="info-content">
+                                    <span class="label">Mức lương</span>
+                                    <span class="value">Thỏa thuận</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item-row">
+                                <div class="info-icon-box">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-dia-diem.svg" alt="Location">
+                                </div>
+                                <div class="info-content">
+                                    <span class="label">Địa điểm</span>
+                                    <span class="value">Quận 1, TP. Hồ Chí Minh (Remote hybrid)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item-row">
+                                <div class="info-icon-box">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-hinh-thuc.svg" alt="Type">
+                                </div>
+                                <div class="info-content">
+                                    <span class="label">Hình thức</span>
+                                    <span class="value">Toàn thời gian</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Mini Cards -->
+                        <div class="stats-mini-grid">
+                            <div class="stat-mini-card blue">
+                                <span class="label">Tổng lượt xem</span>
+                                <span class="value">12.4K</span>
+                                <div class="stat-trend up">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-tang-truong.svg" alt="up">
+                                    +12% tuần này
+                                </div>
+                            </div>
+                            <div class="stat-mini-card white">
+                                <span class="label">Lượt ứng tuyển</span>
+                                <span class="value">156</span>
+                                <div class="stat-trend new">
+                                    <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-tick-xanh-la.svg" alt="new">
+                                    24 hồ sơ mới
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recruitment Team -->
+                        <div class="detail-side-card">
+                            <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 16px;">Đội ngũ tuyển dụng</h3>
+                            <div class="team-avatars">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/doi-ngu-tuyen-dung-1.svg" alt="team">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/doi-ngu-tuyen-dung-2.svg" alt="team">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/doi-ngu-tuyen-dung-3.svg" alt="team">
+                                <span class="more-tag">+2</span>
+                            </div>
+                            <p class="team-desc">Tin đăng đang được quản lý bởi 5 thành viên trong phòng nhân sự.</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Candidate List -->
+                    <div style="margin-bottom: 25px;" class="candidate-list-card">
+                        <div class="card-header-main">
+                            <h2>Danh sách ứng viên</h2>
+                            <div class="filter-mini-tabs">
+                                <button class="mini-tab active">Tất cả</button>
+                                <button class="mini-tab">Mới</button>
+                                <button class="mini-tab">Đang xử lý</button>
+                            </div>
+                        </div>
+
+                        <div class="table-head-row">
+                            <div style="width: 48px; margin-right: 16px;"></div>
+                            <div class="th-label" style="flex: 1;">Ứng viên</div>
+                            <div class="th-label" style="width: 150px; text-align: center;">Trạng thái</div>
+                            <div class="th-label" style="width: 100px; text-align: right;">Hành động</div>
+                        </div>
+
+                        <div class="candidates-scroll-body">
+                            <!-- Candidate 1 -->
+                            <div class="candidate-item">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/avatar-nguyen-minh-quan.svg" alt="avatar" class="cand-avatar">
+                                <div class="cand-info">
+                                    <span class="name">Nguyễn Minh Quân</span>
+                                    <div class="cand-meta">
+                                        <span>8 năm kinh nghiệm</span> &bull; <span>Grab, VNG</span>
+                                    </div>
+                                    <div class="apply-time">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-calendar.svg" alt="cal" style="width: 12px;">
+                                        Ứng tuyển: Vừa xong
+                                    </div>
+                                </div>
+                                <div class="cand-status">
+                                    <span class="status-pill processing">Đang xử lý</span>
+                                </div>
+                                <div class="cand-actions">
+                                    <button class="btn-cand-action" title="Xem">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-view.svg" alt="View">
+                                    </button>
+                                    <button class="btn-cand-action" title="Xóa">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-trash.svg" alt="Trash">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Candidate 2 -->
+                            <div class="candidate-item">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/avatar-hoang-duc-anh.svg" alt="avatar" class="cand-avatar">
+                                <div class="cand-info">
+                                    <span class="name">Hoàng Đức Anh</span>
+                                    <div class="cand-meta">
+                                        <span>0 năm kinh nghiệm</span> &bull; <span>Freelance</span>
+                                    </div>
+                                    <div class="apply-time">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-calendar.svg" alt="cal" style="width: 12px;">
+                                        Ứng tuyển: 15 phút trước
+                                    </div>
+                                </div>
+                                <div class="cand-status">
+                                    <span class="status-pill rejected">Từ chối</span>
+                                </div>
+                                <div class="cand-actions">
+                                    <button class="btn-cand-action" title="Xem">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-view.svg" alt="View">
+                                    </button>
+                                    <button class="btn-cand-action" title="Xóa">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-trash.svg" alt="Trash">
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Candidate 3 -->
+                            <div class="candidate-item">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/avatar-nguyen-quoc-bao.svg" alt="avatar" class="cand-avatar">
+                                <div class="cand-info">
+                                    <span class="name">Nguyễn Quốc Bảo</span>
+                                    <div class="cand-meta">
+                                        <span>8 năm kinh nghiệm</span> &bull; <span>MoMo, Shopee</span>
+                                    </div>
+                                    <div class="apply-time">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-calendar.svg" alt="cal" style="width: 12px;">
+                                        Ứng tuyển: 1 giờ trước
+                                    </div>
+                                </div>
+                                <div class="cand-status">
+                                    <span class="status-pill new">Mới</span>
+                                </div>
+                                <div class="cand-actions">
+                                    <button class="btn-cand-action" title="Xem">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-view.svg" alt="View">
+                                    </button>
+                                    <button class="btn-cand-action" title="Xóa">
+                                        <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-trash.svg" alt="Trash">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer-link">
+                            <a style="padding: 6px 0px;" href="#" class="btn-view-all">
+                                Xem tất cả 156 ứng viên
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-xem-them.svg" alt="arrow">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="employer-footer-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        // Simple tab switching for candidates
+        const tabs = document.querySelectorAll('.mini-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
