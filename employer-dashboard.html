@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng quan - Nhà tuyển dụng</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/employer-dashboard.css">
+    
+    <!-- Chart.js for rendering the bar chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Upgrade Modal -->
+    <div id="upgradeModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content upgrade-modal">
+            <button class="modal-close" onclick="closeUpgradeModal()">&times;</button>
+            
+            <div class="modal-header-text">
+                <h2>Nâng cấp tài khoản</h2>
+                <p>Chọn gói dịch vụ phù hợp với nhu cầu tuyển dụng của bạn để tối ưu hóa quy trình tìm kiếm nhân tài và xây dựng thương hiệu.</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <!-- Standard Post -->
+                <div class="pricing-card">
+                    <div class="badge gray-badge">MỚI</div>
+                    <h3>Standard Post</h3>
+                    <div class="price"><span>300.000</span> đ/tin</div>
+                    <ul class="features-list">
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tick.svg" alt="check"> Đăng tin cơ bản tiết kiệm</li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tick.svg" alt="check"> Hiển thị tin tiêu chuẩn</li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tick.svg" alt="check"> Phù hợp nhu cầu cơ bản</li>
+                    </ul>
+                    <button class="btn-select-plan outline" onclick="showUpgradeSuccess('standard')">Chọn gói này</button>
+                </div>
+                
+                <!-- JobsGO Pro Max -->
+                <div class="pricing-card popular">
+                    <div class="badge primary-badge">PHỔ BIẾN NHẤT</div>
+                    <div class="badge secondary-badge">ỔN ĐỊNH</div>
+                    <h3>JobsGO Pro Max</h3>
+                    <div class="price"><span>1.000.000</span> đ/tin</div>
+                    <ul class="features-list primary-features">
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-uu-tien-huong-thu.svg" alt="icon"> <strong>Ưu tiên hiển thị & lọc CV bằng AI</strong></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-day-tin-tu-dong-moi-ngay.svg" alt="icon"> <strong>Đẩy tin tự động mỗi ngày</strong></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tiep-can-ung-vien.svg" alt="icon"> <strong>Tiếp cận ứng viên gấp 5 lần</strong></li>
+                    </ul>
+                    <button class="btn-select-plan filled" onclick="showUpgradeSuccess('promax')">Chọn gói này</button>
+                </div>
+                
+                <!-- Employer Branding -->
+                <div class="pricing-card">
+                    <div class="badge green-badge">TĂNG TRƯỞNG</div>
+                    <h3>Employer Branding</h3>
+                    <div class="price"><span>1.000.000</span> đ/tháng</div>
+                    <ul class="features-list branding-features">
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-quang-ba-thuong-hieu.svg" alt="icon"> Quảng bá thương hiệu công ty</li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-profile-doanh-nghiep.svg" alt="icon"> Profile doanh nghiệp chuyên nghiệp</li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-banner-noi-bat-trang-chu.svg" alt="icon"> Banner nổi bật trang chủ</li>
+                    </ul>
+                    <button class="btn-select-plan outline" onclick="showUpgradeSuccess('branding')">Chọn gói này</button>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                MỌI THẮC MẮC VUI LÒNG LIÊN HỆ <a href="#">1900 1234</a> HOẶC <a href="#">HOTRO@JOBSGO.VN</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upgrade Success Modal -->
+    <div id="successUpgradeModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content upgrade-success-modal">
+            <button class="modal-close" onclick="closeSuccessUpgradeModal()">&times;</button>
+            
+            <div class="modal-header-text">
+                <h2 class="success-title">Nâng cấp tài khoản thành công</h2>
+                <p>Chúc mừng! Tài khoản của bạn đã được nâng cấp lên gói <span id="successPackageName" class="package-highlight">[Standard Post]</span>. Bạn hiện đã có quyền truy cập vào các tính năng tuyển dụng cao cấp nhất.</p>
+            </div>
+            
+            <div class="success-features-box">
+                <ul class="features-list bold-features" id="successFeaturesList">
+                    <!-- Injected dynamically -->
+                </ul>
+            </div>
+            
+            <div class="success-actions">
+                <button class="btn-select-plan filled" onclick="closeSuccessUpgradeModal()">Bắt đầu trải nghiệm ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="employer-layout-root">
+        <!-- Left Sidebar Injected Here -->
+        <div id="employer-sidebar-container"></div>
+        
+        <div class="employer-main-container">
+            <!-- Top Header Injected Here -->
+            <div id="employer-header-container"></div>
+            
+            <!-- Dashboard Main Content -->
+            <div class="employer-content-area">
+                <div class="dashboard-header">
+                    <h1>Tổng quan hệ thống</h1>
+                    <p>Chào mừng trở lại! Hôm nay bạn có 12 ứng viên mới cần xem xét.</p>
+                </div>
+                
+                <!-- Stat Cards Row 1 -->
+                <div class="dashboard-stats-row">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <img src="assets/images/nha-tuyen-dung/tong-quan/ic-tong-tin-tuyen-dung-co-bg.svg" alt="Icon">
+                            <span class="stat-badge success">+12% &#x2197;</span>
+                        </div>
+                        <div class="stat-card-title">Tổng tin tuyển dụng</div>
+                        <div class="stat-card-value">48</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <img src="assets/images/nha-tuyen-dung/tong-quan/ic-tin-dang-hoat-dong-co-bg.svg" alt="Icon">
+                            <span class="stat-badge neutral">Ổn định</span>
+                        </div>
+                        <div class="stat-card-title">Tin đang hoạt động</div>
+                        <div class="stat-card-value">32</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <img src="assets/images/nha-tuyen-dung/tong-quan/ic-tong-ung-vien.svg" alt="Icon">
+                            <span class="stat-badge success">+5% &#x2197;</span>
+                        </div>
+                        <div class="stat-card-title">Tổng ứng viên</div>
+                        <div class="stat-card-value">1,240</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <img src="assets/images/nha-tuyen-dung/tong-quan/ic-tin-cho-duyet.svg" alt="Icon">
+                            <span class="stat-badge warning">Cần duyệt</span>
+                        </div>
+                        <div class="stat-card-title">Tin chờ duyệt</div>
+                        <div class="stat-card-value">04</div>
+                    </div>
+                    
+                    <div class="stat-card package-card">
+                        <div class="stat-card-header">
+                            <img src="assets/images/nha-tuyen-dung/tong-quan/ic-goi-hien-tai.svg" alt="Icon">
+                        </div>
+                        <div class="stat-card-title">Gói hiện tại</div>
+                        <div class="package-info">Hết hạn: 30/12/2026</div>
+                        <button class="btn-upgrade" onclick="openUpgradeModal()">Nâng cấp</button>
+                    </div>
+                </div>
+                
+                <!-- Main Grid: Chart + Activity -->
+                <div class="dashboard-grid">
+                    <!-- Left Column: Chart Area -->
+                    <div class="dashboard-chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h2>Lượt ứng tuyển trong tuần</h2>
+                                <p>Số lượng hồ sơ gửi về theo từng ngày</p>
+                            </div>
+                            <div class="custom-select">
+                                <span>7 ngày gần nhất</span>
+                                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1.5L6 6.5L11 1.5" stroke="#2E3132" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="applicationsChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column: Recent Activity -->
+                    <div class="dashboard-activity-card">
+                        <h2>Hoạt động gần đây</h2>
+                        <ul class="activity-list">
+                            <li>
+                                <div class="activity-marker blue"></div>
+                                <div class="activity-content">
+                                    <strong>Nguyễn Văn A vừa ứng tuyển</strong>
+                                    <span>Vị trí: UI/UX Designer &bull; 5 phút trước</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-marker green"></div>
+                                <div class="activity-content">
+                                    <strong>Tin đăng đã được duyệt</strong>
+                                    <span>Java Senior Developer &bull; 2 giờ trước</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-marker orange"></div>
+                                <div class="activity-content">
+                                    <strong>Nhắc nhở phỏng vấn</strong>
+                                    <span>Ứng viên Trần Thị B &bull; 14:00 ngày mai</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="activity-marker gray"></div>
+                                <div class="activity-content">
+                                    <strong>Hệ thống bảo trì hoàn tất</strong>
+                                    <span>Đã cập nhật tính năng lọc &bull; Hôm qua</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="btn-block-outline">Xem tất cả thông báo</button>
+                    </div>
+                </div>
+                
+                <!-- Recent Jobs Table -->
+                <div class="dashboard-jobs-card">
+                    <div class="jobs-header-row">
+                        <div>
+                            <h2>Tin tuyển dụng mới nhất</h2>
+                            <p>Quản lý các tin đăng gần đây nhất của bạn</p>
+                        </div>
+                        <a href="#" class="view-all-link">Xem tất cả tin đăng</a>
+                    </div>
+                    
+                    <div class="jobs-table-container">
+                        <table class="jobs-table">
+                            <thead>
+                                <tr>
+                                    <th>VỊ TRÍ TUYỂN DỤNG</th>
+                                    <th>TRẠNG THÁI</th>
+                                    <th>LƯỢT ỨNG TUYỂN</th>
+                                    <th class="text-right">THAO TÁC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="job-role">Kỹ sư Năng lượng tái tạo</div>
+                                        <div class="job-meta">Đăng ngày: 25/11/2024 &bull; Bắc Ninh</div>
+                                    </td>
+                                    <td><span class="status-badge warning">Chờ phê duyệt</span></td>
+                                    <td><strong>131</strong> <span class="lbl-small">ứng viên</span></td>
+                                    <td class="action-cell">
+                                        <button class="icon-btn"><img src="assets/images/nha-tuyen-dung/tong-quan/ic-view.svg" alt="View"></button>
+                                        <button class="icon-btn"><img src="assets/images/nha-tuyen-dung/tong-quan/ic-trash.svg" alt="Delete"></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="job-role">Lập trình viên Frontend (ReactJS)</div>
+                                        <div class="job-meta">Đăng ngày: 03/02/2022 &bull; TP. HCM</div>
+                                    </td>
+                                    <td><span class="status-badge success">Đang hoạt động</span></td>
+                                    <td><strong>202</strong> <span class="lbl-small">ứng viên</span></td>
+                                    <td class="action-cell">
+                                        <button class="icon-btn"><img src="assets/images/nha-tuyen-dung/tong-quan/ic-view.svg" alt="View"></button>
+                                        <button class="icon-btn"><img src="assets/images/nha-tuyen-dung/tong-quan/ic-trash.svg" alt="Delete"></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="job-role">Nhân viên Chuỗi cung ứng nông sản</div>
+                                        <div class="job-meta">Đăng ngày: 25/09/2024 &bull; Lâm Đồng</div>
+                                    </td>
+                                    <td><span class="status-badge danger">Bị từ chối</span></td>
+                                    <td><strong>0</strong> <span class="lbl-small">ứng viên</span></td>
+                                    <td class="action-cell">
+                                        <button class="icon-btn"><img src="assets/images/nha-tuyen-dung/tong-quan/ic-view.svg" alt="View"></button>
+                                        <button class="icon-btn"><img src="assets/images/nha-tuyen-dung/tong-quan/ic-trash.svg" alt="Delete"></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Call to action card -->
+                <div class="dashboard-cta-card">
+                    <div class="cta-content">
+                        <h2>Cần tìm nhân tài nhanh hơn?</h2>
+                        <p>Sử dụng gói đẩy tin Premium để tiếp cận hàng triệu ứng viên chất lượng cao ngay trong hôm nay.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <button class="btn-outline-white" onclick="openUpgradeModal()">Nâng cấp ngay</button>
+                        <button class="btn-primary-white">Đăng tin tuyển dụng</button>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Footer Injected Here -->
+            <div id="employer-footer-container"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        // Modal Handlers
+        function openUpgradeModal() {
+            document.getElementById('upgradeModal').style.display = 'flex';
+        }
+
+        function closeUpgradeModal() {
+            document.getElementById('upgradeModal').style.display = 'none';
+        }
+
+        function closeSuccessUpgradeModal() {
+            document.getElementById('successUpgradeModal').style.display = 'none';
+        }
+
+        function showUpgradeSuccess(packageType) {
+            closeUpgradeModal(); // Close the pricing modal
+
+            const packages = {
+                'standard': {
+                    name: 'Standard Post',
+                    features: `
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tick.svg" alt="check"> <span>Đăng tin cơ bản tiết kiệm</span></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tick.svg" alt="check"> <span>Hiển thị tin tiêu chuẩn</span></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tick.svg" alt="check"> <span>Phù hợp nhu cầu cơ bản</span></li>
+                    `
+                },
+                'promax': {
+                    name: 'JobsGO Pro Max',
+                    features: `
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-uu-tien-huong-thu.svg" alt="icon"> <span>Ưu tiên hiển thị & lọc CV bằng AI</span></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-day-tin-tu-dong-moi-ngay.svg" alt="icon"> <span>Đẩy tin tự động mỗi ngày</span></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-tiep-can-ung-vien.svg" alt="icon"> <span>Tiếp cận ứng viên gấp 5 lần</span></li>
+                    `
+                },
+                'branding': {
+                    name: 'Employer Branding',
+                    features: `
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-quang-ba-thuong-hieu.svg" alt="icon"> <span>Quảng bá thương hiệu công ty</span></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-profile-doanh-nghiep.svg" alt="icon"> <span>Profile doanh nghiệp chuyên nghiệp</span></li>
+                        <li><img src="assets/images/nha-tuyen-dung/tong-quan/modal/ic-banner-noi-bat-trang-chu.svg" alt="icon"> <span>Banner nổi bật trang chủ</span></li>
+                    `
+                }
+            };
+
+            const pkg = packages[packageType];
+            if(pkg) {
+                document.getElementById('successPackageName').innerText = '[' + pkg.name + ']';
+                document.getElementById('successFeaturesList').innerHTML = pkg.features;
+                document.getElementById('successUpgradeModal').style.display = 'flex';
+            }
+        }
+
+        // Init Chart.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('applicationsChart').getContext('2d');
+            
+            // Custom plugin to draw backgrounds behind bars
+            const barBackgroundPlugin = {
+                id: 'customBarBackground',
+                beforeDatasetsDraw(chart, args, pluginOptions) {
+                    const { ctx, chartArea: { top, bottom, left, right }, scales: { x, y } } = chart;
+                    ctx.save();
+                    ctx.fillStyle = '#F3F4F6'; // Background column color
+                    
+                    chart.getDatasetMeta(0).data.forEach((bar, index) => {
+                        // For each bar, draw a full height background bar
+                        const barWidth = 36;
+                        const xPos = bar.x - barWidth / 2;
+                        
+                        // Adding simple background shading effect
+                        ctx.beginPath();
+                        ctx.setLineDash([4, 4]);
+                        ctx.strokeStyle = '#E5E7EB';
+                        ctx.moveTo(bar.x, top);
+                        ctx.lineTo(bar.x, bottom);
+                        ctx.stroke();
+                        
+                        ctx.fillRect(xPos, top, barWidth, bottom - top);
+                    });
+                    ctx.restore();
+                }
+            };
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'],
+                    datasets: [{
+                        label: 'Số hồ sơ ứng tuyển',
+                        data: [18, 22, 25, 28, 27, 20, 15],
+                        backgroundColor: '#60A5FA', // Blue-400
+                        borderRadius: {topLeft: 4, topRight: 4, bottomLeft: 0, bottomRight: 0},
+                        barThickness: 36,
+                        hoverBackgroundColor: '#3B82F6' // Primary Blue on hover
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                usePointStyle: true,
+                                pointStyle: 'rectRounded',
+                                color: '#4B5563',
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1F2937',
+                            padding: 10,
+                            titleFont: { family: 'Inter', size: 14 },
+                            bodyFont: { family: 'Inter', size: 14 }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 30,
+                            ticks: {
+                                stepSize: 5,
+                                color: '#9CA3AF',
+                                font: { family: 'Inter', size: 12 }
+                            },
+                            grid: {
+                                color: '#E5E7EB',
+                                borderDash: [5, 5],
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#4B5563',
+                                font: { family: 'Inter', size: 13 }
+                            },
+                            grid: {
+                                display: false,
+                                drawBorder: false
+                            }
+                        }
+                    },
+                    animation: {
+                        onComplete: function() {
+                            const chartInstance = this.chart;
+                            const ctx = chartInstance.ctx;
+                            ctx.font = Chart.helpers.fontString(12, '600', 'Inter');
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'bottom';
+                            ctx.fillStyle = '#6B7280';
+    
+                            this.data.datasets.forEach(function(dataset, i) {
+                                const meta = chartInstance.getDatasetMeta(i);
+                                meta.data.forEach(function(bar, index) {
+                                    const data = dataset.data[index];
+                                    ctx.fillText(data, bar.x, bar.y - 5);
+                                });
+                            });
+                        }
+                    }
+                },
+                plugins: [barBackgroundPlugin]
+            });
+        });
+    </script>
+</body>
+</html>

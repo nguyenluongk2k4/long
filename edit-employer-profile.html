@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa hồ sơ - Nhà tuyển dụng</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/employer-company-profile.css"> <!-- Reuse some profile styles -->
+    <link rel="stylesheet" href="css/edit-employer-profile.css">
+</head>
+<body>
+
+    <div class="employer-layout-root">
+        <!-- Left Sidebar Injected Here -->
+        <div id="employer-sidebar-container"></div>
+        
+        <div class="employer-main-container">
+            <!-- Header Injected Here -->
+            <div id="employer-header-container"></div>
+            
+            <div class="employer-content-area">
+                
+                <!-- Breadcrumb -->
+                <div class="breadcrumb-nav">
+                    <a href="employer-company-profile.html">Hồ sơ công ty</a>
+                    <span>&rsaquo;</span>
+                    <span class="active">Sửa thông tin công ty</span>
+                </div>
+
+                <div class="profile-layout">
+                    
+                    <div class="profile-main-col">
+                        
+                        <!-- Form Header Card -->
+                        <div class="profile-card edit-profile-header-card">
+                            <div class="header-brand-wrap">
+                                <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-logo-cong-ty-co-bg.svg" alt="Company Logo" class="company-logo">
+                                <div class="header-content">
+                                    <h2>Công ty Cổ phần Công nghệ TechNova</h2>
+                                    <p>Tiên phong trong các giải pháp chuyển đổi số và phát triển phần mềm doanh nghiệp tại Đông Nam Á.</p>
+                                    <div class="header-badges">
+                                        <span class="badge-tag partner">
+                                            <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-tag-doi-tac-vang.svg" alt="Partner"> Đối tác vàng
+                                        </span>
+                                        <span class="badge-tag id">
+                                            ID: TN-2023-890
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-save-changes" onclick="openConfirmSaveModal()">Lưu thay đổi</button>
+                        </div>
+
+                        <!-- General Info Form Section -->
+                        <div class="profile-card">
+                            <div class="form-section-title">
+                                <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-thong-tin-chung.svg" alt="Info">
+                                <h3>Thông tin chung</h3>
+                            </div>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="label">Lĩnh vực hoạt động</label>
+                                    <div class="input-wrap">
+                                        <select class="form-select">
+                                            <option>Công nghệ thông tin</option>
+                                            <option>Tài chính - Ngân hàng</option>
+                                            <option>Sản xuất</option>
+                                        </select>
+                                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-dropdown.svg" class="select-icon" alt="v">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Quy mô nhân sự</label>
+                                    <div class="input-wrap">
+                                        <select class="form-select">
+                                            <option>Dưới 50 nhân viên</option>
+                                            <option>50 - 100 nhân viên</option>
+                                            <option>Trên 100 nhân viên</option>
+                                        </select>
+                                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-dropdown.svg" class="select-icon" alt="v">
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label class="label">Địa chỉ trụ sở</label>
+                                    <input type="text" class="form-input" value="Tầng 15, Keangnam Landmark 72, Phạm Hùng, Nam Từ Liêm, Hà Nội">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Website</label>
+                                    <input type="text" class="form-input" value="https://technova.vn">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Email liên hệ</label>
+                                    <input type="email" class="form-input" value="hr@technova.vn">
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Giấy phép kinh doanh</label>
+                                    <div class="license-display-box" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px;">
+                                        <span style="font-size: 14px; color: #111827;">GPKD_TechNova_2023.pdf</span>
+                                        <a href="javascript:void(0)" onclick="openLicenseModal()" style="color: #3B82F6; font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+                                            <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-view.svg" alt="view"> Xem file
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detail Introduction Form Section -->
+                        <div class="profile-card">
+                            <div class="form-section-title">
+                                <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-file.svg" alt="File">
+                                <h3>Giới thiệu chi tiết</h3>
+                            </div>
+                            <div class="rich-text-editor">
+                                <div class="editor-toolbar">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-ckeditor-toolbar.svg" alt="Toolbar">
+                                </div>
+                                <div class="editor-content">
+                                    <p>TechNova được thành lập năm 2015 với mong muốn đưa công nghệ Việt vươn tầm quốc tế. Chúng tôi tập trung vào 3 mảng chính: AI & Big Data, Hệ thống ERP doanh nghiệp và Ứng dụng di động cao cấp.</p>
+                                    <br>
+                                    <p>Với đội ngũ hơn 200 kỹ sư tài năng, chúng tôi không chỉ xây dựng phần mềm, chúng tôi kiến tạo các giải pháp thúc đẩy sự phát triển bền vững cho khách hàng...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /main-col -->
+
+                    <div class="profile-side-col">
+                        
+                        <!-- Gallery Card -->
+                        <div class="widget-card">
+                            <div class="card-header-between">
+                                <div class="title-wrap" style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-hinh-anh.svg" style="width: 18px;">
+                                    <h3>Hình ảnh (04)</h3>
+                                </div>
+                                <button class="btn-text-add" onclick="openAddImagesModal()">+ Thêm mới</button>
+                            </div>
+                            
+                            <div class="edit-gallery-grid">
+                                <div class="gallery-item" onclick="openAddImagesModal()">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/img-hinh-anh-1.svg" alt="1">
+                                </div>
+                                <div class="gallery-item" onclick="openAddImagesModal()">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/img-hinh-anh-2.svg" alt="2">
+                                </div>
+                                <div class="gallery-item" onclick="openAddImagesModal()">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/img-hinh-anh-3.svg" alt="3">
+                                </div>
+                                <div class="gallery-item upload-placeholder" onclick="openAddImagesModal()">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-tai-len.svg" alt="upload">
+                                    <span>Tải lên</span>
+                                </div>
+                            </div>
+                            <p class="gallery-footer-text">Định dạng hỗ trợ: JPG, PNG. Tối đa 5MB/ảnh. Kích thước khuyên dùng 1200x800px.</p>
+                        </div>
+
+
+                        <!-- Social Links Card -->
+                        <div class="widget-card">
+                            <div class="card-header-between">
+                                <h3>Liên kết mạng xã hội</h3>
+                            </div>
+                            <div class="social-input-group">
+                                <div class="social-input-wrap">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-facebook-change-url-co-bg.svg" alt="FB">
+                                    <input type="text" class="form-input" placeholder="Facebook URL">
+                                </div>
+                                <div class="social-input-wrap">
+                                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-linkedink-change-form-co-bg.svg" alt="LI">
+                                    <input type="text" class="form-input" value="linkedIn.fdsafDASfawrgfawcvdft">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini Completion Widget -->
+                        <div class="completion-mini-widget">
+                            <div class="completion-mini-header">
+                                <h4>Độ hoàn thiện hồ sơ</h4>
+                                <span class="val">85%</span>
+                            </div>
+                            <div class="progress-mini-bg">
+                                <div class="progress-mini-fill" style="width: 85%;"></div>
+                            </div>
+                            <p class="completion-mini-tip">Thêm <strong>Hình ảnh công ty</strong> để đạt 100% tin cậy với ứng viên.</p>
+                        </div>
+
+                    </div><!-- /side-col -->
+
+                </div>
+            </div><!-- /employer-content-area -->
+
+            <!-- Footer Injected Here -->
+            <div id="employer-footer-container"></div>
+        </div>
+    </div>
+
+    <!-- Confirm Save Modal -->
+    <div id="confirmSaveModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content confirm-modal">
+            <div style="margin-bottom: 10px;" class="">
+                <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-xac-nhan-luu-thay-doi.svg" alt="confirm">
+            </div>
+            <h3>Xác nhận lưu thay đổi</h3>
+            <p>Bạn có chắc chắn muốn lưu các thay đổi này không? Các thông tin cũ sẽ được cập nhật mới.</p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" onclick="closeConfirmSaveModal()">Hủy</button>
+                <button class="btn-confirm-save" onclick="handleSaveSuccess()">
+                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-bt-luu-thay-doi.svg" alt="save">
+                    Lưu thay đổi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Feedback Modal (Toast style) -->
+    <div id="saveSuccessModal" class="modal-overlay" style="display: none; background: rgba(0,0,0,0.2);">
+        <div class="modal-content success-toast">
+            <h3>Lưu thay đổi thành công</h3>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        function openConfirmSaveModal() {
+            document.getElementById('confirmSaveModal').style.display = 'flex';
+        }
+        function closeConfirmSaveModal() {
+            document.getElementById('confirmSaveModal').style.display = 'none';
+        }
+        function handleSaveSuccess() {
+            closeConfirmSaveModal();
+            const success = document.getElementById('saveSuccessModal');
+            success.style.display = 'flex';
+            setTimeout(() => {
+                location.href = 'employer-company-profile.html';
+            }, 1500);
+        }
+
+        function openLicenseModal() {
+            document.getElementById('licenseModal').style.display = 'flex';
+        }
+        function closeLicenseModal() {
+            document.getElementById('licenseModal').style.display = 'none';
+        }
+        function openConfirmDownloadModal() {
+            document.getElementById('confirmDownloadModal').style.display = 'flex';
+        }
+        function closeConfirmDownloadModal() {
+            document.getElementById('confirmDownloadModal').style.display = 'none';
+        }
+        function handleDownloadSuccess() {
+            closeConfirmDownloadModal();
+            closeLicenseModal();
+            const success = document.getElementById('downloadSuccessModal');
+            success.style.display = 'flex';
+            setTimeout(() => {
+                success.style.display = 'none';
+            }, 1500);
+        }
+
+        function openAddImagesModal() {
+            document.getElementById('addImagesModal').style.display = 'flex';
+        }
+        function closeAddImagesModal() {
+            document.getElementById('addImagesModal').style.display = 'none';
+        }
+    </script>
+    
+    <!-- Add Images Modal -->
+    <div id="addImagesModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content add-images-modal">
+            <div class="modal-header-top">
+                <h2>Thêm hình ảnh</h2>
+                <button class="btn-close-x" onclick="closeAddImagesModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body-scroll">
+                <div class="status-bar-row">
+                    <span class="label-status">DANH SÁCH ẢNH ĐÃ CHỌN (3)</span>
+                    <span class="limit-text">Tối đa 10 hình ảnh</span>
+                </div>
+
+                <div class="selected-images-grid">
+                    <div class="img-thumb-item">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/anh-1.png" alt="1">
+                        <button class="btn-del-img"><img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-delete.svg" alt="x"></button>
+                    </div>
+                    <div class="img-thumb-item">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/anh-2.jpg" alt="2">
+                        <button class="btn-del-img"><img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-delete.svg" alt="x"></button>
+                    </div>
+                    <div class="img-thumb-item">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/anh-3.png" alt="3">
+                        <button class="btn-del-img"><img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-delete.svg" alt="x"></button>
+                    </div>
+                    <div class="img-thumb-item add-placeholder">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-add.svg" alt="+">
+                        <span>THÊM ẢNH</span>
+                    </div>
+                </div>
+
+                <div class="drag-drop-area">
+                    <div class="upload-center-content">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-upload-co-bg.svg" alt="cloud">
+                        <h3>Kéo và thả ảnh vào đây</h3>
+                        <p>Hoặc <span class="browser-link">duyệt tệp</span> từ máy tính của bạn</p>
+                        <div class="file-rules">PNG, JPG  •  TỐI ĐA 5MB/ẢNH</div>
+                    </div>
+                </div>
+
+                <div class="tips-box-blue">
+                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-meo-nho.svg" alt="tip">
+                    <div class="tip-text">
+                        <strong>Mẹo nhỏ:</strong> Hình ảnh chất lượng cao giúp tăng độ tin cậy của ứng viên đối với công ty. Hãy chọn những bức ảnh thể hiện rõ nét văn hóa và môi trường làm việc thực tế.
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer-sticky">
+                <div class="left-count">Đã chọn <span class="count-blue">3/10</span> ảnh</div>
+                <div class="right-btns">
+                    <button class="btn-footer-cancel" onclick="closeAddImagesModal()">Hủy</button>
+                    <button class="btn-footer-upload" onclick="closeAddImagesModal()">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/modal/ic-tai-len.svg" alt="upload">
+                        Tải lên
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Download Modal -->
+    <div id="confirmDownloadModal" class="modal-overlay" style="display: none; z-index: 10001;">
+        <div class="modal-content confirm-download-modal">
+            <div class="" style="margin-bottom: 24px;">
+                <img src="assets/images/ic_quanlycongty/modal/ic-download.svg" alt="download">
+            </div>
+            <h3>Xác nhận tải xuống</h3>
+            <p class="desc">Bạn có chắc chắn muốn tải xuống bản gốc của giấy phép kinh doanh này không?</p>
+            
+            <div class="file-info-box">
+                <div class="pdf-icon-wrap">
+                    <img src="assets/images/ic_quanlycongty/modal/ic-pdf.svg" alt="pdf">
+                </div>
+                <div class="file-details">
+                    <h4>Giấy-phép-kinh-doanh-TechNova.pdf</h4>
+                    <div class="meta">
+                        <img src="assets/images/ic_quanlycongty/modal/ic-file-size.svg" alt="size">
+                        <span>2.4 MB</span>
+                        <span class="dot">•</span>
+                        <img src="assets/images/ic_quanlycongty/modal/ic-file.svg" alt="type" style="width: 14px;">
+                        <span>PDF</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <img src="assets/images/ic_quanlycongty/modal/ic-warning-file.svg" alt="warning">
+                <p>Tệp tin này chứa thông tin bảo mật của doanh nghiệp. Vui lòng bảo quản cẩn thận.</p>
+            </div>
+
+            <div class="confirm-actions-wrap">
+                <button class="btn-cancel-dl" onclick="closeConfirmDownloadModal()">Hủy</button>
+                <button class="btn-confirm-dl" onclick="handleDownloadSuccess()">
+                    <img src="assets/images/ic_quanlycongty/modal/ic-download-bt.svg" alt="dl">
+                    Tải xuống ngay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download Success Modal -->
+    <div id="downloadSuccessModal" class="modal-overlay" style="display: none; background: rgba(0,0,0,0.2); z-index: 10002;">
+        <div class="modal-content success-toast">
+            <h3>Đã tải xuống file giấy phép kinh doanh</h3>
+        </div>
+    </div>
+    
+    <!-- License Viewer Modal -->
+    <div id="licenseModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content license-modal">
+            <div class="license-modal-header">
+                <h2>Giấy phép kinh doanh</h2>
+                <p class="company-name-blue">TechNova Corporation</p>
+            </div>
+            
+            <div class="license-modal-body">
+                <div class="license-img-container">
+                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/giay-phep-kinh-doanh.jpg" alt="Business License">
+                </div>
+            </div>
+
+            <div class="license-modal-footer">
+                <div class="verification-tag">
+                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-xac-thuc-quoc-gia.svg" alt="verify">
+                    <span>Tài liệu đã được xác thực bởi Hệ thống Doanh nghiệp Quốc gia</span>
+                </div>
+                <div class="footer-actions">
+                    <button class="btn-close-modal" onclick="closeLicenseModal()">Đóng</button>
+                    <button class="btn-download-original" onclick="openConfirmDownloadModal()">
+                        <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-download.svg" alt="download">
+                        Tải xuống tệp gốc
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

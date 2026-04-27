@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng tin tuyển dụng | JobGos</title>
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/post-job.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="employer-layout-root">
+        <!-- Left Sidebar Injected Here -->
+        <div id="employer-sidebar-container"></div>
+        
+        <div class="employer-main-container">
+            <!-- Top Header Injected Here -->
+            <div id="employer-header-container"></div>
+            
+            <div class="employer-content-area">
+
+
+
+            <div class="page-header-wrap">
+                <div class="breadcrumb">
+                    Quản lý tin tuyển dụng > <span>Đăng tin tuyển dụng mới</span>
+                </div>
+                <div class="page-title-area">
+                    <h1>Đăng tin tuyển dụng</h1>
+                    <p>Hoàn thành các thông tin dưới đây để thu hút ứng viên tiềm năng</p>
+                </div>
+            </div>
+
+            <div class="post-job-container">
+                <!-- Left: Steps Navigation -->
+                <aside class="post-steps-nav">
+                    <div class="step-item active" data-target="section-1">
+                        <span class="step-num">1</span>
+                        <span class="step-text">Thông tin chung</span>
+                    </div>
+                    <div class="step-item" data-target="section-2">
+                        <span class="step-num">2</span>
+                        <span class="step-text">Chọn loại tin</span>
+                    </div>
+                    <div class="step-item" data-target="section-3">
+                        <span class="step-num">3</span>
+                        <span class="step-text">Địa điểm & Loại hình</span>
+                    </div>
+                    <div class="step-item" data-target="section-4">
+                        <span class="step-num">4</span>
+                        <span class="step-text">Nội dung chi tiết</span>
+                    </div>
+                    <div class="step-item" data-target="section-5">
+                        <span class="step-num">5</span>
+                        <span class="step-text">Yêu cầu khác</span>
+                    </div>
+                </aside>
+
+                <!-- Right: Form Content -->
+                <form class="post-job-form">
+                    <!-- Section 1: Thông tin chung -->
+                    <section class="form-section card" id="section-1">
+                        <div class="section-header">
+                            <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-thong-tin-chung.svg" alt="icon">
+                            <h2>Thông tin chung</h2>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label>Tiêu đề tin tuyển dụng <span class="required">*</span></label>
+                                <input type="text" placeholder="Ví dụ: Senior Product Designer (UI/UX)">
+                            </div>
+                            <div class="form-group half-width">
+                                <label>Ngành nghề</label>
+                                <div class="select-wrapper">
+                                    <select>
+                                        <option>Công nghệ thông tin</option>
+                                    </select>
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                </div>
+                            </div>
+                            <div class="form-group half-width">
+                                <label>Cấp bậc</label>
+                                <div class="select-wrapper">
+                                    <select>
+                                        <option>Nhân viên</option>
+                                    </select>
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                </div>
+                            </div>
+                            <div class="form-group full-width salary-group">
+                                <label>Mức lương</label>
+                                <div class="salary-inputs">
+                                    <input type="text" placeholder="Từ">
+                                    <input type="text" placeholder="Đến">
+                                    <div class="select-wrapper currency-select">
+                                        <select><option>VND</option></select>
+                                        <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                    </div>
+                                </div>
+                                <label class="checkbox-label">
+                                    <input type="checkbox"> <span>Thỏa thuận</span>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 2: Chọn loại tin đăng -->
+                    <section class="form-section card" id="section-2">
+                        <div class="section-header">
+                            <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-chon-loai-tin-dang.svg" alt="icon">
+                            <h2>Chọn loại tin đăng</h2>
+                        </div>
+                        <div class="job-type-selection">
+                            <label class="job-type-card active">
+                                <input type="radio" name="job-type" checked>
+                                <div class="card-inner">
+                                    <div class="radio-circle"></div>
+                                    <div class="type-info">
+                                        <div class="type-name">Tin thường <span class="badge gray">Miễn phí</span></div>
+                                        <p>Hiển thị cơ bản</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="job-type-card">
+                                <input type="radio" name="job-type">
+                                <div class="card-inner">
+                                    <div class="radio-circle"></div>
+                                    <div class="type-info">
+                                        <div class="type-name">Tin nổi bật <span class="badge blue">PRO</span></div>
+                                        <p>Ưu tiên hiển thị đầu danh sách, nổi bật màu sắc Premium,...</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="job-type-card">
+                                <input type="radio" name="job-type">
+                                <div class="card-inner">
+                                    <div class="radio-circle"></div>
+                                    <div class="type-info">
+                                        <div class="type-name">Tin ưu tiên <span class="badge orange">BOOST</span></div>
+                                        <p>Luôn nằm trên Top đầu danh sách</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- Section 3: Địa điểm làm việc & Loại hình -->
+                    <section class="form-section card" id="section-3">
+                        <div class="section-header">
+                            <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dia-diem-lam-viec.svg" alt="icon">
+                            <h2>Địa điểm làm việc & Loại hình</h2>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group half-width">
+                                <label>Tỉnh / Thành phố</label>
+                                <div class="select-wrapper">
+                                    <select>
+                                        <option>Địa điểm</option>
+                                    </select>
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                </div>
+                            </div>
+                            <div class="form-group half-width">
+                                <label>Loại hình công việc</label>
+                                <div class="job-type-tags">
+                                    <button type="button" class="tag active">Toàn thời gian</button>
+                                    <button type="button" class="tag">Bán thời gian</button>
+                                    <button type="button" class="tag">Remote/từ xa</button>
+                                    <button type="button" class="tag">Thực tập</button>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Địa chỉ cụ thể</label>
+                                <input type="text" placeholder="Tầng 18, Keangnam Landmark 72, Phạm Hùng, Nam Từ Liêm, Hà Nội">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 4: Nội dung chi tiết -->
+                    <section class="form-section card" id="section-4">
+                        <div class="section-header">
+                            <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-noi-dung-chi-tiet.svg" alt="icon">
+                            <h2>Nội dung chi tiết</h2>
+                        </div>
+                        <div class="rich-text-group">
+                            <label>Mô tả công việc</label>
+                            <div class="custom-editor">
+                                <div class="editor-toolbar">
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ckeditor-toolbar.svg" alt="toolbar">
+                                </div>
+                                <textarea placeholder="Nhập chi tiết các đầu việc ứng viên cần thực hiện..."></textarea>
+                            </div>
+                        </div>
+                        <div class="rich-text-group">
+                            <label>Yêu cầu ứng viên</label>
+                            <div class="custom-editor">
+                                <div class="editor-toolbar">
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ckeditor-toolbar.svg" alt="toolbar">
+                                </div>
+                                <textarea placeholder="Các kỹ năng, kinh nghiệm cần thiết..."></textarea>
+                            </div>
+                        </div>
+                        <div class="rich-text-group">
+                            <label>Quyền lợi</label>
+                            <div class="custom-editor">
+                                <div class="editor-toolbar">
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ckeditor-toolbar.svg" alt="toolbar">
+                                </div>
+                                <textarea placeholder="Chế độ bảo hiểm, lương thưởng, môi trường làm việc..."></textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 5: Yêu cầu khác -->
+                    <section class="form-section card" id="section-5">
+                        <div class="section-header">
+                            <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-yeu-cau-khac.svg" alt="icon">
+                            <h2>Yêu cầu khác</h2>
+                        </div>
+                        <div class="form-grid-three">
+                            <div class="form-group">
+                                <label>Kinh nghiệm</label>
+                                <div class="select-wrapper">
+                                    <select><option>Không yêu cầu</option></select>
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Bằng cấp</label>
+                                <div class="select-wrapper">
+                                    <select><option>Đại học</option></select>
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <div class="select-wrapper">
+                                    <select><option>Không yêu cầu</option></select>
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/ic-dropdown.svg" class="select-icon">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                        <div class="form-actions-bar card">
+                            <button type="button" class="btn-preview">Xem trước</button>
+                            <button type="button" class="btn-submit" onclick="openConfirmModal()">Đăng tin ngay</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+        <!-- Footer Injected Here -->
+        <div id="employer-footer-container"></div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmPostModal" class="modal-overlay" style="display: none;">
+            <div class="confirm-job-modal">
+                <div class="modal-left-brand">
+                    <img width="40px" src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-xac-nhan.svg" alt="Check" class="brand-icon-check">
+                    <div class="brand-content">
+                        <h2>Sẵn sàng để kết nối?</h2>
+                        <p>Tin đăng của bạn sẽ tiếp cận hơn 10,000+ ứng viên tiềm năng ngay lập tức.</p>
+                    </div>
+                </div>
+                <div class="modal-right-content">
+                    <h2>Xác nhận đăng tin</h2>
+                    <p class="modal-subtitle">Vui lòng kiểm tra lại thông tin trước khi xuất bản.</p>
+                    
+                    <div class="confirm-info-list">
+                        <div class="info-item-box">
+                            <div class="info-details">
+                                <label>Tên công việc</label>
+                                <div class="value" style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-ten-cong-viec.svg" alt="Job" >
+                                    Senior Product Designer
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-row-grid">
+                            <div class="info-item-box">
+                                <div class="info-details">
+                                    <label>Gói tin đăng</label>
+                                    <div class="value value-package" style="display: flex; align-items: center; gap: 8px;">
+                                        <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-goi-tin-dang.svg" alt="star" style="width: 14px;">
+                                        JobGos Pro Max
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-item-box">
+                                <div class="info-details">
+                                    <label>Thời gian hiển thị</label>
+                                    <div class="value" style="display: flex; align-items: center; gap: 8px;">
+                                        <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-thoi-gian-hien-thi.svg" alt="Time" style="width: 16px;">
+                                        30 ngày (15/06/2024)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-item-box">
+                            <div class="info-details">
+                                <div class="value" style="display: flex; align-items: center; gap: 8px;">
+                                    <img src="assets/images/nha-tuyen-dung/dang-tin-tuyen-dung/modal/ic-dia-diem.svg" alt="Loc" style="width: 16px;">
+                                    TP. Hồ Chí Minh
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-options">
+                        <label class="option-check">
+                            <input type="checkbox"> Gửi email thông báo cho ứng viên phù hợp
+                        </label>
+                        <label class="option-check">
+                            <input type="checkbox" checked> Đồng bộ tin đăng lên các mạng xã hội liên kết
+                        </label>
+                    </div>
+
+                    <div class="modal-footer-btns">
+                        <button type="button" class="btn-modal-cancel" onclick="closeConfirmModal()">Hủy</button>
+                        <button type="button" class="btn-modal-submit" onclick="handleSubmitSuccess()">Đăng tin ngay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Toast -->
+        <div id="successToast" class="success-toast">
+            <span>Đã đăng tin tuyển dụng thành công</span>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        // Modal logic
+        function openConfirmModal() {
+            document.getElementById('confirmPostModal').style.display = 'flex';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmPostModal').style.display = 'none';
+        }
+
+        function handleSubmitSuccess() {
+            closeConfirmModal();
+            const toast = document.getElementById('successToast');
+            toast.classList.add('active');
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+        }
+
+        // Tag switching logic for tags
+        document.querySelectorAll('.job-type-tags .tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.parentElement.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+            });
+        });
+
+        // Step choice logic
+        document.querySelectorAll('.job-type-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.job-type-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+        });
+
+        // ScrollSpy logic
+        const sections = document.querySelectorAll('.form-section');
+        const navItems = document.querySelectorAll('.post-steps-nav .step-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-target') === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetId = item.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 120,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
