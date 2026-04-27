@@ -1,0 +1,254 @@
+/* Email Notification Settings Styles */
+:root {
+    --bg-gray: #F4F7FA;
+    --primary-blue: #2563EB;
+    --text-dark: #1E293B;
+    --text-gray: #64748B;
+    --border-light: #F1F5F9;
+}
+
+body.email-notifications-page {
+    background-color: var(--bg-gray);
+    color: var(--text-dark);
+}
+
+.main-content {
+    padding: 30px 0 60px;
+}
+
+.container-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+.page-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: var(--text-gray);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Layout Grid */
+.notifications-layout {
+    display: grid;
+    grid-template-columns: 1fr 347px;
+    gap: 32px;
+}
+
+/* Left Column Cards */
+.email-section-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.section-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.section-card-header img {
+    width: 24px;
+    height: 24px;
+}
+
+.section-card-header h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0F172A;
+}
+
+/* Settings List */
+.email-settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Khoảng cách siêu sát */
+}
+
+.setting-title-group h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E293B;
+    margin: 0; /* Xóa margin mặc định */
+}
+
+.setting-sub {
+    font-size: 13px;
+    color: var(--text-gray);
+    margin: 0; /* Xóa margin mặc định */
+}
+
+.setting-notice {
+    font-size: 12px;
+    color: #94A3B8;
+    margin: 0; /* Xóa margin mặc định */
+}
+
+/* Sidebar Profile Card (Right) */
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    min-height: 425px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.profile-header-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.avatar-box {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+}
+
+.avatar-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.user-meta h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 2px;
+    color: #0F172A;
+}
+
+.last-active {
+    font-size: 12px;
+    color: #94A3B8;
+    margin-bottom: 4px;
+}
+
+.verified-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.verified-badge img {
+    width: 15px;
+}
+
+.verified-badge span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+/* Status Item list (Sidebar) */
+.status-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.status-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.title-group h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.status-sub {
+    font-size: 13px;
+    color: #94A3B8;
+    margin: 0;
+}
+
+.status-desc {
+    font-size: 13px;
+    color: #64748B;
+    line-height: 1.6;
+}
+
+/* Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #CBD5E1;
+    transition: .3s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: var(--primary-blue); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* Switch Disabled Style */
+.switch.disabled .slider {
+    background-color: #E2E8F0;
+    cursor: not-allowed;
+}
+
+.switch.disabled input:checked + .slider {
+    background-color: #94A3B8;
+}

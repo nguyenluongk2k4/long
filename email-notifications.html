@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt thông báo qua email - JobGos</title>
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="css/email-notifications.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="user/layout-manager.js" defer></script>
+</head>
+<body class="jobgos-root email-notifications-page">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <main class="main-content">
+        <div class="container-wrapper">
+            <div class="page-header">
+                <h1>Cài đặt thông báo qua email</h1>
+                <p>Quản lý cách chúng tôi liên lạc với bạn để đảm bảo bạn chỉ nhận được những thông tin cần thiết.</p>
+            </div>
+
+            <div class="notifications-layout">
+                <!-- Left Column: Unified Settings Cards -->
+                <div class="settings-column">
+                    <!-- Section 1: System Notifications -->
+                    <div class="email-section-card">
+                        <div class="section-card-header">
+                            <img src="assets/images/cai-dat-thong-bao-qua-email/ic-thong-bao-tu-he-thong.svg" alt="">
+                            <h2>Thông báo từ hệ thống</h2>
+                        </div>
+                        
+                        <div class="email-settings-list">
+                            <div class="email-setting-item">
+                                <div class="setting-row">
+                                    <div class="setting-title-group">
+                                        <h4>Cập nhật quan trọng</h4>
+                                        <p class="setting-sub">Thông tin về tài khoản, bảo mật và thay đổi điều khoản.</p>
+                                        <p class="setting-notice">(Không thể tắt)</p>
+                                    </div>
+                                    <label class="switch disabled">
+                                        <input type="checkbox" checked disabled>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="email-setting-item">
+                                <div class="setting-row">
+                                    <div class="setting-title-group">
+                                        <h4>Thông báo nhà tuyển dụng</h4>
+                                        <p class="setting-sub">Khi nhà tuyển dụng xem hồ sơ hoặc mời phỏng vấn.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Job Opportunities -->
+                    <div class="email-section-card">
+                        <div class="section-card-header">
+                            <img src="assets/images/cai-dat-thong-bao-qua-email/ic-thong-bao-co-hoi-viec-lam.svg" alt="">
+                            <h2>Thông báo cơ hội việc làm</h2>
+                        </div>
+                        
+                        <div class="email-settings-list">
+                            <div class="email-setting-item">
+                                <div class="setting-row">
+                                    <div class="setting-title-group">
+                                        <h4>Thông báo việc làm theo thiết lập</h4>
+                                        <p class="setting-sub">Nhận email định kỳ về các công việc phù hợp với bạn.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="email-setting-item">
+                                <div class="setting-row">
+                                    <div class="setting-title-group">
+                                        <h4>Gợi ý việc làm từ AI</h4>
+                                        <p class="setting-sub">Đề xuất công việc dựa trên hành vi và kỹ năng trong hồ sơ.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: Service Introduction -->
+                    <div class="email-section-card">
+                        <div class="section-card-header">
+                            <img src="assets/images/cai-dat-thong-bao-qua-email/ic-thong-bao-gioi-thieu-dich-vu.svg" alt="">
+                            <h2>Thông báo giới thiệu dịch vụ</h2>
+                        </div>
+                        
+                        <div class="email-settings-list">
+                            <div class="email-setting-item">
+                                <div class="setting-row">
+                                    <div class="setting-title-group">
+                                        <h4>Tin tức & Sự kiện</h4>
+                                        <p class="setting-sub">Cập nhật các bài viết blog, hội thảo trực tuyến và sự kiện ngành.</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sidebar Profile Card -->
+                <aside class="profile-column">
+                    <div class="profile-card">
+                        <div class="profile-header-row">
+                            <div class="avatar-box">
+                                <img src="assets/images/cai-dat-thong-bao-qua-email/avatar-user.svg" alt="User Avatar">
+                            </div>
+                            <div class="user-meta">
+                                <h3>Ninh Khoa</h3>
+                                <div class="last-active">Hoạt động lần cuối: 2 giờ trước</div>
+                                <div class="verified-badge">
+                                    <img src="assets/images/cai-dat-thong-bao-qua-email/ic-tai-khoan-xac-thuc.svg" alt="">
+                                    <span>Tài khoản đã xác thực</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="status-items-list">
+                            <div class="status-item">
+                                <div class="status-header-row">
+                                    <div class="title-group">
+                                        <h4>Trạng thái tìm việc</h4>
+                                        <p class="status-sub">Bật để nhận gợi ý việc làm</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <p class="status-desc">Trạng thái Bật tìm việc sẽ tự động tắt sau <strong>14 ngày</strong>. Nếu bạn vẫn còn nhu cầu tìm việc, hãy Bật tìm việc trở lại</p>
+                            </div>
+
+                            <div class="status-item">
+                                <div class="status-header-row">
+                                    <div class="title-group">
+                                        <h4>Cho phép NTD tìm kiếm hồ sơ</h4>
+                                        <p class="status-sub">Nhà tuyển dụng có thể xem hồ sơ</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <p class="status-desc">Bạn đang cho phép Nhà tuyển dụng (NTD) tìm kiếm hồ sơ, các NTD uy tín có thể tiếp cận <strong>thông tin kinh nghiệm làm việc, học vấn, kỹ năng...</strong> trên CV của bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+</body>
+</html>

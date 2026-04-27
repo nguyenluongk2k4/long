@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt thông báo việc làm - JobGos</title>
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="css/job-notifications.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="user/layout-manager.js" defer></script>
+</head>
+<body class="jobgos-root notifications-page">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <main class="main-content">
+        <div class="container-wrapper">
+            <div class="page-header">
+                <h1>Cài đặt thông báo việc làm</h1>
+                <p>Quản lý cách bạn nhận thông tin về các cơ hội nghề nghiệp mới.</p>
+            </div>
+
+            <div class="notifications-layout">
+                <!-- Left Column: Unified Settings Card -->
+                <div class="settings-column">
+                    <div class="unified-card">
+                        <!-- Top Banner Section -->
+                        <div class="banner-section">
+                            <div class="banner-text">
+                                <h2>Bạn vẫn chưa tìm được công việc ưng ý?</h2>
+                                <p>Hãy tạo thông báo việc làm ngay để nhận các cơ hội mới nhất phù hợp với tiêu chí của bạn.</p>
+                            </div>
+                            <div class="banner-decoration">
+                                <img src="assets/images/cai-dat-thong-bao-viec-lam/ic-vien-tron-banner.svg" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Empty State Section -->
+                        <div class="empty-state-section">
+                            <p>Bạn chưa có thông báo việc làm nào</p>
+                        </div>
+
+                        <!-- Match Notification Section -->
+                        <div class="match-section">
+                            <div class="match-info">
+                                <h3>Nhận thông báo việc làm phù hợp</h3>
+                                <p>Việc làm được lựa chọn dựa trên hồ sơ và kinh nghiệm của bạn</p>
+                            </div>
+                            <div class="match-action">
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sidebar Profile Card -->
+                <aside class="profile-column">
+                    <div class="profile-card">
+                        <div class="profile-header-row">
+                            <div class="avatar-box">
+                                <img src="assets/images/cai-dat-thong-bao-viec-lam/avatar-user.svg" alt="User Avatar">
+                            </div>
+                            <div class="user-meta">
+                                <h3>Ninh Khoa</h3>
+                                <div class="last-active">Hoạt động lần cuối: 2 giờ trước</div>
+                                <div class="verified-badge">
+                                    <img src="assets/images/cai-dat-thong-bao-viec-lam/ic-tai-khoan-da-xac-thuc.svg" alt="">
+                                    <span>Tài khoản đã xác thực</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="status-items-list">
+                            <div class="status-item">
+                                <div class="status-header-row">
+                                    <div class="title-group">
+                                        <h4>Trạng thái tìm việc</h4>
+                                        <p class="status-sub">Bật để nhận gợi ý việc làm</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <p class="status-desc">Trạng thái Bật tìm việc sẽ tự động tắt sau <strong>14 ngày</strong>. Nếu bạn vẫn còn nhu cầu tìm việc, hãy Bật tìm việc trở lại</p>
+                            </div>
+
+                            <div class="status-item">
+                                <div class="status-header-row">
+                                    <div class="title-group">
+                                        <h4>Cho phép NTD tìm kiếm hồ sơ</h4>
+                                        <p class="status-sub">Nhà tuyển dụng có thể xem hồ sơ</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <p class="status-desc">Bạn đang cho phép Nhà tuyển dụng (NTD) tìm kiếm hồ sơ, các NTD uy tín có thể tiếp cận <strong>thông tin kinh nghiệm làm việc, học vấn, kỹ năng...</strong> trên CV của bạn.</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+</body>
+</html>

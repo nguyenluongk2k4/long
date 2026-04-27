@@ -144,7 +144,7 @@ const JOBGOS_CONFIG = {
                 title: "Quản lý tìm việc",
                 icon: "assets/images/ic_file_menu.png",
                 links: [
-                    { label: "Việc làm đã lưu", link: "#" },
+                    { label: "Việc làm đã lưu", link: "saved-jobs.html" },
                     { label: "Việc làm đã ứng tuyển", link: "applied-jobs.html" },
                     { label: "Việc làm phù hợp", link: "#" },
                     { label: "Gợi ý việc làm", link: "#" }
@@ -162,8 +162,8 @@ const JOBGOS_CONFIG = {
                 title: "Cài đặt email & thông báo",
                 icon: "assets/images/ic_file_menu.png",
                 links: [
-                    { label: "Cài đặt thông báo việc làm", link: "#" },
-                    { label: "Cài đặt cá nhân email", link: "#" }
+                    { label: "Cài đặt thông báo việc làm", link: "job-notifications.html" },
+                    { label: "Cài đặt cá nhân email", link: "email-notifications.html" }
                 ]
             },
             {

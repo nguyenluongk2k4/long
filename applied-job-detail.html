@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết ứng tuyển - JobGos</title>
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="css/applied-job-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="user/layout-manager.js" defer></script>
+</head>
+<body class="jobgos-root">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <main class="apply-detail-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Việc làm</a>
+            <span>&gt;</span>
+            <a href="applied-jobs.html">Danh sách việc làm đã ứng tuyển</a>
+            <span>&gt;</span>
+            <span class="current">Chi tiết việc làm đã ứng tuyển</span>
+        </div>
+
+        <!-- Back navigation -->
+        <div class="back-nav">
+            <a href="applied-jobs.html" class="btn-back">
+                <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-back.svg" alt="">
+                Quay lại danh sách ứng tuyển
+            </a>
+        </div>
+
+        <!-- Job Header Card -->
+        <div class="job-header-card">
+            <div class="job-main-info">
+                <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/img-viec-lam.svg" alt="Company" class="company-logo">
+                <div class="job-text">
+                    <div class="title-row">
+                        <h1>Senior Product Designer</h1>
+                        <span class="status-badge info">ĐANG XEM XÉT</span>
+                    </div>
+                    <div class="company-name">TechAsia Solutions</div>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-dia-diem.svg" alt="">
+                            TP. Hồ Chí Minh
+                        </div>
+                        <div class="meta-item">
+                            <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-calendar.svg" alt="">
+                            Đã ứng tuyển: 12 Th05, 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-grid">
+            <!-- Left: Timeline Section -->
+            <section class="timeline-section-card">
+                <div class="section-header">
+                    <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-lich-su.svg" alt="">
+                    <h2>Lịch sử ứng tuyển</h2>
+                </div>
+
+                <div class="apply-timeline">
+                    <!-- Step 1 -->
+                    <div class="timeline-item success">
+                        <div class="timeline-marker">
+                            <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-tien-do-thanh-cong.svg" alt="">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Nộp hồ sơ thành công</h3>
+                            <div class="time-meta">12 Th03, 2026 • 09:30 AM</div>
+                            <p>Hệ thống đã ghi nhận hồ sơ của bạn cho vị trí Senior Product Designer.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-item success">
+                        <div class="timeline-marker">
+                            <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-tien-do-thanh-cong.svg" alt="">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Nhà tuyển dụng đã xem hồ sơ</h3>
+                            <div class="time-meta">14 Th03, 2026 • 02:15 PM</div>
+                            <p>Trạng thái hồ sơ được cập nhật sang "Đang xem xét".</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Current) -->
+                    <div class="timeline-item active">
+                        <div class="timeline-marker">
+                            <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-tien-do-hien-tai.svg" alt="">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Đang xử lý & Đánh giá</h3>
+                            <div class="time-meta highlight">Cập nhật lúc 16 Th05, 2024</div>
+                            
+                            <!-- Feedback Block -->
+                            <div class="feedback-block">
+                                <div class="feedback-header">
+                                    <img src="assets/images/ho-so-cua-toi/ic-sua-ho-so.svg" alt="" width="16" style="filter: invert(36%) sepia(87%) saturate(2333%) auto(63%) hue-rotate(210deg) brightness(97%) contrast(92%);">
+                                    Thông tin phản hồi
+                                </div>
+                                <blockquote>
+                                    "Chào bạn, TechAsia đã nhận được portfolio của bạn. Chúng tôi rất ấn tượng với dự án Ecommerce Design. Nhóm HR sẽ liên hệ đặt lịch phỏng vấn chuyên môn trong 1-2 ngày tới."
+                                </blockquote>
+                                <div class="feedback-author">— Nguyễn Thu Thảo, Senior HR Manager</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 (Upcoming) -->
+                    <div class="timeline-item upcoming">
+                        <div class="timeline-marker">
+                            <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-tien-do-sap-toi.svg" alt="">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Lên lịch phỏng vấn</h3>
+                            <p class="waiting-text">Đang chờ bước tiếp theo</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="apply-sidebar">
+                <!-- Current Status -->
+                <div class="sidebar-card status-card">
+                    <div class="status-label">TRẠNG THÁI HIỆN TẠI</div>
+                    <div class="status-value">ĐANG XỬ LÝ</div>
+                    <div class="progress-section">
+                        <div class="progress-info">
+                            <span>Tiến độ hồi sơ</span>
+                            <span>45%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submitted File -->
+                <div class="sidebar-card file-card">
+                    <h3>Hồ sơ đã gửi</h3>
+                    <div style="background-color: white;" class="applied-file">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-file-cv.svg" alt="PDF">
+                        <div class="file-info">
+                            <div class="file-name">NinhKhoa.pdf</div>
+                            <div class="upload-date">Nộp vào 12 Th03, 2026</div>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0)" class="btn-download-cv">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-tai-xuong.svg" alt="">
+                        Tải xuống hồ sơ gốc
+                    </a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-sidebar">
+                    <button class="btn-view-job">Xem tin tuyển dụng</button>
+                    <button class="btn-withdraw" onclick="openWithdrawModal()">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-rut-ho-so-ung-tuyen.svg" alt="">
+                        Rút hồ sơ ứng tuyển
+                    </button>
+                    <p class="withdraw-notice">Lưu ý: Bạn sẽ không thể ứng tuyển lại vị trí này trong vòng 30 ngày nếu rút hồ sơ.</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Withdraw Modal -->
+    <div class="modal-overlay" id="withdrawModal">
+        <div class="modal-content withdraw-modal">
+            <div class="modal-header-icon">
+                <img src="assets/images/viec-lam-da-ung-tuyen/chi-tiet/ic-rut-ho-so-ung-tuyen-modal-co-bg.svg" alt="Warning">
+            </div>
+            <h2>Rút hồ sơ ứng tuyển?</h2>
+            <p class="modal-desc">Bạn có chắc chắn muốn rút hồ sơ cho vị trí <strong>Senior Product Designer</strong>? Hành động này không thể hoàn tác.</p>
+            
+            <div class="reason-section">
+                <div class="reason-label">LÝ DO RÚT HỒ SƠ (KHÔNG BẮT BUỘC)</div>
+                <div class="reason-list">
+                    <label class="reason-option">
+                        <input type="radio" name="withdraw_reason" checked>
+                        <span class="radio-custom"></span>
+                        Đã tìm được công việc khác
+                    </label>
+                    <label class="reason-option">
+                        <input type="radio" name="withdraw_reason">
+                        <span class="radio-custom"></span>
+                        Không còn hứng thú với vị trí này
+                    </label>
+                    <label class="reason-option">
+                        <input type="radio" name="withdraw_reason">
+                        <span class="radio-custom"></span>
+                        Mức lương không phù hợp
+                    </label>
+                    <label class="reason-option">
+                        <input type="radio" name="withdraw_reason">
+                        <span class="radio-custom"></span>
+                        Lý do cá nhân khác
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="closeWithdrawModal()">Hủy</button>
+                <button class="btn-modal-confirm" onclick="confirmWithdraw()">Rút hồ sơ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+        function openWithdrawModal() {
+            document.getElementById('withdrawModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWithdrawModal() {
+            document.getElementById('withdrawModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast-item';
+            toast.innerHTML = `
+                <span class="toast-message">${message}</span>
+                <button class="toast-close" onclick="this.parentElement.remove()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 5L5 15M5 5L15 15" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            `;
+            container.appendChild(toast);
+            
+            // Tự động biến mất sau 3 giây
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function confirmWithdraw() {
+            // Giả lập xử lý thành công
+            closeWithdrawModal();
+            showToast('Rút hồ sơ ứng tuyển thành công');
+        }
+
+        // Gắn sự kiện cho nút Tải xuống / Xuất hóa đơn
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnDownload = document.querySelector('.btn-download-cv');
+            if (btnDownload) {
+                btnDownload.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showToast('Xuất hoá đơn thành công');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
