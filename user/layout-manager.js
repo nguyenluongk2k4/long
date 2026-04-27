@@ -145,7 +145,7 @@ const JOBGOS_CONFIG = {
                 icon: "assets/images/ic_file_menu.png",
                 links: [
                     { label: "Việc làm đã lưu", link: "#" },
-                    { label: "Việc làm đã ứng tuyển", link: "#" },
+                    { label: "Việc làm đã ứng tuyển", link: "applied-jobs.html" },
                     { label: "Việc làm phù hợp", link: "#" },
                     { label: "Gợi ý việc làm", link: "#" }
                 ]

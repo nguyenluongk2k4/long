@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Việc làm đã ứng tuyển - JobGos</title>
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="css/applied-jobs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="user/layout-manager.js" defer></script>
+</head>
+<body class="jobgos-root">
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <main class="applied-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Việc làm</a>
+            <span>&gt;</span>
+            <span class="current">Danh sách việc làm đã ứng tuyển</span>
+        </div>
+
+        <div class="page-title-section">
+            <h1>Danh sách việc làm đã ứng tuyển</h1>
+            <p>Theo dõi và quản lý tiến trình các công việc bạn đã nộp đơn.</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Tổng số</div>
+                <div class="stat-value">12 <span class="stat-trend">+3 tháng này</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Đang chờ</div>
+                <div class="stat-value">02</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Phỏng vấn</div>
+                <div class="stat-value">04</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Đã nhận việc</div>
+                <div class="stat-value">02</div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="tab-btn active">Tất cả</button>
+            <button class="tab-btn">Đang chờ</button>
+            <button class="tab-btn">Đang xem xét</button>
+            <button class="tab-btn">Phỏng vấn</button>
+            <button class="tab-btn">Từ chối</button>
+            <button class="tab-btn">Đã nhận việc</button>
+        </div>
+
+        <div class="main-content-layout">
+            <!-- Left List -->
+            <section class="job-list-section">
+                <!-- Job Item 1 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-1.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Thiết kế Nội thất</h3>
+                            <div class="company-name">Homeroom Furniture</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp 15 phút trước
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge success">ĐÃ NHẬN VIỆC</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+
+                <!-- Job Item 2 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-2.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Kỹ sư Cơ khí / Sản xuất</h3>
+                            <div class="company-name">Vinatech</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp Vừa xong
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge warning">HẸN PHỎNG VẤN</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+
+                <!-- Job Item 3 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-3.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Kỹ sư AI / Robotics</h3>
+                            <div class="company-name">AR Robo</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp 1 giờ trước
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge warning">HẸN PHỎNG VẤN</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+
+                <!-- Job Item 4 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-4.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Backend Developer (Java/Python)</h3>
+                            <div class="company-name">VNG Solutions</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp Hôm qua
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge info">ĐANG XEM XÉT</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+
+                <!-- Job Item 5 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-5.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Nhân viên Marketing</h3>
+                            <div class="company-name">Việt Tiếp</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp 1 phút trước
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge default">ĐANG CHỜ</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+
+                <!-- Job Item 6 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-6.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Lập trình viên Frontend (ReactJS)</h3>
+                            <div class="company-name">Algit</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp 1 giờ trước
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge info">ĐANG XEM XÉT</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+
+                <!-- Job Item 7 -->
+                <div class="job-apply-card">
+                    <div class="job-info">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-viec-lam-7.svg" alt="Company" class="company-logo">
+                        <div class="job-details">
+                            <h3>Nhân Viên Kế Toán Tổng Hợp - LÀM NỘI BỘ /Từ 3 đến 5 năm kinh nghiệm</h3>
+                            <div class="company-name">Gusto Coffee</div>
+                            <div class="apply-time">
+                                <img src="assets/images/viec-lam-da-ung-tuyen/ic-clock.svg" alt="">
+                                Đã nộp 2 giờ trước
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-status">
+                        <span class="status-badge warning">HẸN PHỎNG VẤN</span>
+                        <a href="javascript:void(0)" class="btn-detail">Xem chi tiết</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="job-sidebar">
+                <!-- Suggestion Card -->
+                <div class="sidebar-card suggest-card">
+                    <h2>Gợi ý cho bạn</h2>
+                    <div class="suggest-banner">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-banner-card-meo.svg" alt="Suggest">
+                        <div class="banner-overlay">
+                            <button class="btn-learn-more">Tìm hiểu ngay</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tips Card -->
+                <div class="sidebar-card tips-card">
+                    <h3>Mẹo tìm việc</h3>
+                    <div class="tip-item">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-meo-cap-nhat-ho-so.svg" alt="">
+                        <p>Cập nhật hồ sơ thường xuyên để tăng khả năng tiếp cận.</p>
+                    </div>
+                    <div class="tip-item">
+                        <img src="assets/images/viec-lam-da-ung-tuyen/ic-meo-xac-thuc.svg" alt="">
+                        <p>Xác thực kỹ năng để nổi bật giữa các ứng viên.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+</body>
+</html>
