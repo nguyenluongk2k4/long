@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết thông báo - JobGos</title>
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/notification-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="employer-layout-root">
+        <!-- Sidebar -->
+        <div id="employer-sidebar-container"></div>
+
+        <div class="employer-main-container">
+            <!-- Header -->
+            <div id="employer-header-container"></div>
+
+            <div class="employer-content-area">
+                <div class="breadcrumb">
+                    Tổng quan > Thông báo > <span class="active">Chi tiết thông báo</span>
+                </div>
+
+                <div class="back-link-container">
+                    <button class="btn-back-link" onclick="window.location.href='notifications.html'">
+                        <img src="assets/images/nha-tuyen-dung/chi-tiet-thong-bao/ic-back.svg" alt="back">
+                        DANH SÁCH THÔNG BÁO
+                    </button>
+                </div>
+
+                <!-- Main Notification Card -->
+                <div class="notif-detail-card">
+                    <div class="card-meta">
+                        <span class="badge new-profile">Hồ sơ mới</span>
+                        <div class="time-meta">
+                            <img src="assets/images/nha-tuyen-dung/chi-tiet-thong-bao/ic-clock.svg" alt="clock">
+                            <span>1 giờ trước</span>
+                        </div>
+                    </div>
+
+                    <h1 class="notif-detail-title">Nhắc nhở: Lịch phỏng vấn hôm nay với Nguyễn Văn B</h1>
+                    <p class="notif-detail-desc">Bạn có buổi phỏng vấn trực tuyến cho vị trí Senior Frontend Developer lúc 14:00 hôm nay. Vui lòng kiểm tra lại thiết bị và chuẩn bị các câu hỏi đánh giá kỹ năng chuyên môn.</p>
+
+                    <div class="notif-info-grid">
+                        <div class="info-item">
+                            <span class="info-label">ỨNG VIÊN</span>
+                            <div class="info-value user">
+                                <img src="assets/images/nha-tuyen-dung/chi-tiet-thong-bao/avatar-ung-vien.svg" alt="avatar">
+                                <span>Nguyễn Văn B</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">HÌNH THỨC</span>
+                            <div class="">
+                                <img src="assets/images/nha-tuyen-dung/chi-tiet-thong-bao/ic-online.svg" alt="online">
+                                <span>Online (Google Meet)</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">VỊ TRÍ</span>
+                            <div class="info-value">
+                                <strong>Senior Frontend Developer</strong>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">THỜI GIAN</span>
+                            <div class="info-value">
+                                <strong>14:00 - 15:00, 25/10/2023</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes Box -->
+                <div class="notif-notes-box">
+                    <div class="notes-icon">
+                        <img src="assets/images/nha-tuyen-dung/chi-tiet-thong-bao/ic-ghi-chu-tuyen-dung.svg" alt="notes">
+                    </div>
+                    <div class="notes-text">
+                        <h3>Ghi chú tuyển dụng</h3>
+                        <p>Ứng viên có 5 năm kinh nghiệm làm việc với React và TypeScript. Đã vượt qua vòng kiểm tra tư duy thuật toán với số điểm 95/100. Tập trung khai thác sâu về kinh nghiệm tối ưu hóa Performance.</p>
+                    </div>
+                </div>
+
+                <!-- Related Notifications -->
+                <div class="related-notifs-section">
+                    <h2>Các thông báo khác gần đây</h2>
+                    <div class="related-grid">
+                        <div class="related-card">
+                            <span class="badge new-profile">Hồ sơ mới</span>
+                            <h3>Lê Thị C vừa ứng tuyển vào vị trí UI Designer</h3>
+                            <p>Cựu nhân viên tại Grab với hơn 3 năm kinh nghiệm thiết kế sản phẩm...</p>
+                        </div>
+                        <div class="related-card">
+                            <span class="badge new-profile">Hồ sơ mới</span>
+                            <h3>Trần Văn D đã ký hợp đồng Offer</h3>
+                            <p>Ứng viên vị trí Backend Developer đã hoàn tất ký tên trực tuyến...</p>
+                        </div>
+                        <div class="related-card">
+                            <span class="badge job-post">Tin tuyển dụng</span>
+                            <h3>Tin tuyển dụng sắp hết hạn</h3>
+                            <p>Tin đăng “Frontend Developer” sẽ hết hạn trong 24 giờ tới. Bạn có muốn gia hạn để tiếp tục nhận hồ sơ không?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="employer-footer-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="employer/employer-layout-manager.js"></script>
+</body>
+</html>

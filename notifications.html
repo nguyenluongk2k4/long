@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông báo - JobGos</title>
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="employer-layout-root">
+        <!-- Sidebar -->
+        <div id="employer-sidebar-container"></div>
+
+        <div class="employer-main-container">
+            <!-- Header -->
+            <div id="employer-header-container"></div>
+
+            <div class="employer-content-area">
+                <div class="breadcrumb">
+                    Tổng quan > <span class="active">Thông báo</span>
+                </div>
+
+                <div class="notifications-header">
+                    <h1>Thông báo của bạn</h1>
+                    <p class="subtitle">Quản lý và cập nhật các hoạt động mới nhất trong hệ thống tuyển dụng của bạn.</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="filter-tabs">
+                    <button class="tab active">Tất cả</button>
+                    <button class="tab">Hồ sơ mới</button>
+                    <button class="tab">Lịch phỏng vấn</button>
+                    <button class="tab">Tin tuyển dụng</button>
+                </div>
+
+                <!-- Notifications List -->
+                <div class="notifications-list">
+                    <div class="notification-item">
+                        <div class="notif-content">
+                            <div class="notif-title-row">
+                                <h3 class="notif-title">Báo cáo hiệu suất tuần</h3>
+                                <span class="badge new-profile">Hồ sơ mới</span>
+                            </div>
+                            <p class="notif-desc">Hệ thống đã tìm thấy 3 ứng viên phù hợp cao với vị trí “Backend Developer”. Xem ngay để liên hệ nhanh chóng.</p>
+                            <p class="notif-time">1 giờ trước</p>
+                        </div>
+                        <button class="btn-view-now">Xem ngay</button>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notif-content">
+                            <div class="notif-title-row">
+                                <h3 class="notif-title">Ứng viên mới cho vị trí UI/UX Designer</h3>
+                                <span class="badge new-profile">Hồ sơ mới</span>
+                            </div>
+                            <p class="notif-desc">Một ứng viên đã đồng ý với lời mời làm việc của bạn. Hãy chuẩn bị bước onboarding.</p>
+                            <p class="notif-time">1 giờ trước</p>
+                        </div>
+                        <button class="btn-view-now">Xem ngay</button>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notif-content">
+                            <div class="notif-title-row">
+                                <h3 class="notif-title">Ứng viên đã chấp nhận offer</h3>
+                                <span class="badge invisible-badge"></span>
+                            </div>
+                            <p class="notif-desc">Tỷ lệ phản hồi của bạn trong tuần này giảm 15%. Nên cải thiện thời gian phản hồi để giữ chân ứng viên.</p>
+                            <p class="notif-time">3 giờ trước</p>
+                        </div>
+                        <button class="btn-view-now" onclick="window.location.href='notification-detail.html'">Xem ngay</button>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notif-content">
+                            <div class="notif-title-row">
+                                <h3 class="notif-title">Tin tuyển dụng hoạt động kém</h3>
+                                <span class="badge new-profile">Hồ sơ mới</span>
+                            </div>
+                            <p class="notif-desc">Hệ thống đã tìm thấy 3 ứng viên phù hợp cao với vị trí “Backend Developer”. Xem ngay để liên hệ nhanh chóng.</p>
+                            <p class="notif-time">1 giờ trước</p>
+                        </div>
+                        <button class="btn-view-now" onclick="window.location.href='notification-detail.html'">Xem ngay</button>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notif-content">
+                            <div class="notif-title-row">
+                                <h3 class="notif-title">Ứng viên mới cho vị trí UI/UX Designer</h3>
+                                <span class="badge job-post">Tin tuyển dụng</span>
+                            </div>
+                            <p class="notif-desc">Tuần này bạn nhận được 45 hồ sơ, tăng 20% so với tuần trước. 6 ứng viên đã được mời phỏng vấn.</p>
+                            <p class="notif-time">15 phút trước</p>
+                        </div>
+                        <button class="btn-view-now" onclick="window.location.href='notification-detail.html'">Xem ngay</button>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notif-content">
+                            <div class="notif-title-row">
+                                <h3 class="notif-title">Báo cáo hiệu suất tuần</h3>
+                                <span class="badge new-profile">Hồ sơ mới</span>
+                            </div>
+                            <p class="notif-desc">Tuần này bạn nhận được 45 hồ sơ, tăng 20% so với tuần trước. 6 ứng viên đã được mời phỏng vấn.</p>
+                            <p class="notif-time">30 phút trước</p>
+                        </div>
+                        <button class="btn-view-now" onclick="window.location.href='notification-detail.html'">Xem ngay</button>
+                    </div>
+                </div>
+
+                <div id="employer-footer-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="employer/employer-layout-manager.js"></script>
+</body>
+</html>
