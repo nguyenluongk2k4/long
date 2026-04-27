@@ -107,7 +107,7 @@ class EmployerLayoutManager {
 
         const footerHTML = `
             <footer class="employer-footer">
-                <p>&copy; 2026 <strong>JobGos</strong>. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.</p>
+                <p>&copy; 2026 <strong>JobsGO</strong>. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.</p>
             </footer>
         `;
         container.innerHTML = footerHTML;

@@ -3,9 +3,9 @@
  * Centralized configuration and component rendering for Candidate/User pages.
  */
 
-const JOBGOS_CONFIG = {
+const JOBSGO_CONFIG = {
     brand: {
-        name: "JobsGo",
+        name: "JobsGO",
         logo: "assets/icons/logo-primary.svg",
         link: "index.html",
         slogan: "Kết nối đam mê, kiến tạo sự nghiệp."
@@ -138,7 +138,7 @@ const JOBGOS_CONFIG = {
                 ]
             }
         ],
-        copyright: "© 2026 JobGos. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.",
+        copyright: "© 2026 JobsGO. All rights reserved. Thiết kế bởi nhóm sinh viên Công nghệ Đa phương tiện.",
         userDropdown: [
             {
                 title: "Quản lý tìm việc",
@@ -180,7 +180,7 @@ const JOBGOS_CONFIG = {
 
 class LayoutManager {
     constructor() {
-        this.config = JOBGOS_CONFIG;
+        this.config = JOBSGO_CONFIG;
         this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     }
 
@@ -375,7 +375,7 @@ class LayoutManager {
                         ` : ''}
                     </div>
                 `).join('')}
-                ${col.showLogo ? `<div class="footer-logo-text">JOBGOS</div>` : ''}
+                ${col.showLogo ? `<div class="footer-logo-text">JOBSGO</div>` : ''}
                 ${col.showSocial ? `
                     <div class="footer-socials">
                          <a href="#" class="social-icon"><img src="assets/icons/ic_fb.svg" alt="Facebook" onerror="this.src='https://cdn-icons-png.flaticon.com/512/733/733547.png'"></a>
