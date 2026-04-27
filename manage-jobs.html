@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách tin tuyển dụng - Nhà tuyển dụng</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/manage-jobs.css">
+</head>
+<body>
+
+    <div class="employer-layout-root">
+        <!-- Sidebar Container -->
+        <div id="employer-sidebar-container"></div>
+
+        <!-- Main Content Wrapper -->
+        <div class="employer-main-wrapper">
+            <!-- Header Container -->
+            <div id="employer-header-container"></div>
+
+            <!-- Page Content -->
+            <main class="employer-content-area">
+                
+                <!-- Breadcrumbs -->
+                <div class="breadcrumb-nav">
+                    <span>Quản lý tin tuyển dụng</span>
+                    <img src="assets/images/nha-tuyen-dung/ho-so-cong-ty-nha-tuyen-dung/ic-arrow-right.svg" alt=">">
+                    <span class="active">Danh sách tin tuyển dụng</span>
+                </div>
+
+                <!-- Page Header -->
+                <div class="manage-jobs-header">
+                    <div class="title-wrap">
+                        <h1>Danh sách tin tuyển dụng</h1>
+                        <p>Quản lý các vị trí đang tuyển dụng của doanh nghiệp</p>
+                    </div>
+                    <div class="filter-tabs">
+                        <button class="tab-item active">Tất cả</button>
+                        <button class="tab-item">Đang đăng</button>
+                        <button class="tab-item">Chờ duyệt</button>
+                        <button class="tab-item">Hết hạn</button>
+                    </div>
+                </div>
+
+                <!-- Stats Summary Row -->
+                <div class="jobs-stats-row">
+                    <div class="stat-box-card">
+                        <div class="stat-icon-wrap" style="background: #EFF6FF;">
+                            <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-tin-dang-hoat-dong.svg" alt="active">
+                        </div>
+                        <div class="stat-info">
+                            <label>TIN ĐANG HOẠT ĐỘNG</label>
+                            <div class="val">12</div>
+                        </div>
+                    </div>
+                    <div class="stat-box-card">
+                        <div class="stat-icon-wrap" style="background: #FFFBEB;">
+                            <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-dang-cho-duyet.svg" alt="pending">
+                        </div>
+                        <div class="stat-info">
+                            <label>ĐANG CHỜ DUYỆT</label>
+                            <div class="val">03</div>
+                        </div>
+                    </div>
+                    <div class="stat-box-card">
+                        <div class="stat-icon-wrap" style="background: #ECFDF5;">
+                            <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-tong-ung-vien-moi.svg" alt="candidates">
+                        </div>
+                        <div class="stat-info">
+                            <label>TỔNG ỨNG VIÊN MỚI</label>
+                            <div class="val">128</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs Table Section -->
+                <div class="jobs-table-card">
+                    <table class="jobs-display-table">
+                        <thead>
+                            <tr>
+                                <th>TIÊU ĐỀ TIN</th>
+                                <th>TRẠNG THÁI</th>
+                                <th>ỨNG VIÊN</th>
+                                <th>NGÀY ĐĂNG</th>
+                                <th>HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Job Item 1 -->
+                            <tr>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <div class="title">Backend Developer (Java/Python)</div>
+                                        <div class="meta">Đăng ngày: 25/09/2024  •  Bình Dương</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-badge gray">Nháp / Hết hạn</span>
+                                </td>
+                                <td>
+                                    <div class="candidate-count"><strong>143</strong> ứng viên</div>
+                                </td>
+                                <td>23/12/2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-view.svg" alt="view"></button>
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-trash.svg" alt="delete"></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Job Item 2 -->
+                            <tr>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <div class="title">Nhân viên Kinh doanh / Sales</div>
+                                        <div class="meta">Đăng ngày: 25/09/2024  •  Hà Nội</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-badge gray">Nháp / Hết hạn</span>
+                                </td>
+                                <td>
+                                    <div class="candidate-count"><strong>147</strong> ứng viên</div>
+                                </td>
+                                <td>23/12/2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-view.svg" alt="view"></button>
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-trash.svg" alt="delete"></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Job Item 3 -->
+                            <tr>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <div class="title">Lập trình viên Frontend (ReactJS)</div>
+                                        <div class="meta">Đăng ngày: 03/12/2025  •  Bắc Ninh</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-badge red">Bị từ chối</span>
+                                </td>
+                                <td>
+                                    <div class="candidate-count"><strong>0</strong> ứng viên</div>
+                                </td>
+                                <td>23/12/2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-view.svg" alt="view"></button>
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-trash.svg" alt="delete"></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Job Item 4 -->
+                            <tr>
+                                <td>
+                                    <div class="job-title-cell">
+                                        <div class="title">Kỹ sư Cơ khí / Sản xuất</div>
+                                        <div class="meta">Đăng ngày: 30/12/2020  •  Lâm Đồng</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="status-badge green">Đang hoạt động</span>
+                                </td>
+                                <td>
+                                    <div class="candidate-count"><strong>45</strong> ứng viên</div>
+                                </td>
+                                <td>23/12/2025</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-view.svg" alt="view"></button>
+                                        <button class="btn-action-job"><img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/ic-trash.svg" alt="delete"></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Table Footer / Pagination -->
+                    <div class="table-footer-row">
+                        <div class="results-info">Hiển thị 1-4 trên tổng số 15 tin</div>
+                        <div class="pagination-wrap">
+                            <button class="btn-page-arrow"><</button>
+                            <button class="btn-page active">1</button>
+                            <button class="btn-page">2</button>
+                            <button class="btn-page">3</button>
+                            <span class="page-dots">...</span>
+                            <button class="btn-page">8</button>
+                            <button class="btn-page-arrow">></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Banner -->
+                <div class="promo-banner-card">
+                    <div class="promo-content">
+                        <h2>Bạn muốn tin tuyển dụng tiếp cận nhiều người hơn?</h2>
+                        <p>Sử dụng dịch vụ Tin Tuyển Dụng Nổi Bật để đưa thông tin của bạn lên đầu trang tìm kiếm và tiếp cận hàng nghìn ứng viên tiềm năng mỗi ngày.</p>
+                    </div>
+                    <button class="btn-promo-action" onclick="showUpgradeModal()">Tìm hiểu ngay</button>
+                </div>
+
+            </main>
+
+            <!-- Footer Injected Here -->
+            <div id="employer-footer-container"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        function showUpgradeModal() {
+            // Placeholder for modal logic
+            console.log("Opening upgrade modal...");
+        }
+    </script>
+</body>
+</html>
