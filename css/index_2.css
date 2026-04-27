@@ -93,24 +93,10 @@ body.index2-body {
     height: auto !important;
 }
 
-/* Keep banner image clean and consistent. */
-.index2-canvas div[style*="featured-banner.png"] {
-    background-image: var(--hero-banner-image, url(../assets/images/recruitment-banner-figma.png)) !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    transition: background-image 0.35s ease-in-out;
-    border-radius: 24px !important;
-    overflow: hidden !important;
-}
-
+/* Legacy single-banner image constraints removed for Swiper compatibility. */
 .index2-hero-banner {
     border-radius: 24px !important;
     overflow: hidden !important;
-}
-
-.index2-canvas div[style*="featured-banner.png"] > div[style*="width: 880px; height: 363px; left: 0px; top: 0px; position: absolute"] {
-    border-radius: 24px !important;
 }
 
 /* Hide exported dots because slider will render dynamic dots. */

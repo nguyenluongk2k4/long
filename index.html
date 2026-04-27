@@ -177,27 +177,26 @@
                     </div>
                     <div style="width: 134px; height: 29px; left: 71px; top: 14px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: var(--PRIMARY1, #2563EB); font-size: 24px; font-family: Inter; font-weight: 700; line-height: 28.80px; word-wrap: break-word">DANH MỤC</div>
                 </div>
-                <div data-property-1="Default" style="width: 880px; height: 363px; position: relative; border-radius: 24px; background-image: url(assets/images/featured-banner.png)">
-                    <div style="width: 880px; height: 363px; left: 0px; top: 0px; position: absolute; border-radius: 28px"></div>
-                    <div style="left: 351px; top: 339px; position: absolute; justify-content: flex-start; align-items: center; gap: 7px; display: inline-flex">
-                        <div data-property-1="Rectangle 6" style="width: 30px; height: 10px; position: relative">
-                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--PRIMARY1, #2563EB); border-radius: 12px"></div>
-                        </div>
-                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
-                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
-                        </div>
-                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
-                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
-                        </div>
-                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
-                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
-                        </div>
-                        <div data-property-1="Rectangle 7" style="width: 30px; height: 10px; position: relative">
-                            <div style="width: 30px; height: 10px; left: 0px; top: 0px; position: absolute; background: var(--NEUTRAL0, white); border-radius: 12px"></div>
-                        </div>
+                <div class="index2-hero-banner-slider" style="width: 880px; height: 363px; position: relative; border-radius: 24px; overflow: hidden; background: #fff;">
+                    <!-- Slides -->
+                    <div class="banner-slide" style="position: absolute; inset: 0; background: url('assets/images/banner.jpg') center/cover no-repeat; transition: opacity 0.5s ease-in-out; opacity: 1; z-index: 1;"></div>
+                    <div class="banner-slide" style="position: absolute; inset: 0; background: url('assets/images/banner2.jpg') center/cover no-repeat; transition: opacity 0.5s ease-in-out; opacity: 0; z-index: 0;"></div>
+                    <div class="banner-slide" style="position: absolute; inset: 0; background: url('assets/images/banner3.png') center/cover no-repeat; transition: opacity 0.5s ease-in-out; opacity: 0; z-index: 0;"></div>
+                    <div class="banner-slide" style="position: absolute; inset: 0; background: url('assets/images/banner4.png') center/cover no-repeat; transition: opacity 0.5s ease-in-out; opacity: 0; z-index: 0;"></div>
+
+                    <!-- Navigation controls -->
+                    <div style="position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; z-index: 10;">
+                        <img src="assets/images/ic-prev-hero-banner.svg" alt="Prev" class="hero-banner-prev" style="pointer-events: auto; cursor: pointer; height: 48px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); transition: transform 0.2s;">
+                        <img src="assets/images/ic-next-hero-banner.svg" alt="Next" class="hero-banner-next" style="pointer-events: auto; cursor: pointer; height: 48px; width: auto; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); transition: transform 0.2s;">
                     </div>
-                    <div style="width: 27.12px; height: 47.09px; left: 830px; top: 157px; position: absolute; background: var(--PRIMARY1, #2563EB); mask: url(assets/icons/ic_next_cong_ty_tieu_bieu.svg) no-repeat center; -webkit-mask: url(assets/icons/ic_next_cong_ty_tieu_bieu.svg) no-repeat center; cursor: pointer;"></div>
-                    <div style="width: 27.12px; height: 47.09px; left: 15px; top: 157px; position: absolute; background: var(--NEUTRAL3, rgba(67, 70, 85, 0.4)); mask: url(assets/icons/ic_prev_cong_ty_tieu_bieu.svg) no-repeat center; -webkit-mask: url(assets/icons/ic_prev_cong_ty_tieu_bieu.svg) no-repeat center; cursor: pointer;"></div>
+
+                    <!-- Dots -->
+                    <div class="hero-banner-dots" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; align-items: center; z-index: 10;">
+                        <img src="assets/images/index-herobanner-acitive.png" class="banner-dot active" style="width: 32px; height: 8px; cursor: pointer; transition: 0.3s; object-fit: cover; border-radius: 4px;">
+                        <img src="assets/images/index-herobanner-inacitive.png" class="banner-dot" style="width: 8px; height: 8px; cursor: pointer; transition: 0.3s; object-fit: cover; border-radius: 4px;">
+                        <img src="assets/images/index-herobanner-inacitive.png" class="banner-dot" style="width: 8px; height: 8px; cursor: pointer; transition: 0.3s; object-fit: cover; border-radius: 4px;">
+                        <img src="assets/images/index-herobanner-inacitive.png" class="banner-dot" style="width: 8px; height: 8px; cursor: pointer; transition: 0.3s; object-fit: cover; border-radius: 4px;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -1786,6 +1785,61 @@
                 cards[1].innerHTML = buildBarChart();
             }
         })();
+
+        // Hero Banner Swiper
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.banner-slide');
+            const dots = document.querySelectorAll('.banner-dot');
+            const btnPrev = document.querySelector('.hero-banner-prev');
+            const btnNext = document.querySelector('.hero-banner-next');
+            if(!slides.length) return;
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+            
+            function updateSlider(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                    slide.style.zIndex = i === index ? '1' : '0';
+                });
+                dots.forEach((dot, i) => {
+                    if(i === index) {
+                        dot.src = 'assets/images/index-herobanner-acitive.png';
+                        dot.style.width = '32px';
+                    } else {
+                        dot.src = 'assets/images/index-herobanner-inacitive.png';
+                        dot.style.width = '8px';
+                    }
+                });
+                currentSlide = index;
+            }
+
+            btnNext.addEventListener('click', () => {
+                const nextIndex = (currentSlide + 1) % totalSlides;
+                updateSlider(nextIndex);
+            });
+
+            btnPrev.addEventListener('click', () => {
+                const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider(prevIndex);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => updateSlider(index));
+            });
+
+            // Auto slide
+            setInterval(() => {
+                const nextIndex = (currentSlide + 1) % totalSlides;
+                updateSlider(nextIndex);
+            }, 4000);
+            
+            // Hover effect for buttons
+            btnNext.addEventListener('mouseenter', () => btnNext.style.transform = 'scale(1.1)');
+            btnNext.addEventListener('mouseleave', () => btnNext.style.transform = 'scale(1)');
+            btnPrev.addEventListener('mouseenter', () => btnPrev.style.transform = 'scale(1.1)');
+            btnPrev.addEventListener('mouseleave', () => btnPrev.style.transform = 'scale(1)');
+        });
     </script>
 </body>
 </html>
