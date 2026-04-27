@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo & Phân tích - JobGos</title>
+    <link rel="stylesheet" href="css/employer-layout.css">
+    <link rel="stylesheet" href="css/reports.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="employer-layout-root">
+        <!-- Sidebar -->
+        <div id="employer-sidebar-container"></div>
+
+        <div class="employer-main-container">
+            <!-- Header -->
+            <div id="employer-header-container"></div>
+
+            <div class="employer-content-area">
+                <div class="reports-header-row">
+                    <div class="header-text">
+                        <h1>Báo cáo & Phân tích</h1>
+                        <p class="subtitle">Theo dõi hiệu quả chiến dịch tuyển dụng của bạn theo thời gian thực.</p>
+                    </div>
+                    <button class="btn-export">
+                        <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/ic-tai-xuong.svg" alt="export" style="filter: brightness(0) invert(1);">
+                        Xuất báo cáo
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stats-card">
+                        <div class="card-top">
+                            <div class="">
+                                <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-tong-luot-xem.svg" alt="views">
+                            </div>
+                            <span class="trend-tag green">+12.5%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="label">TỔNG LƯỢT XEM</p>
+                            <p class="value">24,500</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="card-top">
+                            <div class="">
+                                <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-luot-ung-tuyen.svg" alt="applies">
+                            </div>
+                            <span class="trend-tag green">+8.2%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="label">LƯỢT ỨNG TUYỂN</p>
+                            <p class="value">1,240</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-card">
+                        <div class="card-top">
+                            <div class="">
+                                <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-ti-le-chuyen-doi.svg" alt="conversion">
+                            </div>
+                            <span class="trend-tag red">-2.1%</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="label">TỶ LỆ CHUYỂN ĐỔI</p>
+                            <p class="value">5.06%</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-card cost-card">
+                        <div class="cost-content">
+                            <p class="cost-label">CHI PHÍ THÁNG NÀY</p>
+                            <p class="cost-value">12,450,000đ</p>
+                            <div class="budget-alert">
+                                <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-notification.svg" alt="info" style="filter: brightness(0) invert(1); width: 14px;">
+                                <span>Đã sử dụng 62% ngân sách</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-grid">
+                    <div class="chart-container trending-chart">
+                        <div class="chart-header">
+                            <h3>Xu hướng tuyển dụng</h3>
+                            <p>Lượt xem vs Lượt ứng tuyển 30 ngày qua</p>
+                        </div>
+                        <div class="chart-content">
+                            <!-- Mock Chart using SVG -->
+                            <div class="mock-bar-chart">
+                                <div class="y-axis">
+                                    <span>2000</span>
+                                    <span>1500</span>
+                                    <span>1000</span>
+                                    <span>500</span>
+                                    <span>0</span>
+                                </div>
+                                <div class="bars-container">
+                                    <div class="bar-group">
+                                        <div class="bars">
+                                            <div class="bar-view" style="height: 60%;"></div>
+                                            <div class="bar-apply" style="height: 15%;"></div>
+                                        </div>
+                                        <span class="bar-label">Tuần 1</span>
+                                    </div>
+                                    <div class="bar-group">
+                                        <div class="bars">
+                                            <div class="bar-view" style="height: 75%;"></div>
+                                            <div class="bar-apply" style="height: 20%;"></div>
+                                        </div>
+                                        <span class="bar-label">Tuần 2</span>
+                                    </div>
+                                    <div class="bar-group">
+                                        <div class="bars">
+                                            <div class="bar-view" style="height: 90%;"></div>
+                                            <div class="bar-apply" style="height: 30%;"></div>
+                                        </div>
+                                        <span class="bar-label">Tuần 3</span>
+                                    </div>
+                                    <div class="bar-group">
+                                        <div class="bars">
+                                            <div class="bar-view" style="height: 70%;"></div>
+                                            <div class="bar-apply" style="height: 25%;"></div>
+                                        </div>
+                                        <span class="bar-label">Tuần 4</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="dot view"></span> Lượt xem</div>
+                                <div class="legend-item"><span class="dot apply"></span> Ứng tuyển</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-container source-chart">
+                        <div class="chart-header">
+                            <h3>Nguồn ứng viên</h3>
+                            <p>Phân phối lượng ứng tuyển</p>
+                        </div>
+                        <div class="chart-content centered">
+                            <div class="donut-chart-wrapper">
+                                <svg width="180" height="180" viewBox="0 0 42 42" class="donut">
+                                    <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
+                                    <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#F3F4F6" stroke-width="5"></circle>
+                                    
+                                    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#2563EB" stroke-width="5" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
+                                    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#10B981" stroke-width="5" stroke-dasharray="30 70" stroke-dashoffset="85"></circle>
+                                    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#F59E0B" stroke-width="5" stroke-dasharray="10 90" stroke-dashoffset="55"></circle>
+                                    <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#8B5CF6" stroke-width="5" stroke-dasharray="20 80" stroke-dashoffset="45"></circle>
+                                </svg>
+                                <div class="donut-center">
+                                    <span class="total-num">1078</span>
+                                </div>
+                            </div>
+                            <div class="source-legend">
+                                <div class="legend-item"><span class="dot purple"></span> Website công ty (40%)</div>
+                                <div class="legend-item"><span class="dot green"></span> Mạng xã hội (30%)</div>
+                                <div class="legend-item"><span class="dot blue"></span> Email (20%)</div>
+                                <div class="legend-item"><span class="dot orange"></span> Giới thiệu nội bộ (10%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Effectiveness Table -->
+                <div class="content-box effectiveness-table">
+                    <div class="box-header">
+                        <h2>Hiệu quả tin đăng</h2>
+                        <a href="#" class="view-all">Xem tất cả →</a>
+                    </div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>TÊN TIN ĐĂNG</th>
+                                    <th>LƯỢT XEM</th>
+                                    <th>LƯỢT ỨNG TUYỂN</th>
+                                    <th>TỶ LỆ CHUYỂN ĐỔI</th>
+                                    <th>THỜI GIAN TUYỂN</th>
+                                    <th>TRẠNG THÁI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="job-title">Nhân viên Kinh doanh / Sales</p>
+                                        <p class="post-date">Đăng ngày: 14/08/2026</p>
+                                    </td>
+                                    <td><strong>132</strong></td>
+                                    <td><strong>210</strong></td>
+                                    <td>
+                                        <div class="conv-rate">
+                                            <strong>1.1%</strong>
+                                            <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-table-ti-le-chuyen-doi.svg" alt="trend">
+                                        </div>
+                                    </td>
+                                    <td>24 ngày</td>
+                                    <td><span class="status-badge active">Đang hoạt động</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="job-title">Nhân viên Kinh doanh thiết bị mạng</p>
+                                        <p class="post-date">Đăng ngày: 03/02/2022</p>
+                                    </td>
+                                    <td><strong>64</strong></td>
+                                    <td><strong>202</strong></td>
+                                    <td>
+                                        <div class="conv-rate">
+                                            <strong>2.1%</strong>
+                                            <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-table-ti-le-chuyen-doi.svg" alt="trend">
+                                        </div>
+                                    </td>
+                                    <td>23 ngày</td>
+                                    <td><span class="status-badge expired">Nháp / Hết hạn</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="job-title">Kỹ sư Năng lượng tái tạo</p>
+                                        <p class="post-date">Đăng ngày: 12/05/2023</p>
+                                    </td>
+                                    <td><strong>134</strong></td>
+                                    <td><strong>170</strong></td>
+                                    <td>
+                                        <div class="conv-rate">
+                                            <strong>5.1%</strong>
+                                            <img src="assets/images/nha-tuyen-dung/bao-cao-phan-tich/ic-table-ti-le-chuyen-doi.svg" alt="trend">
+                                        </div>
+                                    </td>
+                                    <td>40 ngày</td>
+                                    <td><span class="status-badge active">Đang hoạt động</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="employer-footer-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        // Set active nav
+        window.addEventListener('DOMContentLoaded', () => {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                if (item.innerText.includes('Báo cáo & phân tích')) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

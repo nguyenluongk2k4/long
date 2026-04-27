@@ -1,0 +1,400 @@
+.reports-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+}
+
+.header-text h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.header-text .subtitle {
+    font-size: 15px;
+    color: #6B7280;
+}
+
+.btn-export {
+    background: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-export:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stats-card {
+    background: #FFFFFF;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box.blue { background: #EFF6FF; }
+.icon-box.green { background: #ECFDF5; }
+.icon-box.orange { background: #FFF7ED; }
+
+.icon-box img {
+    width: 24px;
+    height: 24px;
+}
+
+.trend-tag {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.trend-tag.green {
+    background: #DCFCE7;
+    color: #10B981;
+}
+
+.trend-tag.red {
+    background: #FEE2E2;
+    color: #EF4444;
+}
+
+.card-body .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #6B7280;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.card-body .value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+}
+
+/* Cost Card Specific */
+.cost-card {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    color: #FFFFFF;
+}
+
+.cost-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+}
+
+.cost-value {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.budget-alert {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Charts Section */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.chart-container {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.chart-header {
+    margin-bottom: 32px;
+}
+
+.chart-header h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.chart-header p {
+    font-size: 14px;
+    color: #9CA3AF;
+}
+
+/* Mock Bar Chart */
+.mock-bar-chart {
+    display: flex;
+    gap: 20px;
+    height: 250px;
+    position: relative;
+    padding-left: 50px;
+}
+
+.y-axis {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #9CA3AF;
+    text-align: right;
+    width: 40px;
+}
+
+.bars-container {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    border-bottom: 1px solid #F3F4F6;
+    padding-bottom: 10px;
+}
+
+.bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 200px;
+    width: 100%;
+    justify-content: center;
+}
+
+.bar-view {
+    width: 24px;
+    background: #2563EB;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease-out;
+}
+
+.bar-apply {
+    width: 24px;
+    background: #F59E0B;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease-out;
+}
+
+.bar-label {
+    font-size: 12px;
+    color: #9CA3AF;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.dot.view { background: #2563EB; }
+.dot.apply { background: #F59E0B; }
+.dot.purple { background: #8B5CF6; }
+.dot.green { background: #10B981; }
+.dot.blue { background: #2563EB; }
+.dot.orange { background: #F59E0B; }
+
+/* Source Chart / Donut */
+.donut-chart-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin-bottom: 32px;
+}
+
+.donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.total-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.source-legend {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.chart-content.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Table Section */
+.effectiveness-table {
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-top: 32px;
+}
+
+.effectiveness-table .box-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid #F3F4F6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.effectiveness-table h2 {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.view-all {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563EB;
+    text-decoration: none;
+}
+
+.table-wrapper {
+    padding: 0 0 32px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+}
+
+thead {
+    background: #E7E8E9;
+}
+
+th {
+    text-align: left;
+    padding: 16px 32px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #4B5563;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 16px 32px;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.job-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.post-date {
+    font-size: 13px;
+    color: #9CA3AF;
+}
+
+.conv-rate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-badge.active {
+    background: #ECFDF5;
+    color: #10B981;
+}
+
+.status-badge.expired {
+    background: #F3F4F6;
+    color: #9CA3AF;
+}
