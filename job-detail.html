@@ -29,7 +29,7 @@
                             <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-chinh-sua.svg" alt="Edit">
                             Chỉnh sửa tin
                         </button>
-                        <button class="btn-header-outline danger">
+                        <button class="btn-header-outline danger" onclick="openCloseModal()">
                             <img src="assets/images/nha-tuyen-dung/danh-sach-tin-tuyen-dung/chi-tiet/ic-dong-tin-tuyen-dung.svg" alt="Close">
                             Đóng tin tuyển dụng
                         </button>
@@ -126,9 +126,9 @@
 
                         <div class="table-head-row">
                             <div style="width: 48px; margin-right: 16px;"></div>
-                            <div class="th-label" style="flex: 1;">Ứng viên</div>
-                            <div class="th-label" style="width: 150px; text-align: center;">Trạng thái</div>
-                            <div class="th-label" style="width: 100px; text-align: right;">Hành động</div>
+                            <div class="th-label" style="flex: 1; color: #434655C2; padding:10px 0px;">Ứng viên</div>
+                            <div class="th-label" style="width: 150px; text-align: center; color: #434655C2; padding:10px 0px;">Trạng thái</div>
+                            <div class="th-label" style="width: 100px; text-align: right; color: #434655C2; padding:10px 0px;">Hành động</div>
                         </div>
 
                         <div class="candidates-scroll-body">
@@ -224,6 +224,38 @@
         </div>
     </div>
 
+    <!-- Close Job Modal -->
+    <div id="closeJobModal" class="modal-overlay" style="display: none;">
+        <div class="close-job-modal">
+            <h2>Đóng tin tuyển dụng</h2>
+            <p class="desc">Bạn muốn đóng tin tuyển dụng này? Vui lòng chọn lý do để chúng tôi cải thiện dịch vụ.</p>
+            
+            <div class="reason-list">
+                <p style="font-weight: 800; font-size: 14px; margin-bottom: 8px;">LÝ DO</p>
+                <label><input type="radio" name="close-reason" checked> Đã tuyển dụng thành công qua JobsGO</label>
+                <label><input type="radio" name="close-reason"> Đã tuyển dụng qua nguồn khác</label>
+                <label><input type="radio" name="close-reason"> Tạm dừng tuyển dụng</label>
+                <label><input type="radio" name="close-reason"> Tin đăng bị sai thông tin</label>
+                <label><input type="radio" name="close-reason"> Khác</label>
+            </div>
+
+            <div class="note-input-group">
+                <label>GHI CHÚ THÊM <span>(Không bắt buộc)</span></label>
+                <textarea placeholder="Hãy cho chúng tôi biết chi tiết hơn..."></textarea>
+            </div>
+
+            <div class="modal-actions-row">
+                <button class="btn-modal-gray" onclick="closeCloseModal()">Hủy</button>
+                <button class="btn-modal-red" onclick="handleCloseSuccess()">Đóng tin ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="closeSuccessToast" class="close-success-toast">
+        <span>Đóng tin tuyển dụng thành công</span>
+    </div>
+
     <script src="employer/employer-layout-manager.js"></script>
     <script>
         // Simple tab switching for candidates
@@ -234,6 +266,24 @@
                 tab.classList.add('active');
             });
         });
+
+        // Close Job Modal Logic
+        function openCloseModal() {
+            document.getElementById('closeJobModal').style.display = 'flex';
+        }
+
+        function closeCloseModal() {
+            document.getElementById('closeJobModal').style.display = 'none';
+        }
+
+        function handleCloseSuccess() {
+            closeCloseModal();
+            const toast = document.getElementById('closeSuccessToast');
+            toast.classList.add('active');
+            setTimeout(() => {
+                toast.classList.remove('active');
+            }, 3000);
+        }
     </script>
 </body>
 </html>
