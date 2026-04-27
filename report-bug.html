@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi" class="jobgos-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo lỗi hệ thống - JobsGO</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="user/user_layout.css">
+    <link rel="stylesheet" href="user/user_header.css">
+    <link rel="stylesheet" href="user/user_footer.css">
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="css/report-bug.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="report-main">
+        <div class="report-container">
+            
+            <!-- Left Column: Info & Typography -->
+            <div class="report-left">
+                <div class="report-header">
+                    <span class="tag-title">HỖ TRỢ KỸ THUẬT</span>
+                    <h1>Báo lỗi hệ thống <br><span class="text-blue">JobsGO</span></h1>
+                    <p class="report-desc">Sự đóng góp của bạn giúp chúng tôi xây dựng một hành trình nghề nghiệp mượt mà hơn. Hãy cho chúng tôi biết vấn đề bạn đang gặp phải.</p>
+                </div>
+
+                <div class="feature-cards-container">
+                    <div class="feature-item">
+                        <img src="assets/images/bao-cao-loi-he-thong/ic-xu-li-nhanh-chong.svg" alt="Xử lý nhanh">
+                        <div class="feature-content">
+                            <strong>Xử lý nhanh chóng</strong>
+                            <p>Đội ngũ kỹ thuật sẽ phản hồi trong vòng 24 giờ làm việc.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <img src="assets/images/bao-cao-loi-he-thong/ic-bao-mat-thong-tin.svg" alt="Bảo mật">
+                        <div class="feature-content">
+                            <strong>Bảo mật thông tin</strong>
+                            <p>Dữ liệu cá nhân của bạn luôn được bảo vệ theo tiêu chuẩn quốc tế.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Form -->
+            <div class="report-right">
+                <div class="form-card">
+                    <form class="bug-form">
+                        <div class="form-group">
+                            <label>Tiêu đề lỗi</label>
+                            <input type="text" placeholder="Ví dụ: Không thể tải ảnh hồ sơ">
+                        </div>
+
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label>Loại lỗi</label>
+                                <div class="custom-select-wrapper">
+                                    <select>
+                                        <option value="func">Lỗi chức năng</option>
+                                        <option value="ui">Lỗi giao diện</option>
+                                        <option value="perf">Lỗi hiệu năng</option>
+                                        <option value="other">Khác</option>
+                                    </select>
+                                    <img src="assets/images/bao-cao-loi-he-thong/ic-dropdown.svg" alt="" class="select-icon">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Thiết bị & Trình duyệt</label>
+                                <input type="text" placeholder="Ví dụ: iPhone 13, Chrome v112">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mô tả chi tiết</label>
+                            <textarea placeholder="Mô tả các bước thực hiện dẫn đến lỗi này..." rows="5"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ảnh chụp màn hình minh họa</label>
+                            <div class="upload-area">
+                                <img src="assets/images/bao-cao-loi-he-thong/ic-upload.svg" alt="Upload">
+                                <strong>Nhấn để tải lên hoặc kéo thả</strong>
+                                <span>PNG, JPG, HEIC tối đa 5MB</span>
+                                <input type="file" id="bug-screenshot" accept="image/*" hidden>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-submit">Gửi báo cáo</button>
+                            <p class="terms-hint">Bằng cách gửi, bạn đồng ý với <em>Điều khoản sử dụng</em> và <em>Chính sách quyền riêng tư</em> của chúng tôi.</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Report Success Modal -->
+    <div class="modal-overlay" id="reportSuccessModal">
+        <div class="success-modal">
+            <img src="assets/images/bao-cao-loi-he-thong/ic-modal-gui-bao-cao-thanh-cong.svg" alt="Success" class="modal-icon">
+            <h2>Gửi báo cáo thành công!</h2>
+            <p class="modal-desc">
+                Sự đóng góp của bạn giúp chúng tôi xây dựng một hành trình nghề nghiệp mượt mà hơn.
+            </p>
+            <div class="modal-buttons">
+                <a href="/" class="modal-btn-primary">Quay lại trang chủ</a>
+                <button type="button" class="modal-btn-outline" onclick="closeReportModal()">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="user/layout-manager.js"></script>
+    <script>
+        // JS logic handling File Upload interaction
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('bug-screenshot');
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--primary-blue)';
+            uploadArea.style.background = '#F0F9FF';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#CBD5E1';
+            uploadArea.style.background = 'white';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileInput.files = e.dataTransfer.files;
+            uploadArea.style.borderColor = '#CBD5E1';
+            uploadArea.style.background = 'white';
+            if(fileInput.files.length > 0) {
+                uploadArea.querySelector('strong').textContent = fileInput.files[0].name;
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if(fileInput.files.length > 0) {
+                uploadArea.querySelector('strong').textContent = fileInput.files[0].name;
+            }
+        });
+        
+        // Handle form submission and modal popup
+        document.querySelector('.bug-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('reportSuccessModal').style.display = 'flex';
+        });
+
+        // Close modal and reset form
+        function closeReportModal() {
+            document.getElementById('reportSuccessModal').style.display = 'none';
+            document.querySelector('.bug-form').reset();
+            // Reset upload area text
+            const uploadAreaText = document.querySelector('.upload-area strong');
+            if(uploadAreaText) uploadAreaText.textContent = 'Nhấn để tải lên hoặc kéo thả';
+        }
+    </script>
+</body>
+</html>

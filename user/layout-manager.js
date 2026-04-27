@@ -52,7 +52,7 @@ const JOBGOS_CONFIG = {
                 { label: "Hỗ trợ khách hàng", link: "contact.html", isPrimary: true },
                 { label: "Gửi yêu cầu hỗ trợ", link: "#" },
                 { label: "Chính sách & Điều khoản", link: "about.html" },
-                { label: "Báo lỗi hệ thống", link: "#" }
+                { label: "Báo lỗi hệ thống", link: "report-bug.html" }
             ]
         }
     ],
