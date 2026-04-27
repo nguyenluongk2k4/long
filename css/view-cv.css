@@ -1,0 +1,341 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #F3F4F6;
+    color: #111827;
+    overflow-x: hidden;
+}
+
+.view-cv-root {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+/* Top Navigation */
+.view-cv-nav {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.btn-back {
+    background: #FFFFFF;
+    color: #111827;
+    border: 1px solid #E5E7EB;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-back:hover {
+    background: #F9FAFB;
+}
+
+.btn-download-pdf {
+    background: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-download-pdf:hover {
+    background: #1D4ED8;
+}
+
+.btn-download-pdf img {
+    width: 18px;
+    height: 18px;
+}
+
+/* CV Paper */
+.cv-paper {
+    background: #FFFFFF;
+    width: 850px;
+    min-height: 1100px;
+    padding: 60px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* CV Header */
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.cv-name {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1F2937;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.cv-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563EB;
+    letter-spacing: 0.5px;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #4B5563;
+}
+
+.contact-item img {
+    width: 16px;
+    height: 16px;
+}
+
+.header-divider {
+    height: 3px;
+    background: #2563EB;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+/* CV Content Grid */
+.cv-content {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 50px;
+}
+
+/* Sidebar Column */
+.cv-section {
+    margin-bottom: 32px;
+}
+
+.section-title-with-bar {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1F2937;
+    margin-bottom: 16px;
+    padding-left: 10px;
+    border-left: 4px solid #2563EB;
+}
+
+.skill-item {
+    margin-bottom: 16px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    color: #4B5563;
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #E5E7EB;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #2563EB;
+}
+
+.lang-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #4B5563;
+    margin-bottom: 10px;
+}
+
+.lang-level {
+    font-weight: 600;
+    color: #2563EB;
+}
+
+.edu-item {
+    margin-bottom: 16px;
+}
+
+.edu-year {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563EB;
+    margin-bottom: 4px;
+}
+
+.edu-school {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 2px;
+}
+
+.edu-degree {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.4;
+}
+
+/* Main Column */
+.section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1F2937;
+    margin-bottom: 8px;
+}
+
+.section-divider {
+    height: 1px;
+    background: #E5E7EB;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.summary-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4B5563;
+    text-align: justify;
+}
+
+/* Experience Timeline */
+.exp-timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    bottom: 20px;
+    width: 1px;
+    background: #E5E7EB;
+}
+
+.exp-item {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.exp-marker {
+    position: absolute;
+    left: -20px;
+    top: 5px;
+    z-index: 1;
+    background: #FFFFFF;
+}
+
+.exp-marker img {
+    width: 10px;
+    height: 10px;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.exp-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+.tag-current {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563EB;
+    background: #EFF6FF;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.exp-year {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6B7280;
+}
+
+.exp-company {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4B5563;
+    margin-bottom: 12px;
+}
+
+.exp-tasks {
+    list-style-type: disc;
+    padding-left: 16px;
+}
+
+.exp-tasks li {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* Award Card */
+.award-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #F9FAFB;
+    padding: 16px 20px;
+    border-radius: 12px;
+}
+
+.award-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.award-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 2px;
+}
+
+.award-org {
+    font-size: 13px;
+    color: #6B7280;
+}
