@@ -1,10 +1,21 @@
-/* CV Detail Page Styling - JobGos 2026 */
+body {
+    background-color: #F1F5F9;
+}
 
 .cv-detail-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 40px auto 80px;
-    padding: 0 20px;
+    padding: 0 40px;
     font-family: 'Inter', sans-serif;
+}
+
+/* Paper Effect Wrapper */
+.cv-paper {
+    background: white;
+    border-radius: 4px;
+    padding: 48px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    min-height: 1200px;
 }
 
 .breadcrumb-nav {
@@ -13,23 +24,7 @@
     gap: 8px;
     font-size: 14px;
     color: #64748B;
-    margin-bottom: 24px;
-}
-
-.breadcrumb-nav a {
-    color: #2563EB;
-    text-decoration: none;
-}
-
-/* Header Info Card */
-.cv-header-card {
-    background: #F8FAFC;
-    border-radius: 24px;
-    padding: 48px;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
 }
 
 .cv-avatar-wrapper {
@@ -155,37 +150,44 @@
 /* Main Timeline Column */
 .cv-timeline {
     position: relative;
-    padding-left: 24px;
     border-left: 1px solid #E2E8F0;
+    margin-left: 8px; /* Đẩy timeline sang phải một chút */
 }
 
 .experience-item {
     position: relative;
+    padding-left: 32px; /* Tăng padding cố định để text luôn thẳng hàng */
     padding-bottom: 48px;
 }
 
 .experience-item::before {
     content: "";
     position: absolute;
-    left: -32px;
-    top: 4px;
+    left: -7.5px; /* Căn đúng giữa đường kẻ (timeline line) */
+    top: 6px;
     width: 15px;
     height: 15px;
     background: #1E293B;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 2;
 }
 
 .experience-item:first-child::before {
     background: #2563EB;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 }
 
 .exp-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 16px;
     margin-bottom: 12px;
+    width: 100%;
+}
+
+.role-info {
+    flex: 1;
 }
 
 .role-name {
@@ -193,6 +195,9 @@
     font-weight: 800;
     color: #1E293B;
     margin-bottom: 4px;
+    line-height: 1.2;
+    padding: 0;
+    margin: 0;
 }
 
 .company-name {
@@ -212,11 +217,14 @@
 .status-badge {
     background: #EFF6FF;
     color: #2563EB;
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 6px;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.05em;
+    white-space: nowrap; /* Luôn trên 1 dòng */
+    flex-shrink: 0; /* Không bị bóp méo */
+    text-align: center;
 }
 
 .exp-details {
