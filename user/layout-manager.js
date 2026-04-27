@@ -47,9 +47,9 @@ const JOBGOS_CONFIG = {
         { 
             label: "Liên hệ", 
             id: "nav-contact",
-            link: "#",
+            link: "contact.html",
             subLinks: [
-                { label: "Hỗ trợ khách hàng", link: "#", isPrimary: true },
+                { label: "Hỗ trợ khách hàng", link: "contact.html", isPrimary: true },
                 { label: "Gửi yêu cầu hỗ trợ", link: "#" },
                 { label: "Chính sách & Điều khoản", link: "about.html" },
                 { label: "Báo lỗi hệ thống", link: "#" }
