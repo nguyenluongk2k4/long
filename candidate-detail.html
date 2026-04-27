@@ -73,7 +73,7 @@
                                     <h2>Xem CV</h2>
                                 </div>
                                 <div class="header-actions">
-                                    <button class="btn-text">
+                                    <button class="btn-text" onclick="openDownloadModal()">
                                         <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/ic-tai-xuong.svg" alt="download">
                                         TẢI XUỐNG PDF
                                     </button>
@@ -187,7 +187,7 @@
                         <div class="content-box notes-box">
                             <div class="box-header">
                                 <h2>GHI CHÚ NỘI BỘ</h2>
-                                <button class="btn-add-note">+ THÊM MỚI</button>
+                                <button class="btn-add-note" onclick="openNoteModal()">+ THÊM MỚI</button>
                             </div>
                             <div class="notes-list">
                                 <div class="note-item blue">
@@ -273,7 +273,7 @@
                     </div>
                     <div class="action-buttons">
                         <button class="btn-outline-reject">Từ chối</button>
-                        <button class="btn-primary-approve">Phê duyệt hồ sơ</button>
+                        <button class="btn-primary-approve" onclick="openApproveModal()">Phê duyệt hồ sơ</button>
                     </div>
                 </div>
 
@@ -282,6 +282,168 @@
         </div>
     </div>
 
+    <!-- Note Modal -->
+    <div id="noteModal" class="modal-overlay" style="display: none;">
+        <div class="note-modal-container">
+            <div class="modal-header-with-close">
+                <div class="modal-title-group">
+                    <h1>Ghi chú nội bộ</h1>
+                    <p class="modal-subtitle">Hồ sơ ứng viên: <span class="highlight">Nguyên Minh Quân</span> • Senior UI Designer</p>
+                </div>
+                <button class="btn-close-modal" onclick="closeNoteModal()">
+                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/ghi-chu-modal/ic-close.svg" alt="close">
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="input-section">
+                    <h3>THÊM GHI CHÚ MỚI</h3>
+                    <textarea placeholder="Nhập nhận xét, đánh giá sau phỏng vấn hoặc các lưu ý bảo mật về ứng viên này..."></textarea>
+                    <div class="input-actions">
+                        <button class="btn-primary-save" onclick="handleSaveNote()">Lưu ghi chú</button>
+                    </div>
+                </div>
+
+                <div class="history-section">
+                    <h3>LỊCH SỬ GHI CHÚ (03)</h3>
+                    <div class="history-list">
+                        <!-- Note 1 -->
+                        <div class="history-item">
+                            <div class="history-author-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/ghi-chu-modal/avt-le-hoang.svg" alt="author">
+                                <div class="author-text">
+                                    <p class="author-name">Lê Hoàng</p>
+                                    <p class="author-role">HIRING MANAGER • 2 GIỜ TRƯỚC</p>
+                                </div>
+                            </div>
+                            <p class="note-content">Ứng viên có kỹ thuật tốt về React và Design System. Tuy nhiên cần kiểm tra thêm khả năng giải quyết vấn đề dưới áp lực thời gian trong vòng phỏng vấn tiếp theo.</p>
+                        </div>
+                        <!-- Note 2 -->
+                        <div class="history-item">
+                            <div class="history-author-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/ghi-chu-modal/avt-mai-anh.svg" alt="author">
+                                <div class="author-text">
+                                    <p class="author-name">Mai Anh</p>
+                                    <p class="author-role">TECHNICAL LEAD • HÔM QUA</p>
+                                </div>
+                            </div>
+                            <p class="note-content">Đã xem qua Github cá nhân. Cấu trúc code rất sạch sẽ, có tư duy modular tốt. Rất phù hợp với văn hóa của team Tech hiện tại.</p>
+                        </div>
+                        <!-- Note 3 -->
+                        <div class="history-item">
+                            <div class="history-author-info">
+                                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/ghi-chu-modal/avt-pham-van.svg" alt="author">
+                                <div class="author-text">
+                                    <p class="author-name">Phạm Văn</p>
+                                    <p class="author-role">RECRUITER • 2 NGÀY TRƯỚC</p>
+                                </div>
+                            </div>
+                            <p class="note-content">Mức lương mong muốn dao động khoảng 2500$ - 3000$. Sẵn sàng đi làm ngay sau 1 tuần bàn giao tại công ty cũ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download CV Modal -->
+    <div id="downloadModal" class="modal-overlay" style="display: none;">
+        <div class="download-modal-container">
+            <button class="btn-close-modal-top" onclick="closeDownloadModal()">
+                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/tai-xuong-modal/ic-close.svg" alt="close">
+            </button>
+            
+            <div class="modal-header-centered">
+                <h1>Tải xuống hồ sơ</h1>
+                <p class="modal-desc">Xuất tệp CV chất lượng cao để chia sẻ với nhà tuyển dụng.</p>
+            </div>
+
+            <div class="file-info-wrapper">
+                <div class="file-info-bg"></div>
+                <div class="file-info-card">
+                    <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/tai-xuong-modal/ic-file.svg" alt="pdf" class="file-icon">
+                    <div class="file-text">
+                        <p class="file-name">NinhKhoa.pdf</p>
+                        <p class="file-meta">2.4 MB <span class="dot">•</span> Cập nhật 2 giờ trước</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary-download" onclick="handleDownloadCV()">
+                <img src="assets/images/nha-tuyen-dung/danh-sach-ung-vien/chi-tiet/tai-xuong-modal/ic-download.svg" alt="download">
+                Tải xuống bản PDF
+            </button>
+
+            <div class="security-info">
+                <h3>BẢO MẬT THÔNG TIN</h3>
+                <p>Tệp tin đã được quét virus và mã hóa bảo mật. Dữ liệu cá nhân của bạn được bảo vệ theo tiêu chuẩn The Career Concierge.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="successToast" class="modal-overlay" style="display: none; align-items: flex-start; padding-top: 40px; pointer-events: none; background: transparent;">
+        <div class="success-dialog-container" style="min-width: 280px;">
+            <h3 id="toastMessage" style="font-size: 16px; color: #2563EB; font-weight: 600;">Đã lưu ghi chú thành công</h3>
+        </div>
+    </div>
+
     <script src="employer/employer-layout-manager.js"></script>
+    <script>
+        function openNoteModal() {
+            document.getElementById('noteModal').style.display = 'flex';
+        }
+
+        function closeNoteModal() {
+            document.getElementById('noteModal').style.display = 'none';
+        }
+
+        function handleSaveNote() {
+            closeNoteModal();
+            showToast("Đã lưu ghi chú thành công");
+        }
+
+        function openDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'flex';
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').style.display = 'none';
+        }
+
+        function handleDownloadCV() {
+            closeDownloadModal();
+            showToast("Đã tải xuống bản PDF");
+        }
+
+        function openApproveModal() {
+            document.getElementById('approveModal').style.display = 'flex';
+        }
+
+        function closeApproveModal() {
+            document.getElementById('approveModal').style.display = 'none';
+        }
+
+        function selectApproveOption(element) {
+            document.querySelectorAll('.approve-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+
+        function handleApproveSubmit() {
+            closeApproveModal();
+            showToast("Phê duyệt ứng viên thành công");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('successToast');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.innerText = message;
+            toast.style.display = 'flex';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        }
+    </script>
 </body>
 </html>
