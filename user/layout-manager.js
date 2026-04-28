@@ -1,5 +1,5 @@
-/**
- * JobGos Layout Manager
+﻿/**
+ * JobsGO Layout Manager
  * Centralized configuration and component rendering for Candidate/User pages.
  */
 
@@ -57,13 +57,13 @@ const JOBSGO_CONFIG = {
         }
     ],
     footer: {
-        about: "JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.",
+        about: "JobsGO là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa.",
         columns: [
             {
                 sections: [
                     {
                         title: "Giới Thiệu",
-                        content: "JobGos là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa."
+                        content: "JobsGO là nền tảng tuyển dụng trực tuyến giúp kết nối hiệu quả giữa ứng viên và nhà tuyển dụng, mang đến trải nghiệm tìm việc nhanh chóng, minh bạch và cá nhân hóa."
                     }
                 ],
                 showSocial: true,
@@ -72,7 +72,7 @@ const JOBSGO_CONFIG = {
             {
                 sections: [
                     {
-                        title: "Về JobGos",
+                        title: "Về JobsGO",
                         links: [
                             { label: "Giới thiệu", link: "about.html" },
                             { label: "Tuyển dụng", link: "#" },
