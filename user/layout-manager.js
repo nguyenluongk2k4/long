@@ -17,8 +17,8 @@ const JOBSGO_CONFIG = {
             link: "search.html",
             subLinks: [
                 { label: "Tìm việc làm", link: "search.html", isPrimary: true },
-                { label: "Việc làm đã lưu", link: "#" },
-                { label: "Việc làm đã ứng tuyển", link: "#" },
+                { label: "Việc làm đã lưu", link: "saved-jobs.html", isPrimary: true },
+                { label: "Việc làm đã ứng tuyển", link: "applied-jobs.html", isPrimary: true },
                 { label: "Việc làm phù hợp", link: "#" }
             ]
         },
@@ -28,9 +28,9 @@ const JOBSGO_CONFIG = {
             link: "company.html",
             subLinks: [
                 { label: "Danh sách công ty", link: "company.html", isPrimary: true },
-                { label: "Công ty nổi bật", link: "#" },
-                { label: "Công ty đang tuyển dụng", link: "#" },
-                { label: "Đánh giá công ty", link: "#" }
+                { label: "Công ty nổi bật", link: "#"},
+                { label: "Công ty đang tuyển dụng", link: "#"},
+                { label: "Đánh giá công ty", link: "#"}
             ]
         },
         { 
@@ -39,9 +39,9 @@ const JOBSGO_CONFIG = {
             link: "blog.html",
             subLinks: [
                 { label: "Tất cả bài viết", link: "blog.html", isPrimary: true },
-                { label: "Kinh nghiệm tìm việc", link: "blog-job-experience.html" },
-                { label: "Cẩm nang nghề nghiệp", link: "blog-career-guide.html" },
-                { label: "Tin tức thị trường", link: "blog-market-news.html" }
+                { label: "Kinh nghiệm tìm việc", link: "blog-job-experience.html", isPrimary: true },
+                { label: "Cẩm nang nghề nghiệp", link: "blog-career-guide.html", isPrimary: true },
+                { label: "Tin tức thị trường", link: "blog-market-news.html", isPrimary: true }
             ]
         },
         { 
@@ -50,9 +50,9 @@ const JOBSGO_CONFIG = {
             link: "contact.html",
             subLinks: [
                 { label: "Hỗ trợ khách hàng", link: "contact.html", isPrimary: true },
-                { label: "Gửi yêu cầu hỗ trợ", link: "#" },
-                { label: "Chính sách & Điều khoản", link: "about.html" },
-                { label: "Báo lỗi hệ thống", link: "report-bug.html" }
+                { label: "Gửi yêu cầu hỗ trợ", link: "contact.html", isPrimary: true },
+                { label: "Chính sách & Điều khoản", link: "about.html", isPrimary: true },
+                { label: "Báo lỗi hệ thống", link: "report-bug.html", isPrimary: true }
             ]
         }
     ],
@@ -75,20 +75,20 @@ const JOBSGO_CONFIG = {
                         title: "Về JobsGO",
                         links: [
                             { label: "Giới thiệu", link: "about.html" },
-                            { label: "Tuyển dụng", link: "#" },
-                            { label: "Liên hệ", link: "#" },
-                            { label: "Hỏi đáp", link: "#" },
-                            { label: "Chính sách bảo mật", link: "about.html" },
-                            { label: "Điều khoản sử dụng", link: "about.html" }
+                            { label: "Tuyển dụng", link: "careers.html", isPrimary: true },
+                            { label: "Liên hệ", link: "contact.html", isPrimary: true },
+                            { label: "Hỏi đáp", link: "about.html", isPrimary: true },
+                            { label: "Chính sách bảo mật", link: "about.html", isPrimary: true },
+                            { label: "Điều khoản sử dụng", link: "about.html", isPrimary: true }
                         ]
                     },
                     {
                         title: "Hồ sơ & CV",
                         links: [
-                            { label: "Quản lý CV", link: "user-dashboard.html" },
-                            { label: "Tạo CV online", link: "#" },
-                            { label: "Thư viện CV", link: "#" },
-                            { label: "Hướng dẫn viết CV", link: "#" }
+                            { label: "Quản lý CV", link: "user-dashboard.html", isPrimary: true },
+                            { label: "Tạo CV online", link: "create-cv.html", isPrimary: true },
+                            { label: "Thư viện CV", link: "cv-library.html", isPrimary: true },
+                            { label: "Hướng dẫn viết CV", link: "cv-guides.html", isPrimary: true }
                         ]
                     }
                 ]
@@ -98,20 +98,20 @@ const JOBSGO_CONFIG = {
                     {
                         title: "Dành cho ứng viên",
                         links: [
-                            { label: "Tìm việc làm", link: "search.html" },
-                            { label: "Việc làm theo ngành", link: "#" },
-                            { label: "Việc làm theo địa điểm", link: "#" },
-                            { label: "Việc làm nổi bật", link: "#" },
-                            { label: "Việc làm mới nhất", link: "#" }
+                            { label: "Tìm việc làm", link: "search.html", isPrimary: true },
+                            { label: "Việc làm theo ngành", link: "jobs-by-category.html", isPrimary: true },
+                            { label: "Việc làm theo địa điểm", link: "jobs-by-location.html", isPrimary: true },
+                            { label: "Việc làm nổi bật", link: "featured-jobs.html", isPrimary: true },
+                            { label: "Việc làm mới nhất", link: "latest-jobs.html", isPrimary: true }
                         ]
                     },
                     {
                         title: "Dành cho nhà tuyển dụng",
                         links: [
-                            { label: "Đăng tin tuyển dụng", link: "#" },
-                            { label: "Quản lý tin tuyển dụng", link: "#" },
-                            { label: "Tìm kiếm ứng viên", link: "#" },
-                            { label: "Báo cáo & thống kê", link: "#" }
+                            { label: "Đăng tin tuyển dụng", link: "post-job.html", isPrimary: true },
+                            { label: "Quản lý tin tuyển dụng", link: "manage-job-postings.html", isPrimary: true },
+                            { label: "Tìm kiếm ứng viên", link: "search-candidates.html", isPrimary: true },
+                            { label: "Báo cáo & thống kê", link: "reports.html", isPrimary: true }
                         ]
                     }
                 ]
@@ -121,9 +121,9 @@ const JOBSGO_CONFIG = {
                     {
                         title: "Khám phá",
                         links: [
-                            { label: "Gợi ý việc làm", link: "#" },
-                            { label: "Blog & chia sẻ", link: "blog.html" },
-                            { label: "Cẩm nang nghề nghiệp", link: "blog-career-guide.html" },
+                            { label: "Gợi ý việc làm", link: "blog-market-news.html", isPrimary: true },
+                            { label: "Blog & chia sẻ", link: "blog.html", isPrimary: true },
+                            { label: "Cẩm nang nghề nghiệp", link: "blog-career-guide.html", isPrimary: true },
                             { label: "Công cụ hỗ trợ", link: "#" }
                         ]
                     },
@@ -146,8 +146,8 @@ const JOBSGO_CONFIG = {
                 links: [
                     { label: "Việc làm đã lưu", link: "saved-jobs.html" },
                     { label: "Việc làm đã ứng tuyển", link: "applied-jobs.html" },
-                    { label: "Việc làm phù hợp", link: "#" },
-                    { label: "Gợi ý việc làm", link: "#" }
+                    { label: "Việc làm phù hợp", link: "index.html" },
+                    { label: "Gợi ý việc làm", link: "index.html" }
                 ]
             },
             {
@@ -155,15 +155,15 @@ const JOBSGO_CONFIG = {
                 icon: "assets/images/ic_file_menu.png",
                 links: [
                     { label: "CV của tôi", link: "manage-cv.html" },
-                    { label: "Chi tiết CV", link: "#" }
+                    { label: "Chi tiết CV", link: "index.html" }
                 ]
             },
             {
                 title: "Cài đặt email & thông báo",
                 icon: "assets/images/ic_file_menu.png",
                 links: [
-                    { label: "Cài đặt thông báo việc làm", link: "job-notifications.html" },
-                    { label: "Cài đặt cá nhân email", link: "email-notifications.html" }
+                    { label: "Cài đặt thông báo việc làm", link: "job-notifications.html", isPrimary: true },
+                    { label: "Cài đặt cá nhân email", link: "email-notifications.html", isPrimary: true }
                 ]
             },
             {
@@ -171,7 +171,7 @@ const JOBSGO_CONFIG = {
                 icon: "assets/images/ic_file_menu.png",
                 links: [
                     { label: "Hồ sơ của tôi", link: "update-profile.html" },
-                    { label: "Sửa thông tin hồ sơ", link: "update-profile.html?edit=true" }
+                    { label: "Sửa thông tin hồ sơ", link: "update-profile.html?edit=true", isPrimary: true }
                 ]
             }
         ]

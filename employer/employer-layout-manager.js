@@ -83,8 +83,12 @@ class EmployerLayoutManager {
                         <img src="assets/images/nha-tuyen-dung/tong-quan/ic-add.svg" alt="+">
                         Đăng tin mới
                     </button>
-                    <button class="btn-header-outline">Tìm ứng viên</button>
-                    <button class="btn-header-outline">Báo cáo</button>
+                    <button class="btn-header-outline" onclick="window.location.href='employee-manage-user.html'">
+                        Tìm ứng viên
+                    </button>
+                    <button class="btn-header-outline" onclick="window.location.href='reports.html'">
+                        Báo cáo
+                    </button>
                 </div>
                 <div class="header-right">
                     <button class="btn-icon-bell" onclick="window.location.href='notifications.html'">
@@ -94,7 +98,9 @@ class EmployerLayoutManager {
                         </svg>
                         <span class="notification-dot"></span>
                     </button>
-                    <button class="btn-logout-outline">Đăng xuất</button>
+                    <button class="btn-logout-outline" onclick="window.location.href='login.html'">
+                        Đăng xuất
+                    </button>
                 </div>
             </header>
         `;

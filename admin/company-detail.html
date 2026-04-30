@@ -453,7 +453,7 @@
         <!-- Main Content -->
         <main class="main-area">
             <!-- Header Bar -->
-            <header class="dashboard-header" style="background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+            <header class="dashboard-header" style="position: fixed; top: 0; z-index: 1000;left: 260px; right: 0; background: white; border-bottom: 1px solid var(--ADMIN-BORDER); display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
                 <div class="admin-header-search">
                     <img src="../assets/images/user-dashboard/ic-search.svg" alt="Search" width="18">
                     <input type="text" placeholder="Tìm theo tên, ID, email...">
@@ -474,10 +474,11 @@
             </header>
 
             <!-- Content Area -->
-            <div class="dashboard-content" style="padding: 32px 40px;">
+            <div class="dashboard-content" style="padding: 32px 40px; margin-top: 72px;">
                 <!-- Breadcrumbs -->
                 <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #64748B; margin-bottom: 16px;">
-                    <span>Quản lý công ty></span>
+                    <a href="manage-companies.html" style="text-decoration: none; color: #64748B;">Quản lý công ty</a>
+                    <span>></span>
                     <span style="color: #1E293B; font-weight: 500;">Chi tiết công ty</span>
                 </div>
 

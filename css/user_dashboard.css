@@ -29,7 +29,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 260px;
-    background: #F3F4F5;
+    background: #43465533;
     border-right: 1px solid var(--BORDER);
     display: flex;
     flex-direction: column;

@@ -60,6 +60,7 @@ body {
 .sidebar-brand {
     height: 80px;
     display: flex;
+    margin-right: 0;
     align-items: center;
     padding: 0 24px;
 }
@@ -69,6 +70,7 @@ body {
     font-size: 28px;
     font-weight: 700;
     text-decoration: none;
+    margin-right: 0;
 }
 
 .sidebar-user-profile {

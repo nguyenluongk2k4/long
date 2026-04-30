@@ -63,10 +63,12 @@ body, .jobgos-root {
     width: 100%;
     max-width: 1300px;
     margin: 0 auto;
+    margin-left: 80px;
     padding: 0 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 40px;
     height: 100%;
 }
 
@@ -176,7 +178,7 @@ body, .jobgos-root {
     font-weight: 700;
     color: #94A3B8;
     letter-spacing: 1.2px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;    
     padding-bottom: 4px;
 }
 
@@ -221,6 +223,8 @@ body, .jobgos-root {
     gap: 20px;
     position: relative;
     padding-left: 20px;
+    margin-left: auto;
+    margin-right: 60px;
 }
 
 .employer-cta {
